@@ -1,10 +1,9 @@
 /* ==========================================
-CONFIG
+WORKER
 ========================================== */
 
 const WORKER_URL =
   "https://ffxiv-character-snapshot-maker.cyan-ciel.workers.dev";
-
 
 
 /* ==========================================
@@ -17,17 +16,26 @@ const snapshot =
   );
 
 
+const languageJa =
+  document.getElementById(
+    "languageJa"
+  );
+
+const languageEn =
+  document.getElementById(
+    "languageEn"
+  );
+
+
 const imageUpload =
   document.getElementById(
     "imageUpload"
   );
 
-
 const snapshotImage =
   document.getElementById(
     "snapshotImage"
   );
-
 
 const photoPlaceholder =
   document.getElementById(
@@ -40,7 +48,6 @@ const imageXInput =
     "imageXInput"
   );
 
-
 const imageXValue =
   document.getElementById(
     "imageXValue"
@@ -51,7 +58,6 @@ const imageYInput =
   document.getElementById(
     "imageYInput"
   );
-
 
 const imageYValue =
   document.getElementById(
@@ -64,22 +70,9 @@ const imageScaleInput =
     "imageScaleInput"
   );
 
-
 const imageScaleValue =
   document.getElementById(
     "imageScaleValue"
-  );
-
-
-const coverBlackButton =
-  document.getElementById(
-    "coverBlackButton"
-  );
-
-
-const coverWhiteButton =
-  document.getElementById(
-    "coverWhiteButton"
   );
 
 
@@ -88,40 +81,9 @@ const coverOpacityInput =
     "coverOpacityInput"
   );
 
-
 const coverOpacityValue =
   document.getElementById(
     "coverOpacityValue"
-  );
-
-
-const coverFilm =
-  document.getElementById(
-    "coverFilm"
-  );
-
-
-const textWhiteButton =
-  document.getElementById(
-    "textWhiteButton"
-  );
-
-
-const textBlackButton =
-  document.getElementById(
-    "textBlackButton"
-  );
-
-
-const panelBlackButton =
-  document.getElementById(
-    "panelBlackButton"
-  );
-
-
-const panelWhiteButton =
-  document.getElementById(
-    "panelWhiteButton"
   );
 
 
@@ -129,7 +91,6 @@ const panelOpacityInput =
   document.getElementById(
     "panelOpacityInput"
   );
-
 
 const panelOpacityValue =
   document.getElementById(
@@ -148,7 +109,6 @@ const characterNameInput =
     "characterNameInput"
   );
 
-
 const worldInput =
   document.getElementById(
     "worldInput"
@@ -160,36 +120,22 @@ const previewCharacterName =
     "previewCharacterName"
   );
 
-
 const previewWorld =
   document.getElementById(
     "previewWorld"
   );
 
 
-const lodestoneUrlInput =
+const jobIconArea =
   document.getElementById(
-    "lodestoneUrlInput"
+    "jobIconArea"
   );
 
 
-const lodestoneFetchButton =
-  document.getElementById(
-    "lodestoneFetchButton"
+const playStyleCheckboxes =
+  document.querySelectorAll(
+    "[data-style]"
   );
-
-
-const lodestoneStatus =
-  document.getElementById(
-    "lodestoneStatus"
-  );
-
-
-const jobIconList =
-  document.getElementById(
-    "jobIconList"
-  );
-
 
 const previewPlayStyle =
   document.getElementById(
@@ -197,9 +143,9 @@ const previewPlayStyle =
   );
 
 
-const playStyleCheckboxes =
-  document.querySelectorAll(
-    ".play-style-checkbox"
+const questionInputs =
+  document.getElementById(
+    "questionInputs"
   );
 
 
@@ -208,6 +154,10 @@ const messageInput =
     "messageInput"
   );
 
+const messageCount =
+  document.getElementById(
+    "messageCount"
+  );
 
 const previewMessage =
   document.getElementById(
@@ -215,9 +165,19 @@ const previewMessage =
   );
 
 
-const messageCount =
+const lodestoneUrlInput =
   document.getElementById(
-    "messageCount"
+    "lodestoneUrlInput"
+  );
+
+const lodestoneFetchButton =
+  document.getElementById(
+    "lodestoneFetchButton"
+  );
+
+const lodestoneStatus =
+  document.getElementById(
+    "lodestoneStatus"
   );
 
 
@@ -225,65 +185,6 @@ const exportButton =
   document.getElementById(
     "exportButton"
   );
-
-
-const languageJa =
-  document.getElementById(
-    "languageJa"
-  );
-
-
-const languageEn =
-  document.getElementById(
-    "languageEn"
-  );
-
-
-
-/* ==========================================
-QUESTION ELEMENTS
-========================================== */
-
-const answerInputs =
-  [];
-
-
-const previewAnswers =
-  [];
-
-
-const answerCounts =
-  [];
-
-
-for (
-  let i = 1;
-  i <= 5;
-  i++
-) {
-
-  answerInputs.push(
-    document.getElementById(
-      `answer${i}`
-    )
-  );
-
-
-  previewAnswers.push(
-    document.getElementById(
-      `previewAnswer${i}`
-    )
-  );
-
-
-  answerCounts.push(
-    document.getElementById(
-      `answerCount${i}`
-    )
-  );
-
-}
-
 
 
 /* ==========================================
@@ -307,7 +208,7 @@ const translations = {
     heroDescription:
       "スクリーンショットにキャラクター情報、ジョブ、プレイスタイル、5つの質問への回答を添えて、あなただけの一枚を作成できます。",
 
-    screenshotLabel:
+    screenshot:
       "スクリーンショット",
 
     selectImage:
@@ -319,7 +220,7 @@ const translations = {
     verticalPosition:
       "縦位置",
 
-    imageScale:
+    zoom:
       "拡大",
 
     coverColor:
@@ -340,7 +241,7 @@ const translations = {
     panelOpacity:
       "情報パネル透明度",
 
-    lodestoneUrlLabel:
+    lodestoneUrl:
       "Lodestone キャラクターURL",
 
     lodestoneFetch:
@@ -349,15 +250,6 @@ const translations = {
     lodestoneReady:
       "LodestoneのキャラクターURLを入力して、データを取得します。",
 
-    lodestoneLoading:
-      "Lodestoneからデータを取得しています...",
-
-    lodestoneSuccess:
-      "キャラクターデータを取得しました。",
-
-    lodestoneError:
-      "キャラクターデータを取得できませんでした。",
-
     manualEdit:
       "取得データ / 手動編集",
 
@@ -365,16 +257,7 @@ const translations = {
       "キャラクター名",
 
     world:
-      "サーバー名",
-
-    characterNote:
-      "キャラクター名・サーバー名は取得後も手動で変更できます。ジョブレベルはLodestoneから取得したデータを使用します。",
-
-    playStyle:
-      "プレイスタイル",
-
-    questions:
-      "5つの質問",
+      "World / Data Center",
 
     question1:
       "あなたのキャラクターを一言で表すと？",
@@ -391,7 +274,13 @@ const translations = {
     question5:
       "これから叶えたい目標は？",
 
-    styleRelaxed:
+    message:
+      "ひとこと",
+
+    export:
+      "PNG画像を書き出す",
+
+    styleRelax:
       "のんびり",
 
     styleSS:
@@ -418,29 +307,38 @@ const translations = {
     styleGlamour:
       "ミラプリ",
 
-    styleGoldSaucer:
+    styleGold:
       "ゴールドソーサー",
 
     styleFishing:
       "釣り",
 
-    styleTreasure:
+    styleMap:
       "地図",
 
     styleHunt:
       "モブハント",
 
-    styleRoleplay:
+    styleRP:
       "ロールプレイ",
 
     styleFriends:
       "フレンド交流",
 
-    export:
-      "PNG画像を書き出す",
-
     disclaimer:
-      "本サイトは個人が制作・運営する非公式ツールであり、株式会社スクウェア・エニックスとは関係ありません。本サイトの利用によって生じた損害・不利益について、制作者は責任を負いかねます。また、スクリーンショットや入力内容については、各利用者の責任のもとでご利用ください。"
+      "本サイトは個人が制作・運営する非公式ツールであり、株式会社スクウェア・エニックスとは関係ありません。本サイトの利用によって生じた損害・不利益について、制作者は責任を負いかねます。また、スクリーンショットや入力内容については、各利用者の責任のもとでご利用ください。",
+
+    none:
+      "未選択",
+
+    lodestoneLoading:
+      "Lodestoneからデータを取得しています…",
+
+    lodestoneSuccess:
+      "キャラクターデータを取得しました。",
+
+    lodestoneError:
+      "キャラクターデータを取得できませんでした。"
 
   },
 
@@ -454,9 +352,9 @@ const translations = {
       "captured in a single snapshot.",
 
     heroDescription:
-      "Create your own FFXIV snapshot with your screenshot, character information, jobs, play style and answers to five questions.",
+      "Create a unique snapshot with your screenshot, character information, jobs, play style and answers to five questions.",
 
-    screenshotLabel:
+    screenshot:
       "Screenshot",
 
     selectImage:
@@ -468,7 +366,7 @@ const translations = {
     verticalPosition:
       "Vertical position",
 
-    imageScale:
+    zoom:
       "Zoom",
 
     coverColor:
@@ -484,12 +382,12 @@ const translations = {
       "Font",
 
     panelColor:
-      "Info panel color",
+      "Information panel color",
 
     panelOpacity:
-      "Info panel opacity",
+      "Information panel opacity",
 
-    lodestoneUrlLabel:
+    lodestoneUrl:
       "Lodestone Character URL",
 
     lodestoneFetch:
@@ -497,15 +395,6 @@ const translations = {
 
     lodestoneReady:
       "Enter a Lodestone character URL to retrieve character data.",
-
-    lodestoneLoading:
-      "Retrieving character data from Lodestone...",
-
-    lodestoneSuccess:
-      "Character data retrieved.",
-
-    lodestoneError:
-      "Character data could not be retrieved.",
 
     manualEdit:
       "Retrieved Data / Manual Edit",
@@ -515,15 +404,6 @@ const translations = {
 
     world:
       "World / Data Center",
-
-    characterNote:
-      "Character name and World can still be edited after retrieval. Job levels are loaded from Lodestone.",
-
-    playStyle:
-      "Play Style",
-
-    questions:
-      "Five Questions",
 
     question1:
       "Describe your character in one phrase.",
@@ -538,10 +418,16 @@ const translations = {
       "What is your most memorable experience?",
 
     question5:
-      "What goal would you like to achieve next?",
+      "What would you like to achieve next?",
 
-    styleRelaxed:
-      "Relaxed",
+    message:
+      "Message",
+
+    export:
+      "EXPORT PNG",
+
+    styleRelax:
+      "Relax",
 
     styleSS:
       "Screenshots",
@@ -567,144 +453,186 @@ const translations = {
     styleGlamour:
       "Glamour",
 
-    styleGoldSaucer:
+    styleGold:
       "Gold Saucer",
 
     styleFishing:
       "Fishing",
 
-    styleTreasure:
+    styleMap:
       "Treasure Maps",
 
     styleHunt:
       "Hunts",
 
-    styleRoleplay:
+    styleRP:
       "Roleplay",
 
     styleFriends:
       "Social",
 
-    export:
-      "EXPORT PNG",
-
     disclaimer:
-      "This is an unofficial fan-made web tool and is not affiliated with or endorsed by SQUARE ENIX CO., LTD. The creator assumes no responsibility for any loss or damage arising from the use of this site. Users are responsible for the screenshots and information they choose to use or enter."
+      "This is an unofficial fan-made web tool and is not affiliated with or endorsed by SQUARE ENIX CO., LTD. The creator assumes no responsibility for any loss or damage arising from the use of this site. Users are responsible for the screenshots and information they choose to use or enter.",
+
+    none:
+      "None",
+
+    lodestoneLoading:
+      "Retrieving character data from Lodestone…",
+
+    lodestoneSuccess:
+      "Character data retrieved successfully.",
+
+    lodestoneError:
+      "Character data could not be retrieved."
 
   }
 
 };
 
 
+/* ==========================================
+QUESTIONS
+========================================== */
 
-const playStyleTranslations = {
-
-  relaxed:{
-    ja:"のんびり",
-    en:"Relaxed"
-  },
-
-  ss:{
-    ja:"SS撮影",
-    en:"Screenshots"
-  },
-
-  story:{
-    ja:"ストーリー",
-    en:"Story"
-  },
-
-  battle:{
-    ja:"バトル",
-    en:"Battle"
-  },
-
-  highend:{
-    ja:"高難度",
-    en:"High-end"
-  },
-
-  pvp:{
-    ja:"PvP",
-    en:"PvP"
-  },
-
-  gatherer:{
-    ja:"ギャザラー",
-    en:"Gathering"
-  },
-
-  crafter:{
-    ja:"クラフター",
-    en:"Crafting"
-  },
-
-  housing:{
-    ja:"ハウジング",
-    en:"Housing"
-  },
-
-  glamour:{
-    ja:"ミラプリ",
-    en:"Glamour"
-  },
-
-  goldSaucer:{
-    ja:"ゴールドソーサー",
-    en:"Gold Saucer"
-  },
-
-  fishing:{
-    ja:"釣り",
-    en:"Fishing"
-  },
-
-  treasure:{
-    ja:"地図",
-    en:"Treasure Maps"
-  },
-
-  hunt:{
-    ja:"モブハント",
-    en:"Hunts"
-  },
-
-  roleplay:{
-    ja:"ロールプレイ",
-    en:"Roleplay"
-  },
-
-  friends:{
-    ja:"フレンド交流",
-    en:"Social"
-  }
-
-};
+const QUESTION_KEYS = [
+  "question1",
+  "question2",
+  "question3",
+  "question4",
+  "question5"
+];
 
 
+const previewAnswers = [
 
-function setLanguage(
-  language
-) {
+  document.getElementById(
+    "previewAnswer1"
+  ),
 
-  currentLanguage =
-    language;
+  document.getElementById(
+    "previewAnswer2"
+  ),
 
+  document.getElementById(
+    "previewAnswer3"
+  ),
+
+  document.getElementById(
+    "previewAnswer4"
+  ),
+
+  document.getElementById(
+    "previewAnswer5"
+  )
+
+];
+
+
+function createQuestionInputs() {
+
+  questionInputs.innerHTML =
+    "";
+
+
+  QUESTION_KEYS.forEach(
+    (
+      key,
+      index
+    ) => {
+
+      const block =
+        document.createElement(
+          "div"
+        );
+
+      block.className =
+        "question-input-block";
+
+
+      const label =
+        document.createElement(
+          "div"
+        );
+
+      label.className =
+        "question-input-label";
+
+      label.textContent =
+        `${index + 1}. ${translations[currentLanguage][key]}`;
+
+
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
+
+      textarea.rows =
+        3;
+
+      textarea.maxLength =
+        80;
+
+      textarea.dataset.questionIndex =
+        index;
+
+
+      const count =
+        document.createElement(
+          "div"
+        );
+
+      count.className =
+        "character-count";
+
+      count.textContent =
+        "0 / 80";
+
+
+      textarea.addEventListener(
+        "input",
+        () => {
+
+          previewAnswers[
+            index
+          ].textContent =
+            textarea.value.trim()
+            ||
+            "—";
+
+
+          count.textContent =
+            `${textarea.value.length} / 80`;
+
+        }
+      );
+
+
+      block.append(
+        label,
+        textarea,
+        count
+      );
+
+
+      questionInputs.appendChild(
+        block
+      );
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+LANGUAGE UPDATE
+========================================== */
+
+function updateLanguage() {
 
   document.documentElement.lang =
-    language;
-
-
-  languageJa.classList.toggle(
-    "active",
-    language === "ja"
-  );
-
-
-  languageEn.classList.toggle(
-    "active",
-    language === "en"
-  );
+    currentLanguage;
 
 
   document
@@ -719,11 +647,15 @@ function setLanguage(
 
 
         if (
-          translations[language][key]
+          translations[
+            currentLanguage
+          ][key]
         ) {
 
           element.textContent =
-            translations[language][key];
+            translations[
+              currentLanguage
+            ][key];
 
         }
 
@@ -731,59 +663,27 @@ function setLanguage(
     );
 
 
-  updatePlayStyle();
-
-
-  requestAnimationFrame(
-    () => {
-
-      previewAnswers.forEach(
-        fitAnswerText
-      );
-
-
-      fitMessageText();
-
-    }
+  languageJa.classList.toggle(
+    "active",
+    currentLanguage === "ja"
   );
+
+  languageEn.classList.toggle(
+    "active",
+    currentLanguage === "en"
+  );
+
+
+  createQuestionInputs();
+
+  updatePlayStyle();
 
 }
 
 
-
-languageJa.addEventListener(
-  "click",
-  () => {
-
-    setLanguage(
-      "ja"
-    );
-
-  }
-);
-
-
-
-languageEn.addEventListener(
-  "click",
-  () => {
-
-    setLanguage(
-      "en"
-    );
-
-  }
-);
-
-
-
 /* ==========================================
-SCREENSHOT FILE
+IMAGE
 ========================================== */
-
-let currentImageUrl =
-  null;
-
 
 imageUpload.addEventListener(
   "change",
@@ -798,528 +698,278 @@ imageUpload.addEventListener(
     }
 
 
-    if (
-      currentImageUrl
-    ) {
-
-      URL.revokeObjectURL(
-        currentImageUrl
-      );
-
-    }
+    const reader =
+      new FileReader();
 
 
-    currentImageUrl =
-      URL.createObjectURL(
-        file
-      );
-
-
-    snapshotImage.onload =
+    reader.onload =
       () => {
+
+        snapshotImage.src =
+          reader.result;
 
         photoPlaceholder.style.display =
           "none";
 
-
-        requestAnimationFrame(
-          updateImageTransform
-        );
-
       };
 
 
-    snapshotImage.src =
-      currentImageUrl;
+    reader.readAsDataURL(
+      file
+    );
 
   }
 );
 
 
+/*
+  横位置
 
-/* ==========================================
-SCREENSHOT POSITION / SCALE
+  50 = 中央
+  0  = 左へ
+  100 = 右へ
 
-IMPORTANT:
-元画像の縦横比を維持する。
-object-fit / CSS scale は使用しない。
-========================================== */
+  object-positionではなく
+  translateを使うことで
+  拡大時にも確実に動かす。
+*/
 
-function updateImageTransform() {
+function updateImageX() {
 
-  /*
-    画像未読み込み
-  */
-
-  if (
-    !snapshotImage.naturalWidth ||
-    !snapshotImage.naturalHeight
-  ) {
-
-    imageXValue.textContent =
-      `${imageXInput.value}%`;
-
-
-    imageYValue.textContent =
-      `${imageYInput.value}%`;
-
-
-    imageScaleValue.textContent =
-      `${imageScaleInput.value}%`;
-
-
-    return;
-
-  }
-
-
-  const areaWidth =
-    snapshot.clientWidth;
-
-
-  const areaHeight =
-    snapshot.clientHeight;
-
-
-  if (
-    !areaWidth ||
-    !areaHeight
-  ) {
-
-    return;
-
-  }
-
-
-  const naturalWidth =
-    snapshotImage.naturalWidth;
-
-
-  const naturalHeight =
-    snapshotImage.naturalHeight;
-
-
-
-  /*
-    ========================================
-    COVER SCALE
-
-    元画像の比率を維持した状態で、
-    正方形全体を覆う最小倍率。
-    ========================================
-  */
-
-  const coverScale =
-    Math.max(
-
-      areaWidth /
-      naturalWidth,
-
-      areaHeight /
-      naturalHeight
-
-    );
-
-
-
-  /*
-    ========================================
-    USER SCALE
-
-    100 = COVER状態
-    200 = COVER状態の2倍
-    ========================================
-  */
-
-  const userScale =
-    Number(
-      imageScaleInput.value
-    )
-    / 100;
-
-
-
-  const finalScale =
-    coverScale *
-    userScale;
-
-
-
-  /*
-    ========================================
-    DISPLAY SIZE
-
-    naturalWidth / naturalHeightの
-    両方へ同じ倍率を掛ける。
-
-    これによって縦横比は絶対に変わらない。
-    ========================================
-  */
-
-  const imageWidth =
-    naturalWidth *
-    finalScale;
-
-
-  const imageHeight =
-    naturalHeight *
-    finalScale;
-
-
-
-  /*
-    ========================================
-    OVERFLOW
-
-    正方形からはみ出している画像量。
-    ========================================
-  */
-
-  const overflowX =
-    Math.max(
-      0,
-      imageWidth -
-      areaWidth
-    );
-
-
-  const overflowY =
-    Math.max(
-      0,
-      imageHeight -
-      areaHeight
-    );
-
-
-
-  /*
-    ========================================
-    SLIDER POSITION
-    ========================================
-  */
-
-  const xRatio =
+  const value =
     Number(
       imageXInput.value
-    )
-    / 100;
+    );
 
 
-  const yRatio =
-    Number(
-      imageYInput.value
-    )
-    / 100;
+  const offset =
+    (value - 50) * 0.6;
 
 
+  snapshotImage.style.setProperty(
+    "--image-offset-x",
+    `${offset}%`
+  );
 
-  /*
-    0% = 左 / 上
-
-    50% = 中央
-
-    100% = 右 / 下
-  */
-
-  const left =
-    -overflowX *
-    xRatio;
-
-
-  const top =
-    -overflowY *
-    yRatio;
-
-
-
-  /*
-    ========================================
-    APPLY
-    ========================================
-  */
-
-  snapshotImage.style.width =
-    `${imageWidth}px`;
-
-
-  snapshotImage.style.height =
-    `${imageHeight}px`;
-
-
-  snapshotImage.style.left =
-    `${left}px`;
-
-
-  snapshotImage.style.top =
-    `${top}px`;
-
-
-
-  /*
-    ========================================
-    UI VALUE
-    ========================================
-  */
 
   imageXValue.textContent =
-    `${imageXInput.value}%`;
-
-
-  imageYValue.textContent =
-    `${imageYInput.value}%`;
-
-
-  imageScaleValue.textContent =
-    `${imageScaleInput.value}%`;
+    `${value}%`;
 
 }
 
 
+function updateImageY() {
 
-/* ==========================================
-IMAGE CONTROLS
-========================================== */
-
-imageXInput.addEventListener(
-  "input",
-  updateImageTransform
-);
+  const value =
+    Number(
+      imageYInput.value
+    );
 
 
-imageYInput.addEventListener(
-  "input",
-  updateImageTransform
-);
+  const offset =
+    (value - 50) * 0.6;
 
 
-imageScaleInput.addEventListener(
-  "input",
-  updateImageTransform
-);
+  snapshotImage.style.setProperty(
+    "--image-offset-y",
+    `${offset}%`
+  );
 
+
+  imageYValue.textContent =
+    `${value}%`;
+
+}
+
+
+function updateImageScale() {
+
+  const value =
+    Number(
+      imageScaleInput.value
+    );
+
+
+  snapshotImage.style.setProperty(
+    "--image-scale",
+    value / 100
+  );
+
+
+  imageScaleValue.textContent =
+    `${value}%`;
+
+}
 
 
 /* ==========================================
 COVER
 ========================================== */
 
-let coverColor =
-  "black";
+function updateCoverOpacity() {
 
-
-function updateCover() {
-
-  const opacity =
+  const value =
     Number(
       coverOpacityInput.value
-    )
-    / 100;
+    );
 
 
-  const rgb =
-    coverColor === "black"
-      ? "0,0,0"
-      : "255,255,255";
-
-
-  coverFilm.style.background =
-    `rgba(${rgb},${opacity})`;
+  snapshot.style.setProperty(
+    "--cover-alpha",
+    value / 100
+  );
 
 
   coverOpacityValue.textContent =
-    `${coverOpacityInput.value}%`;
+    `${value}%`;
 
 }
 
 
+document
+  .querySelectorAll(
+    "[data-cover]"
+  )
+  .forEach(
+    button => {
 
-coverBlackButton.addEventListener(
-  "click",
-  () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-    coverColor =
-      "black";
-
-
-    coverBlackButton.classList.add(
-      "active"
-    );
-
-
-    coverWhiteButton.classList.remove(
-      "active"
-    );
-
-
-    updateCover();
-
-  }
-);
+          document
+            .querySelectorAll(
+              "[data-cover]"
+            )
+            .forEach(
+              item =>
+                item.classList.remove(
+                  "active"
+                )
+            );
 
 
-
-coverWhiteButton.addEventListener(
-  "click",
-  () => {
-
-    coverColor =
-      "white";
+          button.classList.add(
+            "active"
+          );
 
 
-    coverWhiteButton.classList.add(
-      "active"
-    );
+          const color =
+            button.dataset.cover;
 
 
-    coverBlackButton.classList.remove(
-      "active"
-    );
+          snapshot.style.setProperty(
+            "--cover-rgb",
+            color === "white"
+              ? "255,255,255"
+              : "0,0,0"
+          );
 
+        }
+      );
 
-    updateCover();
-
-  }
-);
-
-
-
-coverOpacityInput.addEventListener(
-  "input",
-  updateCover
-);
-
+    }
+  );
 
 
 /* ==========================================
 TEXT COLOR
 ========================================== */
 
-function setTextColor(
-  color
-) {
+document
+  .querySelectorAll(
+    "[data-text-color]"
+  )
+  .forEach(
+    button => {
 
-  snapshot.classList.remove(
-    "text-white",
-    "text-black"
+      button.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(
+              "[data-text-color]"
+            )
+            .forEach(
+              item =>
+                item.classList.remove(
+                  "active"
+                )
+            );
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          snapshot.classList.remove(
+            "text-white",
+            "text-black"
+          );
+
+
+          snapshot.classList.add(
+            button.dataset.textColor ===
+              "black"
+              ? "text-black"
+              : "text-white"
+          );
+
+        }
+      );
+
+    }
   );
-
-
-  snapshot.classList.add(
-    `text-${color}`
-  );
-
-
-  textWhiteButton.classList.toggle(
-    "active",
-    color === "white"
-  );
-
-
-  textBlackButton.classList.toggle(
-    "active",
-    color === "black"
-  );
-
-}
-
-
-
-textWhiteButton.addEventListener(
-  "click",
-  () => {
-
-    setTextColor(
-      "white"
-    );
-
-  }
-);
-
-
-
-textBlackButton.addEventListener(
-  "click",
-  () => {
-
-    setTextColor(
-      "black"
-    );
-
-  }
-);
-
 
 
 /* ==========================================
-PANEL COLOR
+PANEL
 ========================================== */
 
-function setPanelColor(
-  color
-) {
+document
+  .querySelectorAll(
+    "[data-panel-color]"
+  )
+  .forEach(
+    button => {
 
-  const rgb =
-    color === "black"
-      ? "0,0,0"
-      : "244,241,233";
+      button.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(
+              "[data-panel-color]"
+            )
+            .forEach(
+              item =>
+                item.classList.remove(
+                  "active"
+                )
+            );
 
 
-  snapshot.style.setProperty(
-    "--character-panel-rgb",
-    rgb
+          button.classList.add(
+            "active"
+          );
+
+
+          snapshot.style.setProperty(
+            "--panel-rgb",
+            button.dataset.panelColor ===
+              "white"
+              ? "255,255,255"
+              : "0,0,0"
+          );
+
+        }
+      );
+
+    }
   );
 
-
-  snapshot.style.setProperty(
-    "--info-panel-rgb",
-    rgb
-  );
-
-
-  panelBlackButton.classList.toggle(
-    "active",
-    color === "black"
-  );
-
-
-  panelWhiteButton.classList.toggle(
-    "active",
-    color === "white"
-  );
-
-}
-
-
-
-panelBlackButton.addEventListener(
-  "click",
-  () => {
-
-    setPanelColor(
-      "black"
-    );
-
-  }
-);
-
-
-
-panelWhiteButton.addEventListener(
-  "click",
-  () => {
-
-    setPanelColor(
-      "white"
-    );
-
-  }
-);
-
-
-
-/* ==========================================
-PANEL OPACITY
-========================================== */
 
 function updatePanelOpacity() {
 
@@ -1330,7 +980,7 @@ function updatePanelOpacity() {
 
 
   snapshot.style.setProperty(
-    "--info-panel-alpha",
+    "--panel-alpha",
     value / 100
   );
 
@@ -1341,52 +991,26 @@ function updatePanelOpacity() {
 }
 
 
-
-panelOpacityInput.addEventListener(
-  "input",
-  updatePanelOpacity
-);
-
-
-
 /* ==========================================
 FONT
 ========================================== */
 
-fontSelect.addEventListener(
-  "change",
-  () => {
+function updateFont() {
 
-    snapshot.classList.remove(
-      "font-sans",
-      "font-rounded",
-      "font-serif",
-      "font-modern",
-      "font-condensed"
-    );
+  snapshot.classList.remove(
+    "font-sans",
+    "font-rounded",
+    "font-serif",
+    "font-modern",
+    "font-condensed"
+  );
 
 
-    snapshot.classList.add(
-      `font-${fontSelect.value}`
-    );
+  snapshot.classList.add(
+    `font-${fontSelect.value}`
+  );
 
-
-    requestAnimationFrame(
-      () => {
-
-        previewAnswers.forEach(
-          fitAnswerText
-        );
-
-
-        fitMessageText();
-
-      }
-    );
-
-  }
-);
-
+}
 
 
 /* ==========================================
@@ -1398,34 +1022,19 @@ function updateCharacter() {
   previewCharacterName.textContent =
     characterNameInput.value.trim()
     ||
-    "HIKARINO SENSHI";
+    "CHARACTER NAME";
 
 
   previewWorld.textContent =
     worldInput.value.trim()
     ||
-    "Ramuh / Meteor";
+    "World / Data Center";
 
 }
 
 
-
-characterNameInput.addEventListener(
-  "input",
-  updateCharacter
-);
-
-
-
-worldInput.addEventListener(
-  "input",
-  updateCharacter
-);
-
-
-
 /* ==========================================
-JOB ICON MAP
+JOB ICONS
 ========================================== */
 
 const JOB_ICON_MAP = {
@@ -1473,71 +1082,43 @@ const JOB_ICON_MAP = {
 };
 
 
+/*
+  31ジョブを3行に配置。
 
-/* ==========================================
-JOB LAYOUT
-3 ROWS
-========================================== */
+  1行目:
+  Tank + Healer + Meleeの一部
+
+  2行目:
+  DPS残り + Crafterの一部
+
+  3行目:
+  Crafter残り + Gatherer
+*/
 
 const JOB_GROUPS = [
 
   [
-    "PLD",
-    "WAR",
-    "DRK",
-    "GNB",
-
-    "WHM",
-    "SCH",
-    "AST",
-    "SGE",
-
-    "MNK",
-    "DRG",
-    "NIN"
+    "PLD","WAR","DRK","GNB",
+    "WHM","SCH","AST","SGE",
+    "MNK","DRG","NIN"
   ],
 
-
   [
-    "SAM",
-    "RPR",
-    "VPR",
-
-    "BRD",
-    "MCH",
-    "DNC",
-
-    "BLM",
-    "SMN",
-    "RDM",
-    "PCT",
-    "BLU"
+    "SAM","RPR","VPR",
+    "BRD","MCH","DNC",
+    "BLM","SMN","RDM","PCT","BLU"
   ],
 
-
   [
-    "CRP",
-    "BSM",
-    "ARM",
-    "GSM",
-
-    "LTW",
-    "WVR",
-    "ALC",
-    "CUL",
-
-    "MIN",
-    "BTN",
-    "FSH"
+    "CRP","BSM","ARM","GSM",
+    "LTW","WVR","ALC","CUL",
+    "MIN","BTN","FSH"
   ]
 
 ];
 
 
-
-let currentJobs =
-  {};
-
+let currentJobs = {};
 
 
 function renderJobs(
@@ -1548,7 +1129,7 @@ function renderJobs(
     jobs || {};
 
 
-  jobIconList.innerHTML =
+  jobIconArea.innerHTML =
     "";
 
 
@@ -1559,7 +1140,6 @@ function renderJobs(
         document.createElement(
           "div"
         );
-
 
       row.className =
         "job-icon-row";
@@ -1572,7 +1152,6 @@ function renderJobs(
             document.createElement(
               "div"
             );
-
 
           item.className =
             "job-item";
@@ -1595,10 +1174,8 @@ function renderJobs(
               "img"
             );
 
-
           image.src =
             `assets/jobs/${JOB_ICON_MAP[abbreviation]}`;
-
 
           image.alt =
             abbreviation;
@@ -1609,23 +1186,26 @@ function renderJobs(
               "div"
             );
 
-
           level.className =
             "job-level";
 
 
+          const jobLevel =
+            currentJobs[
+              abbreviation
+            ];
+
+
           level.textContent =
-            jobs[abbreviation]
-            ??
-            "—";
+            Number.isInteger(
+              jobLevel
+            )
+              ? jobLevel
+              : "—";
 
 
-          item.appendChild(
-            image
-          );
-
-
-          item.appendChild(
+          item.append(
+            image,
             level
           );
 
@@ -1638,7 +1218,7 @@ function renderJobs(
       );
 
 
-      jobIconList.appendChild(
+      jobIconArea.appendChild(
         row
       );
 
@@ -1648,262 +1228,94 @@ function renderJobs(
 }
 
 
-
-/* ==========================================
-LODESTONE
-========================================== */
-
-function setLodestoneStatus(
-  type,
-  text
-) {
-
-  lodestoneStatus.classList.remove(
-    "success",
-    "error"
-  );
-
-
-  if (
-    type === "success" ||
-    type === "error"
-  ) {
-
-    lodestoneStatus.classList.add(
-      type
-    );
-
-  }
-
-
-  lodestoneStatus.textContent =
-    text;
-
-}
-
-
-
-/* ==========================================
-WORLD FORMAT
-========================================== */
-
-function formatWorld(
-  world
-) {
-
-  if (!world) {
-    return "";
-  }
-
-
-  /*
-    Mandragora [Meteor]
-
-    ↓
-
-    Mandragora / Meteor
-  */
-
-  return world.replace(
-    /\s*\[([^\]]+)\]\s*$/,
-    " / $1"
-  );
-
-}
-
-
-
-/* ==========================================
-APPLY LODESTONE
-========================================== */
-
-function applyLodestoneCharacter(
-  data
-) {
-
-  if (
-    data.name
-  ) {
-
-    characterNameInput.value =
-      data.name;
-
-  }
-
-
-  if (
-    data.world
-  ) {
-
-    worldInput.value =
-      formatWorld(
-        data.world
-      );
-
-  }
-
-
-  if (
-    data.jobs
-  ) {
-
-    renderJobs(
-      data.jobs
-    );
-
-  }
-
-
-  updateCharacter();
-
-}
-
-
-
-/* ==========================================
-LODESTONE FETCH
-========================================== */
-
-lodestoneFetchButton.addEventListener(
-  "click",
-  async () => {
-
-    const url =
-      lodestoneUrlInput
-        .value
-        .trim();
-
-
-    if (!url) {
-
-      setLodestoneStatus(
-
-        "error",
-
-        currentLanguage === "ja"
-          ?
-          "LodestoneのキャラクターURLを入力してください。"
-          :
-          "Enter a Lodestone character URL."
-
-      );
-
-
-      return;
-
-    }
-
-
-    lodestoneFetchButton.disabled =
-      true;
-
-
-    setLodestoneStatus(
-
-      "",
-
-      translations[
-        currentLanguage
-      ].lodestoneLoading
-
-    );
-
-
-    try {
-
-      const response =
-        await fetch(
-
-          WORKER_URL +
-          "/?url=" +
-          encodeURIComponent(
-            url
-          )
-
-        );
-
-
-      if (
-        !response.ok
-      ) {
-
-        throw new Error(
-          `Worker HTTP ${response.status}`
-        );
-
-      }
-
-
-      const data =
-        await response.json();
-
-
-      if (
-        !data.success
-      ) {
-
-        throw new Error(
-          data.error
-          ||
-          "Lodestone fetch failed"
-        );
-
-      }
-
-
-      applyLodestoneCharacter(
-        data
-      );
-
-
-      setLodestoneStatus(
-
-        "success",
-
-        translations[
-          currentLanguage
-        ].lodestoneSuccess
-
-      );
-
-    }
-
-    catch (
-      error
-    ) {
-
-      console.error(
-        error
-      );
-
-
-      setLodestoneStatus(
-
-        "error",
-
-        translations[
-          currentLanguage
-        ].lodestoneError
-
-      );
-
-    }
-
-    finally {
-
-      lodestoneFetchButton.disabled =
-        false;
-
-    }
-
-  }
-);
-
-
-
 /* ==========================================
 PLAY STYLE
 ========================================== */
+
+const playStyleTranslations = {
+
+  relax:{
+    ja:"のんびり",
+    en:"Relax"
+  },
+
+  ss:{
+    ja:"SS撮影",
+    en:"Screenshots"
+  },
+
+  story:{
+    ja:"ストーリー",
+    en:"Story"
+  },
+
+  battle:{
+    ja:"バトル",
+    en:"Battle"
+  },
+
+  highend:{
+    ja:"高難度",
+    en:"High-end"
+  },
+
+  pvp:{
+    ja:"PvP",
+    en:"PvP"
+  },
+
+  gatherer:{
+    ja:"ギャザラー",
+    en:"Gathering"
+  },
+
+  crafter:{
+    ja:"クラフター",
+    en:"Crafting"
+  },
+
+  housing:{
+    ja:"ハウジング",
+    en:"Housing"
+  },
+
+  glamour:{
+    ja:"ミラプリ",
+    en:"Glamour"
+  },
+
+  gold:{
+    ja:"ゴールドソーサー",
+    en:"Gold Saucer"
+  },
+
+  fishing:{
+    ja:"釣り",
+    en:"Fishing"
+  },
+
+  map:{
+    ja:"地図",
+    en:"Treasure Maps"
+  },
+
+  hunt:{
+    ja:"モブハント",
+    en:"Hunts"
+  },
+
+  rp:{
+    ja:"ロールプレイ",
+    en:"Roleplay"
+  },
+
+  friends:{
+    ja:"フレンド交流",
+    en:"Social"
+  }
+
+};
+
 
 function updatePlayStyle() {
 
@@ -1930,17 +1342,13 @@ function updatePlayStyle() {
         "span"
       );
 
-
     tag.className =
       "play-style-tag";
 
-
     tag.textContent =
-      currentLanguage === "ja"
-        ?
-        "未選択"
-        :
-        "None";
+      translations[
+        currentLanguage
+      ].none;
 
 
     previewPlayStyle.appendChild(
@@ -1965,7 +1373,6 @@ function updatePlayStyle() {
           "span"
         );
 
-
       tag.className =
         "play-style-tag";
 
@@ -1988,342 +1395,220 @@ function updatePlayStyle() {
 }
 
 
-
-playStyleCheckboxes.forEach(
-  checkbox => {
-
-    checkbox.addEventListener(
-      "change",
-      updatePlayStyle
-    );
-
-  }
-);
-
-
-
-/* ==========================================
-ANSWER AUTO FIT
-========================================== */
-
-function fitAnswerText(
-  element
-) {
-
-  element.style.fontSize =
-    "";
-
-
-  const snapshotWidth =
-    snapshot.clientWidth;
-
-
-  if (
-    !snapshotWidth
-  ) {
-
-    return;
-
-  }
-
-
-  const unit =
-    snapshotWidth / 100;
-
-
-  let size =
-    1.3 * unit;
-
-
-  const minimum =
-    .72 * unit;
-
-
-  const maxHeight =
-    3.4 * unit;
-
-
-  element.style.fontSize =
-    `${size}px`;
-
-
-  let safety =
-    0;
-
-
-  while (
-    element.scrollHeight >
-      maxHeight
-    &&
-    size >
-      minimum
-    &&
-    safety <
-      50
-  ) {
-
-    size -=
-      .04 *
-      unit;
-
-
-    element.style.fontSize =
-      `${size}px`;
-
-
-    safety++;
-
-  }
-
-}
-
-
-
-/* ==========================================
-QUESTIONS
-========================================== */
-
-answerInputs.forEach(
-  (
-    input,
-    index
-  ) => {
-
-    input.addEventListener(
-      "input",
-      () => {
-
-        const text =
-          input.value;
-
-
-        previewAnswers[
-          index
-        ].textContent =
-          text.trim()
-          ||
-          "—";
-
-
-        answerCounts[
-          index
-        ].textContent =
-          `${text.length} / 80`;
-
-
-        requestAnimationFrame(
-          () => {
-
-            fitAnswerText(
-              previewAnswers[
-                index
-              ]
-            );
-
-          }
-        );
-
-      }
-    );
-
-  }
-);
-
-
-
-/* ==========================================
-MESSAGE AUTO FIT
-========================================== */
-
-function fitMessageText() {
-
-  previewMessage.style.fontSize =
-    "";
-
-
-  const container =
-    document.querySelector(
-      ".bottom-message-area"
-    );
-
-
-  if (
-    !container
-  ) {
-
-    return;
-
-  }
-
-
-  const snapshotWidth =
-    snapshot.clientWidth;
-
-
-  if (
-    !snapshotWidth
-  ) {
-
-    return;
-
-  }
-
-
-  const unit =
-    snapshotWidth / 100;
-
-
-  let size =
-    1.35 * unit;
-
-
-  const minimum =
-    .65 * unit;
-
-
-  previewMessage.style.fontSize =
-    `${size}px`;
-
-
-  const label =
-    container.querySelector(
-      ".message-label"
-    );
-
-
-  const rule =
-    container.querySelector(
-      ".message-rule"
-    );
-
-
-  const containerHeight =
-    container.clientHeight;
-
-
-  const labelHeight =
-    label
-      ?
-      label.offsetHeight
-      :
-      0;
-
-
-  let ruleHeight =
-    0;
-
-
-  if (
-    rule
-  ) {
-
-    const style =
-      getComputedStyle(
-        rule
-      );
-
-
-    ruleHeight =
-      rule.offsetHeight
-      +
-      parseFloat(
-        style.marginTop
-      )
-      +
-      parseFloat(
-        style.marginBottom
-      );
-
-  }
-
-
-  const availableHeight =
-    Math.max(
-
-      0,
-
-      containerHeight
-      -
-      labelHeight
-      -
-      ruleHeight
-
-    );
-
-
-  let safety =
-    0;
-
-
-  while (
-    previewMessage.scrollHeight >
-      availableHeight
-    &&
-    size >
-      minimum
-    &&
-    safety <
-      60
-  ) {
-
-    size -=
-      .04 *
-      unit;
-
-
-    previewMessage.style.fontSize =
-      `${size}px`;
-
-
-    safety++;
-
-  }
-
-}
-
-
-
 /* ==========================================
 MESSAGE
 ========================================== */
 
 function updateMessage() {
 
-  const text =
+  const value =
     messageInput.value;
 
 
   previewMessage.textContent =
-    text.trim()
+    value.trim()
     ||
     "—";
 
 
   messageCount.textContent =
-    `${text.length} / 160`;
+    value.length;
+
+}
 
 
-  requestAnimationFrame(
-    fitMessageText
+/* ==========================================
+LODESTONE
+========================================== */
+
+function setLodestoneStatus(
+  type,
+  text
+) {
+
+  lodestoneStatus.classList.remove(
+    "success",
+    "error"
+  );
+
+
+  if (type) {
+
+    lodestoneStatus.classList.add(
+      type
+    );
+
+  }
+
+
+  lodestoneStatus.textContent =
+    text;
+
+}
+
+
+function applyLodestoneCharacter(
+  data
+) {
+
+  if (
+    data.name
+  ) {
+
+    characterNameInput.value =
+      data.name;
+
+  }
+
+
+  if (
+    data.world
+  ) {
+
+    /*
+      Lodestone:
+      Mandragora [Meteor]
+
+      表示:
+      Mandragora / Meteor
+    */
+
+    worldInput.value =
+      data.world
+        .replace(
+          /\s*\[([^\]]+)\]\s*$/,
+          " / $1"
+        );
+
+  }
+
+
+  currentJobs =
+    data.jobs || {};
+
+
+  updateCharacter();
+
+  renderJobs(
+    currentJobs
   );
 
 }
 
 
+async function fetchLodestone() {
 
-messageInput.addEventListener(
-  "input",
-  updateMessage
-);
+  const url =
+    lodestoneUrlInput
+      .value
+      .trim();
 
+
+  if (!url) {
+
+    setLodestoneStatus(
+      "error",
+      translations[
+        currentLanguage
+      ].lodestoneError
+    );
+
+    return;
+
+  }
+
+
+  setLodestoneStatus(
+    "",
+    translations[
+      currentLanguage
+    ].lodestoneLoading
+  );
+
+
+  lodestoneFetchButton.disabled =
+    true;
+
+
+  try {
+
+    const response =
+      await fetch(
+        WORKER_URL +
+        "/?url=" +
+        encodeURIComponent(
+          url
+        )
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (
+      !response.ok
+      ||
+      !data.success
+    ) {
+
+      throw new Error(
+        data.error
+        ||
+        `HTTP ${response.status}`
+      );
+
+    }
+
+
+    applyLodestoneCharacter(
+      data
+    );
+
+
+    setLodestoneStatus(
+      "success",
+      translations[
+        currentLanguage
+      ].lodestoneSuccess
+    );
+
+  }
+
+  catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+
+    setLodestoneStatus(
+      "error",
+      translations[
+        currentLanguage
+      ].lodestoneError
+    );
+
+  }
+
+  finally {
+
+    lodestoneFetchButton.disabled =
+      false;
+
+  }
+
+}
 
 
 /* ==========================================
 WAIT IMAGES
 ========================================== */
 
-async function waitForSnapshotImages(
-  root = snapshot
+async function waitForImages(
+  root
 ) {
 
   const images =
@@ -2340,6 +1625,8 @@ async function waitForSnapshotImages(
 
         if (
           image.complete
+          &&
+          image.naturalWidth > 0
         ) {
 
           return Promise.resolve();
@@ -2350,17 +1637,9 @@ async function waitForSnapshotImages(
         return new Promise(
           resolve => {
 
-            const finish =
-              () => {
-
-                resolve();
-
-              };
-
-
             image.addEventListener(
               "load",
-              finish,
+              resolve,
               {
                 once:true
               }
@@ -2369,7 +1648,7 @@ async function waitForSnapshotImages(
 
             image.addEventListener(
               "error",
-              finish,
+              resolve,
               {
                 once:true
               }
@@ -2385,31 +1664,20 @@ async function waitForSnapshotImages(
 }
 
 
-
 /* ==========================================
 EXPORT
+
+重要:
+プレビューをtransformで拡大縮小しない。
+
+1080pxのクローンを作り、
+そのまま1080x1080でhtml2canvasへ渡す。
+
+これにより、
+プレビューと書き出しの縦横比を一致させる。
 ========================================== */
 
 async function exportSnapshot() {
-
-  if (
-    typeof html2canvas ===
-    "undefined"
-  ) {
-
-    alert(
-      currentLanguage === "ja"
-        ?
-        "画像生成ライブラリを読み込めませんでした。"
-        :
-        "The image export library could not be loaded."
-    );
-
-
-    return;
-
-  }
-
 
   exportButton.disabled =
     true;
@@ -2420,17 +1688,68 @@ async function exportSnapshot() {
 
 
   exportButton.textContent =
-    currentLanguage === "ja"
-      ?
-      "書き出し中..."
-      :
-      "EXPORTING...";
+    "...";
+
+
+  let stage =
+    null;
 
 
   try {
 
+    stage =
+      document.createElement(
+        "div"
+      );
+
+
+    stage.className =
+      "export-stage";
+
+
+    const clone =
+      snapshot.cloneNode(
+        true
+      );
+
+
+    clone.removeAttribute(
+      "id"
+    );
+
+
+    stage.appendChild(
+      clone
+    );
+
+
+    document.body.appendChild(
+      stage
+    );
+
+
     /*
-      FONT
+      CSS container query unit(cqw)が
+      1080pxを基準に計算される。
+    */
+
+    clone.style.width =
+      "1080px";
+
+    clone.style.height =
+      "1080px";
+
+    clone.style.aspectRatio =
+      "auto";
+
+
+    await waitForImages(
+      clone
+    );
+
+
+    /*
+      Font描画待ち
     */
 
     if (
@@ -2444,255 +1763,59 @@ async function exportSnapshot() {
 
 
     /*
-      IMAGES
-    */
-
-    await waitForSnapshotImages();
-
-
-    /*
-      SS位置を最終確定
-    */
-
-    updateImageTransform();
-
-
-    /*
-      TEXT FIT
-    */
-
-    previewAnswers.forEach(
-      fitAnswerText
-    );
-
-
-    fitMessageText();
-
-
-    /*
-      2 frames待機
+      レイアウト確定を待つ
     */
 
     await new Promise(
-      resolve => {
-
+      resolve =>
         requestAnimationFrame(
-          () => {
-
+          () =>
             requestAnimationFrame(
               resolve
-            );
-
-          }
-        );
-
-      }
+            )
+        )
     );
 
 
-    /*
-      SNAPSHOT SIZE
-    */
-
-    const rect =
-      snapshot.getBoundingClientRect();
-
-
-    const previewSize =
-      rect.width;
-
-
-    if (
-      !previewSize ||
-      previewSize <= 0
-    ) {
-
-      throw new Error(
-        "Snapshot size is invalid."
-      );
-
-    }
-
-
-    /*
-      プレビューの1pxを何倍すれば
-      1080pxになるか。
-    */
-
-    const exportScale =
-      1080 /
-      previewSize;
-
-
-
-    /*
-      CAPTURE
-
-      width / height を強制指定しない。
-
-      現在表示されている正方形を
-      そのまま倍率だけ上げる。
-    */
-
-    const capturedCanvas =
+    const canvas =
       await html2canvas(
-        snapshot,
+        clone,
         {
 
-          backgroundColor:null,
+          width:1080,
+          height:1080,
 
-          scale:
-            exportScale,
+          scale:1,
 
           useCORS:true,
 
           allowTaint:false,
 
+          backgroundColor:null,
+
           logging:false,
 
-          scrollX:
-            -window.scrollX,
+          scrollX:0,
+          scrollY:0,
 
-          scrollY:
-            -window.scrollY
+          windowWidth:1080,
+          windowHeight:1080
 
         }
       );
 
-
-
-    /*
-      FINAL CANVAS
-
-      html2canvasの丸め誤差で
-      1079 / 1081px等になった場合のみ
-      中央から正方形で切り出す。
-
-      縦横別々に伸縮しない。
-    */
-
-    let finalCanvas;
-
-
-    if (
-      capturedCanvas.width ===
-        1080
-      &&
-      capturedCanvas.height ===
-        1080
-    ) {
-
-      finalCanvas =
-        capturedCanvas;
-
-    }
-
-    else {
-
-      finalCanvas =
-        document.createElement(
-          "canvas"
-        );
-
-
-      finalCanvas.width =
-        1080;
-
-
-      finalCanvas.height =
-        1080;
-
-
-      const context =
-        finalCanvas.getContext(
-          "2d"
-        );
-
-
-      if (
-        !context
-      ) {
-
-        throw new Error(
-          "Canvas context unavailable."
-        );
-
-      }
-
-
-      const sourceSize =
-        Math.min(
-
-          capturedCanvas.width,
-
-          capturedCanvas.height
-
-        );
-
-
-      const sourceX =
-        (
-          capturedCanvas.width
-          -
-          sourceSize
-        )
-        / 2;
-
-
-      const sourceY =
-        (
-          capturedCanvas.height
-          -
-          sourceSize
-        )
-        / 2;
-
-
-      context.drawImage(
-
-        capturedCanvas,
-
-        sourceX,
-        sourceY,
-
-        sourceSize,
-        sourceSize,
-
-        0,
-        0,
-
-        1080,
-        1080
-
-      );
-
-    }
-
-
-
-    /*
-      PNG
-    */
 
     const blob =
       await new Promise(
-        resolve => {
-
-          finalCanvas.toBlob(
-
+        resolve =>
+          canvas.toBlob(
             resolve,
-
             "image/png"
-
-          );
-
-        }
+          )
       );
 
 
-    if (
-      !blob
-    ) {
+    if (!blob) {
 
       throw new Error(
         "PNG blob creation failed."
@@ -2716,9 +1839,8 @@ async function exportSnapshot() {
     link.href =
       objectUrl;
 
-
     link.download =
-      "FFXIV-character-snapshot.png";
+      "ffxiv-character-snapshot.png";
 
 
     document.body.appendChild(
@@ -2728,19 +1850,11 @@ async function exportSnapshot() {
 
     link.click();
 
-
     link.remove();
 
 
-    setTimeout(
-      () => {
-
-        URL.revokeObjectURL(
-          objectUrl
-        );
-
-      },
-      1000
+    URL.revokeObjectURL(
+      objectUrl
     );
 
   }
@@ -2750,22 +1864,28 @@ async function exportSnapshot() {
   ) {
 
     console.error(
-      "Snapshot export error:",
       error
     );
 
 
     alert(
       currentLanguage === "ja"
-        ?
-        "画像の書き出しに失敗しました。"
-        :
-        "Failed to export the image."
+        ? "画像の書き出しに失敗しました。"
+        : "Failed to export the image."
     );
 
   }
 
   finally {
+
+    if (
+      stage
+    ) {
+
+      stage.remove();
+
+    }
+
 
     exportButton.disabled =
       false;
@@ -2779,6 +1899,107 @@ async function exportSnapshot() {
 }
 
 
+/* ==========================================
+EVENTS
+========================================== */
+
+languageJa.addEventListener(
+  "click",
+  () => {
+
+    currentLanguage =
+      "ja";
+
+    updateLanguage();
+
+  }
+);
+
+
+languageEn.addEventListener(
+  "click",
+  () => {
+
+    currentLanguage =
+      "en";
+
+    updateLanguage();
+
+  }
+);
+
+
+imageXInput.addEventListener(
+  "input",
+  updateImageX
+);
+
+
+imageYInput.addEventListener(
+  "input",
+  updateImageY
+);
+
+
+imageScaleInput.addEventListener(
+  "input",
+  updateImageScale
+);
+
+
+coverOpacityInput.addEventListener(
+  "input",
+  updateCoverOpacity
+);
+
+
+panelOpacityInput.addEventListener(
+  "input",
+  updatePanelOpacity
+);
+
+
+fontSelect.addEventListener(
+  "change",
+  updateFont
+);
+
+
+characterNameInput.addEventListener(
+  "input",
+  updateCharacter
+);
+
+
+worldInput.addEventListener(
+  "input",
+  updateCharacter
+);
+
+
+playStyleCheckboxes.forEach(
+  checkbox => {
+
+    checkbox.addEventListener(
+      "change",
+      updatePlayStyle
+    );
+
+  }
+);
+
+
+messageInput.addEventListener(
+  "input",
+  updateMessage
+);
+
+
+lodestoneFetchButton.addEventListener(
+  "click",
+  fetchLodestone
+);
+
 
 exportButton.addEventListener(
   "click",
@@ -2786,152 +2007,28 @@ exportButton.addEventListener(
 );
 
 
-
-/* ==========================================
-RESIZE
-========================================== */
-
-let resizeTimer;
-
-
-window.addEventListener(
-  "resize",
-  () => {
-
-    clearTimeout(
-      resizeTimer
-    );
-
-
-    resizeTimer =
-      setTimeout(
-        () => {
-
-          /*
-            プレビューサイズが変わったら
-            SSの表示サイズも再計算。
-          */
-
-          updateImageTransform();
-
-
-          previewAnswers.forEach(
-            fitAnswerText
-          );
-
-
-          fitMessageText();
-
-        },
-        100
-      );
-
-  }
-);
-
-
-
-/* ==========================================
-DUMMY JOB DATA
-========================================== */
-
-const dummyJobs = {
-
-  PLD:90,
-  WAR:100,
-  DRK:100,
-  GNB:100,
-
-  WHM:100,
-  SCH:100,
-  AST:100,
-  SGE:100,
-
-  MNK:100,
-  DRG:100,
-  NIN:100,
-  SAM:100,
-  RPR:100,
-  VPR:100,
-
-  BRD:100,
-  MCH:100,
-  DNC:100,
-
-  BLM:100,
-  SMN:100,
-  RDM:100,
-  PCT:100,
-  BLU:80,
-
-  CRP:100,
-  BSM:100,
-  ARM:100,
-  GSM:100,
-  LTW:100,
-  WVR:100,
-  ALC:100,
-  CUL:100,
-
-  MIN:100,
-  BTN:100,
-  FSH:100
-
-};
-
-
-
 /* ==========================================
 INITIALIZE
 ========================================== */
 
-function initialize() {
+updateImageX();
 
-  /*
-    SSスライダー表示値。
+updateImageY();
 
-    画像未読み込みでも値は表示する。
-  */
+updateImageScale();
 
-  updateImageTransform();
+updateCoverOpacity();
 
+updatePanelOpacity();
 
-  updateCover();
+updateFont();
 
+updateCharacter();
 
-  updatePanelOpacity();
+renderJobs({});
 
+updatePlayStyle();
 
-  setPanelColor(
-    "black"
-  );
+updateMessage();
 
-
-  setTextColor(
-    "white"
-  );
-
-
-  updateCharacter();
-
-
-  renderJobs(
-    dummyJobs
-  );
-
-
-  updatePlayStyle();
-
-
-  updateMessage();
-
-
-  setLanguage(
-    "ja"
-  );
-
-}
-
-
-
-initialize();
+createQuestionInputs();

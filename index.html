@@ -16,7 +16,7 @@
 
   <meta
     name="description"
-    content="FFXIVのキャラクター情報とスクリーンショットから、オリジナルのスナップショット画像を作成できるWebツールです。"
+    content="FFXIVのキャラクター情報、ジョブ、プレイスタイル、質問への回答をスクリーンショットと一緒に一枚の画像にまとめるWebツールです。"
   >
 
   <link
@@ -39,7 +39,6 @@ HEADER
   <a
     href="../EORZEA_PROFILE_STUDIO/"
     class="brand-logo"
-    aria-label="EORZEA PROFILE STUDIO"
   >
 
     <span>
@@ -53,7 +52,7 @@ HEADER
   </a>
 
 
-  <div class="language-buttons">
+  <div class="language-switch">
 
     <button
       id="languageJa"
@@ -111,8 +110,9 @@ HERO
     class="hero-description"
     data-i18n="heroDescription"
   >
-    スクリーンショットにキャラクター情報、ジョブ、プレイスタイル、
-    5つの質問への回答を添えて、あなただけの一枚を作成できます。
+    スクリーンショットにキャラクター情報、ジョブ、
+    プレイスタイル、5つの質問への回答を添えて、
+    あなただけの一枚を作成できます。
   </p>
 
 </section>
@@ -123,586 +123,802 @@ HERO
 MAIN
 ========================================== -->
 
-<main class="creator-layout">
+<main class="main-container">
 
+  <div class="creator-layout">
 
-<!-- ==========================================
-01 SCREENSHOT
-========================================== -->
 
-<section class="control-panel screenshot-panel">
+    <!-- ======================================
+    SCREENSHOT SETTINGS
+    ====================================== -->
 
-  <h2 class="section-title">
+    <section class="control-column top-controls">
 
-    <span class="section-number">
-      01
-    </span>
+      <div class="control-card">
 
-    SCREENSHOT
+        <h2 class="section-heading">
+          <span class="section-number">
+            01
+          </span>
 
-  </h2>
+          SCREENSHOT
+        </h2>
 
 
-  <div class="setting-block">
+        <div class="setting-block">
 
-    <label
-      class="setting-label"
-      data-i18n="screenshotLabel"
-    >
-      スクリーンショット
-    </label>
+          <label
+            class="setting-label"
+            data-i18n="screenshot"
+          >
+            スクリーンショット
+          </label>
 
-    <label
-      for="imageUpload"
-      class="upload-button"
-      data-i18n="selectImage"
-    >
-      画像を選択
-    </label>
 
-    <input
-      id="imageUpload"
-      type="file"
-      accept="image/*"
-      hidden
-    >
+          <label
+            class="upload-button"
+            for="imageUpload"
+            data-i18n="selectImage"
+          >
+            画像を選択
+          </label>
 
-  </div>
+          <input
+            id="imageUpload"
+            type="file"
+            accept="image/*"
+            hidden
+          >
 
+        </div>
 
 
-  <div class="setting-block">
 
-    <div class="setting-row">
+        <!-- X -->
 
-      <label
-        for="imageXInput"
-        data-i18n="horizontalPosition"
-      >
-        横位置
-      </label>
+        <div class="setting-block">
 
-      <span id="imageXValue">
-        50%
-      </span>
+          <div class="setting-header">
 
-    </div>
+            <label
+              class="setting-label"
+              for="imageXInput"
+              data-i18n="horizontalPosition"
+            >
+              横位置
+            </label>
 
-    <input
-      id="imageXInput"
-      type="range"
-      min="0"
-      max="100"
-      value="50"
-    >
+            <span id="imageXValue">
+              50%
+            </span>
 
-  </div>
+          </div>
 
+          <input
+            id="imageXInput"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+          >
 
+        </div>
 
-  <div class="setting-block">
 
-    <div class="setting-row">
 
-      <label
-        for="imageYInput"
-        data-i18n="verticalPosition"
-      >
-        縦位置
-      </label>
+        <!-- Y -->
 
-      <span id="imageYValue">
-        50%
-      </span>
+        <div class="setting-block">
 
-    </div>
+          <div class="setting-header">
 
-    <input
-      id="imageYInput"
-      type="range"
-      min="0"
-      max="100"
-      value="50"
-    >
+            <label
+              class="setting-label"
+              for="imageYInput"
+              data-i18n="verticalPosition"
+            >
+              縦位置
+            </label>
 
-  </div>
+            <span id="imageYValue">
+              50%
+            </span>
 
+          </div>
 
+          <input
+            id="imageYInput"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+          >
 
-  <div class="setting-block">
+        </div>
 
-    <div class="setting-row">
 
-      <label
-        for="imageScaleInput"
-        data-i18n="imageScale"
-      >
-        拡大
-      </label>
 
-      <span id="imageScaleValue">
-        100%
-      </span>
+        <!-- SCALE -->
 
-    </div>
+        <div class="setting-block">
 
-    <input
-      id="imageScaleInput"
-      type="range"
-      min="100"
-      max="200"
-      value="100"
-    >
+          <div class="setting-header">
 
-  </div>
+            <label
+              class="setting-label"
+              for="imageScaleInput"
+              data-i18n="zoom"
+            >
+              拡大
+            </label>
 
+            <span id="imageScaleValue">
+              100%
+            </span>
 
+          </div>
 
-  <div class="setting-block">
+          <input
+            id="imageScaleInput"
+            type="range"
+            min="100"
+            max="200"
+            value="100"
+          >
 
-    <span
-      class="setting-label"
-      data-i18n="coverColor"
-    >
-      カバー色
-    </span>
+        </div>
 
-    <div class="two-buttons">
 
-      <button
-        id="coverBlackButton"
-        type="button"
-        class="choice-button active"
-      >
-        BLACK
-      </button>
 
-      <button
-        id="coverWhiteButton"
-        type="button"
-        class="choice-button"
-      >
-        WHITE
-      </button>
+        <!-- COVER COLOR -->
 
-    </div>
+        <div class="setting-block">
 
-  </div>
+          <label
+            class="setting-label"
+            data-i18n="coverColor"
+          >
+            カバー色
+          </label>
 
+          <div class="choice-buttons">
 
+            <button
+              type="button"
+              class="choice-button active"
+              data-cover="black"
+            >
+              BLACK
+            </button>
 
-  <div class="setting-block">
+            <button
+              type="button"
+              class="choice-button"
+              data-cover="white"
+            >
+              WHITE
+            </button>
 
-    <div class="setting-row">
+          </div>
 
-      <label
-        for="coverOpacityInput"
-        data-i18n="coverOpacity"
-      >
-        カバー濃度
-      </label>
+        </div>
 
-      <span id="coverOpacityValue">
-        0%
-      </span>
 
-    </div>
 
-    <input
-      id="coverOpacityInput"
-      type="range"
-      min="0"
-      max="80"
-      value="0"
-    >
+        <!-- COVER OPACITY -->
 
-  </div>
+        <div class="setting-block">
 
+          <div class="setting-header">
 
+            <label
+              class="setting-label"
+              for="coverOpacityInput"
+              data-i18n="coverOpacity"
+            >
+              カバー濃度
+            </label>
 
-  <div class="setting-block">
+            <span id="coverOpacityValue">
+              0%
+            </span>
 
-    <span
-      class="setting-label"
-      data-i18n="textColor"
-    >
-      文字色
-    </span>
+          </div>
 
-    <div class="two-buttons">
+          <input
+            id="coverOpacityInput"
+            type="range"
+            min="0"
+            max="80"
+            value="0"
+          >
 
-      <button
-        id="textWhiteButton"
-        type="button"
-        class="choice-button active"
-      >
-        WHITE
-      </button>
+        </div>
 
-      <button
-        id="textBlackButton"
-        type="button"
-        class="choice-button"
-      >
-        BLACK
-      </button>
 
-    </div>
 
-  </div>
+        <!-- TEXT COLOR -->
 
+        <div class="setting-block">
 
+          <label
+            class="setting-label"
+            data-i18n="textColor"
+          >
+            文字色
+          </label>
 
-  <div class="setting-block">
+          <div class="choice-buttons">
 
-    <label
-      for="fontSelect"
-      class="setting-label"
-      data-i18n="font"
-    >
-      フォント
-    </label>
+            <button
+              type="button"
+              class="choice-button active"
+              data-text-color="white"
+            >
+              WHITE
+            </button>
 
-    <select id="fontSelect">
+            <button
+              type="button"
+              class="choice-button"
+              data-text-color="black"
+            >
+              BLACK
+            </button>
 
-      <option value="sans">
-        ゴシック
-      </option>
+          </div>
 
-      <option value="rounded">
-        まる文字
-      </option>
+        </div>
 
-      <option value="serif">
-        明朝
-      </option>
 
-      <option value="modern">
-        モダン
-      </option>
 
-      <option value="condensed">
-        コンデンス
-      </option>
+        <!-- FONT -->
 
-    </select>
+        <div class="setting-block">
 
-  </div>
+          <label
+            class="setting-label"
+            for="fontSelect"
+            data-i18n="font"
+          >
+            フォント
+          </label>
 
+          <select id="fontSelect">
 
+            <option value="sans">
+              ゴシック
+            </option>
 
-  <div class="setting-block">
+            <option value="rounded">
+              丸文字
+            </option>
 
-    <span
-      class="setting-label"
-      data-i18n="panelColor"
-    >
-      情報パネル色
-    </span>
+            <option value="serif">
+              明朝
+            </option>
 
-    <div class="two-buttons">
+            <option value="modern">
+              モダン
+            </option>
 
-      <button
-        id="panelBlackButton"
-        type="button"
-        class="choice-button active"
-      >
-        BLACK
-      </button>
+            <option value="condensed">
+              コンデンス
+            </option>
 
-      <button
-        id="panelWhiteButton"
-        type="button"
-        class="choice-button"
-      >
-        WHITE
-      </button>
+          </select>
 
-    </div>
+        </div>
 
-  </div>
 
 
+        <!-- PANEL COLOR -->
 
-  <div class="setting-block">
+        <div class="setting-block">
 
-    <div class="setting-row">
+          <label
+            class="setting-label"
+            data-i18n="panelColor"
+          >
+            情報パネル色
+          </label>
 
-      <label
-        for="panelOpacityInput"
-        data-i18n="panelOpacity"
-      >
-        情報パネル透明度
-      </label>
+          <div class="choice-buttons">
 
-      <span id="panelOpacityValue">
-        39%
-      </span>
+            <button
+              type="button"
+              class="choice-button active"
+              data-panel-color="black"
+            >
+              BLACK
+            </button>
 
-    </div>
+            <button
+              type="button"
+              class="choice-button"
+              data-panel-color="white"
+            >
+              WHITE
+            </button>
 
-    <input
-      id="panelOpacityInput"
-      type="range"
-      min="0"
-      max="100"
-      value="39"
-    >
+          </div>
 
-  </div>
+        </div>
 
-</section>
 
 
+        <!-- PANEL OPACITY -->
 
-<!-- ==========================================
-PREVIEW
-========================================== -->
+        <div class="setting-block">
 
-<section class="preview-area">
+          <div class="setting-header">
 
-  <h2 class="preview-title">
+            <label
+              class="setting-label"
+              for="panelOpacityInput"
+              data-i18n="panelOpacity"
+            >
+              情報パネル透明度
+            </label>
+
+            <span id="panelOpacityValue">
+              38%
+            </span>
+
+          </div>
+
+          <input
+            id="panelOpacityInput"
+            type="range"
+            min="0"
+            max="100"
+            value="38"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ======================================
     PREVIEW
-  </h2>
+    ====================================== -->
+
+    <section class="preview-area">
+
+      <h2 class="preview-title">
+        PREVIEW
+      </h2>
 
 
-  <div
-    id="snapshot"
-    class="snapshot text-white font-sans"
-  >
-
-
-    <!-- ======================================
-    SCREENSHOT
-    ======================================= -->
-
-    <div
-      id="photoArea"
-      class="photo-area"
-    >
-
-      <img
-        id="snapshotImage"
-        class="snapshot-image"
-        alt=""
+      <div
+        id="snapshot"
+        class="snapshot text-white font-sans"
       >
 
-      <div
-        id="photoPlaceholder"
-        class="photo-placeholder"
-      >
-        SCREENSHOT
-      </div>
 
-      <div
-        id="coverFilm"
-        class="cover-film"
-      ></div>
-
-    </div>
-
-
-
-    <!-- ======================================
-    CHARACTER
-    ======================================= -->
-
-    <section class="character-panel">
-
-      <div class="character-heading">
+        <!-- SCREENSHOT -->
 
         <div
-          id="previewCharacterName"
-          class="character-name"
+          id="photoArea"
+          class="photo-area"
         >
-          HIKARINO SENSHI
+
+          <img
+            id="snapshotImage"
+            class="snapshot-image"
+            alt=""
+          >
+
+          <div
+            id="photoPlaceholder"
+            class="photo-placeholder"
+          >
+            SCREENSHOT
+          </div>
+
+          <div
+            id="coverFilm"
+            class="cover-film"
+          ></div>
+
         </div>
 
-        <div
-          id="previewWorld"
-          class="character-world"
-        >
-          Ramuh / Meteor
+
+
+        <!-- CHARACTER PANEL -->
+
+        <section class="character-panel">
+
+
+          <div class="character-heading">
+
+            <div
+              id="previewCharacterName"
+              class="preview-character-name"
+            >
+              HIKARINO SENSHI
+            </div>
+
+            <div
+              id="previewWorld"
+              class="preview-world"
+            >
+              Ramuh / Meteor
+            </div>
+
+          </div>
+
+
+
+          <div class="character-data-layout">
+
+
+            <!-- JOB -->
+
+            <div class="job-column">
+
+              <div class="mini-heading">
+                JOB
+              </div>
+
+              <div
+                id="jobIconArea"
+                class="job-icon-area"
+              ></div>
+
+            </div>
+
+
+
+            <!-- PLAY STYLE -->
+
+            <div class="play-style-column">
+
+              <div class="mini-heading">
+                PLAY STYLE
+              </div>
+
+              <div
+                id="previewPlayStyle"
+                class="preview-play-style"
+              ></div>
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- QUESTIONS + MESSAGE -->
+
+        <section class="bottom-panel">
+
+
+          <div class="questions-block">
+
+            <div class="bottom-heading">
+              QUESTIONS
+            </div>
+
+
+            <div class="questions-grid">
+
+
+              <div class="question-item question-1">
+
+                <span class="question-number">
+                  1
+                </span>
+
+                <div>
+
+                  <div
+                    class="question-title"
+                    data-i18n="question1"
+                  >
+                    あなたのキャラクターを一言で表すと？
+                  </div>
+
+                  <div
+                    id="previewAnswer1"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="question-item question-2">
+
+                <span class="question-number">
+                  2
+                </span>
+
+                <div>
+
+                  <div
+                    class="question-title"
+                    data-i18n="question2"
+                  >
+                    いちばん好きなエオルゼアでの過ごし方は？
+                  </div>
+
+                  <div
+                    id="previewAnswer2"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="question-item question-3">
+
+                <span class="question-number">
+                  3
+                </span>
+
+                <div>
+
+                  <div
+                    class="question-title"
+                    data-i18n="question3"
+                  >
+                    冒険で大切にしていることは？
+                  </div>
+
+                  <div
+                    id="previewAnswer3"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="question-item question-4">
+
+                <span class="question-number">
+                  4
+                </span>
+
+                <div>
+
+                  <div
+                    class="question-title"
+                    data-i18n="question4"
+                  >
+                    いちばん思い出深い出来事は？
+                  </div>
+
+                  <div
+                    id="previewAnswer4"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="question-item question-5">
+
+                <span class="question-number">
+                  5
+                </span>
+
+                <div>
+
+                  <div
+                    class="question-title"
+                    data-i18n="question5"
+                  >
+                    これから叶えたい目標は？
+                  </div>
+
+                  <div
+                    id="previewAnswer5"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <!-- MESSAGE -->
+
+          <div class="message-block">
+
+            <div class="bottom-heading">
+              MESSAGE
+            </div>
+
+            <div
+              id="previewMessage"
+              class="preview-message"
+            >
+              —
+            </div>
+
+          </div>
+
+
+        </section>
+
+
+
+        <!-- META -->
+
+        <div class="snapshot-copyright">
+          (C) SQUARE ENIX
         </div>
 
+        <div class="snapshot-brand">
+          EORZEA PROFILE STUDIO<br>
+          FFXIV CHARACTER SNAPSHOT MAKER
+        </div>
+
+
       </div>
 
 
-      <div class="mini-label">
-        JOB
+
+      <div class="export-area">
+
+        <button
+          id="exportButton"
+          type="button"
+          class="export-button"
+          data-i18n="export"
+        >
+          PNG画像を書き出す
+        </button>
+
       </div>
-
-
-      <div
-        id="jobIconList"
-        class="job-icon-list"
-      ></div>
-
-
-      <div class="mini-label play-style-title">
-        PLAY STYLE
-      </div>
-
-
-      <div
-        id="previewPlayStyle"
-        class="preview-play-style"
-      ></div>
 
     </section>
 
 
 
     <!-- ======================================
-    QUESTIONS + MESSAGE
-    ======================================= -->
+    MAIN CONTROLS
+    ====================================== -->
 
-    <section class="bottom-info-panel">
-
-
-      <div class="question-area-title">
-        QUESTIONS
-      </div>
+    <section class="control-column main-controls">
 
 
-      <div class="question-grid">
+      <!-- CHARACTER -->
 
+      <div class="control-card">
 
-        <div class="snapshot-question question-1">
+        <h2 class="section-heading">
 
-          <div class="question-number">
-            1
-          </div>
+          <span class="section-number">
+            02
+          </span>
 
-          <div class="question-content">
+          CHARACTER
 
-            <div
-              class="snapshot-question-label"
-              data-i18n="question1"
-            >
-              あなたのキャラクターを一言で表すと？
-            </div>
-
-            <div
-              id="previewAnswer1"
-              class="snapshot-answer"
-            >
-              —
-            </div>
-
-          </div>
-
-        </div>
+        </h2>
 
 
 
-        <div class="snapshot-question question-2">
+        <div class="setting-block">
 
-          <div class="question-number">
-            2
-          </div>
+          <label
+            for="lodestoneUrlInput"
+            class="setting-label"
+            data-i18n="lodestoneUrl"
+          >
+            Lodestone キャラクターURL
+          </label>
 
-          <div class="question-content">
+          <input
+            id="lodestoneUrlInput"
+            type="url"
+            placeholder="https://jp.finalfantasyxiv.com/lodestone/character/..."
+          >
 
-            <div
-              class="snapshot-question-label"
-              data-i18n="question2"
-            >
-              いちばん好きなエオルゼアでの過ごし方は？
-            </div>
 
-            <div
-              id="previewAnswer2"
-              class="snapshot-answer"
-            >
-              —
-            </div>
+          <button
+            id="lodestoneFetchButton"
+            type="button"
+            class="lodestone-fetch-button"
+            data-i18n="lodestoneFetch"
+          >
+            LODESTONE DATA GET
+          </button>
 
-          </div>
+
+          <p
+            id="lodestoneStatus"
+            class="lodestone-status"
+            data-i18n="lodestoneReady"
+          >
+            LodestoneのキャラクターURLを入力して、
+            データを取得します。
+          </p>
 
         </div>
 
 
 
-        <div class="snapshot-question question-3">
+        <div class="setting-divider">
+          <span data-i18n="manualEdit">
+            取得データ / 手動編集
+          </span>
+        </div>
 
-          <div class="question-number">
-            3
-          </div>
 
-          <div class="question-content">
 
-            <div
-              class="snapshot-question-label"
-              data-i18n="question3"
-            >
-              冒険で大切にしていることは？
-            </div>
+        <div class="setting-block">
 
-            <div
-              id="previewAnswer3"
-              class="snapshot-answer"
-            >
-              —
-            </div>
+          <label
+            class="setting-label"
+            for="characterNameInput"
+            data-i18n="characterName"
+          >
+            キャラクター名
+          </label>
 
-          </div>
+          <input
+            id="characterNameInput"
+            type="text"
+            maxlength="30"
+            value="HIKARINO SENSHI"
+          >
 
         </div>
 
 
 
-        <div class="snapshot-question question-4">
+        <div class="setting-block">
 
-          <div class="question-number">
-            4
-          </div>
+          <label
+            class="setting-label"
+            for="worldInput"
+            data-i18n="world"
+          >
+            World / Data Center
+          </label>
 
-          <div class="question-content">
-
-            <div
-              class="snapshot-question-label"
-              data-i18n="question4"
-            >
-              いちばん思い出深い出来事は？
-            </div>
-
-            <div
-              id="previewAnswer4"
-              class="snapshot-answer"
-            >
-              —
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="snapshot-question question-5">
-
-          <div class="question-number">
-            5
-          </div>
-
-          <div class="question-content">
-
-            <div
-              class="snapshot-question-label"
-              data-i18n="question5"
-            >
-              これから叶えたい目標は？
-            </div>
-
-            <div
-              id="previewAnswer5"
-              class="snapshot-answer"
-            >
-              —
-            </div>
-
-          </div>
+          <input
+            id="worldInput"
+            type="text"
+            maxlength="40"
+            value="Ramuh / Meteor"
+          >
 
         </div>
 
@@ -710,560 +926,257 @@ PREVIEW
 
 
 
-      <div class="bottom-message-area">
+      <!-- PLAY STYLE -->
 
-        <div class="message-label">
+      <div class="control-card">
+
+        <h2 class="section-heading">
+
+          <span class="section-number">
+            03
+          </span>
+
+          PLAY STYLE
+
+        </h2>
+
+
+        <div class="play-style-options">
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="relax"
+            >
+            <span data-i18n="styleRelax">
+              のんびり
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="ss"
+            >
+            <span data-i18n="styleSS">
+              SS撮影
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="story"
+            >
+            <span data-i18n="styleStory">
+              ストーリー
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="battle"
+            >
+            <span data-i18n="styleBattle">
+              バトル
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="highend"
+            >
+            <span data-i18n="styleHighend">
+              高難度
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="pvp"
+            >
+            <span>PvP</span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="gatherer"
+            >
+            <span data-i18n="styleGatherer">
+              ギャザラー
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="crafter"
+            >
+            <span data-i18n="styleCrafter">
+              クラフター
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="housing"
+            >
+            <span data-i18n="styleHousing">
+              ハウジング
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="glamour"
+            >
+            <span data-i18n="styleGlamour">
+              ミラプリ
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="gold"
+            >
+            <span data-i18n="styleGold">
+              ゴールドソーサー
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="fishing"
+            >
+            <span data-i18n="styleFishing">
+              釣り
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="map"
+            >
+            <span data-i18n="styleMap">
+              地図
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="hunt"
+            >
+            <span data-i18n="styleHunt">
+              モブハント
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="rp"
+            >
+            <span data-i18n="styleRP">
+              ロールプレイ
+            </span>
+          </label>
+
+          <label>
+            <input
+              type="checkbox"
+              data-style="friends"
+            >
+            <span data-i18n="styleFriends">
+              フレンド交流
+            </span>
+          </label>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- QUESTIONS -->
+
+      <div class="control-card">
+
+        <h2 class="section-heading">
+
+          <span class="section-number">
+            04
+          </span>
+
+          QUESTIONS
+
+        </h2>
+
+
+        <div
+          id="questionInputs"
+          class="question-inputs"
+        ></div>
+
+      </div>
+
+
+
+      <!-- MESSAGE -->
+
+      <div class="control-card">
+
+        <h2 class="section-heading">
+
+          <span class="section-number">
+            05
+          </span>
+
           MESSAGE
-        </div>
 
-        <div class="message-rule"></div>
+        </h2>
 
-        <div
-          id="previewMessage"
-          class="preview-message"
-        >
-          —
+
+        <div class="setting-block">
+
+          <label
+            class="setting-label"
+            for="messageInput"
+            data-i18n="message"
+          >
+            ひとこと
+          </label>
+
+          <textarea
+            id="messageInput"
+            maxlength="160"
+            rows="5"
+          ></textarea>
+
+          <div class="character-count">
+            <span id="messageCount">
+              0
+            </span>
+            / 160
+          </div>
+
         </div>
 
       </div>
 
+
     </section>
 
-
-
-    <!-- ======================================
-    META
-    ======================================= -->
-
-    <div class="snapshot-copyright">
-      (C) SQUARE ENIX
-    </div>
-
-
-    <div class="snapshot-brand">
-
-      <span>
-        EORZEA PROFILE STUDIO
-      </span>
-
-      <span>
-        FFXIV CHARACTER SNAPSHOT MAKER
-      </span>
-
-    </div>
-
-
   </div>
-
-
-
-  <div class="export-area">
-
-    <button
-      id="exportButton"
-      type="button"
-      class="export-button"
-      data-i18n="export"
-    >
-      PNG画像を書き出す
-    </button>
-
-  </div>
-
-</section>
-
-
-
-<!-- ==========================================
-02 CHARACTER
-========================================== -->
-
-<section class="control-panel character-settings">
-
-  <h2 class="section-title">
-
-    <span class="section-number">
-      02
-    </span>
-
-    CHARACTER
-
-  </h2>
-
-
-
-  <!-- LODESTONE -->
-
-  <div class="setting-block lodestone-block">
-
-    <label
-      for="lodestoneUrlInput"
-      class="setting-label"
-      data-i18n="lodestoneUrlLabel"
-    >
-      Lodestone キャラクターURL
-    </label>
-
-    <input
-      id="lodestoneUrlInput"
-      type="url"
-      placeholder="https://jp.finalfantasyxiv.com/lodestone/character/..."
-    >
-
-    <button
-      id="lodestoneFetchButton"
-      type="button"
-      class="lodestone-fetch-button"
-      data-i18n="lodestoneFetch"
-    >
-      LODESTONE DATA GET
-    </button>
-
-    <p
-      id="lodestoneStatus"
-      class="lodestone-status"
-      data-i18n="lodestoneReady"
-    >
-      LodestoneのキャラクターURLを入力して、データを取得します。
-    </p>
-
-  </div>
-
-
-
-  <div class="settings-divider">
-
-    <span data-i18n="manualEdit">
-      取得データ / 手動編集
-    </span>
-
-  </div>
-
-
-
-  <!-- CHARACTER NAME -->
-
-  <div class="setting-block">
-
-    <label
-      for="characterNameInput"
-      class="setting-label"
-      data-i18n="characterName"
-    >
-      キャラクター名
-    </label>
-
-    <input
-      id="characterNameInput"
-      type="text"
-      maxlength="30"
-      value="HIKARINO SENSHI"
-    >
-
-  </div>
-
-
-
-  <!-- WORLD -->
-
-  <div class="setting-block">
-
-    <label
-      for="worldInput"
-      class="setting-label"
-      data-i18n="world"
-    >
-      サーバー名
-    </label>
-
-    <input
-      id="worldInput"
-      type="text"
-      maxlength="40"
-      value="Ramuh / Meteor"
-    >
-
-  </div>
-
-
-  <p
-    class="setting-note"
-    data-i18n="characterNote"
-  >
-    キャラクター名・サーバー名は取得後も手動で変更できます。
-    ジョブレベルはLodestoneから取得したデータを使用します。
-  </p>
-
-
-
-  <!-- ======================================
-  PLAY STYLE
-  ======================================= -->
-
-  <div class="subsection">
-
-    <h3 data-i18n="playStyle">
-      プレイスタイル
-    </h3>
-
-
-    <div class="play-style-options">
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="relaxed"
-        >
-        <span data-i18n="styleRelaxed">
-          のんびり
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="ss"
-        >
-        <span data-i18n="styleSS">
-          SS撮影
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="story"
-        >
-        <span data-i18n="styleStory">
-          ストーリー
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="battle"
-        >
-        <span data-i18n="styleBattle">
-          バトル
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="highend"
-        >
-        <span data-i18n="styleHighend">
-          高難度
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="pvp"
-        >
-        <span>
-          PvP
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="gatherer"
-        >
-        <span data-i18n="styleGatherer">
-          ギャザラー
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="crafter"
-        >
-        <span data-i18n="styleCrafter">
-          クラフター
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="housing"
-        >
-        <span data-i18n="styleHousing">
-          ハウジング
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="glamour"
-        >
-        <span data-i18n="styleGlamour">
-          ミラプリ
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="goldSaucer"
-        >
-        <span data-i18n="styleGoldSaucer">
-          ゴールドソーサー
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="fishing"
-        >
-        <span data-i18n="styleFishing">
-          釣り
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="treasure"
-        >
-        <span data-i18n="styleTreasure">
-          地図
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="hunt"
-        >
-        <span data-i18n="styleHunt">
-          モブハント
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="roleplay"
-        >
-        <span data-i18n="styleRoleplay">
-          ロールプレイ
-        </span>
-      </label>
-
-
-      <label>
-        <input
-          type="checkbox"
-          class="play-style-checkbox"
-          data-style="friends"
-        >
-        <span data-i18n="styleFriends">
-          フレンド交流
-        </span>
-      </label>
-
-
-    </div>
-
-  </div>
-
-
-
-  <!-- ======================================
-  QUESTIONS
-  ======================================= -->
-
-  <div class="subsection">
-
-    <h3 data-i18n="questions">
-      5つの質問
-    </h3>
-
-
-    <div class="question-input-list">
-
-
-      <label>
-
-        <span data-i18n="question1">
-          あなたのキャラクターを一言で表すと？
-        </span>
-
-        <textarea
-          id="answer1"
-          maxlength="80"
-        ></textarea>
-
-        <span
-          id="answerCount1"
-          class="counter"
-        >
-          0 / 80
-        </span>
-
-      </label>
-
-
-
-      <label>
-
-        <span data-i18n="question2">
-          いちばん好きなエオルゼアでの過ごし方は？
-        </span>
-
-        <textarea
-          id="answer2"
-          maxlength="80"
-        ></textarea>
-
-        <span
-          id="answerCount2"
-          class="counter"
-        >
-          0 / 80
-        </span>
-
-      </label>
-
-
-
-      <label>
-
-        <span data-i18n="question3">
-          冒険で大切にしていることは？
-        </span>
-
-        <textarea
-          id="answer3"
-          maxlength="80"
-        ></textarea>
-
-        <span
-          id="answerCount3"
-          class="counter"
-        >
-          0 / 80
-        </span>
-
-      </label>
-
-
-
-      <label>
-
-        <span data-i18n="question4">
-          いちばん思い出深い出来事は？
-        </span>
-
-        <textarea
-          id="answer4"
-          maxlength="80"
-        ></textarea>
-
-        <span
-          id="answerCount4"
-          class="counter"
-        >
-          0 / 80
-        </span>
-
-      </label>
-
-
-
-      <label>
-
-        <span data-i18n="question5">
-          これから叶えたい目標は？
-        </span>
-
-        <textarea
-          id="answer5"
-          maxlength="80"
-        ></textarea>
-
-        <span
-          id="answerCount5"
-          class="counter"
-        >
-          0 / 80
-        </span>
-
-      </label>
-
-
-    </div>
-
-  </div>
-
-
-
-  <!-- ======================================
-  MESSAGE
-  ======================================= -->
-
-  <div class="subsection">
-
-    <h3>
-      MESSAGE
-    </h3>
-
-    <textarea
-      id="messageInput"
-      maxlength="160"
-    ></textarea>
-
-    <span
-      id="messageCount"
-      class="counter"
-    >
-      0 / 160
-    </span>
-
-  </div>
-
-
-</section>
-
 
 </main>
 
@@ -1275,18 +1188,22 @@ ABOUT
 
 <section class="about-section">
 
-  <h2>
-    ABOUT
-  </h2>
+  <div class="about-inner">
 
-  <p data-i18n="disclaimer">
-    本サイトは個人が制作・運営する非公式ツールであり、
-    株式会社スクウェア・エニックスとは関係ありません。
-    本サイトの利用によって生じた損害・不利益について、
-    制作者は責任を負いかねます。
-    また、スクリーンショットや入力内容については、
-    各利用者の責任のもとでご利用ください。
-  </p>
+    <h2>
+      ABOUT
+    </h2>
+
+    <p data-i18n="disclaimer">
+      本サイトは個人が制作・運営する非公式ツールであり、
+      株式会社スクウェア・エニックスとは関係ありません。
+      本サイトの利用によって生じた損害・不利益について、
+      制作者は責任を負いかねます。
+      また、スクリーンショットや入力内容については、
+      各利用者の責任のもとでご利用ください。
+    </p>
+
+  </div>
 
 </section>
 
@@ -1300,7 +1217,6 @@ FOOTER
 
   <a
     href="../EORZEA_PROFILE_STUDIO/"
-    class="footer-studio-link"
   >
     EORZEA PROFILE STUDIO
   </a>
@@ -1329,5 +1245,4 @@ FOOTER
 
 
 </body>
-
 </html>
