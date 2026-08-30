@@ -14,6 +14,7 @@ html {
 
 body {
   margin: 0;
+
   background: #f4f2ec;
   color: #111;
 
@@ -53,16 +54,21 @@ a {
 
 .site-header {
   width: 100%;
+
   padding: 20px 24px;
+
   border-bottom: 1px solid #111;
+
   background: #f4f2ec;
 }
 
 .header-inner {
   width: min(1400px, 100%);
+
   margin: 0 auto;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -71,22 +77,28 @@ a {
 
 .brand-logo {
   display: inline-flex;
+
   align-items: center;
+
   gap: 7px;
 
   color: #111;
+
   text-decoration: none;
 
   font-size: 15px;
   font-weight: 900;
+
   letter-spacing: 0.08em;
 }
 
 .studio-box {
   display: inline-block;
+
   padding: 4px 6px;
 
   background: #111;
+
   color: #fff;
 }
 
@@ -96,11 +108,13 @@ a {
 
 .language-button {
   min-width: 54px;
+
   padding: 8px 12px;
 
   border: 1px solid #111;
 
   background: transparent;
+
   color: #111;
 
   font-size: 12px;
@@ -113,6 +127,7 @@ a {
 
 .language-button.active {
   background: #111;
+
   color: #fff;
 }
 
@@ -122,7 +137,10 @@ a {
 ========================================== */
 
 .main-content {
-  width: min(1400px, calc(100% - 48px));
+  width: min(
+    1400px,
+    calc(100% - 48px)
+  );
 
   margin: 0 auto;
 
@@ -150,10 +168,17 @@ a {
 .hero-title {
   margin: 0;
 
-  font-size: clamp(42px, 5.2vw, 74px);
+  font-size:
+    clamp(
+      42px,
+      5.2vw,
+      74px
+    );
+
   font-weight: 900;
 
   line-height: 1.02;
+
   letter-spacing: -0.045em;
 }
 
@@ -176,6 +201,7 @@ a {
 
   left: 0;
   right: 0;
+
   bottom: -9px;
 
   height: 8px;
@@ -194,6 +220,64 @@ a {
   font-weight: 700;
 
   line-height: 1.9;
+}
+
+
+/* ==========================================
+   HERO COMMUNITY
+========================================== */
+
+.hero-community {
+  display: inline-flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 8px;
+
+  margin-top: 22px;
+}
+
+.hero-community-button {
+  min-height: 46px;
+
+  padding: 11px 20px;
+
+  border: 1px solid #111;
+
+  background: transparent;
+
+  color: #111;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.hero-community-button:hover {
+  background: #111;
+
+  color: #fff;
+}
+
+.hero-community-button:active {
+  transform: translateY(1px);
+}
+
+.hero-community-tag {
+  color: #666;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
 }
 
 
@@ -476,6 +560,10 @@ a {
   color: #d22;
 }
 
+.lodestone-status.success {
+  color: #397500;
+}
+
 .control-divider {
   display: flex;
 
@@ -514,7 +602,10 @@ a {
   display: grid;
 
   grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
 
   gap: 10px 8px;
 }
@@ -570,19 +661,15 @@ a {
    PREVIEW
 ========================================== */
 
-/*
-   PREVIEWの文字はプレビューエリア左端。
-
-   Snapshot本体とEXPORTボタンだけを
-   中央配置する。
-*/
-
 .preview-title {
-  width: 100%;
+  width: min(
+    100%,
+    calc(100vh - 150px)
+  );
 
   margin:
     0
-    0
+    auto
     10px;
 
   font-size: 11px;
@@ -657,8 +744,19 @@ a {
     sans-serif;
 }
 
+
+/*
+  Google Fonts:
+  M PLUS Rounded 1c
+
+  Windows / Mac / iPhone / iPad で
+  同じ丸文字を表示するために
+  Webフォントを使用。
+*/
+
 .snapshot.font-rounded {
   font-family:
+    "M PLUS Rounded 1c",
     "Hiragino Maru Gothic ProN",
     "Yu Gothic",
     Meiryo,
@@ -948,6 +1046,11 @@ a {
     solid
     currentColor;
 
+  color:
+    var(
+      --snapshot-text-color
+    );
+
   font-size: 1.05cqw;
   font-weight: 900;
 
@@ -982,7 +1085,10 @@ a {
       var(--panel-alpha)
     );
 
-  color: var(--snapshot-text-color);
+  color:
+    var(
+      --snapshot-text-color
+    );
 
   backdrop-filter: blur(6px);
 
@@ -1051,8 +1157,8 @@ a {
 .question-number {
   display: flex;
 
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   width: 2.35cqw;
   height: 2.35cqw;
@@ -1132,10 +1238,10 @@ a {
   z-index: 4;
 
   left: 4.8%;
+
   bottom: 1.6%;
 
   font-size: 0.55cqw;
-
   font-weight: 800;
 }
 
@@ -1145,12 +1251,12 @@ a {
   z-index: 4;
 
   right: 4.8%;
+
   bottom: 1.6%;
 
   text-align: right;
 
   font-size: 0.55cqw;
-
   font-weight: 900;
 
   line-height: 1.25;
@@ -1190,6 +1296,77 @@ a {
   cursor: wait;
 
   opacity: 0.55;
+}
+
+
+/* ==========================================
+   X SHARE
+========================================== */
+
+.x-share-area {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 8px;
+
+  margin-top: 8px;
+}
+
+.x-share-button {
+  min-height: 46px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #111;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 0.04em;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.x-post-button {
+  background: #111;
+
+  color: #fff;
+}
+
+.x-post-button:hover {
+  background: #333;
+}
+
+.x-search-button {
+  background: transparent;
+
+  color: #111;
+}
+
+.x-search-button:hover {
+  background: #111;
+
+  color: #fff;
+}
+
+.hashtag-display {
+  margin-top: 9px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
 }
 
 
@@ -1288,7 +1465,6 @@ a {
   gap: 20px;
 
   font-size: 10px;
-
   font-weight: 800;
 }
 
@@ -1308,11 +1484,15 @@ a {
 @media (max-width: 950px) {
 
   .main-content {
-    width: calc(100% - 30px);
+    width:
+      calc(
+        100% - 30px
+      );
   }
 
   .creator-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
 
     grid-template-areas:
       "top"
@@ -1326,17 +1506,17 @@ a {
     position: static;
   }
 
-  .preview-title {
-    width: 100%;
-  }
-
+  .preview-title,
   .snapshot,
   .export-area {
     width: 100%;
   }
 
   .about-section {
-    width: calc(100% - 30px);
+    width:
+      calc(
+        100% - 30px
+      );
   }
 
 }
@@ -1359,9 +1539,15 @@ a {
   }
 
   .main-content {
-    width: calc(100% - 24px);
+    width:
+      calc(
+        100% - 24px
+      );
 
-    padding: 30px 0 55px;
+    padding:
+      30px
+      0
+      55px;
   }
 
   .hero {
@@ -1369,11 +1555,12 @@ a {
   }
 
   .hero-title {
-    font-size: clamp(
-      34px,
-      11vw,
-      50px
-    );
+    font-size:
+      clamp(
+        34px,
+        11vw,
+        50px
+      );
   }
 
   .hero-line-accent {
@@ -1383,6 +1570,26 @@ a {
   .hero-description {
     font-size: 12px;
   }
+
+
+  /* HERO COMMUNITY */
+
+  .hero-community {
+    width: 100%;
+
+    align-items: stretch;
+  }
+
+  .hero-community-button {
+    width: 100%;
+  }
+
+  .hero-community-tag {
+    text-align: center;
+  }
+
+
+  /* CONTROLS */
 
   .control-section {
     padding: 18px;
@@ -1394,8 +1601,22 @@ a {
       1fr;
   }
 
+
+  /* X */
+
+  .x-share-area {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  /* FOOTER */
+
   .about-section {
-    width: calc(100% - 24px);
+    width:
+      calc(
+        100% - 24px
+      );
   }
 
   .footer-inner {
