@@ -41,13 +41,35 @@
   </a>
 
 
-  <button
-    id="languageToggle"
-    class="language-toggle"
-    type="button"
+  <!-- LANGUAGE -->
+
+  <div
+    class="language-switch"
+    role="group"
+    aria-label="Language"
   >
-    EN
-  </button>
+
+    <button
+      id="languageJaButton"
+      class="language-button active"
+      type="button"
+      data-language="ja"
+      aria-pressed="true"
+    >
+      JP
+    </button>
+
+    <button
+      id="languageEnButton"
+      class="language-button"
+      type="button"
+      data-language="en"
+      aria-pressed="false"
+    >
+      EN
+    </button>
+
+  </div>
 
 </header>
 
@@ -679,8 +701,6 @@
 
         </div>
 
-
-        <!-- LODESTONE -->
 
         <div class="setting-block lodestone-block">
 

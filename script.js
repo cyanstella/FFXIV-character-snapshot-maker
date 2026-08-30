@@ -14,8 +14,22 @@ const WORKER_URL =
 const snapshot =
   document.getElementById("snapshot");
 
-const languageToggle =
-  document.getElementById("languageToggle");
+
+/* LANGUAGE */
+
+const languageJaButton =
+  document.getElementById("languageJaButton");
+
+const languageEnButton =
+  document.getElementById("languageEnButton");
+
+const languageButtons =
+  document.querySelectorAll(
+    ".language-button"
+  );
+
+
+/* IMAGE */
 
 const imageUpload =
   document.getElementById("imageUpload");
@@ -44,6 +58,9 @@ const imageScaleInput =
 const imageScaleValue =
   document.getElementById("imageScaleValue");
 
+
+/* COVER */
+
 const coverFilm =
   document.getElementById("coverFilm");
 
@@ -53,11 +70,17 @@ const coverOpacityInput =
 const coverOpacityValue =
   document.getElementById("coverOpacityValue");
 
+
+/* PANEL */
+
 const panelOpacityInput =
   document.getElementById("panelOpacityInput");
 
 const panelOpacityValue =
   document.getElementById("panelOpacityValue");
+
+
+/* FONT */
 
 const fontSelect =
   document.getElementById("fontSelect");
@@ -96,16 +119,22 @@ const previewPlayStyle =
   document.getElementById("previewPlayStyle");
 
 const playStyleCheckboxes =
-  document.querySelectorAll(".play-style-checkbox");
+  document.querySelectorAll(
+    ".play-style-checkbox"
+  );
 
 
 /* BUTTONS */
 
 const coverButtons =
-  document.querySelectorAll("[data-cover]");
+  document.querySelectorAll(
+    "[data-cover]"
+  );
 
 const textColorButtons =
-  document.querySelectorAll("[data-text-color]");
+  document.querySelectorAll(
+    "[data-text-color]"
+  );
 
 
 /* EXPORT */
@@ -463,29 +492,92 @@ const translations = {
 
 const playStyleTranslations = {
 
-  relaxed:{ja:"のんびり",en:"Relaxed"},
-  ss:{ja:"SS撮影",en:"Screenshots"},
-  story:{ja:"ストーリー",en:"Story"},
-  battle:{ja:"バトル",en:"Battle"},
-  highend:{ja:"高難度",en:"High-end"},
-  pvp:{ja:"PvP",en:"PvP"},
-  gatherer:{ja:"ギャザラー",en:"Gathering"},
-  crafter:{ja:"クラフター",en:"Crafting"},
-  housing:{ja:"ハウジング",en:"Housing"},
-  glamour:{ja:"ミラプリ",en:"Glamour"},
-  goldsaucer:{ja:"ゴールドソーサー",en:"Gold Saucer"},
-  fishing:{ja:"釣り",en:"Fishing"},
-  map:{ja:"地図",en:"Treasure Maps"},
-  hunt:{ja:"モブハント",en:"Hunts"},
-  roleplay:{ja:"ロールプレイ",en:"Roleplay"},
-  friends:{ja:"フレンド交流",en:"Friends"}
+  relaxed:{
+    ja:"のんびり",
+    en:"Relaxed"
+  },
+
+  ss:{
+    ja:"SS撮影",
+    en:"Screenshots"
+  },
+
+  story:{
+    ja:"ストーリー",
+    en:"Story"
+  },
+
+  battle:{
+    ja:"バトル",
+    en:"Battle"
+  },
+
+  highend:{
+    ja:"高難度",
+    en:"High-end"
+  },
+
+  pvp:{
+    ja:"PvP",
+    en:"PvP"
+  },
+
+  gatherer:{
+    ja:"ギャザラー",
+    en:"Gathering"
+  },
+
+  crafter:{
+    ja:"クラフター",
+    en:"Crafting"
+  },
+
+  housing:{
+    ja:"ハウジング",
+    en:"Housing"
+  },
+
+  glamour:{
+    ja:"ミラプリ",
+    en:"Glamour"
+  },
+
+  goldsaucer:{
+    ja:"ゴールドソーサー",
+    en:"Gold Saucer"
+  },
+
+  fishing:{
+    ja:"釣り",
+    en:"Fishing"
+  },
+
+  map:{
+    ja:"地図",
+    en:"Treasure Maps"
+  },
+
+  hunt:{
+    ja:"モブハント",
+    en:"Hunts"
+  },
+
+  roleplay:{
+    ja:"ロールプレイ",
+    en:"Roleplay"
+  },
+
+  friends:{
+    ja:"フレンド交流",
+    en:"Friends"
+  }
 
 };
 
 
 
 /* ==========================================
-   LANGUAGE
+   APPLY LANGUAGE
 ========================================== */
 
 function applyLanguage() {
@@ -501,21 +593,55 @@ function applyLanguage() {
       const key =
         element.dataset.i18n;
 
+
       const text =
-        translations[currentLanguage][key];
+        translations[
+          currentLanguage
+        ][
+          key
+        ];
 
 
-      if (typeof text !== "undefined") {
-        element.textContent = text;
+      if (
+        typeof text !==
+        "undefined"
+      ) {
+
+        element.textContent =
+          text;
+
       }
 
     });
 
 
-  languageToggle.textContent =
-    currentLanguage === "ja"
-      ? "EN"
-      : "JP";
+  /* ------------------------------------------
+     JP / EN BUTTON STATE
+  ------------------------------------------ */
+
+  languageButtons.forEach(
+    button => {
+
+      const isActive =
+        button.dataset.language ===
+        currentLanguage;
+
+
+      button.classList.toggle(
+        "active",
+        isActive
+      );
+
+
+      button.setAttribute(
+        "aria-pressed",
+        isActive
+          ? "true"
+          : "false"
+      );
+
+    }
+  );
 
 
   updatePlayStyle();
@@ -525,14 +651,46 @@ function applyLanguage() {
 }
 
 
-languageToggle.addEventListener(
+
+/* ==========================================
+   LANGUAGE BUTTON EVENTS
+========================================== */
+
+languageJaButton.addEventListener(
   "click",
   () => {
 
-    currentLanguage =
+    if (
       currentLanguage === "ja"
-        ? "en"
-        : "ja";
+    ) {
+      return;
+    }
+
+
+    currentLanguage =
+      "ja";
+
+
+    applyLanguage();
+
+  }
+);
+
+
+languageEnButton.addEventListener(
+  "click",
+  () => {
+
+    if (
+      currentLanguage === "en"
+    ) {
+      return;
+    }
+
+
+    currentLanguage =
+      "en";
+
 
     applyLanguage();
 
@@ -568,8 +726,10 @@ imageUpload.addEventListener(
         snapshotImage.src =
           loadEvent.target.result;
 
+
         snapshotImage.style.display =
           "block";
+
 
         photoPlaceholder.style.display =
           "none";
@@ -577,7 +737,9 @@ imageUpload.addEventListener(
       };
 
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(
+      file
+    );
 
   }
 );
@@ -591,7 +753,9 @@ imageUpload.addEventListener(
 function updateImageX() {
 
   const value =
-    Number(imageXInput.value);
+    Number(
+      imageXInput.value
+    );
 
 
   snapshotImage.style.setProperty(
@@ -609,7 +773,9 @@ function updateImageX() {
 function updateImageY() {
 
   const value =
-    Number(imageYInput.value);
+    Number(
+      imageYInput.value
+    );
 
 
   snapshotImage.style.setProperty(
@@ -627,7 +793,9 @@ function updateImageY() {
 function updateImageScale() {
 
   const value =
-    Number(imageScaleInput.value);
+    Number(
+      imageScaleInput.value
+    );
 
 
   snapshotImage.style.setProperty(
@@ -647,10 +815,12 @@ imageXInput.addEventListener(
   updateImageX
 );
 
+
 imageYInput.addEventListener(
   "input",
   updateImageY
 );
+
 
 imageScaleInput.addEventListener(
   "input",
@@ -671,12 +841,19 @@ coverButtons.forEach(
       () => {
 
         coverButtons.forEach(
-          item =>
-            item.classList.remove("active")
+          item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          }
         );
 
 
-        button.classList.add("active");
+        button.classList.add(
+          "active"
+        );
 
 
         coverFilm.classList.remove(
@@ -686,7 +863,8 @@ coverButtons.forEach(
 
 
         coverFilm.classList.add(
-          button.dataset.cover === "white"
+          button.dataset.cover ===
+          "white"
             ? "cover-white"
             : "cover-black"
         );
@@ -698,10 +876,13 @@ coverButtons.forEach(
 );
 
 
+
 function updateCoverOpacity() {
 
   const value =
-    Number(coverOpacityInput.value);
+    Number(
+      coverOpacityInput.value
+    );
 
 
   coverFilm.style.setProperty(
@@ -735,12 +916,19 @@ textColorButtons.forEach(
       () => {
 
         textColorButtons.forEach(
-          item =>
-            item.classList.remove("active")
+          item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          }
         );
 
 
-        button.classList.add("active");
+        button.classList.add(
+          "active"
+        );
 
 
         snapshot.classList.remove(
@@ -750,7 +938,8 @@ textColorButtons.forEach(
 
 
         snapshot.classList.add(
-          button.dataset.textColor === "black"
+          button.dataset.textColor ===
+          "black"
             ? "text-black"
             : "text-white"
         );
@@ -770,7 +959,9 @@ textColorButtons.forEach(
 function updatePanelOpacity() {
 
   const value =
-    Number(panelOpacityInput.value);
+    Number(
+      panelOpacityInput.value
+    );
 
 
   snapshot.style.setProperty(
@@ -843,6 +1034,7 @@ characterNameInput.addEventListener(
   updateCharacter
 );
 
+
 worldInput.addEventListener(
   "input",
   updateCharacter
@@ -900,29 +1092,58 @@ const JOB_ICON_MAP = {
 
 
 
+/* ==========================================
+   JOB GROUPS
+========================================== */
+
 const JOB_GROUPS = [
 
   [
-    "PLD","WAR","DRK","GNB",
-    "WHM","SCH","AST","SGE"
+    "PLD",
+    "WAR",
+    "DRK",
+    "GNB",
+    "WHM",
+    "SCH",
+    "AST",
+    "SGE"
   ],
 
   [
-    "MNK","DRG","NIN","SAM",
-    "RPR","VPR","BRD","MCH","DNC"
+    "MNK",
+    "DRG",
+    "NIN",
+    "SAM",
+    "RPR",
+    "VPR",
+    "BRD",
+    "MCH",
+    "DNC"
   ],
 
   [
-    "BLM","SMN","RDM","PCT","BLU"
+    "BLM",
+    "SMN",
+    "RDM",
+    "PCT",
+    "BLU"
   ],
 
   [
-    "CRP","BSM","ARM","GSM",
-    "LTW","WVR","ALC","CUL"
+    "CRP",
+    "BSM",
+    "ARM",
+    "GSM",
+    "LTW",
+    "WVR",
+    "ALC",
+    "CUL"
   ],
 
   [
-    "MIN","BTN","FSH"
+    "MIN",
+    "BTN",
+    "FSH"
   ]
 
 ];
@@ -935,15 +1156,20 @@ const JOB_GROUPS = [
 
 function createEmptyJobs() {
 
-  const jobs = {};
+  const jobs =
+    {};
 
 
-  Object.keys(JOB_ICON_MAP)
-    .forEach(job => {
+  Object
+    .keys(JOB_ICON_MAP)
+    .forEach(
+      job => {
 
-      jobs[job] = "—";
+        jobs[job] =
+          "—";
 
-    });
+      }
+    );
 
 
   return jobs;
@@ -956,27 +1182,39 @@ function createEmptyJobs() {
    RENDER JOBS
 ========================================== */
 
-function renderJobs(jobs = {}) {
+function renderJobs(
+  jobs = {}
+) {
 
   const container =
-    document.getElementById("jobPreview");
+    document.getElementById(
+      "jobPreview"
+    );
 
 
-  container.innerHTML = "";
+  container.innerHTML =
+    "";
 
 
   JOB_GROUPS.forEach(
-    (group, groupIndex) => {
+    (
+      group,
+      groupIndex
+    ) => {
 
       const row =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
 
       row.className =
         "job-icon-row";
 
 
-      if (groupIndex === 1) {
+      if (
+        groupIndex === 1
+      ) {
 
         row.classList.add(
           "job-row-dps-1"
@@ -989,14 +1227,19 @@ function renderJobs(jobs = {}) {
         abbreviation => {
 
           const item =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
 
           item.className =
             "job-icon-item";
 
 
-          if (abbreviation === "DNC") {
+          if (
+            abbreviation ===
+            "DNC"
+          ) {
 
             item.classList.add(
               "job-dnc"
@@ -1006,7 +1249,9 @@ function renderJobs(jobs = {}) {
 
 
           const img =
-            document.createElement("img");
+            document.createElement(
+              "img"
+            );
 
 
           img.src =
@@ -1022,7 +1267,9 @@ function renderJobs(jobs = {}) {
 
 
           const levelElement =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
 
           levelElement.className =
@@ -1030,30 +1277,40 @@ function renderJobs(jobs = {}) {
 
 
           const level =
-            jobs[abbreviation];
+            jobs[
+              abbreviation
+            ];
 
 
           levelElement.textContent =
-            level !== undefined &&
+            level !== undefined
+            &&
             level !== null
               ? level
               : "—";
 
 
-          item.appendChild(img);
+          item.appendChild(
+            img
+          );
+
 
           item.appendChild(
             levelElement
           );
 
 
-          row.appendChild(item);
+          row.appendChild(
+            item
+          );
 
         }
       );
 
 
-      container.appendChild(row);
+      container.appendChild(
+        row
+      );
 
     }
   );
@@ -1066,7 +1323,9 @@ function renderJobs(jobs = {}) {
    APPLY LODESTONE DATA
 ========================================== */
 
-function applyLodestoneCharacter(data) {
+function applyLodestoneCharacter(
+  data
+) {
 
   if (data.name) {
 
@@ -1103,7 +1362,9 @@ function applyLodestoneCharacter(data) {
 
   if (data.jobs) {
 
-    renderJobs(data.jobs);
+    renderJobs(
+      data.jobs
+    );
 
   }
 
@@ -1123,26 +1384,36 @@ function setLodestoneStatus(
   text
 ) {
 
-  lodestoneStatus.classList.remove(
-    "success",
-    "error"
-  );
-
-
-  if (type === "success") {
-
-    lodestoneStatus.classList.add(
-      "success"
+  lodestoneStatus
+    .classList
+    .remove(
+      "success",
+      "error"
     );
+
+
+  if (
+    type === "success"
+  ) {
+
+    lodestoneStatus
+      .classList
+      .add(
+        "success"
+      );
 
   }
 
 
-  if (type === "error") {
+  if (
+    type === "error"
+  ) {
 
-    lodestoneStatus.classList.add(
-      "error"
-    );
+    lodestoneStatus
+      .classList
+      .add(
+        "error"
+      );
 
   }
 
@@ -1158,25 +1429,37 @@ function setLodestoneStatus(
    VALIDATE LODESTONE URL
 ========================================== */
 
-function isValidLodestoneUrl(value) {
+function isValidLodestoneUrl(
+  value
+) {
 
   try {
 
     const url =
-      new URL(value);
+      new URL(
+        value
+      );
 
 
     const allowedHosts = [
+
       "jp.finalfantasyxiv.com",
+
       "na.finalfantasyxiv.com",
+
       "eu.finalfantasyxiv.com",
+
       "fr.finalfantasyxiv.com",
+
       "de.finalfantasyxiv.com"
+
     ];
 
 
     return (
-      allowedHosts.includes(url.hostname)
+      allowedHosts.includes(
+        url.hostname
+      )
       &&
       /^\/lodestone\/character\/\d+\/?$/.test(
         url.pathname
@@ -1204,15 +1487,18 @@ lodestoneFetchButton.addEventListener(
   async () => {
 
     const url =
-      lodestoneUrlInput.value.trim();
+      lodestoneUrlInput
+        .value
+        .trim();
 
 
     if (!url) {
 
       setLodestoneStatus(
         "error",
-        translations[currentLanguage]
-          .lodestoneEmpty
+        translations[
+          currentLanguage
+        ].lodestoneEmpty
       );
 
       return;
@@ -1220,12 +1506,17 @@ lodestoneFetchButton.addEventListener(
     }
 
 
-    if (!isValidLodestoneUrl(url)) {
+    if (
+      !isValidLodestoneUrl(
+        url
+      )
+    ) {
 
       setLodestoneStatus(
         "error",
-        translations[currentLanguage]
-          .lodestoneInvalid
+        translations[
+          currentLanguage
+        ].lodestoneInvalid
       );
 
       return;
@@ -1239,8 +1530,9 @@ lodestoneFetchButton.addEventListener(
 
     setLodestoneStatus(
       "",
-      translations[currentLanguage]
-        .lodestoneFetching
+      translations[
+        currentLanguage
+      ].lodestoneFetching
     );
 
 
@@ -1252,7 +1544,9 @@ lodestoneFetchButton.addEventListener(
           +
           "/?url="
           +
-          encodeURIComponent(url),
+          encodeURIComponent(
+            url
+          ),
           {
             method:"GET",
             cache:"no-store"
@@ -1260,7 +1554,9 @@ lodestoneFetchButton.addEventListener(
         );
 
 
-      if (!response.ok) {
+      if (
+        !response.ok
+      ) {
 
         throw new Error(
           `Worker HTTP ${response.status}`
@@ -1273,7 +1569,9 @@ lodestoneFetchButton.addEventListener(
         await response.json();
 
 
-      if (!data.success) {
+      if (
+        !data.success
+      ) {
 
         throw new Error(
           data.error
@@ -1284,13 +1582,16 @@ lodestoneFetchButton.addEventListener(
       }
 
 
-      applyLodestoneCharacter(data);
+      applyLodestoneCharacter(
+        data
+      );
 
 
       setLodestoneStatus(
         "success",
-        translations[currentLanguage]
-          .lodestoneSuccess
+        translations[
+          currentLanguage
+        ].lodestoneSuccess
       );
 
     }
@@ -1305,8 +1606,9 @@ lodestoneFetchButton.addEventListener(
 
       setLodestoneStatus(
         "error",
-        translations[currentLanguage]
-          .lodestoneError
+        translations[
+          currentLanguage
+        ].lodestoneError
       );
 
     }
@@ -1329,21 +1631,28 @@ lodestoneFetchButton.addEventListener(
 
 function updatePlayStyle() {
 
-  previewPlayStyle.innerHTML = "";
+  previewPlayStyle.innerHTML =
+    "";
 
 
   const selected =
-    [...playStyleCheckboxes]
+    [
+      ...playStyleCheckboxes
+    ]
       .filter(
         checkbox =>
           checkbox.checked
       );
 
 
-  if (selected.length === 0) {
+  if (
+    selected.length === 0
+  ) {
 
     const tag =
-      document.createElement("span");
+      document.createElement(
+        "span"
+      );
 
 
     tag.className =
@@ -1356,7 +1665,10 @@ function updatePlayStyle() {
         : "None";
 
 
-    previewPlayStyle.appendChild(tag);
+    previewPlayStyle.appendChild(
+      tag
+    );
+
 
     return;
 
@@ -1371,7 +1683,9 @@ function updatePlayStyle() {
 
 
       const tag =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
 
       tag.className =
@@ -1386,7 +1700,9 @@ function updatePlayStyle() {
         ];
 
 
-      previewPlayStyle.appendChild(tag);
+      previewPlayStyle.appendChild(
+        tag
+      );
 
     }
   );
@@ -1414,41 +1730,106 @@ playStyleCheckboxes.forEach(
 const questionData = [
 
   {
-    input:document.getElementById("answer1"),
-    preview:document.getElementById("previewAnswer1"),
-    counter:document.getElementById("answer1Count"),
+    input:
+      document.getElementById(
+        "answer1"
+      ),
+
+    preview:
+      document.getElementById(
+        "previewAnswer1"
+      ),
+
+    counter:
+      document.getElementById(
+        "answer1Count"
+      ),
+
     max:80
   },
 
+
   {
-    input:document.getElementById("answer2"),
-    preview:document.getElementById("previewAnswer2"),
-    counter:document.getElementById("answer2Count"),
+    input:
+      document.getElementById(
+        "answer2"
+      ),
+
+    preview:
+      document.getElementById(
+        "previewAnswer2"
+      ),
+
+    counter:
+      document.getElementById(
+        "answer2Count"
+      ),
+
     max:80
   },
 
+
   {
-    input:document.getElementById("answer3"),
-    preview:document.getElementById("previewAnswer3"),
-    counter:document.getElementById("answer3Count"),
+    input:
+      document.getElementById(
+        "answer3"
+      ),
+
+    preview:
+      document.getElementById(
+        "previewAnswer3"
+      ),
+
+    counter:
+      document.getElementById(
+        "answer3Count"
+      ),
+
     max:80
   },
 
+
   {
-    input:document.getElementById("answer4"),
-    preview:document.getElementById("previewAnswer4"),
-    counter:document.getElementById("answer4Count"),
+    input:
+      document.getElementById(
+        "answer4"
+      ),
+
+    preview:
+      document.getElementById(
+        "previewAnswer4"
+      ),
+
+    counter:
+      document.getElementById(
+        "answer4Count"
+      ),
+
     max:80
   },
 
+
   {
-    input:document.getElementById("answer5"),
-    preview:document.getElementById("previewAnswer5"),
-    counter:document.getElementById("answer5Count"),
+    input:
+      document.getElementById(
+        "answer5"
+      ),
+
+    preview:
+      document.getElementById(
+        "previewAnswer5"
+      ),
+
+    counter:
+      document.getElementById(
+        "answer5Count"
+      ),
+
     max:80
   }
 
 ];
+
 
 
 function counterText(
@@ -1456,16 +1837,23 @@ function counterText(
   max
 ) {
 
-  if (currentLanguage === "ja") {
+  if (
+    currentLanguage === "ja"
+  ) {
 
-    return `${length} / ${max}文字`;
+    return (
+      `${length} / ${max}文字`
+    );
 
   }
 
 
-  return `${length} / ${max}`;
+  return (
+    `${length} / ${max}`
+  );
 
 }
+
 
 
 questionData.forEach(
@@ -1476,7 +1864,9 @@ questionData.forEach(
       () => {
 
         item.preview.textContent =
-          item.input.value.trim()
+          item.input
+            .value
+            .trim()
           ||
           "—";
 
@@ -1500,13 +1890,19 @@ questionData.forEach(
 ========================================== */
 
 const messageInput =
-  document.getElementById("messageInput");
+  document.getElementById(
+    "messageInput"
+  );
 
 const previewMessage =
-  document.getElementById("previewMessage");
+  document.getElementById(
+    "previewMessage"
+  );
 
 const messageCount =
-  document.getElementById("messageCount");
+  document.getElementById(
+    "messageCount"
+  );
 
 
 messageInput.addEventListener(
@@ -1514,7 +1910,9 @@ messageInput.addEventListener(
   () => {
 
     previewMessage.textContent =
-      messageInput.value.trim()
+      messageInput
+        .value
+        .trim()
       ||
       "—";
 
@@ -1527,6 +1925,7 @@ messageInput.addEventListener(
 
   }
 );
+
 
 
 function updateAllCounters() {
@@ -1561,7 +1960,10 @@ function updateAllCounters() {
 
 async function exportSnapshot() {
 
-  if (typeof html2canvas === "undefined") {
+  if (
+    typeof html2canvas ===
+    "undefined"
+  ) {
 
     alert(
       currentLanguage === "ja"
@@ -1605,7 +2007,9 @@ async function exportSnapshot() {
 
 
     exportStage =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
 
     exportStage.style.position =
@@ -1628,10 +2032,14 @@ async function exportSnapshot() {
 
 
     const clone =
-      snapshot.cloneNode(true);
+      snapshot.cloneNode(
+        true
+      );
 
 
-    clone.removeAttribute("id");
+    clone.removeAttribute(
+      "id"
+    );
 
 
     clone.style.width =
@@ -1662,7 +2070,9 @@ async function exportSnapshot() {
 
     const images =
       [
-        ...clone.querySelectorAll("img")
+        ...clone.querySelectorAll(
+          "img"
+        )
       ];
 
 
@@ -1671,7 +2081,9 @@ async function exportSnapshot() {
       images.map(
         img => {
 
-          if (img.complete) {
+          if (
+            img.complete
+          ) {
 
             return Promise.resolve();
 
@@ -1701,11 +2113,17 @@ async function exportSnapshot() {
         clone,
         {
           backgroundColor:null,
+
           scale:1,
+
           width:1080,
+
           height:1080,
+
           useCORS:true,
+
           allowTaint:false,
+
           logging:false
         }
       );
@@ -1713,11 +2131,14 @@ async function exportSnapshot() {
 
     const blob =
       await new Promise(
-        resolve =>
+        resolve => {
+
           canvas.toBlob(
             resolve,
             "image/png"
-          )
+          );
+
+        }
       );
 
 
@@ -1731,11 +2152,15 @@ async function exportSnapshot() {
 
 
     const url =
-      URL.createObjectURL(blob);
+      URL.createObjectURL(
+        blob
+      );
 
 
     const link =
-      document.createElement("a");
+      document.createElement(
+        "a"
+      );
 
 
     link.href =
@@ -1746,7 +2171,9 @@ async function exportSnapshot() {
       "FFXIV-character-snapshot.png";
 
 
-    document.body.appendChild(link);
+    document.body.appendChild(
+      link
+    );
 
 
     link.click();
@@ -1758,7 +2185,9 @@ async function exportSnapshot() {
     setTimeout(
       () => {
 
-        URL.revokeObjectURL(url);
+        URL.revokeObjectURL(
+          url
+        );
 
       },
       1000
@@ -1768,7 +2197,9 @@ async function exportSnapshot() {
 
   catch (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
 
 
     alert(
@@ -1781,7 +2212,9 @@ async function exportSnapshot() {
 
   finally {
 
-    if (exportStage) {
+    if (
+      exportStage
+    ) {
 
       exportStage.remove();
 
@@ -1828,7 +2261,7 @@ function initialize() {
 
   /*
     Lodestone取得前も
-    全ジョブの配置を確認できるようにする
+    全ジョブの配置を表示
   */
 
   renderJobs(
