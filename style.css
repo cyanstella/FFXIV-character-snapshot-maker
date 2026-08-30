@@ -55,17 +55,15 @@ a {
 .site-header {
   width: 100%;
 
-  padding: 20px 24px;
+  padding: 20px 22px;
 
   border-bottom: 1px solid #111;
-
-  background: #f4f2ec;
 }
 
 .header-inner {
-  width: min(1400px, 100%);
+  width: 100%;
 
-  margin: 0 auto;
+  margin: 0;
 
   display: flex;
 
@@ -127,37 +125,40 @@ a {
 
 .language-button.active {
   background: #111;
-
   color: #fff;
 }
 
 
 /* ==========================================
-   MAIN
-========================================== */
-
-.main-content {
-  width: min(
-    1400px,
-    calc(100% - 48px)
-  );
-
-  margin: 0 auto;
-
-  padding: 46px 0 72px;
-}
-
-
-/* ==========================================
    HERO
+
+   シリーズ共通の左基準。
+   Creatorの中央寄せとは分離する。
 ========================================== */
 
 .hero {
-  margin-bottom: 54px;
+  width: 100%;
+
+  padding:
+    48px
+    22px
+    56px;
+}
+
+.hero-inner {
+  width: 100%;
+
+  margin: 0;
 }
 
 .hero-kicker {
-  margin: 0 0 12px;
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 0 0 30px;
 
   font-size: 12px;
   font-weight: 900;
@@ -165,14 +166,27 @@ a {
   letter-spacing: 0.18em;
 }
 
+.hero-kicker-mark {
+  display: block;
+
+  flex: 0 0 auto;
+
+  width: 34px;
+  height: 14px;
+
+  background: #ff655c;
+}
+
 .hero-title {
+  max-width: 1100px;
+
   margin: 0;
 
   font-size:
     clamp(
       42px,
-      5.2vw,
-      74px
+      5.4vw,
+      78px
     );
 
   font-weight: 900;
@@ -191,7 +205,7 @@ a {
 
   display: inline-block;
 
-  white-space: nowrap;
+  padding-bottom: 4px;
 }
 
 .hero-line-accent::after {
@@ -202,7 +216,7 @@ a {
   left: 0;
   right: 0;
 
-  bottom: -9px;
+  bottom: 0;
 
   height: 8px;
 
@@ -214,7 +228,7 @@ a {
 .hero-description {
   max-width: 790px;
 
-  margin: 30px 0 0;
+  margin: 28px 0 0;
 
   font-size: 14px;
   font-weight: 700;
@@ -240,9 +254,9 @@ a {
 }
 
 .hero-community-button {
-  min-height: 46px;
+  min-height: 48px;
 
-  padding: 11px 20px;
+  padding: 11px 22px;
 
   border: 1px solid #111;
 
@@ -263,7 +277,6 @@ a {
 
 .hero-community-button:hover {
   background: #111;
-
   color: #fff;
 }
 
@@ -277,12 +290,34 @@ a {
   font-size: 9px;
   font-weight: 900;
 
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 
 /* ==========================================
-   CREATOR
+   CREATOR MAIN
+
+   HEROとは別に中央寄せ。
+========================================== */
+
+.creator-main {
+  width:
+    min(
+      1400px,
+      calc(100% - 44px)
+    );
+
+  margin: 0 auto;
+
+  padding:
+    0
+    0
+    72px;
+}
+
+
+/* ==========================================
+   CREATOR GRID
 ========================================== */
 
 .creator-layout {
@@ -296,7 +331,9 @@ a {
     "top preview"
     "main preview";
 
-  gap: 24px 45px;
+  gap:
+    24px
+    45px;
 
   align-items: start;
 }
@@ -316,9 +353,51 @@ a {
 
   top: 20px;
 
-  align-self: start;
-
   min-width: 0;
+
+  align-self: start;
+}
+
+
+/*
+  PREVIEW見出しと画像本体を
+  同じラッパーに入れることで
+  左端を完全に一致させる。
+*/
+
+.preview-frame {
+  width:
+    min(
+      100%,
+      calc(100vh - 150px)
+    );
+
+  margin:
+    0
+    auto;
+}
+
+.preview-title {
+  width: 100%;
+
+  margin:
+    0
+    0
+    10px;
+
+  padding: 0;
+
+  text-align: left;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 0.2em;
+}
+
+.snapshot,
+.export-area {
+  width: 100%;
 }
 
 
@@ -327,7 +406,10 @@ a {
 ========================================== */
 
 .control-section {
-  margin: 0 0 24px;
+  margin:
+    0
+    0
+    24px;
 
   padding: 22px;
 
@@ -343,7 +425,10 @@ a {
 
   gap: 14px;
 
-  margin: 0 0 24px;
+  margin:
+    0
+    0
+    24px;
 }
 
 .section-number {
@@ -364,7 +449,10 @@ a {
 }
 
 .control-group {
-  margin: 0 0 22px;
+  margin:
+    0
+    0
+    22px;
 }
 
 .control-group:last-child {
@@ -374,7 +462,10 @@ a {
 .control-label {
   display: block;
 
-  margin: 0 0 9px;
+  margin:
+    0
+    0
+    9px;
 
   font-size: 12px;
   font-weight: 900;
@@ -407,13 +498,17 @@ a {
 .select-input {
   min-height: 44px;
 
-  padding: 10px 12px;
+  padding:
+    10px
+    12px;
 }
 
 .textarea-input {
   min-height: 90px;
 
-  padding: 11px 12px;
+  padding:
+    11px
+    12px;
 
   resize: vertical;
 
@@ -487,7 +582,9 @@ a {
 .option-buttons {
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:
+    1fr
+    1fr;
 
   gap: 7px;
 }
@@ -507,7 +604,6 @@ a {
 
 .option-button.active {
   background: #111;
-
   color: #fff;
 }
 
@@ -523,7 +619,7 @@ a {
 
   min-height: 44px;
 
-  margin: 10px 0 0;
+  margin-top: 10px;
 
   border: 0;
 
@@ -548,7 +644,10 @@ a {
 .lodestone-status {
   min-height: 18px;
 
-  margin: 9px 0 0;
+  margin:
+    9px
+    0
+    0;
 
   font-size: 10px;
   font-weight: 800;
@@ -571,7 +670,9 @@ a {
 
   gap: 10px;
 
-  margin: 28px 0;
+  margin:
+    28px
+    0;
 }
 
 .control-divider::before,
@@ -607,7 +708,9 @@ a {
       minmax(0, 1fr)
     );
 
-  gap: 10px 8px;
+  gap:
+    10px
+    8px;
 }
 
 .checkbox-label {
@@ -629,7 +732,10 @@ a {
 ========================================== */
 
 .question-form-item {
-  margin: 0 0 22px;
+  margin:
+    0
+    0
+    22px;
 }
 
 .question-form-item:last-child {
@@ -637,7 +743,10 @@ a {
 }
 
 .question-form-title {
-  margin: 0 0 8px;
+  margin:
+    0
+    0
+    8px;
 
   font-size: 11px;
   font-weight: 900;
@@ -646,7 +755,10 @@ a {
 }
 
 .character-counter {
-  margin: 5px 0 0;
+  margin:
+    5px
+    0
+    0;
 
   text-align: right;
 
@@ -654,39 +766,6 @@ a {
 
   font-size: 9px;
   font-weight: 700;
-}
-
-
-/* ==========================================
-   PREVIEW
-========================================== */
-
-.preview-title {
-  width: min(
-    100%,
-    calc(100vh - 150px)
-  );
-
-  margin:
-    0
-    auto
-    10px;
-
-  font-size: 11px;
-  font-weight: 900;
-
-  letter-spacing: 0.2em;
-}
-
-.snapshot,
-.export-area {
-  width: min(
-    100%,
-    calc(100vh - 150px)
-  );
-
-  margin-left: auto;
-  margin-right: auto;
 }
 
 
@@ -715,7 +794,10 @@ a {
 
   background: #b8b8b8;
 
-  color: var(--snapshot-text-color);
+  color:
+    var(
+      --snapshot-text-color
+    );
 
   container-type: inline-size;
 
@@ -743,16 +825,6 @@ a {
     Meiryo,
     sans-serif;
 }
-
-
-/*
-  Google Fonts:
-  M PLUS Rounded 1c
-
-  Windows / Mac / iPhone / iPad で
-  同じ丸文字を表示するために
-  Webフォントを使用。
-*/
 
 .snapshot.font-rounded {
   font-family:
@@ -880,7 +952,9 @@ a {
   right: 4.5%;
   top: 4.5%;
 
-  padding: 2.1% 2.3%;
+  padding:
+    2.1%
+    2.3%;
 
   background:
     rgba(
@@ -888,11 +962,16 @@ a {
       var(--panel-alpha)
     );
 
-  color: var(--snapshot-text-color);
+  color:
+    var(
+      --snapshot-text-color
+    );
 
-  backdrop-filter: blur(6px);
+  backdrop-filter:
+    blur(6px);
 
-  -webkit-backdrop-filter: blur(6px);
+  -webkit-backdrop-filter:
+    blur(6px);
 }
 
 .character-header {
@@ -986,7 +1065,9 @@ a {
   width: 2.75cqw;
   height: 2.75cqw;
 
-  margin: 0 auto;
+  margin:
+    0
+    auto;
 
   object-fit: contain;
 }
@@ -1090,9 +1171,11 @@ a {
       --snapshot-text-color
     );
 
-  backdrop-filter: blur(6px);
+  backdrop-filter:
+    blur(6px);
 
-  -webkit-backdrop-filter: blur(6px);
+  -webkit-backdrop-filter:
+    blur(6px);
 }
 
 .questions-heading,
@@ -1320,7 +1403,9 @@ a {
 .x-share-button {
   min-height: 46px;
 
-  padding: 10px 12px;
+  padding:
+    10px
+    12px;
 
   border: 1px solid #111;
 
@@ -1336,7 +1421,6 @@ a {
 
 .x-post-button {
   background: #111;
-
   color: #fff;
 }
 
@@ -1346,13 +1430,11 @@ a {
 
 .x-search-button {
   background: transparent;
-
   color: #111;
 }
 
 .x-search-button:hover {
   background: #111;
-
   color: #fff;
 }
 
@@ -1378,7 +1460,6 @@ a {
   position: fixed;
 
   left: -100000px;
-
   top: 0;
 
   width: 1080px;
@@ -1410,20 +1491,28 @@ a {
 ========================================== */
 
 .about-section {
-  width: min(
-    1400px,
-    calc(100% - 48px)
-  );
+  width:
+    min(
+      1400px,
+      calc(100% - 44px)
+    );
 
-  margin: 0 auto;
+  margin:
+    0
+    auto;
 
-  padding: 42px 0;
+  padding:
+    42px
+    0;
 
   border-top: 1px solid #111;
 }
 
 .about-title {
-  margin: 0 0 15px;
+  margin:
+    0
+    0
+    15px;
 
   font-size: 18px;
   font-weight: 900;
@@ -1448,15 +1537,16 @@ a {
 ========================================== */
 
 .site-footer {
-  padding: 22px 24px;
-
+  padding:
+    22px;
+    
   border-top: 1px solid #111;
 }
 
 .footer-inner {
-  width: min(1400px, 100%);
+  width: 100%;
 
-  margin: 0 auto;
+  margin: 0;
 
   display: flex;
 
@@ -1483,7 +1573,14 @@ a {
 
 @media (max-width: 950px) {
 
-  .main-content {
+  .hero {
+    padding:
+      38px
+      15px
+      44px;
+  }
+
+  .creator-main {
     width:
       calc(
         100% - 30px
@@ -1506,9 +1603,7 @@ a {
     position: static;
   }
 
-  .preview-title,
-  .snapshot,
-  .export-area {
+  .preview-frame {
     width: 100%;
   }
 
@@ -1538,20 +1633,27 @@ a {
     flex-direction: column;
   }
 
-  .main-content {
-    width:
-      calc(
-        100% - 24px
-      );
 
-    padding:
-      30px
-      0
-      55px;
-  }
+  /* HERO */
 
   .hero {
-    margin-bottom: 36px;
+    padding:
+      32px
+      12px
+      40px;
+  }
+
+  .hero-kicker {
+    gap: 9px;
+
+    margin-bottom: 24px;
+
+    font-size: 10px;
+  }
+
+  .hero-kicker-mark {
+    width: 30px;
+    height: 13px;
   }
 
   .hero-title {
@@ -1564,7 +1666,7 @@ a {
   }
 
   .hero-line-accent {
-    white-space: normal;
+    display: inline;
   }
 
   .hero-description {
@@ -1572,7 +1674,7 @@ a {
   }
 
 
-  /* HERO COMMUNITY */
+  /* COMMUNITY */
 
   .hero-community {
     width: 100%;
@@ -1586,6 +1688,18 @@ a {
 
   .hero-community-tag {
     text-align: center;
+  }
+
+
+  /* CREATOR */
+
+  .creator-main {
+    width:
+      calc(
+        100% - 24px
+      );
+
+    padding-bottom: 55px;
   }
 
 
@@ -1610,7 +1724,7 @@ a {
   }
 
 
-  /* FOOTER */
+  /* ABOUT */
 
   .about-section {
     width:
@@ -1618,6 +1732,9 @@ a {
         100% - 24px
       );
   }
+
+
+  /* FOOTER */
 
   .footer-inner {
     flex-direction: column;

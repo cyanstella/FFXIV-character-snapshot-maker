@@ -25,20 +25,11 @@ const snapshot =
 const languageToggle =
   document.getElementById("languageToggle");
 
-
-/* ==========================================
-   HERO COMMUNITY
-========================================== */
-
 const heroXSearchButton =
-  document.getElementById(
-    "heroXSearchButton"
-  );
+  document.getElementById("heroXSearchButton");
 
 
-/* ==========================================
-   SCREENSHOT
-========================================== */
+/* SCREENSHOT */
 
 const imageUpload =
   document.getElementById("imageUpload");
@@ -80,9 +71,7 @@ const panelOpacityValue =
   document.getElementById("panelOpacityValue");
 
 
-/* ==========================================
-   CHARACTER
-========================================== */
+/* CHARACTER */
 
 const lodestoneUrlInput =
   document.getElementById("lodestoneUrlInput");
@@ -106,9 +95,7 @@ const previewWorld =
   document.getElementById("previewWorld");
 
 
-/* ==========================================
-   JOB / PLAY STYLE
-========================================== */
+/* JOB / PLAY STYLE */
 
 const jobIconArea =
   document.getElementById("jobIconArea");
@@ -122,9 +109,7 @@ const previewPlayStyle =
   document.getElementById("previewPlayStyle");
 
 
-/* ==========================================
-   QUESTIONS
-========================================== */
+/* QUESTIONS */
 
 const questionInputs = [
   document.getElementById("question1Input"),
@@ -143,15 +128,16 @@ const questionPreviewAnswers = [
 ];
 
 
-/* ==========================================
-   MESSAGE / FONT / EXPORT / X
-========================================== */
+/* MESSAGE */
 
 const messageInput =
   document.getElementById("messageInput");
 
 const previewMessage =
   document.getElementById("previewMessage");
+
+
+/* FONT / EXPORT / X */
 
 const fontSelect =
   document.getElementById("fontSelect");
@@ -166,9 +152,7 @@ const xSearchButton =
   document.getElementById("xSearchButton");
 
 
-/* ==========================================
-   OPTION BUTTONS
-========================================== */
+/* OPTION BUTTONS */
 
 const coverColorButtons =
   document.querySelectorAll(
@@ -190,19 +174,24 @@ const panelColorButtons =
    STATE
 ========================================== */
 
-let currentLanguage = "ja";
+let currentLanguage =
+  "ja";
 
-let currentJobLevels = {};
+let currentJobLevels =
+  {};
 
-let currentImageObjectUrl = null;
+let currentImageObjectUrl =
+  null;
 
-let imageNaturalWidth = 0;
+let imageNaturalWidth =
+  0;
 
-let imageNaturalHeight = 0;
+let imageNaturalHeight =
+  0;
 
 
 /* ==========================================
-   JOB ICONS
+   JOB ICON MAP
 ========================================== */
 
 const JOB_ICON_MAP = {
@@ -309,7 +298,7 @@ const JOB_GROUPS = [
 
 
 /* ==========================================
-   PLAY STYLE TRANSLATIONS
+   PLAY STYLE
 ========================================== */
 
 const playStyleTranslations = {
@@ -663,6 +652,7 @@ function handleImageUpload(event) {
     return;
   }
 
+
   if (currentImageObjectUrl) {
 
     URL.revokeObjectURL(
@@ -670,8 +660,10 @@ function handleImageUpload(event) {
     );
   }
 
+
   currentImageObjectUrl =
     URL.createObjectURL(file);
+
 
   snapshotImage.src =
     currentImageObjectUrl;
@@ -690,15 +682,19 @@ function handleImageLoad() {
   imageNaturalHeight =
     snapshotImage.naturalHeight;
 
+
   if (
     !imageNaturalWidth ||
     !imageNaturalHeight
   ) {
+
     return;
   }
 
+
   photoPlaceholder.style.display =
     "none";
+
 
   updateImageGeometry();
 }
@@ -714,11 +710,14 @@ function updateImageGeometry() {
     !imageNaturalWidth ||
     !imageNaturalHeight
   ) {
+
     return;
   }
 
+
   const rect =
     snapshot.getBoundingClientRect();
+
 
   const containerWidth =
     rect.width;
@@ -726,30 +725,29 @@ function updateImageGeometry() {
   const containerHeight =
     rect.height;
 
+
   if (
     containerWidth <= 0 ||
     containerHeight <= 0
   ) {
+
     return;
   }
+
 
   const imageRatio =
     imageNaturalWidth /
     imageNaturalHeight;
 
+
   const containerRatio =
     containerWidth /
     containerHeight;
 
+
   let width;
   let height;
 
-
-  /*
-    object-fit: cover と同じ考え方で
-    元画像の縦横比を維持したまま
-    正方形を完全に覆う。
-  */
 
   if (
     imageRatio >
@@ -771,7 +769,6 @@ function updateImageGeometry() {
     height =
       containerWidth /
       imageRatio;
-
   }
 
 
@@ -780,6 +777,7 @@ function updateImageGeometry() {
 
   snapshotImage.style.height =
     `${height}px`;
+
 
   updateImageTransform();
 }
@@ -806,11 +804,6 @@ function updateImageTransform() {
       imageScaleInput.value
     ) / 100;
 
-
-  /*
-    -50 ～ +50 のスライダー差を
-    cqw単位の移動量へ変換。
-  */
 
   const offsetX =
     (x - 50) * 0.6;
@@ -846,23 +839,8 @@ function updateImageTransform() {
 }
 
 
-function updateImageX() {
-  updateImageTransform();
-}
-
-
-function updateImageY() {
-  updateImageTransform();
-}
-
-
-function updateImageScale() {
-  updateImageTransform();
-}
-
-
 /* ==========================================
-   COVER
+   COVER / PANEL
 ========================================== */
 
 function updateCoverOpacity() {
@@ -872,19 +850,17 @@ function updateCoverOpacity() {
       coverOpacityInput.value
     );
 
+
   snapshot.style.setProperty(
     "--cover-alpha",
     value / 100
   );
 
+
   coverOpacityValue.textContent =
     `${value}%`;
 }
 
-
-/* ==========================================
-   PANEL
-========================================== */
 
 function updatePanelOpacity() {
 
@@ -893,10 +869,12 @@ function updatePanelOpacity() {
       panelOpacityInput.value
     );
 
+
   snapshot.style.setProperty(
     "--panel-alpha",
     value / 100
   );
+
 
   panelOpacityValue.textContent =
     `${value}%`;
@@ -904,7 +882,7 @@ function updatePanelOpacity() {
 
 
 /* ==========================================
-   BUTTON STATE
+   ACTIVE BUTTON
 ========================================== */
 
 function activateButton(
@@ -926,13 +904,14 @@ function activateButton(
 
 
 /* ==========================================
-   COVER COLOR
+   COLORS
 ========================================== */
 
 function setCoverColor(button) {
 
   const color =
     button.dataset.coverColor;
+
 
   snapshot.style.setProperty(
     "--cover-rgb",
@@ -942,6 +921,7 @@ function setCoverColor(button) {
       : "0,0,0"
   );
 
+
   activateButton(
     coverColorButtons,
     button
@@ -949,25 +929,24 @@ function setCoverColor(button) {
 }
 
 
-/* ==========================================
-   TEXT COLOR
-========================================== */
-
 function setTextColor(button) {
 
   const color =
     button.dataset.textColor;
+
 
   snapshot.classList.remove(
     "text-white",
     "text-black"
   );
 
+
   snapshot.classList.add(
     color === "black"
       ? "text-black"
       : "text-white"
   );
+
 
   activateButton(
     textColorButtons,
@@ -976,14 +955,11 @@ function setTextColor(button) {
 }
 
 
-/* ==========================================
-   PANEL COLOR
-========================================== */
-
 function setPanelColor(button) {
 
   const color =
     button.dataset.panelColor;
+
 
   snapshot.style.setProperty(
     "--panel-rgb",
@@ -992,6 +968,7 @@ function setPanelColor(button) {
       ? "255,255,255"
       : "0,0,0"
   );
+
 
   activateButton(
     panelColorButtons,
@@ -1036,9 +1013,7 @@ function updateFont() {
 
 
   snapshot.classList.add(
-    classes[
-      fontSelect.value
-    ] ||
+    classes[fontSelect.value] ||
     "font-gothic"
   );
 }
@@ -1056,6 +1031,7 @@ function updateCharacter() {
       .trim() ||
     "HIKARINO SENSHI";
 
+
   previewWorld.textContent =
     worldInput
       .value
@@ -1063,10 +1039,6 @@ function updateCharacter() {
     "Ramuh / Meteor";
 }
 
-
-/* ==========================================
-   WORLD FORMAT
-========================================== */
 
 function formatWorld(value) {
 
@@ -1077,10 +1049,12 @@ function formatWorld(value) {
       /^(.+?)\s*\[([^\]]+)\]\s*$/
     );
 
+
   if (!match) {
 
     return value || "";
   }
+
 
   return (
     match[1].trim() +
@@ -1091,7 +1065,7 @@ function formatWorld(value) {
 
 
 /* ==========================================
-   LODESTONE STATUS
+   LODESTONE
 ========================================== */
 
 function setLodestoneStatus(
@@ -1106,6 +1080,7 @@ function setLodestoneStatus(
       "error"
     );
 
+
   if (type) {
 
     lodestoneStatus
@@ -1113,14 +1088,11 @@ function setLodestoneStatus(
       .add(type);
   }
 
+
   lodestoneStatus.textContent =
     text;
 }
 
-
-/* ==========================================
-   LODESTONE FETCH
-========================================== */
 
 async function fetchLodestone() {
 
@@ -1128,6 +1100,7 @@ async function fetchLodestone() {
     lodestoneUrlInput
       .value
       .trim();
+
 
   if (!url) {
 
@@ -1218,10 +1191,6 @@ async function fetchLodestone() {
 }
 
 
-/* ==========================================
-   APPLY LODESTONE
-========================================== */
-
 function applyLodestoneCharacter(data) {
 
   if (data.name) {
@@ -1273,6 +1242,7 @@ function renderJobs() {
           "div"
         );
 
+
       row.className =
         "job-icon-row";
 
@@ -1285,13 +1255,12 @@ function renderJobs() {
               "div"
             );
 
+
           item.className =
             "job-item";
 
 
-          if (
-            job === "DNC"
-          ) {
+          if (job === "DNC") {
 
             item.classList.add(
               "job-dnc"
@@ -1304,11 +1273,14 @@ function renderJobs() {
               "img"
             );
 
+
           image.src =
             `assets/jobs/${JOB_ICON_MAP[job]}`;
 
+
           image.alt =
             job;
+
 
           image.draggable =
             false;
@@ -1319,14 +1291,13 @@ function renderJobs() {
               "div"
             );
 
+
           level.className =
             "job-level";
 
 
           const jobLevel =
-            currentJobLevels[
-              job
-            ];
+            currentJobLevels[job];
 
 
           if (
@@ -1381,12 +1352,11 @@ function updatePlayStyle() {
 
 
   const selected =
-    [
-      ...playStyleCheckboxes
-    ].filter(
-      checkbox =>
-        checkbox.checked
-    );
+    [...playStyleCheckboxes]
+      .filter(
+        checkbox =>
+          checkbox.checked
+      );
 
 
   if (
@@ -1398,17 +1368,21 @@ function updatePlayStyle() {
         "span"
       );
 
+
     tag.className =
       "play-style-tag";
+
 
     tag.textContent =
       translations[
         currentLanguage
       ].none;
 
+
     previewPlayStyle.appendChild(
       tag
     );
+
 
     return;
   }
@@ -1425,6 +1399,7 @@ function updatePlayStyle() {
         document.createElement(
           "span"
         );
+
 
       tag.className =
         "play-style-tag";
@@ -1446,7 +1421,7 @@ function updatePlayStyle() {
 
 
 /* ==========================================
-   QUESTIONS
+   QUESTIONS / MESSAGE
 ========================================== */
 
 function updateQuestions() {
@@ -1470,10 +1445,6 @@ function updateQuestions() {
 }
 
 
-/* ==========================================
-   MESSAGE
-========================================== */
-
 function updateMessage() {
 
   previewMessage.textContent =
@@ -1488,10 +1459,6 @@ function updateMessage() {
   );
 }
 
-
-/* ==========================================
-   COUNTER
-========================================== */
 
 function updateCounter(input) {
 
@@ -1527,8 +1494,6 @@ function setLanguage(language) {
     currentLanguage;
 
 
-  /* LANGUAGE BUTTON */
-
   document
     .querySelectorAll(
       "[data-lang]"
@@ -1547,8 +1512,6 @@ function setLanguage(language) {
     );
 
 
-  /* GENERAL TEXT */
-
   document
     .querySelectorAll(
       "[data-i18n]"
@@ -1560,26 +1523,23 @@ function setLanguage(language) {
           element.dataset.i18n;
 
 
-        const translatedText =
+        const text =
           translations[
             currentLanguage
           ][key];
 
 
         if (
-          translatedText !==
-          undefined
+          text !== undefined
         ) {
 
           element.textContent =
-            translatedText;
+            text;
         }
 
       }
     );
 
-
-  /* PLAY STYLE FORM */
 
   document
     .querySelectorAll(
@@ -1593,9 +1553,7 @@ function setLanguage(language) {
 
 
         if (
-          playStyleTranslations[
-            key
-          ]
+          playStyleTranslations[key]
         ) {
 
           element.textContent =
@@ -1607,11 +1565,6 @@ function setLanguage(language) {
       }
     );
 
-
-  updatePlayStyle();
-
-
-  /* PREVIEW QUESTIONS */
 
   document
     .querySelectorAll(
@@ -1634,8 +1587,6 @@ function setLanguage(language) {
       }
     );
 
-
-  /* FORM QUESTIONS */
 
   document
     .querySelectorAll(
@@ -1661,7 +1612,8 @@ function setLanguage(language) {
     );
 
 
-  /* LODESTONE ERROR */
+  updatePlayStyle();
+
 
   if (
     lodestoneStatus.textContent &&
@@ -1679,15 +1631,10 @@ function setLanguage(language) {
 
 
 /* ==========================================
-   X POST
+   X
 ========================================== */
 
 function openXPost() {
-
-  /*
-    X Web Intent の hashtags は
-    # を付けずに指定する。
-  */
 
   const params =
     new URLSearchParams();
@@ -1724,15 +1671,7 @@ function openXPost() {
 }
 
 
-/* ==========================================
-   X HASHTAG SEARCH
-========================================== */
-
 function openXSearch() {
-
-  const searchText =
-    `#${X_HASHTAG}`;
-
 
   const params =
     new URLSearchParams();
@@ -1740,7 +1679,7 @@ function openXSearch() {
 
   params.set(
     "q",
-    searchText
+    `#${X_HASHTAG}`
   );
 
 
@@ -1749,10 +1688,6 @@ function openXSearch() {
     "typed_query"
   );
 
-
-  /*
-    live = 最新
-  */
 
   params.set(
     "f",
@@ -1774,7 +1709,7 @@ function openXSearch() {
 
 
 /* ==========================================
-   WAIT IMAGES
+   EXPORT HELPERS
 ========================================== */
 
 function waitForImages(root) {
@@ -1841,10 +1776,6 @@ function waitForImages(root) {
 }
 
 
-/* ==========================================
-   EXPORT IMAGE GEOMETRY
-========================================== */
-
 function prepareExportImage(clone) {
 
   const cloneImage =
@@ -1876,11 +1807,6 @@ function prepareExportImage(clone) {
   let height;
 
 
-  /*
-    正方形を完全に覆いつつ
-    元画像の縦横比を維持。
-  */
-
   if (
     imageRatio > 1
   ) {
@@ -1900,7 +1826,6 @@ function prepareExportImage(clone) {
     height =
       exportSize /
       imageRatio;
-
   }
 
 
@@ -1930,15 +1855,11 @@ async function exportSnapshot() {
     "...";
 
 
-  let stage = null;
+  let stage =
+    null;
 
 
   try {
-
-    /*
-      丸文字を含め、
-      Webフォントの読み込みを待つ。
-    */
 
     if (
       document.fonts &&
@@ -2152,21 +2073,8 @@ async function exportSnapshot() {
 
 
 /* ==========================================
-   RESIZE
-========================================== */
-
-function handleResize() {
-
-  updateImageGeometry();
-}
-
-
-/* ==========================================
    EVENTS
 ========================================== */
-
-
-/* IMAGE */
 
 imageUpload.addEventListener(
   "change",
@@ -2182,23 +2090,21 @@ snapshotImage.addEventListener(
 
 imageXInput.addEventListener(
   "input",
-  updateImageX
+  updateImageTransform
 );
 
 
 imageYInput.addEventListener(
   "input",
-  updateImageY
+  updateImageTransform
 );
 
 
 imageScaleInput.addEventListener(
   "input",
-  updateImageScale
+  updateImageTransform
 );
 
-
-/* OPACITY */
 
 coverOpacityInput.addEventListener(
   "input",
@@ -2212,75 +2118,50 @@ panelOpacityInput.addEventListener(
 );
 
 
-/* COVER COLOR */
-
 coverColorButtons.forEach(
   button => {
 
     button.addEventListener(
       "click",
-      () => {
-
-        setCoverColor(
-          button
-        );
-
-      }
+      () =>
+        setCoverColor(button)
     );
 
   }
 );
 
-
-/* TEXT COLOR */
 
 textColorButtons.forEach(
   button => {
 
     button.addEventListener(
       "click",
-      () => {
-
-        setTextColor(
-          button
-        );
-
-      }
+      () =>
+        setTextColor(button)
     );
 
   }
 );
 
-
-/* PANEL COLOR */
 
 panelColorButtons.forEach(
   button => {
 
     button.addEventListener(
       "click",
-      () => {
-
-        setPanelColor(
-          button
-        );
-
-      }
+      () =>
+        setPanelColor(button)
     );
 
   }
 );
 
 
-/* FONT */
-
 fontSelect.addEventListener(
   "change",
   updateFont
 );
 
-
-/* CHARACTER */
 
 characterNameInput.addEventListener(
   "input",
@@ -2294,15 +2175,11 @@ worldInput.addEventListener(
 );
 
 
-/* LODESTONE */
-
 lodestoneFetchButton.addEventListener(
   "click",
   fetchLodestone
 );
 
-
-/* PLAY STYLE */
 
 playStyleCheckboxes.forEach(
   checkbox => {
@@ -2316,8 +2193,6 @@ playStyleCheckboxes.forEach(
 );
 
 
-/* QUESTIONS */
-
 questionInputs.forEach(
   input => {
 
@@ -2330,15 +2205,11 @@ questionInputs.forEach(
 );
 
 
-/* MESSAGE */
-
 messageInput.addEventListener(
   "input",
   updateMessage
 );
 
-
-/* LANGUAGE */
 
 languageToggle
   .querySelectorAll(
@@ -2349,20 +2220,15 @@ languageToggle
 
       button.addEventListener(
         "click",
-        () => {
-
+        () =>
           setLanguage(
             button.dataset.lang
-          );
-
-        }
+          )
       );
 
     }
   );
 
-
-/* EXPORT */
 
 exportButton.addEventListener(
   "click",
@@ -2370,15 +2236,11 @@ exportButton.addEventListener(
 );
 
 
-/* X POST */
-
 xPostButton.addEventListener(
   "click",
   openXPost
 );
 
-
-/* X SEARCH - BOTTOM */
 
 xSearchButton.addEventListener(
   "click",
@@ -2386,19 +2248,15 @@ xSearchButton.addEventListener(
 );
 
 
-/* X SEARCH - HERO */
-
 heroXSearchButton.addEventListener(
   "click",
   openXSearch
 );
 
 
-/* RESIZE */
-
 window.addEventListener(
   "resize",
-  handleResize
+  updateImageGeometry
 );
 
 
@@ -2429,10 +2287,6 @@ function initialize() {
   setLanguage("ja");
 
 
-  /*
-    Webフォントを先に読み込ませる。
-  */
-
   if (
     document.fonts &&
     document.fonts.load
@@ -2441,7 +2295,6 @@ function initialize() {
     document.fonts.load(
       '900 32px "M PLUS Rounded 1c"'
     );
-
   }
 
 
