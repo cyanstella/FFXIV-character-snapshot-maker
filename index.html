@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
 
@@ -40,8 +39,6 @@
     <span class="studio-box">STUDIO</span>
   </a>
 
-
-  <!-- LANGUAGE -->
 
   <div
     class="language-switch"
@@ -402,7 +399,7 @@
               for="panelOpacityInput"
               data-i18n="panelOpacity"
             >
-              キャラクターパネル透明度
+              情報パネル透明度
             </label>
 
             <span id="panelOpacityValue">
@@ -443,6 +440,11 @@
         class="snapshot text-white font-sans"
       >
 
+
+        <!-- ==================================
+             SCREENSHOT
+        =================================== -->
+
         <div
           id="photoArea"
           class="photo-area"
@@ -469,13 +471,12 @@
         </div>
 
 
-        <!-- CHARACTER -->
 
-        <section class="character-panel">
+        <!-- ==================================
+             CHARACTER NAME
+        =================================== -->
 
-          <div class="panel-label">
-            CHARACTER
-          </div>
+        <section class="character-header">
 
           <div
             id="previewCharacterName"
@@ -491,11 +492,17 @@
             Ramuh / Meteor
           </div>
 
+        </section>
 
-          <div class="panel-divider"></div>
 
 
-          <div class="panel-label">
+        <!-- ==================================
+             JOBS
+        =================================== -->
+
+        <section class="snapshot-info-panel job-panel">
+
+          <div class="snapshot-section-label">
             JOB
           </div>
 
@@ -504,11 +511,17 @@
             class="job-preview"
           ></div>
 
+        </section>
 
-          <div class="panel-divider"></div>
 
 
-          <div class="panel-label">
+        <!-- ==================================
+             PLAY STYLE
+        =================================== -->
+
+        <section class="snapshot-info-panel play-style-panel">
+
+          <div class="snapshot-section-label">
             PLAY STYLE
           </div>
 
@@ -520,100 +533,112 @@
         </section>
 
 
-        <!-- QUESTIONS -->
+
+        <!-- ==================================
+             QUESTIONS
+        =================================== -->
 
         <section class="question-area">
 
-          <div class="snapshot-question">
-
-            <div
-              class="snapshot-question-label"
-              data-i18n="question1"
-            >
-              あなたのキャラクターを一言で表すと？
-            </div>
-
-            <div
-              id="previewAnswer1"
-              class="snapshot-answer"
-            >
-              —
-            </div>
-
+          <div class="question-area-title">
+            QUESTIONS
           </div>
 
 
-          <div class="snapshot-question">
+          <div class="question-grid">
 
-            <div
-              class="snapshot-question-label"
-              data-i18n="question2"
-            >
-              いちばん好きなエオルゼアでの過ごし方は？
+            <div class="snapshot-question">
+
+              <div
+                class="snapshot-question-label"
+                data-i18n="question1"
+              >
+                あなたのキャラクターを一言で表すと？
+              </div>
+
+              <div
+                id="previewAnswer1"
+                class="snapshot-answer"
+              >
+                —
+              </div>
+
             </div>
 
-            <div
-              id="previewAnswer2"
-              class="snapshot-answer"
-            >
-              —
+
+            <div class="snapshot-question">
+
+              <div
+                class="snapshot-question-label"
+                data-i18n="question2"
+              >
+                いちばん好きなエオルゼアでの過ごし方は？
+              </div>
+
+              <div
+                id="previewAnswer2"
+                class="snapshot-answer"
+              >
+                —
+              </div>
+
             </div>
 
-          </div>
 
+            <div class="snapshot-question">
 
-          <div class="snapshot-question">
+              <div
+                class="snapshot-question-label"
+                data-i18n="question3"
+              >
+                冒険で大切にしていることは？
+              </div>
 
-            <div
-              class="snapshot-question-label"
-              data-i18n="question3"
-            >
-              冒険で大切にしていることは？
+              <div
+                id="previewAnswer3"
+                class="snapshot-answer"
+              >
+                —
+              </div>
+
             </div>
 
-            <div
-              id="previewAnswer3"
-              class="snapshot-answer"
-            >
-              —
+
+            <div class="snapshot-question">
+
+              <div
+                class="snapshot-question-label"
+                data-i18n="question4"
+              >
+                いちばん思い出深い出来事は？
+              </div>
+
+              <div
+                id="previewAnswer4"
+                class="snapshot-answer"
+              >
+                —
+              </div>
+
             </div>
 
-          </div>
 
+            <div class="snapshot-question">
 
-          <div class="snapshot-question">
+              <div
+                class="snapshot-question-label"
+                data-i18n="question5"
+              >
+                これから叶えたい目標は？
+              </div>
 
-            <div
-              class="snapshot-question-label"
-              data-i18n="question4"
-            >
-              いちばん思い出深い出来事は？
-            </div>
+              <div
+                id="previewAnswer5"
+                class="snapshot-answer"
+              >
+                —
+              </div>
 
-            <div
-              id="previewAnswer4"
-              class="snapshot-answer"
-            >
-              —
-            </div>
-
-          </div>
-
-
-          <div class="snapshot-question">
-
-            <div
-              class="snapshot-question-label"
-              data-i18n="question5"
-            >
-              これから叶えたい目標は？
-            </div>
-
-            <div
-              id="previewAnswer5"
-              class="snapshot-answer"
-            >
-              —
             </div>
 
           </div>
@@ -621,7 +646,10 @@
         </section>
 
 
-        <!-- MESSAGE -->
+
+        <!-- ==================================
+             MESSAGE
+        =================================== -->
 
         <section class="message-area">
 
@@ -638,6 +666,11 @@
 
         </section>
 
+
+
+        <!-- ==================================
+             META
+        =================================== -->
 
         <div class="snapshot-copyright">
           (C) SQUARE ENIX
@@ -659,6 +692,9 @@
       </div>
 
 
+
+      <!-- EXPORT -->
+
       <div class="export-area">
 
         <button
@@ -677,7 +713,7 @@
 
 
     <!-- ======================================
-         SETTINGS
+         MAIN CONTROLS
     ======================================= -->
 
     <div class="main-controls">
@@ -928,7 +964,10 @@
 
         <div class="question-input-block">
 
-          <label for="answer1" data-i18n="question1">
+          <label
+            for="answer1"
+            data-i18n="question1"
+          >
             あなたのキャラクターを一言で表すと？
           </label>
 
@@ -937,7 +976,10 @@
             maxlength="80"
           ></textarea>
 
-          <div id="answer1Count" class="char-counter">
+          <div
+            id="answer1Count"
+            class="char-counter"
+          >
             0 / 80文字
           </div>
 
@@ -946,7 +988,10 @@
 
         <div class="question-input-block">
 
-          <label for="answer2" data-i18n="question2">
+          <label
+            for="answer2"
+            data-i18n="question2"
+          >
             いちばん好きなエオルゼアでの過ごし方は？
           </label>
 
@@ -955,7 +1000,10 @@
             maxlength="80"
           ></textarea>
 
-          <div id="answer2Count" class="char-counter">
+          <div
+            id="answer2Count"
+            class="char-counter"
+          >
             0 / 80文字
           </div>
 
@@ -964,7 +1012,10 @@
 
         <div class="question-input-block">
 
-          <label for="answer3" data-i18n="question3">
+          <label
+            for="answer3"
+            data-i18n="question3"
+          >
             冒険で大切にしていることは？
           </label>
 
@@ -973,7 +1024,10 @@
             maxlength="80"
           ></textarea>
 
-          <div id="answer3Count" class="char-counter">
+          <div
+            id="answer3Count"
+            class="char-counter"
+          >
             0 / 80文字
           </div>
 
@@ -982,7 +1036,10 @@
 
         <div class="question-input-block">
 
-          <label for="answer4" data-i18n="question4">
+          <label
+            for="answer4"
+            data-i18n="question4"
+          >
             いちばん思い出深い出来事は？
           </label>
 
@@ -991,7 +1048,10 @@
             maxlength="80"
           ></textarea>
 
-          <div id="answer4Count" class="char-counter">
+          <div
+            id="answer4Count"
+            class="char-counter"
+          >
             0 / 80文字
           </div>
 
@@ -1000,7 +1060,10 @@
 
         <div class="question-input-block">
 
-          <label for="answer5" data-i18n="question5">
+          <label
+            for="answer5"
+            data-i18n="question5"
+          >
             これから叶えたい目標は？
           </label>
 
@@ -1009,7 +1072,10 @@
             maxlength="80"
           ></textarea>
 
-          <div id="answer5Count" class="char-counter">
+          <div
+            id="answer5Count"
+            class="char-counter"
+          >
             0 / 80文字
           </div>
 

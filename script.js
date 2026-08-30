@@ -24,9 +24,7 @@ const languageEnButton =
   document.getElementById("languageEnButton");
 
 const languageButtons =
-  document.querySelectorAll(
-    ".language-button"
-  );
+  document.querySelectorAll(".language-button");
 
 
 /* IMAGE */
@@ -119,22 +117,16 @@ const previewPlayStyle =
   document.getElementById("previewPlayStyle");
 
 const playStyleCheckboxes =
-  document.querySelectorAll(
-    ".play-style-checkbox"
-  );
+  document.querySelectorAll(".play-style-checkbox");
 
 
 /* BUTTONS */
 
 const coverButtons =
-  document.querySelectorAll(
-    "[data-cover]"
-  );
+  document.querySelectorAll("[data-cover]");
 
 const textColorButtons =
-  document.querySelectorAll(
-    "[data-text-color]"
-  );
+  document.querySelectorAll("[data-text-color]");
 
 
 /* EXPORT */
@@ -207,7 +199,7 @@ const translations = {
       "コンデンス",
 
     panelOpacity:
-      "キャラクターパネル透明度",
+      "情報パネル透明度",
 
 
     lodestoneUrlLabel:
@@ -266,50 +258,21 @@ const translations = {
       "PNG画像を書き出す",
 
 
-    styleRelaxed:
-      "のんびり",
-
-    styleSS:
-      "SS撮影",
-
-    styleStory:
-      "ストーリー",
-
-    styleBattle:
-      "バトル",
-
-    styleHighend:
-      "高難度",
-
-    styleGatherer:
-      "ギャザラー",
-
-    styleCrafter:
-      "クラフター",
-
-    styleHousing:
-      "ハウジング",
-
-    styleGlamour:
-      "ミラプリ",
-
-    styleGoldSaucer:
-      "ゴールドソーサー",
-
-    styleFishing:
-      "釣り",
-
-    styleMap:
-      "地図",
-
-    styleHunt:
-      "モブハント",
-
-    styleRoleplay:
-      "ロールプレイ",
-
-    styleFriends:
-      "フレンド交流",
+    styleRelaxed:"のんびり",
+    styleSS:"SS撮影",
+    styleStory:"ストーリー",
+    styleBattle:"バトル",
+    styleHighend:"高難度",
+    styleGatherer:"ギャザラー",
+    styleCrafter:"クラフター",
+    styleHousing:"ハウジング",
+    styleGlamour:"ミラプリ",
+    styleGoldSaucer:"ゴールドソーサー",
+    styleFishing:"釣り",
+    styleMap:"地図",
+    styleHunt:"モブハント",
+    styleRoleplay:"ロールプレイ",
+    styleFriends:"フレンド交流",
 
 
     aboutText:
@@ -372,7 +335,7 @@ const translations = {
       "Condensed",
 
     panelOpacity:
-      "Character Panel Opacity",
+      "Information Panel Opacity",
 
 
     lodestoneUrlLabel:
@@ -431,50 +394,21 @@ const translations = {
       "EXPORT PNG",
 
 
-    styleRelaxed:
-      "Relaxed",
-
-    styleSS:
-      "Screenshots",
-
-    styleStory:
-      "Story",
-
-    styleBattle:
-      "Battle",
-
-    styleHighend:
-      "High-end",
-
-    styleGatherer:
-      "Gathering",
-
-    styleCrafter:
-      "Crafting",
-
-    styleHousing:
-      "Housing",
-
-    styleGlamour:
-      "Glamour",
-
-    styleGoldSaucer:
-      "Gold Saucer",
-
-    styleFishing:
-      "Fishing",
-
-    styleMap:
-      "Treasure Maps",
-
-    styleHunt:
-      "Hunts",
-
-    styleRoleplay:
-      "Roleplay",
-
-    styleFriends:
-      "Friends",
+    styleRelaxed:"Relaxed",
+    styleSS:"Screenshots",
+    styleStory:"Story",
+    styleBattle:"Battle",
+    styleHighend:"High-end",
+    styleGatherer:"Gathering",
+    styleCrafter:"Crafting",
+    styleHousing:"Housing",
+    styleGlamour:"Glamour",
+    styleGoldSaucer:"Gold Saucer",
+    styleFishing:"Fishing",
+    styleMap:"Treasure Maps",
+    styleHunt:"Hunts",
+    styleRoleplay:"Roleplay",
+    styleFriends:"Friends",
 
 
     aboutText:
@@ -492,85 +426,22 @@ const translations = {
 
 const playStyleTranslations = {
 
-  relaxed:{
-    ja:"のんびり",
-    en:"Relaxed"
-  },
-
-  ss:{
-    ja:"SS撮影",
-    en:"Screenshots"
-  },
-
-  story:{
-    ja:"ストーリー",
-    en:"Story"
-  },
-
-  battle:{
-    ja:"バトル",
-    en:"Battle"
-  },
-
-  highend:{
-    ja:"高難度",
-    en:"High-end"
-  },
-
-  pvp:{
-    ja:"PvP",
-    en:"PvP"
-  },
-
-  gatherer:{
-    ja:"ギャザラー",
-    en:"Gathering"
-  },
-
-  crafter:{
-    ja:"クラフター",
-    en:"Crafting"
-  },
-
-  housing:{
-    ja:"ハウジング",
-    en:"Housing"
-  },
-
-  glamour:{
-    ja:"ミラプリ",
-    en:"Glamour"
-  },
-
-  goldsaucer:{
-    ja:"ゴールドソーサー",
-    en:"Gold Saucer"
-  },
-
-  fishing:{
-    ja:"釣り",
-    en:"Fishing"
-  },
-
-  map:{
-    ja:"地図",
-    en:"Treasure Maps"
-  },
-
-  hunt:{
-    ja:"モブハント",
-    en:"Hunts"
-  },
-
-  roleplay:{
-    ja:"ロールプレイ",
-    en:"Roleplay"
-  },
-
-  friends:{
-    ja:"フレンド交流",
-    en:"Friends"
-  }
+  relaxed:{ja:"のんびり",en:"Relaxed"},
+  ss:{ja:"SS撮影",en:"Screenshots"},
+  story:{ja:"ストーリー",en:"Story"},
+  battle:{ja:"バトル",en:"Battle"},
+  highend:{ja:"高難度",en:"High-end"},
+  pvp:{ja:"PvP",en:"PvP"},
+  gatherer:{ja:"ギャザラー",en:"Gathering"},
+  crafter:{ja:"クラフター",en:"Crafting"},
+  housing:{ja:"ハウジング",en:"Housing"},
+  glamour:{ja:"ミラプリ",en:"Glamour"},
+  goldsaucer:{ja:"ゴールドソーサー",en:"Gold Saucer"},
+  fishing:{ja:"釣り",en:"Fishing"},
+  map:{ja:"地図",en:"Treasure Maps"},
+  hunt:{ja:"モブハント",en:"Hunts"},
+  roleplay:{ja:"ロールプレイ",en:"Roleplay"},
+  friends:{ja:"フレンド交流",en:"Friends"}
 
 };
 
@@ -593,13 +464,8 @@ function applyLanguage() {
       const key =
         element.dataset.i18n;
 
-
       const text =
-        translations[
-          currentLanguage
-        ][
-          key
-        ];
+        translations[currentLanguage][key];
 
 
       if (
@@ -615,27 +481,23 @@ function applyLanguage() {
     });
 
 
-  /* ------------------------------------------
-     JP / EN BUTTON STATE
-  ------------------------------------------ */
-
   languageButtons.forEach(
     button => {
 
-      const isActive =
+      const active =
         button.dataset.language ===
         currentLanguage;
 
 
       button.classList.toggle(
         "active",
-        isActive
+        active
       );
 
 
       button.setAttribute(
         "aria-pressed",
-        isActive
+        active
           ? "true"
           : "false"
       );
@@ -653,23 +515,15 @@ function applyLanguage() {
 
 
 /* ==========================================
-   LANGUAGE BUTTON EVENTS
+   LANGUAGE BUTTONS
 ========================================== */
 
 languageJaButton.addEventListener(
   "click",
   () => {
 
-    if (
-      currentLanguage === "ja"
-    ) {
-      return;
-    }
-
-
     currentLanguage =
       "ja";
-
 
     applyLanguage();
 
@@ -681,16 +535,8 @@ languageEnButton.addEventListener(
   "click",
   () => {
 
-    if (
-      currentLanguage === "en"
-    ) {
-      return;
-    }
-
-
     currentLanguage =
       "en";
-
 
     applyLanguage();
 
@@ -721,15 +567,13 @@ imageUpload.addEventListener(
 
 
     reader.onload =
-      loadEvent => {
+      event => {
 
         snapshotImage.src =
-          loadEvent.target.result;
-
+          event.target.result;
 
         snapshotImage.style.display =
           "block";
-
 
         photoPlaceholder.style.display =
           "none";
@@ -737,9 +581,7 @@ imageUpload.addEventListener(
       };
 
 
-    reader.readAsDataURL(
-      file
-    );
+    reader.readAsDataURL(file);
 
   }
 );
@@ -753,9 +595,7 @@ imageUpload.addEventListener(
 function updateImageX() {
 
   const value =
-    Number(
-      imageXInput.value
-    );
+    Number(imageXInput.value);
 
 
   snapshotImage.style.setProperty(
@@ -773,9 +613,7 @@ function updateImageX() {
 function updateImageY() {
 
   const value =
-    Number(
-      imageYInput.value
-    );
+    Number(imageYInput.value);
 
 
   snapshotImage.style.setProperty(
@@ -793,9 +631,7 @@ function updateImageY() {
 function updateImageScale() {
 
   const value =
-    Number(
-      imageScaleInput.value
-    );
+    Number(imageScaleInput.value);
 
 
   snapshotImage.style.setProperty(
@@ -815,12 +651,10 @@ imageXInput.addEventListener(
   updateImageX
 );
 
-
 imageYInput.addEventListener(
   "input",
   updateImageY
 );
-
 
 imageScaleInput.addEventListener(
   "input",
@@ -841,19 +675,12 @@ coverButtons.forEach(
       () => {
 
         coverButtons.forEach(
-          item => {
-
-            item.classList.remove(
-              "active"
-            );
-
-          }
+          item =>
+            item.classList.remove("active")
         );
 
 
-        button.classList.add(
-          "active"
-        );
+        button.classList.add("active");
 
 
         coverFilm.classList.remove(
@@ -863,8 +690,7 @@ coverButtons.forEach(
 
 
         coverFilm.classList.add(
-          button.dataset.cover ===
-          "white"
+          button.dataset.cover === "white"
             ? "cover-white"
             : "cover-black"
         );
@@ -880,9 +706,7 @@ coverButtons.forEach(
 function updateCoverOpacity() {
 
   const value =
-    Number(
-      coverOpacityInput.value
-    );
+    Number(coverOpacityInput.value);
 
 
   coverFilm.style.setProperty(
@@ -905,7 +729,7 @@ coverOpacityInput.addEventListener(
 
 
 /* ==========================================
-   TEXT / PANEL COLOR
+   TEXT COLOR
 ========================================== */
 
 textColorButtons.forEach(
@@ -916,19 +740,12 @@ textColorButtons.forEach(
       () => {
 
         textColorButtons.forEach(
-          item => {
-
-            item.classList.remove(
-              "active"
-            );
-
-          }
+          item =>
+            item.classList.remove("active")
         );
 
 
-        button.classList.add(
-          "active"
-        );
+        button.classList.add("active");
 
 
         snapshot.classList.remove(
@@ -938,8 +755,7 @@ textColorButtons.forEach(
 
 
         snapshot.classList.add(
-          button.dataset.textColor ===
-          "black"
+          button.dataset.textColor === "black"
             ? "text-black"
             : "text-white"
         );
@@ -959,13 +775,11 @@ textColorButtons.forEach(
 function updatePanelOpacity() {
 
   const value =
-    Number(
-      panelOpacityInput.value
-    );
+    Number(panelOpacityInput.value);
 
 
   snapshot.style.setProperty(
-    "--character-panel-alpha",
+    "--info-panel-alpha",
     value / 100
   );
 
@@ -1034,7 +848,6 @@ characterNameInput.addEventListener(
   updateCharacter
 );
 
-
 worldInput.addEventListener(
   "input",
   updateCharacter
@@ -1099,51 +912,26 @@ const JOB_ICON_MAP = {
 const JOB_GROUPS = [
 
   [
-    "PLD",
-    "WAR",
-    "DRK",
-    "GNB",
-    "WHM",
-    "SCH",
-    "AST",
-    "SGE"
+    "PLD","WAR","DRK","GNB",
+    "WHM","SCH","AST","SGE"
   ],
 
   [
-    "MNK",
-    "DRG",
-    "NIN",
-    "SAM",
-    "RPR",
-    "VPR",
-    "BRD",
-    "MCH",
-    "DNC"
+    "MNK","DRG","NIN","SAM",
+    "RPR","VPR","BRD","MCH","DNC"
   ],
 
   [
-    "BLM",
-    "SMN",
-    "RDM",
-    "PCT",
-    "BLU"
+    "BLM","SMN","RDM","PCT","BLU"
   ],
 
   [
-    "CRP",
-    "BSM",
-    "ARM",
-    "GSM",
-    "LTW",
-    "WVR",
-    "ALC",
-    "CUL"
+    "CRP","BSM","ARM","GSM",
+    "LTW","WVR","ALC","CUL"
   ],
 
   [
-    "MIN",
-    "BTN",
-    "FSH"
+    "MIN","BTN","FSH"
   ]
 
 ];
@@ -1151,25 +939,20 @@ const JOB_GROUPS = [
 
 
 /* ==========================================
-   EMPTY JOB DATA
+   EMPTY JOBS
 ========================================== */
 
 function createEmptyJobs() {
 
-  const jobs =
-    {};
+  const jobs = {};
 
 
-  Object
-    .keys(JOB_ICON_MAP)
-    .forEach(
-      job => {
+  Object.keys(JOB_ICON_MAP)
+    .forEach(job => {
 
-        jobs[job] =
-          "—";
+      jobs[job] = "—";
 
-      }
-    );
+    });
 
 
   return jobs;
@@ -1182,39 +965,27 @@ function createEmptyJobs() {
    RENDER JOBS
 ========================================== */
 
-function renderJobs(
-  jobs = {}
-) {
+function renderJobs(jobs = {}) {
 
   const container =
-    document.getElementById(
-      "jobPreview"
-    );
+    document.getElementById("jobPreview");
 
 
-  container.innerHTML =
-    "";
+  container.innerHTML = "";
 
 
   JOB_GROUPS.forEach(
-    (
-      group,
-      groupIndex
-    ) => {
+    (group, groupIndex) => {
 
       const row =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
 
       row.className =
         "job-icon-row";
 
 
-      if (
-        groupIndex === 1
-      ) {
+      if (groupIndex === 1) {
 
         row.classList.add(
           "job-row-dps-1"
@@ -1227,19 +998,14 @@ function renderJobs(
         abbreviation => {
 
           const item =
-            document.createElement(
-              "div"
-            );
+            document.createElement("div");
 
 
           item.className =
             "job-icon-item";
 
 
-          if (
-            abbreviation ===
-            "DNC"
-          ) {
+          if (abbreviation === "DNC") {
 
             item.classList.add(
               "job-dnc"
@@ -1249,9 +1015,7 @@ function renderJobs(
 
 
           const img =
-            document.createElement(
-              "img"
-            );
+            document.createElement("img");
 
 
           img.src =
@@ -1267,9 +1031,7 @@ function renderJobs(
 
 
           const levelElement =
-            document.createElement(
-              "div"
-            );
+            document.createElement("div");
 
 
           levelElement.className =
@@ -1277,40 +1039,30 @@ function renderJobs(
 
 
           const level =
-            jobs[
-              abbreviation
-            ];
+            jobs[abbreviation];
 
 
           levelElement.textContent =
-            level !== undefined
-            &&
+            level !== undefined &&
             level !== null
               ? level
               : "—";
 
 
-          item.appendChild(
-            img
-          );
-
+          item.appendChild(img);
 
           item.appendChild(
             levelElement
           );
 
 
-          row.appendChild(
-            item
-          );
+          row.appendChild(item);
 
         }
       );
 
 
-      container.appendChild(
-        row
-      );
+      container.appendChild(row);
 
     }
   );
@@ -1320,12 +1072,10 @@ function renderJobs(
 
 
 /* ==========================================
-   APPLY LODESTONE DATA
+   APPLY LODESTONE
 ========================================== */
 
-function applyLodestoneCharacter(
-  data
-) {
+function applyLodestoneCharacter(data) {
 
   if (data.name) {
 
@@ -1336,14 +1086,6 @@ function applyLodestoneCharacter(
 
 
   if (data.world) {
-
-    /*
-      Lodestone:
-      Mandragora [Meteor]
-
-      Preview:
-      Mandragora / Meteor
-    */
 
     const world =
       data.world
@@ -1384,36 +1126,26 @@ function setLodestoneStatus(
   text
 ) {
 
-  lodestoneStatus
-    .classList
-    .remove(
-      "success",
-      "error"
+  lodestoneStatus.classList.remove(
+    "success",
+    "error"
+  );
+
+
+  if (type === "success") {
+
+    lodestoneStatus.classList.add(
+      "success"
     );
-
-
-  if (
-    type === "success"
-  ) {
-
-    lodestoneStatus
-      .classList
-      .add(
-        "success"
-      );
 
   }
 
 
-  if (
-    type === "error"
-  ) {
+  if (type === "error") {
 
-    lodestoneStatus
-      .classList
-      .add(
-        "error"
-      );
+    lodestoneStatus.classList.add(
+      "error"
+    );
 
   }
 
@@ -1429,28 +1161,20 @@ function setLodestoneStatus(
    VALIDATE LODESTONE URL
 ========================================== */
 
-function isValidLodestoneUrl(
-  value
-) {
+function isValidLodestoneUrl(value) {
 
   try {
 
     const url =
-      new URL(
-        value
-      );
+      new URL(value);
 
 
     const allowedHosts = [
 
       "jp.finalfantasyxiv.com",
-
       "na.finalfantasyxiv.com",
-
       "eu.finalfantasyxiv.com",
-
       "fr.finalfantasyxiv.com",
-
       "de.finalfantasyxiv.com"
 
     ];
@@ -1479,7 +1203,7 @@ function isValidLodestoneUrl(
 
 
 /* ==========================================
-   REAL LODESTONE FETCH
+   LODESTONE FETCH
 ========================================== */
 
 lodestoneFetchButton.addEventListener(
@@ -1487,18 +1211,15 @@ lodestoneFetchButton.addEventListener(
   async () => {
 
     const url =
-      lodestoneUrlInput
-        .value
-        .trim();
+      lodestoneUrlInput.value.trim();
 
 
     if (!url) {
 
       setLodestoneStatus(
         "error",
-        translations[
-          currentLanguage
-        ].lodestoneEmpty
+        translations[currentLanguage]
+          .lodestoneEmpty
       );
 
       return;
@@ -1506,17 +1227,12 @@ lodestoneFetchButton.addEventListener(
     }
 
 
-    if (
-      !isValidLodestoneUrl(
-        url
-      )
-    ) {
+    if (!isValidLodestoneUrl(url)) {
 
       setLodestoneStatus(
         "error",
-        translations[
-          currentLanguage
-        ].lodestoneInvalid
+        translations[currentLanguage]
+          .lodestoneInvalid
       );
 
       return;
@@ -1530,9 +1246,8 @@ lodestoneFetchButton.addEventListener(
 
     setLodestoneStatus(
       "",
-      translations[
-        currentLanguage
-      ].lodestoneFetching
+      translations[currentLanguage]
+        .lodestoneFetching
     );
 
 
@@ -1544,9 +1259,7 @@ lodestoneFetchButton.addEventListener(
           +
           "/?url="
           +
-          encodeURIComponent(
-            url
-          ),
+          encodeURIComponent(url),
           {
             method:"GET",
             cache:"no-store"
@@ -1554,9 +1267,7 @@ lodestoneFetchButton.addEventListener(
         );
 
 
-      if (
-        !response.ok
-      ) {
+      if (!response.ok) {
 
         throw new Error(
           `Worker HTTP ${response.status}`
@@ -1569,9 +1280,7 @@ lodestoneFetchButton.addEventListener(
         await response.json();
 
 
-      if (
-        !data.success
-      ) {
+      if (!data.success) {
 
         throw new Error(
           data.error
@@ -1589,9 +1298,8 @@ lodestoneFetchButton.addEventListener(
 
       setLodestoneStatus(
         "success",
-        translations[
-          currentLanguage
-        ].lodestoneSuccess
+        translations[currentLanguage]
+          .lodestoneSuccess
       );
 
     }
@@ -1606,9 +1314,8 @@ lodestoneFetchButton.addEventListener(
 
       setLodestoneStatus(
         "error",
-        translations[
-          currentLanguage
-        ].lodestoneError
+        translations[currentLanguage]
+          .lodestoneError
       );
 
     }
@@ -1636,23 +1343,17 @@ function updatePlayStyle() {
 
 
   const selected =
-    [
-      ...playStyleCheckboxes
-    ]
+    [...playStyleCheckboxes]
       .filter(
         checkbox =>
           checkbox.checked
       );
 
 
-  if (
-    selected.length === 0
-  ) {
+  if (selected.length === 0) {
 
     const tag =
-      document.createElement(
-        "span"
-      );
+      document.createElement("span");
 
 
     tag.className =
@@ -1683,9 +1384,7 @@ function updatePlayStyle() {
 
 
       const tag =
-        document.createElement(
-          "span"
-        );
+        document.createElement("span");
 
 
       tag.className =
@@ -1730,101 +1429,37 @@ playStyleCheckboxes.forEach(
 const questionData = [
 
   {
-    input:
-      document.getElementById(
-        "answer1"
-      ),
-
-    preview:
-      document.getElementById(
-        "previewAnswer1"
-      ),
-
-    counter:
-      document.getElementById(
-        "answer1Count"
-      ),
-
+    input:document.getElementById("answer1"),
+    preview:document.getElementById("previewAnswer1"),
+    counter:document.getElementById("answer1Count"),
     max:80
   },
 
-
   {
-    input:
-      document.getElementById(
-        "answer2"
-      ),
-
-    preview:
-      document.getElementById(
-        "previewAnswer2"
-      ),
-
-    counter:
-      document.getElementById(
-        "answer2Count"
-      ),
-
+    input:document.getElementById("answer2"),
+    preview:document.getElementById("previewAnswer2"),
+    counter:document.getElementById("answer2Count"),
     max:80
   },
 
-
   {
-    input:
-      document.getElementById(
-        "answer3"
-      ),
-
-    preview:
-      document.getElementById(
-        "previewAnswer3"
-      ),
-
-    counter:
-      document.getElementById(
-        "answer3Count"
-      ),
-
+    input:document.getElementById("answer3"),
+    preview:document.getElementById("previewAnswer3"),
+    counter:document.getElementById("answer3Count"),
     max:80
   },
 
-
   {
-    input:
-      document.getElementById(
-        "answer4"
-      ),
-
-    preview:
-      document.getElementById(
-        "previewAnswer4"
-      ),
-
-    counter:
-      document.getElementById(
-        "answer4Count"
-      ),
-
+    input:document.getElementById("answer4"),
+    preview:document.getElementById("previewAnswer4"),
+    counter:document.getElementById("answer4Count"),
     max:80
   },
 
-
   {
-    input:
-      document.getElementById(
-        "answer5"
-      ),
-
-    preview:
-      document.getElementById(
-        "previewAnswer5"
-      ),
-
-    counter:
-      document.getElementById(
-        "answer5Count"
-      ),
-
+    input:document.getElementById("answer5"),
+    preview:document.getElementById("previewAnswer5"),
+    counter:document.getElementById("answer5Count"),
     max:80
   }
 
@@ -1837,20 +1472,14 @@ function counterText(
   max
 ) {
 
-  if (
-    currentLanguage === "ja"
-  ) {
+  if (currentLanguage === "ja") {
 
-    return (
-      `${length} / ${max}文字`
-    );
+    return `${length} / ${max}文字`;
 
   }
 
 
-  return (
-    `${length} / ${max}`
-  );
+  return `${length} / ${max}`;
 
 }
 
@@ -1864,9 +1493,7 @@ questionData.forEach(
       () => {
 
         item.preview.textContent =
-          item.input
-            .value
-            .trim()
+          item.input.value.trim()
           ||
           "—";
 
@@ -1910,9 +1537,7 @@ messageInput.addEventListener(
   () => {
 
     previewMessage.textContent =
-      messageInput
-        .value
-        .trim()
+      messageInput.value.trim()
       ||
       "—";
 
@@ -1955,7 +1580,6 @@ function updateAllCounters() {
 
 /* ==========================================
    EXPORT
-   1080 × 1080
 ========================================== */
 
 async function exportSnapshot() {
@@ -2007,9 +1631,7 @@ async function exportSnapshot() {
 
 
     exportStage =
-      document.createElement(
-        "div"
-      );
+      document.createElement("div");
 
 
     exportStage.style.position =
@@ -2032,14 +1654,10 @@ async function exportSnapshot() {
 
 
     const clone =
-      snapshot.cloneNode(
-        true
-      );
+      snapshot.cloneNode(true);
 
 
-    clone.removeAttribute(
-      "id"
-    );
+    clone.removeAttribute("id");
 
 
     clone.style.width =
@@ -2069,11 +1687,7 @@ async function exportSnapshot() {
 
 
     const images =
-      [
-        ...clone.querySelectorAll(
-          "img"
-        )
-      ];
+      [...clone.querySelectorAll("img")];
 
 
     await Promise.all(
@@ -2081,9 +1695,7 @@ async function exportSnapshot() {
       images.map(
         img => {
 
-          if (
-            img.complete
-          ) {
+          if (img.complete) {
 
             return Promise.resolve();
 
@@ -2113,17 +1725,11 @@ async function exportSnapshot() {
         clone,
         {
           backgroundColor:null,
-
           scale:1,
-
           width:1080,
-
           height:1080,
-
           useCORS:true,
-
           allowTaint:false,
-
           logging:false
         }
       );
@@ -2152,15 +1758,11 @@ async function exportSnapshot() {
 
 
     const url =
-      URL.createObjectURL(
-        blob
-      );
+      URL.createObjectURL(blob);
 
 
     const link =
-      document.createElement(
-        "a"
-      );
+      document.createElement("a");
 
 
     link.href =
@@ -2185,9 +1787,7 @@ async function exportSnapshot() {
     setTimeout(
       () => {
 
-        URL.revokeObjectURL(
-          url
-        );
+        URL.revokeObjectURL(url);
 
       },
       1000
@@ -2197,9 +1797,7 @@ async function exportSnapshot() {
 
   catch (error) {
 
-    console.error(
-      error
-    );
+    console.error(error);
 
 
     alert(
@@ -2212,9 +1810,7 @@ async function exportSnapshot() {
 
   finally {
 
-    if (
-      exportStage
-    ) {
+    if (exportStage) {
 
       exportStage.remove();
 
@@ -2258,11 +1854,6 @@ function initialize() {
 
   updateCharacter();
 
-
-  /*
-    Lodestone取得前も
-    全ジョブの配置を表示
-  */
 
   renderJobs(
     createEmptyJobs()
