@@ -171,21 +171,9 @@ let currentJobLevels = {};
 
 let currentImageObjectUrl = null;
 
-
-/*
-  元SSサイズ。
-*/
 let imageNaturalWidth = 0;
 let imageNaturalHeight = 0;
 
-
-/*
-  プレビューで実際に使っている
-  SSの基準サイズ。
-
-  これはSnapshotのCSS表示サイズから
-  毎回計算する。
-*/
 let imageBaseWidth = 0;
 let imageBaseHeight = 0;
 
@@ -239,7 +227,7 @@ const JOB_ICON_MAP = {
 
 
 /* ==========================================
-   JOB LAYOUT
+   JOB GROUPS
 ========================================== */
 
 const JOB_GROUPS = [
@@ -264,10 +252,11 @@ const JOB_GROUPS = [
 
 
 /* ==========================================
-   PLAY STYLE
+   PLAY STYLE TRANSLATIONS
 ========================================== */
 
 const playStyleTranslations = {
+
   relax: {
     ja: "のんびり",
     en: "Relax"
@@ -347,6 +336,7 @@ const playStyleTranslations = {
     ja: "フレンド交流",
     en: "Friends"
   }
+
 };
 
 
@@ -355,6 +345,7 @@ const playStyleTranslations = {
 ========================================== */
 
 const questionTranslations = {
+
   ja: [
     "あなたのキャラクターを一言で表すと？",
     "いちばん好きなエオルゼアでの過ごし方は？",
@@ -370,15 +361,18 @@ const questionTranslations = {
     "What is your most memorable experience?",
     "What would you like to achieve next?"
   ]
+
 };
 
 
 /* ==========================================
-   TRANSLATIONS
+   GENERAL TRANSLATIONS
 ========================================== */
 
 const translations = {
+
   ja: {
+
     heroLine1:
       "あなたの冒険を、",
 
@@ -412,6 +406,21 @@ const translations = {
     font:
       "フォント",
 
+    fontGothic:
+      "ゴシック",
+
+    fontRounded:
+      "丸文字",
+
+    fontMincho:
+      "明朝",
+
+    fontModern:
+      "モダン",
+
+    fontCondensed:
+      "コンデンス",
+
     panelColor:
       "情報パネル色",
 
@@ -421,20 +430,26 @@ const translations = {
     lodestoneUrl:
       "Lodestone キャラクターURL",
 
+    lodestoneButton:
+      "LODESTONE DATA GET",
+
     manualEdit:
       "取得データ / 手動編集",
 
     characterName:
       "キャラクター名",
 
+    worldDataCenter:
+      "World / Data Center",
+
+    messageDescription:
+      "キャラクターからのひとこと",
+
     export:
       "SSを書き出す",
 
     none:
       "未選択",
-
-    emptyAnswer:
-      "—",
 
     lodestoneLoading:
       "キャラクターデータを取得しています。",
@@ -450,10 +465,12 @@ const translations = {
 
     disclaimer:
       "本サイトは個人が制作・運営する非公式ツールであり、株式会社スクウェア・エニックスとは関係ありません。本サイトの利用によって生じた損害・不利益について、制作者は責任を負いかねます。また、スクリーンショットや入力内容については、各利用者の責任のもとでご利用ください。"
+
   },
 
 
   en: {
+
     heroLine1:
       "Your adventure,",
 
@@ -461,10 +478,10 @@ const translations = {
       "captured in a single snapshot.",
 
     heroDescription:
-      "Create your own snapshot by combining an FFXIV screenshot with character information, jobs, play styles, five questions and a personal message.",
+      "Create your own snapshot by combining an FFXIV screenshot with character information, jobs, play styles, answers to five questions, and a personal message.",
 
     screenshotSelect:
-      "Select screenshot",
+      "Select a screenshot image",
 
     imageX:
       "Horizontal position",
@@ -487,14 +504,32 @@ const translations = {
     font:
       "Font",
 
+    fontGothic:
+      "Gothic",
+
+    fontRounded:
+      "Rounded",
+
+    fontMincho:
+      "Mincho",
+
+    fontModern:
+      "Modern",
+
+    fontCondensed:
+      "Condensed",
+
     panelColor:
-      "Panel color",
+      "Information panel color",
 
     panelOpacity:
-      "Panel opacity",
+      "Information panel opacity",
 
     lodestoneUrl:
       "Lodestone Character URL",
+
+    lodestoneButton:
+      "GET LODESTONE DATA",
 
     manualEdit:
       "Retrieved data / Manual edit",
@@ -502,14 +537,17 @@ const translations = {
     characterName:
       "Character Name",
 
+    worldDataCenter:
+      "World / Data Center",
+
+    messageDescription:
+      "A message from your character",
+
     export:
       "EXPORT SNAPSHOT",
 
     none:
       "None",
-
-    emptyAnswer:
-      "—",
 
     lodestoneLoading:
       "Loading character data...",
@@ -525,7 +563,9 @@ const translations = {
 
     disclaimer:
       "This is an unofficial fan-made web tool and is not affiliated with or endorsed by SQUARE ENIX CO., LTD. The creator assumes no responsibility for any loss or damage arising from the use of this site. Users are responsible for the screenshots and information they choose to use or enter."
+
   }
+
 };
 
 
@@ -534,8 +574,10 @@ const translations = {
 ========================================== */
 
 function handleImageUpload(event) {
+
   const file =
     event.target.files?.[0];
+
 
   if (!file) {
     return;
@@ -543,9 +585,11 @@ function handleImageUpload(event) {
 
 
   if (currentImageObjectUrl) {
+
     URL.revokeObjectURL(
       currentImageObjectUrl
     );
+
   }
 
 
@@ -555,6 +599,7 @@ function handleImageUpload(event) {
 
   snapshotImage.src =
     currentImageObjectUrl;
+
 }
 
 
@@ -563,6 +608,7 @@ function handleImageUpload(event) {
 ========================================== */
 
 function handleImageLoad() {
+
   imageNaturalWidth =
     snapshotImage.naturalWidth;
 
@@ -582,27 +628,17 @@ function handleImageLoad() {
     "none";
 
 
-  /*
-    SSの初期位置は変更しない。
-  */
-
   updateImageGeometry();
+
 }
 
 
 /* ==========================================
    IMAGE GEOMETRY
-
-   ★今回の重要部分
-
-   Snapshotの表示サイズと
-   元SSのアスペクト比から
-   cover表示に必要なpxサイズを計算。
-
-   画像の縦横比は絶対に変更しない。
 ========================================== */
 
 function updateImageGeometry() {
+
   if (
     !imageNaturalWidth ||
     !imageNaturalHeight
@@ -640,20 +676,10 @@ function updateImageGeometry() {
     containerHeight;
 
 
-  /*
-    CSS object-fit:cover と同じ計算。
-  */
-
   if (
     imageRatio >
     containerRatio
   ) {
-
-    /*
-      横長。
-
-      高さをコンテナに合わせる。
-    */
 
     imageBaseHeight =
       containerHeight;
@@ -664,18 +690,13 @@ function updateImageGeometry() {
 
   } else {
 
-    /*
-      縦長。
-
-      横幅をコンテナに合わせる。
-    */
-
     imageBaseWidth =
       containerWidth;
 
     imageBaseHeight =
       containerWidth /
       imageRatio;
+
   }
 
 
@@ -687,40 +708,26 @@ function updateImageGeometry() {
 
 
   updateImageTransform();
+
 }
 
 
 /* ==========================================
    IMAGE TRANSFORM
-
-   X/YはSnapshot幅・高さを基準にする。
-
-   画像自身の幅を基準にしないため、
-   縦長・横長で操作感が変わりにくい。
 ========================================== */
 
 function updateImageTransform() {
+
   const x =
-    Number(
-      imageXInput.value
-    );
+    Number(imageXInput.value);
 
   const y =
-    Number(
-      imageYInput.value
-    );
+    Number(imageYInput.value);
 
   const scale =
-    Number(
-      imageScaleInput.value
-    ) / 100;
+    Number(imageScaleInput.value) /
+    100;
 
-
-  /*
-    50 = 中央。
-
-    最大±30%移動。
-  */
 
   const offsetX =
     (x - 50) * 0.6;
@@ -753,12 +760,9 @@ function updateImageTransform() {
 
   imageScaleValue.textContent =
     `${Math.round(scale * 100)}%`;
+
 }
 
-
-/* ==========================================
-   IMAGE CONTROLS
-========================================== */
 
 function updateImageX() {
   updateImageTransform();
@@ -780,6 +784,7 @@ function updateImageScale() {
 ========================================== */
 
 function updateCoverOpacity() {
+
   const value =
     Number(
       coverOpacityInput.value
@@ -794,6 +799,7 @@ function updateCoverOpacity() {
 
   coverOpacityValue.textContent =
     `${value}%`;
+
 }
 
 
@@ -802,6 +808,7 @@ function updateCoverOpacity() {
 ========================================== */
 
 function updatePanelOpacity() {
+
   const value =
     Number(
       panelOpacityInput.value
@@ -816,25 +823,30 @@ function updatePanelOpacity() {
 
   panelOpacityValue.textContent =
     `${value}%`;
+
 }
 
 
 /* ==========================================
-   ACTIVE BUTTON
+   BUTTON STATE
 ========================================== */
 
 function activateButton(
   buttons,
   target
 ) {
+
   buttons.forEach(
     button => {
+
       button.classList.toggle(
         "active",
         button === target
       );
+
     }
   );
+
 }
 
 
@@ -843,6 +855,7 @@ function activateButton(
 ========================================== */
 
 function setCoverColor(button) {
+
   const color =
     button.dataset.coverColor;
 
@@ -860,6 +873,7 @@ function setCoverColor(button) {
     coverColorButtons,
     button
   );
+
 }
 
 
@@ -868,6 +882,7 @@ function setCoverColor(button) {
 ========================================== */
 
 function setTextColor(button) {
+
   const color =
     button.dataset.textColor;
 
@@ -889,6 +904,7 @@ function setTextColor(button) {
     textColorButtons,
     button
   );
+
 }
 
 
@@ -897,6 +913,7 @@ function setTextColor(button) {
 ========================================== */
 
 function setPanelColor(button) {
+
   const color =
     button.dataset.panelColor;
 
@@ -914,6 +931,7 @@ function setPanelColor(button) {
     panelColorButtons,
     button
   );
+
 }
 
 
@@ -922,6 +940,7 @@ function setPanelColor(button) {
 ========================================== */
 
 function updateFont() {
+
   snapshot.classList.remove(
     "font-gothic",
     "font-rounded",
@@ -931,11 +950,8 @@ function updateFont() {
   );
 
 
-  const value =
-    fontSelect.value;
-
-
   const classes = {
+
     gothic:
       "font-gothic",
 
@@ -950,13 +966,15 @@ function updateFont() {
 
     condensed:
       "font-condensed"
+
   };
 
 
   snapshot.classList.add(
-    classes[value] ||
+    classes[fontSelect.value] ||
     "font-gothic"
   );
+
 }
 
 
@@ -965,6 +983,7 @@ function updateFont() {
 ========================================== */
 
 function updateCharacter() {
+
   previewCharacterName.textContent =
     characterNameInput.value.trim() ||
     "HIKARINO SENSHI";
@@ -973,6 +992,7 @@ function updateCharacter() {
   previewWorld.textContent =
     worldInput.value.trim() ||
     "Ramuh / Meteor";
+
 }
 
 
@@ -981,6 +1001,7 @@ function updateCharacter() {
 ========================================== */
 
 function formatWorld(value) {
+
   const match =
     String(value || "")
       .match(
@@ -998,6 +1019,7 @@ function formatWorld(value) {
     " / " +
     match[2].trim()
   );
+
 }
 
 
@@ -1009,6 +1031,7 @@ function setLodestoneStatus(
   type,
   text
 ) {
+
   lodestoneStatus.classList.remove(
     "success",
     "error"
@@ -1016,14 +1039,17 @@ function setLodestoneStatus(
 
 
   if (type) {
+
     lodestoneStatus.classList.add(
       type
     );
+
   }
 
 
   lodestoneStatus.textContent =
     text;
+
 }
 
 
@@ -1032,6 +1058,7 @@ function setLodestoneStatus(
 ========================================== */
 
 async function fetchLodestone() {
+
   const url =
     lodestoneUrlInput
       .value
@@ -1039,21 +1066,21 @@ async function fetchLodestone() {
 
 
   if (!url) {
+
     setLodestoneStatus(
       "error",
-
       translations[
         currentLanguage
       ].lodestoneError
     );
 
     return;
+
   }
 
 
   setLodestoneStatus(
     "",
-
     translations[
       currentLanguage
     ].lodestoneLoading
@@ -1082,10 +1109,12 @@ async function fetchLodestone() {
       !response.ok ||
       !data.success
     ) {
+
       throw new Error(
         data.error ||
         `HTTP ${response.status}`
       );
+
     }
 
 
@@ -1096,7 +1125,6 @@ async function fetchLodestone() {
 
     setLodestoneStatus(
       "success",
-
       translations[
         currentLanguage
       ].lodestoneSuccess
@@ -1109,7 +1137,6 @@ async function fetchLodestone() {
 
     setLodestoneStatus(
       "error",
-
       translations[
         currentLanguage
       ].lodestoneError
@@ -1119,7 +1146,9 @@ async function fetchLodestone() {
 
     lodestoneFetchButton.disabled =
       false;
+
   }
+
 }
 
 
@@ -1128,17 +1157,22 @@ async function fetchLodestone() {
 ========================================== */
 
 function applyLodestoneCharacter(data) {
+
   if (data.name) {
+
     characterNameInput.value =
       data.name;
+
   }
 
 
   if (data.world) {
+
     worldInput.value =
       formatWorld(
         data.world
       );
+
   }
 
 
@@ -1154,6 +1188,7 @@ function applyLodestoneCharacter(data) {
   updateCharacter();
 
   renderJobs();
+
 }
 
 
@@ -1162,6 +1197,7 @@ function applyLodestoneCharacter(data) {
 ========================================== */
 
 function renderJobs() {
+
   jobIconArea.innerHTML =
     "";
 
@@ -1193,9 +1229,11 @@ function renderJobs() {
 
 
           if (job === "DNC") {
+
             item.classList.add(
               "job-dnc"
             );
+
           }
 
 
@@ -1244,6 +1282,7 @@ function renderJobs() {
 
             level.textContent =
               "—";
+
           }
 
 
@@ -1260,6 +1299,7 @@ function renderJobs() {
           row.appendChild(
             item
           );
+
         }
       );
 
@@ -1267,8 +1307,10 @@ function renderJobs() {
       jobIconArea.appendChild(
         row
       );
+
     }
   );
+
 }
 
 
@@ -1277,6 +1319,7 @@ function renderJobs() {
 ========================================== */
 
 function updatePlayStyle() {
+
   previewPlayStyle.innerHTML =
     "";
 
@@ -1315,6 +1358,7 @@ function updatePlayStyle() {
 
 
     return;
+
   }
 
 
@@ -1344,8 +1388,10 @@ function updatePlayStyle() {
       previewPlayStyle.appendChild(
         tag
       );
+
     }
   );
+
 }
 
 
@@ -1354,6 +1400,7 @@ function updatePlayStyle() {
 ========================================== */
 
 function updateQuestions() {
+
   questionInputs.forEach(
     (input, index) => {
 
@@ -1367,8 +1414,10 @@ function updateQuestions() {
       updateCounter(
         input
       );
+
     }
   );
+
 }
 
 
@@ -1377,6 +1426,7 @@ function updateQuestions() {
 ========================================== */
 
 function updateMessage() {
+
   previewMessage.textContent =
     messageInput.value.trim() ||
     "—";
@@ -1385,6 +1435,7 @@ function updateMessage() {
   updateCounter(
     messageInput
   );
+
 }
 
 
@@ -1393,6 +1444,7 @@ function updateMessage() {
 ========================================== */
 
 function updateCounter(input) {
+
   const counter =
     document.querySelector(
       `[data-counter-for="${input.id}"]`
@@ -1406,14 +1458,24 @@ function updateCounter(input) {
 
   counter.textContent =
     `${input.value.length} / ${input.maxLength}`;
+
 }
 
 
 /* ==========================================
    LANGUAGE
+
+   data-i18n
+   PLAY STYLE
+   QUESTIONS
+   フォント選択肢
+   状態表示
+
+   をすべて更新する。
 ========================================== */
 
 function setLanguage(language) {
+
   currentLanguage =
     language === "en"
       ? "en"
@@ -1424,6 +1486,8 @@ function setLanguage(language) {
     currentLanguage;
 
 
+  /* JP / EN BUTTON */
+
   document
     .querySelectorAll(
       "[data-lang]"
@@ -1433,13 +1497,15 @@ function setLanguage(language) {
 
         button.classList.toggle(
           "active",
-
           button.dataset.lang ===
           currentLanguage
         );
+
       }
     );
 
+
+  /* GENERAL TEXT */
 
   document
     .querySelectorAll(
@@ -1452,24 +1518,27 @@ function setLanguage(language) {
           element.dataset.i18n;
 
 
-        if (
+        const translatedText =
           translations[
             currentLanguage
-          ][key] !== undefined
+          ][key];
+
+
+        if (
+          translatedText !==
+          undefined
         ) {
 
           element.textContent =
-            translations[
-              currentLanguage
-            ][key];
+            translatedText;
+
         }
+
       }
     );
 
 
-  /*
-    PLAY STYLE入力側
-  */
+  /* PLAY STYLE FORM */
 
   document
     .querySelectorAll(
@@ -1482,17 +1551,29 @@ function setLanguage(language) {
           element.dataset.playLabel;
 
 
-        element.textContent =
+        if (
           playStyleTranslations[
             key
-          ][currentLanguage];
+          ]
+        ) {
+
+          element.textContent =
+            playStyleTranslations[
+              key
+            ][currentLanguage];
+
+        }
+
       }
     );
 
 
-  /*
-    QUESTIONS
-  */
+  /* PREVIEW PLAY STYLE */
+
+  updatePlayStyle();
+
+
+  /* QUESTION PREVIEW */
 
   document
     .querySelectorAll(
@@ -1511,9 +1592,12 @@ function setLanguage(language) {
           questionTranslations[
             currentLanguage
           ][index];
+
       }
     );
 
+
+  /* QUESTION FORM */
 
   document
     .querySelectorAll(
@@ -1534,11 +1618,36 @@ function setLanguage(language) {
               currentLanguage
             ][number - 1]
           }`;
+
       }
     );
 
 
-  updatePlayStyle();
+  /*
+    Lodestoneステータスが既に
+    表示されている場合は、
+    内容を現在言語へ合わせる。
+  */
+
+  if (
+    lodestoneStatus.textContent
+  ) {
+
+    if (
+      lodestoneStatus.classList.contains(
+        "error"
+      )
+    ) {
+
+      lodestoneStatus.textContent =
+        translations[
+          currentLanguage
+        ].lodestoneError;
+
+    }
+
+  }
+
 }
 
 
@@ -1547,6 +1656,7 @@ function setLanguage(language) {
 ========================================== */
 
 function waitForImages(root) {
+
   const images =
     [
       ...root.querySelectorAll(
@@ -1563,7 +1673,9 @@ function waitForImages(root) {
           image.complete &&
           image.naturalWidth > 0
         ) {
+
           return Promise.resolve();
+
         }
 
 
@@ -1583,7 +1695,9 @@ function waitForImages(root) {
                   done
                 );
 
+
                 resolve();
+
               };
 
 
@@ -1597,32 +1711,23 @@ function waitForImages(root) {
               "error",
               done
             );
+
           }
         );
+
       }
     )
   );
+
 }
 
 
 /* ==========================================
-   PREPARE EXPORT IMAGE
-
-   ★重要
-
-   プレビューは例えば700×700、
-   出力は1080×1080。
-
-   プレビューで使ったSSのpxサイズを
-   そのままコピーすると位置が変わる。
-
-   そこで1080×1080用に
-   coverサイズを再計算する。
-
-   X/Y/Scaleは同じ割合を使用。
+   EXPORT IMAGE GEOMETRY
 ========================================== */
 
 function prepareExportImage(clone) {
+
   const cloneImage =
     clone.querySelector(
       ".snapshot-image"
@@ -1634,7 +1739,9 @@ function prepareExportImage(clone) {
     !imageNaturalWidth ||
     !imageNaturalHeight
   ) {
+
     return;
+
   }
 
 
@@ -1651,7 +1758,9 @@ function prepareExportImage(clone) {
   let height;
 
 
-  if (imageRatio > 1) {
+  if (
+    imageRatio > 1
+  ) {
 
     height =
       exportSize;
@@ -1668,6 +1777,7 @@ function prepareExportImage(clone) {
     height =
       exportSize /
       imageRatio;
+
   }
 
 
@@ -1677,6 +1787,7 @@ function prepareExportImage(clone) {
 
   cloneImage.style.height =
     `${height}px`;
+
 }
 
 
@@ -1685,6 +1796,7 @@ function prepareExportImage(clone) {
 ========================================== */
 
 async function exportSnapshot() {
+
   exportButton.disabled =
     true;
 
@@ -1702,10 +1814,6 @@ async function exportSnapshot() {
 
   try {
 
-    /* ========================================
-       STAGE
-    ======================================== */
-
     stage =
       document.createElement(
         "div"
@@ -1715,10 +1823,6 @@ async function exportSnapshot() {
     stage.className =
       "export-stage";
 
-
-    /* ========================================
-       CLONE
-    ======================================== */
 
     const clone =
       snapshot.cloneNode(
@@ -1741,10 +1845,6 @@ async function exportSnapshot() {
     );
 
 
-    /* ========================================
-       FORCE 1080
-    ======================================== */
-
     clone.style.width =
       "1080px";
 
@@ -1757,21 +1857,10 @@ async function exportSnapshot() {
       "auto";
 
 
-    /*
-      SSだけ1080用coverサイズへ
-      再計算。
-
-      縦横比は維持される。
-    */
-
     prepareExportImage(
       clone
     );
 
-
-    /* ========================================
-       WAIT
-    ======================================== */
 
     await waitForImages(
       clone
@@ -1782,7 +1871,9 @@ async function exportSnapshot() {
       document.fonts &&
       document.fonts.ready
     ) {
+
       await document.fonts.ready;
+
     }
 
 
@@ -1795,23 +1886,19 @@ async function exportSnapshot() {
             requestAnimationFrame(
               resolve
             );
+
           }
         );
+
       }
     );
 
-
-    /* ========================================
-       HTML2CANVAS
-
-       ここから先で
-       canvasのリサイズはしない。
-    ======================================== */
 
     const canvas =
       await html2canvas(
         clone,
         {
+
           width: 1080,
 
           height: 1080,
@@ -1833,13 +1920,10 @@ async function exportSnapshot() {
           windowWidth: 1080,
 
           windowHeight: 1080
+
         }
       );
 
-
-    /* ========================================
-       PNG
-    ======================================== */
 
     const blob =
       await new Promise(
@@ -1849,14 +1933,17 @@ async function exportSnapshot() {
             resolve,
             "image/png"
           );
+
         }
       );
 
 
     if (!blob) {
+
       throw new Error(
         "PNG creation failed."
       );
+
     }
 
 
@@ -1897,8 +1984,8 @@ async function exportSnapshot() {
         URL.revokeObjectURL(
           objectUrl
         );
-      },
 
+      },
       1000
     );
 
@@ -1916,7 +2003,9 @@ async function exportSnapshot() {
   } finally {
 
     if (stage) {
+
       stage.remove();
+
     }
 
 
@@ -1926,20 +2015,20 @@ async function exportSnapshot() {
 
     exportButton.textContent =
       originalText;
+
   }
+
 }
 
 
 /* ==========================================
    RESIZE
-
-   ブラウザ幅が変わると
-   プレビューサイズも変わるため、
-   SSのcoverサイズを再計算。
 ========================================== */
 
 function handleResize() {
+
   updateImageGeometry();
+
 }
 
 
@@ -1999,8 +2088,10 @@ coverColorButtons.forEach(
         setCoverColor(
           button
         );
+
       }
     );
+
   }
 );
 
@@ -2015,8 +2106,10 @@ textColorButtons.forEach(
         setTextColor(
           button
         );
+
       }
     );
+
   }
 );
 
@@ -2031,8 +2124,10 @@ panelColorButtons.forEach(
         setPanelColor(
           button
         );
+
       }
     );
+
   }
 );
 
@@ -2068,6 +2163,7 @@ playStyleCheckboxes.forEach(
       "change",
       updatePlayStyle
     );
+
   }
 );
 
@@ -2079,6 +2175,7 @@ questionInputs.forEach(
       "input",
       updateQuestions
     );
+
   }
 );
 
@@ -2103,8 +2200,10 @@ languageToggle
           setLanguage(
             button.dataset.lang
           );
+
         }
       );
+
     }
   );
 
@@ -2126,6 +2225,7 @@ window.addEventListener(
 ========================================== */
 
 function initialize() {
+
   updateCharacter();
 
   renderJobs();
@@ -2147,17 +2247,15 @@ function initialize() {
   setLanguage("ja");
 
 
-  /*
-    HTML等で最初から画像が
-    設定されている場合。
-  */
-
   if (
     snapshotImage.complete &&
     snapshotImage.naturalWidth > 0
   ) {
+
     handleImageLoad();
+
   }
+
 }
 
 

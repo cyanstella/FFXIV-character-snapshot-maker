@@ -14,7 +14,6 @@ html {
 
 body {
   margin: 0;
-
   background: #f4f2ec;
   color: #111;
 
@@ -54,21 +53,16 @@ a {
 
 .site-header {
   width: 100%;
-
   padding: 20px 24px;
-
   border-bottom: 1px solid #111;
-
   background: #f4f2ec;
 }
 
 .header-inner {
   width: min(1400px, 100%);
-
   margin: 0 auto;
 
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 
@@ -77,24 +71,19 @@ a {
 
 .brand-logo {
   display: inline-flex;
-
   align-items: center;
-
   gap: 7px;
 
   color: #111;
-
   text-decoration: none;
 
   font-size: 15px;
   font-weight: 900;
-
   letter-spacing: 0.08em;
 }
 
 .studio-box {
   display: inline-block;
-
   padding: 4px 6px;
 
   background: #111;
@@ -107,7 +96,6 @@ a {
 
 .language-button {
   min-width: 54px;
-
   padding: 8px 12px;
 
   border: 1px solid #111;
@@ -134,10 +122,7 @@ a {
 ========================================== */
 
 .main-content {
-  width: min(
-    1400px,
-    calc(100% - 48px)
-  );
+  width: min(1400px, calc(100% - 48px));
 
   margin: 0 auto;
 
@@ -165,16 +150,10 @@ a {
 .hero-title {
   margin: 0;
 
-  font-size: clamp(
-    42px,
-    5.2vw,
-    74px
-  );
-
+  font-size: clamp(42px, 5.2vw, 74px);
   font-weight: 900;
 
   line-height: 1.02;
-
   letter-spacing: -0.045em;
 }
 
@@ -197,7 +176,6 @@ a {
 
   left: 0;
   right: 0;
-
   bottom: -9px;
 
   height: 8px;
@@ -592,7 +570,27 @@ a {
    PREVIEW
 ========================================== */
 
-.preview-title,
+/*
+   PREVIEWの文字はプレビューエリア左端。
+
+   Snapshot本体とEXPORTボタンだけを
+   中央配置する。
+*/
+
+.preview-title {
+  width: 100%;
+
+  margin:
+    0
+    0
+    10px;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 0.2em;
+}
+
 .snapshot,
 .export-area {
   width: min(
@@ -604,21 +602,9 @@ a {
   margin-right: auto;
 }
 
-.preview-title {
-  margin-bottom: 10px;
-
-  font-size: 11px;
-  font-weight: 900;
-
-  letter-spacing: 0.2em;
-}
-
 
 /* ==========================================
    SNAPSHOT
-
-   container-typeを指定することで
-   内部のcqwを必ずSnapshot幅基準にする。
 ========================================== */
 
 .snapshot {
@@ -636,16 +622,13 @@ a {
 
   position: relative;
 
-  width: 100%;
-
   aspect-ratio: 1 / 1;
 
   overflow: hidden;
 
   background: #b8b8b8;
 
-  color:
-    var(--snapshot-text-color);
+  color: var(--snapshot-text-color);
 
   container-type: inline-size;
 
@@ -706,26 +689,6 @@ a {
 
 /* ==========================================
    PHOTO
-
-   ★今回の重要部分
-
-   SSそのものを1080×1080へ
-   変形しない。
-
-   JSで元画像の縦横比を調べ、
-
-   縦長:
-   width:100%;
-   height:auto;
-
-   横長:
-   width:auto;
-   height:100%;
-
-   にする。
-
-   余った部分だけoverflow:hiddenで
-   トリミングする。
 ========================================== */
 
 .photo-area {
@@ -746,12 +709,6 @@ a {
   top: 50%;
   left: 50%;
 
-  /*
-    JSからpx値を設定する。
-
-    widthとheightを同時に
-    100%にすることは禁止。
-  */
   width: auto;
   height: auto;
 
@@ -825,9 +782,7 @@ a {
   right: 4.5%;
   top: 4.5%;
 
-  padding:
-    2.1%
-    2.3%;
+  padding: 2.1% 2.3%;
 
   background:
     rgba(
@@ -835,13 +790,11 @@ a {
       var(--panel-alpha)
     );
 
-  color:
-    var(--snapshot-text-color);
+  color: var(--snapshot-text-color);
 
   backdrop-filter: blur(6px);
 
-  -webkit-backdrop-filter:
-    blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .character-header {
@@ -898,7 +851,7 @@ a {
 
 
 /* ==========================================
-   JOBS
+   JOB
 ========================================== */
 
 .job-column {
@@ -1029,13 +982,11 @@ a {
       var(--panel-alpha)
     );
 
-  color:
-    var(--snapshot-text-color);
+  color: var(--snapshot-text-color);
 
   backdrop-filter: blur(6px);
 
-  -webkit-backdrop-filter:
-    blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .questions-heading,
@@ -1181,7 +1132,6 @@ a {
   z-index: 4;
 
   left: 4.8%;
-
   bottom: 1.6%;
 
   font-size: 0.55cqw;
@@ -1195,7 +1145,6 @@ a {
   z-index: 4;
 
   right: 4.8%;
-
   bottom: 1.6%;
 
   text-align: right;
@@ -1246,8 +1195,6 @@ a {
 
 /* ==========================================
    EXPORT STAGE
-
-   必ず1080×1080で描画。
 ========================================== */
 
 .export-stage {
@@ -1258,7 +1205,6 @@ a {
   top: 0;
 
   width: 1080px;
-
   height: 1080px;
 
   overflow: hidden;
@@ -1268,15 +1214,12 @@ a {
 
 .export-stage .snapshot {
   width: 1080px !important;
-
   height: 1080px !important;
 
   min-width: 1080px !important;
-
   min-height: 1080px !important;
 
   max-width: 1080px !important;
-
   max-height: 1080px !important;
 
   aspect-ratio: auto !important;
@@ -1334,10 +1277,7 @@ a {
 }
 
 .footer-inner {
-  width: min(
-    1400px,
-    100%
-  );
+  width: min(1400px, 100%);
 
   margin: 0 auto;
 
@@ -1368,8 +1308,7 @@ a {
 @media (max-width: 950px) {
 
   .main-content {
-    width:
-      calc(100% - 30px);
+    width: calc(100% - 30px);
   }
 
   .creator-layout {
@@ -1387,15 +1326,17 @@ a {
     position: static;
   }
 
-  .preview-title,
+  .preview-title {
+    width: 100%;
+  }
+
   .snapshot,
   .export-area {
     width: 100%;
   }
 
   .about-section {
-    width:
-      calc(100% - 30px);
+    width: calc(100% - 30px);
   }
 
 }
@@ -1418,12 +1359,9 @@ a {
   }
 
   .main-content {
-    width:
-      calc(100% - 24px);
+    width: calc(100% - 24px);
 
-    padding:
-      30px 0
-      55px;
+    padding: 30px 0 55px;
   }
 
   .hero {
@@ -1431,12 +1369,11 @@ a {
   }
 
   .hero-title {
-    font-size:
-      clamp(
-        34px,
-        11vw,
-        50px
-      );
+    font-size: clamp(
+      34px,
+      11vw,
+      50px
+    );
   }
 
   .hero-line-accent {
@@ -1458,8 +1395,7 @@ a {
   }
 
   .about-section {
-    width:
-      calc(100% - 24px);
+    width: calc(100% - 24px);
   }
 
   .footer-inner {

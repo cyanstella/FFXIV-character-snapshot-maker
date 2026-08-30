@@ -14,7 +14,7 @@
 
   <meta
     name="description"
-    content="FFXIVのスクリーンショットにキャラクター情報、ジョブ、プレイスタイル、質問への回答を添えて、オリジナルのスナップショットを作成できるWebツールです。"
+    content="FFXIVのスクリーンショットにキャラクター情報、ジョブ、プレイスタイル、5つの質問への回答を添えて、オリジナルのスナップショットを作成できるWebツールです。"
   >
 
   <link
@@ -37,13 +37,8 @@
         href="../EORZEA_PROFILE_STUDIO/"
         class="brand-logo"
       >
-        <span>
-          EORZEA PROFILE
-        </span>
-
-        <span class="studio-box">
-          STUDIO
-        </span>
+        <span>EORZEA PROFILE</span>
+        <span class="studio-box">STUDIO</span>
       </a>
 
 
@@ -51,7 +46,6 @@
         id="languageToggle"
         class="language-toggle"
       >
-
         <button
           type="button"
           class="language-button active"
@@ -67,7 +61,6 @@
         >
           EN
         </button>
-
       </div>
 
     </div>
@@ -128,7 +121,7 @@
 
 
       <!-- ====================================
-           LEFT / SCREENSHOT
+           SCREENSHOT CONTROLS
       ===================================== -->
 
       <div class="top-controls">
@@ -394,27 +387,40 @@
               id="fontSelect"
               class="select-input"
             >
-
-              <option value="gothic">
+              <option
+                value="gothic"
+                data-i18n="fontGothic"
+              >
                 ゴシック
               </option>
 
-              <option value="rounded">
+              <option
+                value="rounded"
+                data-i18n="fontRounded"
+              >
                 丸文字
               </option>
 
-              <option value="mincho">
+              <option
+                value="mincho"
+                data-i18n="fontMincho"
+              >
                 明朝
               </option>
 
-              <option value="modern">
+              <option
+                value="modern"
+                data-i18n="fontModern"
+              >
                 モダン
               </option>
 
-              <option value="condensed">
+              <option
+                value="condensed"
+                data-i18n="fontCondensed"
+              >
                 コンデンス
               </option>
-
             </select>
 
           </div>
@@ -510,9 +516,7 @@
         >
 
 
-          <!-- ================================
-               BACKGROUND SS
-          ================================= -->
+          <!-- BACKGROUND -->
 
           <div class="photo-area">
 
@@ -537,9 +541,7 @@
           </div>
 
 
-          <!-- ================================
-               CHARACTER PANEL
-          ================================= -->
+          <!-- CHARACTER PANEL -->
 
           <section class="character-panel">
 
@@ -565,7 +567,7 @@
             <div class="character-data-layout">
 
 
-              <!-- JOBS -->
+              <!-- JOB -->
 
               <div class="job-column">
 
@@ -601,9 +603,7 @@
           </section>
 
 
-          <!-- ================================
-               QUESTIONS + MESSAGE
-          ================================= -->
+          <!-- QUESTIONS + MESSAGE -->
 
           <section class="bottom-panel">
 
@@ -785,10 +785,6 @@
           </section>
 
 
-          <!-- ================================
-               COPYRIGHT
-          ================================= -->
-
           <div class="snapshot-copyright">
             (C) SQUARE ENIX
           </div>
@@ -800,8 +796,6 @@
 
         </div>
 
-
-        <!-- EXPORT -->
 
         <div class="export-area">
 
@@ -820,15 +814,13 @@
 
 
       <!-- ====================================
-           LEFT / CHARACTER ETC
+           MAIN CONTROLS
       ===================================== -->
 
       <div class="main-controls">
 
 
-        <!-- ==================================
-             CHARACTER
-        =================================== -->
+        <!-- CHARACTER -->
 
         <section class="control-section">
 
@@ -866,6 +858,7 @@
               id="lodestoneFetchButton"
               type="button"
               class="lodestone-button"
+              data-i18n="lodestoneButton"
             >
               LODESTONE DATA GET
             </button>
@@ -913,6 +906,7 @@
             <label
               class="control-label"
               for="worldInput"
+              data-i18n="worldDataCenter"
             >
               World / Data Center
             </label>
@@ -930,9 +924,7 @@
         </section>
 
 
-        <!-- ==================================
-             PLAY STYLE
-        =================================== -->
+        <!-- PLAY STYLE -->
 
         <section class="control-section">
 
@@ -952,179 +944,83 @@
           <div class="checkbox-grid">
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="relax"
-              >
-              <span data-play-label="relax">
-                のんびり
-              </span>
+              <input type="checkbox" name="playStyle" data-style="relax">
+              <span data-play-label="relax">のんびり</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="screenshot"
-              >
-              <span data-play-label="screenshot">
-                SS撮影
-              </span>
+              <input type="checkbox" name="playStyle" data-style="screenshot">
+              <span data-play-label="screenshot">SS撮影</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="story"
-              >
-              <span data-play-label="story">
-                ストーリー
-              </span>
+              <input type="checkbox" name="playStyle" data-style="story">
+              <span data-play-label="story">ストーリー</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="battle"
-              >
-              <span data-play-label="battle">
-                バトル
-              </span>
+              <input type="checkbox" name="playStyle" data-style="battle">
+              <span data-play-label="battle">バトル</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="highend"
-              >
-              <span data-play-label="highend">
-                高難度
-              </span>
+              <input type="checkbox" name="playStyle" data-style="highend">
+              <span data-play-label="highend">高難度</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="pvp"
-              >
-              <span data-play-label="pvp">
-                PvP
-              </span>
+              <input type="checkbox" name="playStyle" data-style="pvp">
+              <span data-play-label="pvp">PvP</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="gatherer"
-              >
-              <span data-play-label="gatherer">
-                ギャザラー
-              </span>
+              <input type="checkbox" name="playStyle" data-style="gatherer">
+              <span data-play-label="gatherer">ギャザラー</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="crafter"
-              >
-              <span data-play-label="crafter">
-                クラフター
-              </span>
+              <input type="checkbox" name="playStyle" data-style="crafter">
+              <span data-play-label="crafter">クラフター</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="housing"
-              >
-              <span data-play-label="housing">
-                ハウジング
-              </span>
+              <input type="checkbox" name="playStyle" data-style="housing">
+              <span data-play-label="housing">ハウジング</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="glamour"
-              >
-              <span data-play-label="glamour">
-                ミラプリ
-              </span>
+              <input type="checkbox" name="playStyle" data-style="glamour">
+              <span data-play-label="glamour">ミラプリ</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="goldsaucer"
-              >
-              <span data-play-label="goldsaucer">
-                ゴールドソーサー
-              </span>
+              <input type="checkbox" name="playStyle" data-style="goldsaucer">
+              <span data-play-label="goldsaucer">ゴールドソーサー</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="fishing"
-              >
-              <span data-play-label="fishing">
-                釣り
-              </span>
+              <input type="checkbox" name="playStyle" data-style="fishing">
+              <span data-play-label="fishing">釣り</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="treasure"
-              >
-              <span data-play-label="treasure">
-                地図
-              </span>
+              <input type="checkbox" name="playStyle" data-style="treasure">
+              <span data-play-label="treasure">地図</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="hunt"
-              >
-              <span data-play-label="hunt">
-                モブハント
-              </span>
+              <input type="checkbox" name="playStyle" data-style="hunt">
+              <span data-play-label="hunt">モブハント</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="roleplay"
-              >
-              <span data-play-label="roleplay">
-                ロールプレイ
-              </span>
+              <input type="checkbox" name="playStyle" data-style="roleplay">
+              <span data-play-label="roleplay">ロールプレイ</span>
             </label>
 
             <label class="checkbox-label">
-              <input
-                type="checkbox"
-                name="playStyle"
-                data-style="friends"
-              >
-              <span data-play-label="friends">
-                フレンド交流
-              </span>
+              <input type="checkbox" name="playStyle" data-style="friends">
+              <span data-play-label="friends">フレンド交流</span>
             </label>
 
           </div>
@@ -1132,9 +1028,7 @@
         </section>
 
 
-        <!-- ==================================
-             QUESTIONS
-        =================================== -->
+        <!-- QUESTIONS -->
 
         <section class="control-section">
 
@@ -1278,9 +1172,7 @@
         </section>
 
 
-        <!-- ==================================
-             MESSAGE
-        =================================== -->
+        <!-- MESSAGE -->
 
         <section class="control-section">
 
@@ -1295,6 +1187,14 @@
             </h2>
 
           </div>
+
+          <label
+            class="control-label"
+            for="messageInput"
+            data-i18n="messageDescription"
+          >
+            キャラクターからのひとこと
+          </label>
 
           <textarea
             id="messageInput"
@@ -1348,9 +1248,7 @@
 
       <div class="footer-links">
 
-        <a
-          href="../EORZEA_PROFILE_STUDIO/"
-        >
+        <a href="../EORZEA_PROFILE_STUDIO/">
           EORZEA PROFILE STUDIO
         </a>
 
@@ -1372,10 +1270,6 @@
 
   </footer>
 
-
-  <!-- ========================================
-       SCRIPTS
-  ========================================= -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
