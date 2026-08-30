@@ -49,21 +49,39 @@ a {
 
 
 /* ==========================================
+   COMMON CONTAINER
+========================================== */
+
+.hero-inner,
+.creator-main,
+.about-section {
+  width:
+    min(
+      1400px,
+      calc(100% - 44px)
+    );
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ==========================================
    HEADER
 ========================================== */
 
 .site-header {
   width: 100%;
 
-  padding: 20px 22px;
+  padding:
+    20px
+    22px;
 
   border-bottom: 1px solid #111;
 }
 
 .header-inner {
   width: 100%;
-
-  margin: 0;
 
   display: flex;
 
@@ -93,7 +111,9 @@ a {
 .studio-box {
   display: inline-block;
 
-  padding: 4px 6px;
+  padding:
+    4px
+    6px;
 
   background: #111;
 
@@ -107,7 +127,9 @@ a {
 .language-button {
   min-width: 54px;
 
-  padding: 8px 12px;
+  padding:
+    8px
+    12px;
 
   border: 1px solid #111;
 
@@ -125,30 +147,22 @@ a {
 
 .language-button.active {
   background: #111;
+
   color: #fff;
 }
 
 
 /* ==========================================
    HERO
-
-   シリーズ共通の左基準。
-   Creatorの中央寄せとは分離する。
 ========================================== */
 
 .hero {
   width: 100%;
 
   padding:
-    48px
-    22px
-    56px;
-}
-
-.hero-inner {
-  width: 100%;
-
-  margin: 0;
+    50px
+    0
+    58px;
 }
 
 .hero-kicker {
@@ -158,7 +172,10 @@ a {
 
   gap: 12px;
 
-  margin: 0 0 30px;
+  margin:
+    0
+    0
+    28px;
 
   font-size: 12px;
   font-weight: 900;
@@ -228,7 +245,10 @@ a {
 .hero-description {
   max-width: 790px;
 
-  margin: 28px 0 0;
+  margin:
+    28px
+    0
+    0;
 
   font-size: 14px;
   font-weight: 700;
@@ -256,7 +276,9 @@ a {
 .hero-community-button {
   min-height: 48px;
 
-  padding: 11px 22px;
+  padding:
+    11px
+    22px;
 
   border: 1px solid #111;
 
@@ -268,20 +290,12 @@ a {
   font-weight: 900;
 
   letter-spacing: 0.05em;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease,
-    transform 0.15s ease;
 }
 
 .hero-community-button:hover {
   background: #111;
-  color: #fff;
-}
 
-.hero-community-button:active {
-  transform: translateY(1px);
+  color: #fff;
 }
 
 .hero-community-tag {
@@ -295,30 +309,12 @@ a {
 
 
 /* ==========================================
-   CREATOR MAIN
-
-   HEROとは別に中央寄せ。
+   CREATOR
 ========================================== */
 
 .creator-main {
-  width:
-    min(
-      1400px,
-      calc(100% - 44px)
-    );
-
-  margin: 0 auto;
-
-  padding:
-    0
-    0
-    72px;
+  padding-bottom: 72px;
 }
-
-
-/* ==========================================
-   CREATOR GRID
-========================================== */
 
 .creator-layout {
   display: grid;
@@ -353,17 +349,15 @@ a {
 
   top: 20px;
 
-  min-width: 0;
-
   align-self: start;
+
+  min-width: 0;
 }
 
 
-/*
-  PREVIEW見出しと画像本体を
-  同じラッパーに入れることで
-  左端を完全に一致させる。
-*/
+/* ==========================================
+   PREVIEW
+========================================== */
 
 .preview-frame {
   width:
@@ -402,7 +396,7 @@ a {
 
 
 /* ==========================================
-   CONTROL SECTION
+   CONTROL
 ========================================== */
 
 .control-section {
@@ -435,8 +429,6 @@ a {
   color: #ff3b30;
 
   font-size: 13px;
-
-  letter-spacing: 0.08em;
 }
 
 .section-title {
@@ -449,10 +441,7 @@ a {
 }
 
 .control-group {
-  margin:
-    0
-    0
-    22px;
+  margin-bottom: 22px;
 }
 
 .control-group:last-child {
@@ -462,10 +451,7 @@ a {
 .control-label {
   display: block;
 
-  margin:
-    0
-    0
-    9px;
+  margin-bottom: 9px;
 
   font-size: 12px;
   font-weight: 900;
@@ -481,8 +467,6 @@ a {
 .text-input,
 .textarea-input,
 .select-input {
-  display: block;
-
   width: 100%;
 
   border: 1px solid #aaa;
@@ -519,17 +503,7 @@ a {
   min-height: 120px;
 }
 
-.text-input:focus,
-.textarea-input:focus,
-.select-input:focus {
-  outline: 2px solid #111;
-
-  outline-offset: -2px;
-}
-
 .file-input {
-  display: block;
-
   width: 100%;
 
   font-size: 11px;
@@ -556,8 +530,6 @@ a {
 }
 
 .range-value {
-  flex: 0 0 auto;
-
   min-width: 42px;
 
   text-align: right;
@@ -567,8 +539,6 @@ a {
 }
 
 .range-input {
-  display: block;
-
   width: 100%;
 
   margin: 0;
@@ -576,7 +546,7 @@ a {
 
 
 /* ==========================================
-   OPTION BUTTONS
+   OPTIONS
 ========================================== */
 
 .option-buttons {
@@ -604,6 +574,7 @@ a {
 
 .option-button.active {
   background: #111;
+
   color: #fff;
 }
 
@@ -613,8 +584,6 @@ a {
 ========================================== */
 
 .lodestone-button {
-  display: block;
-
   width: 100%;
 
   min-height: 44px;
@@ -636,23 +605,16 @@ a {
 }
 
 .lodestone-button:disabled {
-  cursor: wait;
-
   opacity: 0.55;
 }
 
 .lodestone-status {
   min-height: 18px;
 
-  margin:
-    9px
-    0
-    0;
+  margin-top: 9px;
 
   font-size: 10px;
   font-weight: 800;
-
-  line-height: 1.5;
 }
 
 .lodestone-status.error {
@@ -687,8 +649,6 @@ a {
 }
 
 .control-divider span {
-  flex: 0 0 auto;
-
   color: #777;
 
   font-size: 9px;
@@ -720,8 +680,6 @@ a {
 
   gap: 7px;
 
-  min-width: 0;
-
   font-size: 11px;
   font-weight: 800;
 }
@@ -732,10 +690,7 @@ a {
 ========================================== */
 
 .question-form-item {
-  margin:
-    0
-    0
-    22px;
+  margin-bottom: 22px;
 }
 
 .question-form-item:last-child {
@@ -743,10 +698,7 @@ a {
 }
 
 .question-form-title {
-  margin:
-    0
-    0
-    8px;
+  margin-bottom: 8px;
 
   font-size: 11px;
   font-weight: 900;
@@ -755,17 +707,13 @@ a {
 }
 
 .character-counter {
-  margin:
-    5px
-    0
-    0;
+  margin-top: 5px;
 
   text-align: right;
 
   color: #777;
 
   font-size: 9px;
-  font-weight: 700;
 }
 
 
@@ -814,13 +762,12 @@ a {
 
 
 /* ==========================================
-   SNAPSHOT FONTS
+   FONTS
 ========================================== */
 
 .snapshot.font-gothic {
   font-family:
     Arial,
-    "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     Meiryo,
     sans-serif;
@@ -829,7 +776,6 @@ a {
 .snapshot.font-rounded {
   font-family:
     "M PLUS Rounded 1c",
-    "Hiragino Maru Gothic ProN",
     "Yu Gothic",
     Meiryo,
     sans-serif;
@@ -838,7 +784,6 @@ a {
 .snapshot.font-mincho {
   font-family:
     "Yu Mincho",
-    "Hiragino Mincho ProN",
     serif;
 }
 
@@ -879,9 +824,6 @@ a {
   top: 50%;
   left: 50%;
 
-  width: auto;
-  height: auto;
-
   max-width: none;
   max-height: none;
 
@@ -896,8 +838,6 @@ a {
     );
 
   transform-origin: center;
-
-  user-select: none;
 
   pointer-events: none;
 }
@@ -918,8 +858,6 @@ a {
 
   font-size: 4cqw;
   font-weight: 900;
-
-  letter-spacing: 0.15em;
 }
 
 .cover-film {
@@ -934,8 +872,6 @@ a {
       var(--cover-rgb),
       var(--cover-alpha)
     );
-
-  pointer-events: none;
 }
 
 
@@ -967,8 +903,7 @@ a {
       --snapshot-text-color
     );
 
-  backdrop-filter:
-    blur(6px);
+  backdrop-filter: blur(6px);
 
   -webkit-backdrop-filter:
     blur(6px);
@@ -985,27 +920,16 @@ a {
 }
 
 .preview-character-name {
-  min-width: 0;
-
   font-size: 3.15cqw;
   font-weight: 900;
 
   line-height: 1;
-
-  letter-spacing: 0.015em;
 }
 
 .preview-world {
-  flex: 0 0 auto;
-
   font-size: 0.85cqw;
   font-weight: 900;
 }
-
-
-/* ==========================================
-   CHARACTER DATA
-========================================== */
 
 .character-data-layout {
   display: grid;
@@ -1031,10 +955,6 @@ a {
    JOB
 ========================================== */
 
-.job-column {
-  min-width: 0;
-}
-
 .job-icon-area {
   display: flex;
 
@@ -1045,10 +965,6 @@ a {
 
 .job-icon-row {
   display: flex;
-
-  flex-wrap: nowrap;
-
-  align-items: flex-start;
 
   gap: 0.62cqw;
 }
@@ -1077,12 +993,11 @@ a {
 
   font-size: 1.02cqw;
   font-weight: 900;
-
-  line-height: 1;
 }
 
 .job-dnc img {
-  transform: scale(1.12);
+  transform:
+    scale(1.12);
 }
 
 
@@ -1106,8 +1021,6 @@ a {
 
   flex-wrap: wrap;
 
-  align-content: flex-start;
-
   gap: 0.55cqw;
 }
 
@@ -1127,15 +1040,8 @@ a {
     solid
     currentColor;
 
-  color:
-    var(
-      --snapshot-text-color
-    );
-
   font-size: 1.05cqw;
   font-weight: 900;
-
-  line-height: 1.15;
 
   white-space: nowrap;
 }
@@ -1166,11 +1072,6 @@ a {
       var(--panel-alpha)
     );
 
-  color:
-    var(
-      --snapshot-text-color
-    );
-
   backdrop-filter:
     blur(6px);
 
@@ -1184,8 +1085,6 @@ a {
 
   font-size: 1.05cqw;
   font-weight: 900;
-
-  letter-spacing: 0.08em;
 }
 
 .questions-grid {
@@ -1213,8 +1112,6 @@ a {
     minmax(0, 1fr);
 
   gap: 0.75cqw;
-
-  min-width: 0;
 }
 
 .question-item[data-question="1"] {
@@ -1255,36 +1152,19 @@ a {
   font-weight: 900;
 }
 
-.question-content {
-  min-width: 0;
-}
-
 .question-title {
   margin-bottom: 0.18cqw;
 
   font-size: 0.9cqw;
   font-weight: 800;
-
-  line-height: 1.3;
 }
 
 .question-answer {
-  min-height: 1.5em;
-
   font-size: 1.18cqw;
   font-weight: 900;
 
-  line-height: 1.25;
-
   overflow-wrap: anywhere;
-
-  word-break: break-word;
 }
-
-
-/* ==========================================
-   MESSAGE
-========================================== */
 
 .message-block {
   margin-top: 1.15cqw;
@@ -1298,16 +1178,10 @@ a {
 }
 
 .preview-message {
-  min-height: 1.4em;
-
   font-size: 1.22cqw;
   font-weight: 800;
 
-  line-height: 1.28;
-
   overflow-wrap: anywhere;
-
-  word-break: break-word;
 }
 
 
@@ -1321,7 +1195,6 @@ a {
   z-index: 4;
 
   left: 4.8%;
-
   bottom: 1.6%;
 
   font-size: 0.55cqw;
@@ -1334,20 +1207,17 @@ a {
   z-index: 4;
 
   right: 4.8%;
-
   bottom: 1.6%;
 
   text-align: right;
 
   font-size: 0.55cqw;
   font-weight: 900;
-
-  line-height: 1.25;
 }
 
 
 /* ==========================================
-   EXPORT
+   EXPORT / X
 ========================================== */
 
 .export-area {
@@ -1367,24 +1237,7 @@ a {
 
   font-size: 12px;
   font-weight: 900;
-
-  letter-spacing: 0.08em;
 }
-
-.export-button:hover {
-  background: #333;
-}
-
-.export-button:disabled {
-  cursor: wait;
-
-  opacity: 0.55;
-}
-
-
-/* ==========================================
-   X SHARE
-========================================== */
 
 .x-share-area {
   display: grid;
@@ -1403,38 +1256,27 @@ a {
 .x-share-button {
   min-height: 46px;
 
-  padding:
-    10px
-    12px;
-
   border: 1px solid #111;
 
   font-size: 11px;
   font-weight: 900;
-
-  letter-spacing: 0.04em;
-
-  transition:
-    background 0.15s ease,
-    color 0.15s ease;
 }
 
 .x-post-button {
   background: #111;
-  color: #fff;
-}
 
-.x-post-button:hover {
-  background: #333;
+  color: #fff;
 }
 
 .x-search-button {
   background: transparent;
+
   color: #111;
 }
 
 .x-search-button:hover {
   background: #111;
+
   color: #fff;
 }
 
@@ -1447,8 +1289,6 @@ a {
 
   font-size: 9px;
   font-weight: 900;
-
-  letter-spacing: 0.05em;
 }
 
 
@@ -1460,12 +1300,11 @@ a {
   position: fixed;
 
   left: -100000px;
+
   top: 0;
 
   width: 1080px;
   height: 1080px;
-
-  overflow: hidden;
 
   pointer-events: none;
 }
@@ -1474,15 +1313,7 @@ a {
   width: 1080px !important;
   height: 1080px !important;
 
-  min-width: 1080px !important;
-  min-height: 1080px !important;
-
-  max-width: 1080px !important;
-  max-height: 1080px !important;
-
   aspect-ratio: auto !important;
-
-  container-type: inline-size;
 }
 
 
@@ -1491,16 +1322,6 @@ a {
 ========================================== */
 
 .about-section {
-  width:
-    min(
-      1400px,
-      calc(100% - 44px)
-    );
-
-  margin:
-    0
-    auto;
-
   padding:
     42px
     0;
@@ -1516,8 +1337,6 @@ a {
 
   font-size: 18px;
   font-weight: 900;
-
-  letter-spacing: 0.08em;
 }
 
 .about-text {
@@ -1539,15 +1358,11 @@ a {
 .site-footer {
   padding:
     22px;
-    
+
   border-top: 1px solid #111;
 }
 
 .footer-inner {
-  width: 100%;
-
-  margin: 0;
-
   display: flex;
 
   justify-content: space-between;
@@ -1561,8 +1376,6 @@ a {
 .footer-links {
   display: flex;
 
-  flex-wrap: wrap;
-
   gap: 18px;
 }
 
@@ -1573,14 +1386,9 @@ a {
 
 @media (max-width: 950px) {
 
-  .hero {
-    padding:
-      38px
-      15px
-      44px;
-  }
-
-  .creator-main {
+  .hero-inner,
+  .creator-main,
+  .about-section {
     width:
       calc(
         100% - 30px
@@ -1588,8 +1396,7 @@ a {
   }
 
   .creator-layout {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
 
     grid-template-areas:
       "top"
@@ -1607,13 +1414,6 @@ a {
     width: 100%;
   }
 
-  .about-section {
-    width:
-      calc(
-        100% - 30px
-      );
-  }
-
 }
 
 
@@ -1628,25 +1428,30 @@ a {
   }
 
   .header-inner {
-    align-items: flex-start;
-
     flex-direction: column;
+
+    align-items: flex-start;
   }
 
-
-  /* HERO */
 
   .hero {
     padding:
       32px
-      12px
+      0
       40px;
+  }
+
+  .hero-inner,
+  .creator-main,
+  .about-section {
+    width:
+      calc(
+        100% - 24px
+      );
   }
 
   .hero-kicker {
     gap: 9px;
-
-    margin-bottom: 24px;
 
     font-size: 10px;
   }
@@ -1665,21 +1470,12 @@ a {
       );
   }
 
-  .hero-line-accent {
-    display: inline;
-  }
-
   .hero-description {
     font-size: 12px;
   }
 
-
-  /* COMMUNITY */
-
   .hero-community {
     width: 100%;
-
-    align-items: stretch;
   }
 
   .hero-community-button {
@@ -1689,21 +1485,6 @@ a {
   .hero-community-tag {
     text-align: center;
   }
-
-
-  /* CREATOR */
-
-  .creator-main {
-    width:
-      calc(
-        100% - 24px
-      );
-
-    padding-bottom: 55px;
-  }
-
-
-  /* CONTROLS */
 
   .control-section {
     padding: 18px;
@@ -1715,26 +1496,10 @@ a {
       1fr;
   }
 
-
-  /* X */
-
   .x-share-area {
     grid-template-columns:
       1fr;
   }
-
-
-  /* ABOUT */
-
-  .about-section {
-    width:
-      calc(
-        100% - 24px
-      );
-  }
-
-
-  /* FOOTER */
 
   .footer-inner {
     flex-direction: column;
