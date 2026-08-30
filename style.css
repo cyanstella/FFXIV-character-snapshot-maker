@@ -61,10 +61,12 @@ HEADER
 .brand-logo {
   display:flex;
   align-items:center;
+
   gap:7px;
 
   font-size:14px;
   font-weight:900;
+
   letter-spacing:.08em;
 }
 
@@ -73,23 +75,27 @@ HEADER
   padding:7px 8px;
 
   background:#111;
+
   color:#fff;
 }
 
 
 .language-buttons {
   display:flex;
+
   gap:6px;
 }
 
 
 .language-button {
   min-width:52px;
+
   height:36px;
 
   border:1px solid #111;
 
   background:transparent;
+
   color:#111;
 
   font-size:12px;
@@ -99,6 +105,7 @@ HEADER
 
 .language-button.active {
   background:#111;
+
   color:#fff;
 }
 
@@ -120,6 +127,7 @@ HERO
   margin:0 0 14px;
 
   font-size:12px;
+
   font-weight:900;
 
   letter-spacing:.18em;
@@ -153,6 +161,7 @@ HERO
   position:relative;
 
   width:max-content;
+
   max-width:100%;
 
   padding-bottom:18px;
@@ -170,6 +179,7 @@ HERO
   bottom:0;
 
   width:100%;
+
   height:9px;
 
   background:#c8ff00;
@@ -182,6 +192,7 @@ HERO
   margin:42px 0 0;
 
   font-size:14px;
+
   line-height:2;
 }
 
@@ -247,9 +258,9 @@ CONTROL PANEL
 ========================================== */
 
 .control-panel {
-  border:1px solid #111;
-
   padding:22px;
+
+  border:1px solid #111;
 }
 
 
@@ -257,6 +268,7 @@ CONTROL PANEL
   margin:0 0 28px;
 
   font-size:20px;
+
   font-weight:900;
 
   letter-spacing:.08em;
@@ -283,6 +295,7 @@ CONTROL PANEL
   margin-bottom:10px;
 
   font-size:12px;
+
   font-weight:900;
 }
 
@@ -291,10 +304,13 @@ CONTROL PANEL
   margin-bottom:8px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
   font-size:11px;
+
   font-weight:900;
 }
 
@@ -310,11 +326,11 @@ textarea,
 select {
   width:100%;
 
+  padding:12px;
+
   border:1px solid #999;
 
   background:#fff;
-
-  padding:12px;
 }
 
 
@@ -329,18 +345,22 @@ textarea {
 .lodestone-fetch-button {
   width:100%;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
   min-height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
 
   border:0;
 
   background:#111;
+
   color:#fff;
 
   font-size:12px;
+
   font-weight:900;
 }
 
@@ -348,7 +368,8 @@ textarea {
 .two-buttons {
   display:grid;
 
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
 
   gap:8px;
 }
@@ -360,15 +381,18 @@ textarea {
   border:1px solid #111;
 
   background:transparent;
+
   color:#111;
 
   font-size:11px;
+
   font-weight:900;
 }
 
 
 .choice-button.active {
   background:#111;
+
   color:#fff;
 }
 
@@ -401,6 +425,7 @@ textarea {
   text-align:center;
 
   font-size:10px;
+
   font-weight:900;
 }
 
@@ -412,6 +437,7 @@ textarea {
 
   left:0;
   right:0;
+
   top:50%;
 
   height:1px;
@@ -475,6 +501,7 @@ textarea {
   display:block;
 
   font-size:11px;
+
   font-weight:800;
 
   line-height:1.5;
@@ -514,6 +541,7 @@ PREVIEW
   margin:0 0 10px;
 
   font-size:11px;
+
   font-weight:900;
 
   letter-spacing:.16em;
@@ -550,6 +578,11 @@ PREVIEW
 }
 
 
+
+/* ==========================================
+SCREENSHOT
+========================================== */
+
 .photo-area {
   position:absolute;
 
@@ -561,26 +594,38 @@ PREVIEW
 }
 
 
-.snapshot-image {
-  position:absolute;
-
-  inset:0;
+/*
+  IMPORTANT
 
   width:100%;
   height:100%;
-
   object-fit:cover;
 
-  object-position:
-    var(--image-x,50%)
-    var(--image-y,50%);
+  は使用しない。
 
-  transform:
-    scale(
-      var(--image-scale,1)
-    );
+  JavaScript側で元画像の比率を維持した
+  width / height / left / top を計算する。
+*/
 
-  transform-origin:center center;
+.snapshot-image {
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:auto;
+  height:auto;
+
+  max-width:none;
+  max-height:none;
+
+  object-fit:initial;
+
+  transform:none;
+
+  transform-origin:initial;
+
+  display:block;
 }
 
 
@@ -592,11 +637,13 @@ PREVIEW
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   color:#666;
 
   font-size:3cqw;
+
   font-weight:900;
 
   letter-spacing:.15em;
@@ -648,7 +695,7 @@ FONT
     "Hiragino Maru Gothic ProN",
     "Hiragino Maru Gothic Pro",
     "Yu Gothic",
-    "Meiryo",
+    Meiryo,
     sans-serif;
 
   letter-spacing:.015em;
@@ -692,6 +739,7 @@ CHARACTER PANEL
 
   left:5%;
   right:5%;
+
   top:5%;
 
   min-height:22%;
@@ -785,7 +833,10 @@ JOB
 .job-item {
   width:3.1cqw;
 
-  flex:0 0 3.1cqw;
+  flex:
+    0
+    0
+    3.1cqw;
 
   text-align:center;
 }
@@ -795,6 +846,7 @@ JOB
   display:block;
 
   width:2.6cqw;
+
   height:2.6cqw;
 
   margin:0 auto;
@@ -840,7 +892,9 @@ JOB
 
   min-height:1.8cqw;
 
-  padding:.25cqw .6cqw;
+  padding:
+    .25cqw
+    .6cqw;
 
   border:.08cqw solid currentColor;
 
@@ -868,7 +922,6 @@ BOTTOM PANEL
   right:5%;
 
   top:70%;
-
   bottom:4.8%;
 
   padding:
@@ -939,17 +992,21 @@ QUESTIONS
   grid-area:q1;
 }
 
+
 .question-2 {
   grid-area:q2;
 }
+
 
 .question-3 {
   grid-area:q3;
 }
 
+
 .question-4 {
   grid-area:q4;
 }
+
 
 .question-5 {
   grid-area:q5;
@@ -973,11 +1030,13 @@ QUESTIONS
 
 .question-number {
   width:2.15cqw;
+
   height:2.15cqw;
 
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   border:.1cqw solid currentColor;
@@ -1090,7 +1149,7 @@ MESSAGE
 
 
 /* ==========================================
-COPYRIGHT
+META
 ========================================== */
 
 .snapshot-copyright,
@@ -1180,9 +1239,14 @@ ABOUT
 .about-section {
   max-width:1380px;
 
-  margin:80px auto 0;
+  margin:
+    80px
+    auto
+    0;
 
-  padding:40px 30px;
+  padding:
+    40px
+    30px;
 
   border-top:1px solid #111;
 }
@@ -1210,7 +1274,10 @@ FOOTER
 ========================================== */
 
 .site-footer {
-  padding:25px 30px 40px;
+  padding:
+    25px
+    30px
+    40px;
 
   display:flex;
 
@@ -1285,6 +1352,7 @@ MOBILE
   }
 
 }
+
 
 
 @media (max-width:600px) {

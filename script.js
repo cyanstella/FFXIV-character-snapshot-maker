@@ -6,132 +6,254 @@ const WORKER_URL =
   "https://ffxiv-character-snapshot-maker.cyan-ciel.workers.dev";
 
 
+
 /* ==========================================
 ELEMENTS
 ========================================== */
 
 const snapshot =
-  document.getElementById("snapshot");
+  document.getElementById(
+    "snapshot"
+  );
+
 
 const imageUpload =
-  document.getElementById("imageUpload");
+  document.getElementById(
+    "imageUpload"
+  );
+
 
 const snapshotImage =
-  document.getElementById("snapshotImage");
+  document.getElementById(
+    "snapshotImage"
+  );
+
 
 const photoPlaceholder =
-  document.getElementById("photoPlaceholder");
+  document.getElementById(
+    "photoPlaceholder"
+  );
+
 
 const imageXInput =
-  document.getElementById("imageXInput");
+  document.getElementById(
+    "imageXInput"
+  );
+
 
 const imageXValue =
-  document.getElementById("imageXValue");
+  document.getElementById(
+    "imageXValue"
+  );
+
 
 const imageYInput =
-  document.getElementById("imageYInput");
+  document.getElementById(
+    "imageYInput"
+  );
+
 
 const imageYValue =
-  document.getElementById("imageYValue");
+  document.getElementById(
+    "imageYValue"
+  );
+
 
 const imageScaleInput =
-  document.getElementById("imageScaleInput");
+  document.getElementById(
+    "imageScaleInput"
+  );
+
 
 const imageScaleValue =
-  document.getElementById("imageScaleValue");
+  document.getElementById(
+    "imageScaleValue"
+  );
+
 
 const coverBlackButton =
-  document.getElementById("coverBlackButton");
+  document.getElementById(
+    "coverBlackButton"
+  );
+
 
 const coverWhiteButton =
-  document.getElementById("coverWhiteButton");
+  document.getElementById(
+    "coverWhiteButton"
+  );
+
 
 const coverOpacityInput =
-  document.getElementById("coverOpacityInput");
+  document.getElementById(
+    "coverOpacityInput"
+  );
+
 
 const coverOpacityValue =
-  document.getElementById("coverOpacityValue");
+  document.getElementById(
+    "coverOpacityValue"
+  );
+
 
 const coverFilm =
-  document.getElementById("coverFilm");
+  document.getElementById(
+    "coverFilm"
+  );
+
 
 const textWhiteButton =
-  document.getElementById("textWhiteButton");
+  document.getElementById(
+    "textWhiteButton"
+  );
+
 
 const textBlackButton =
-  document.getElementById("textBlackButton");
+  document.getElementById(
+    "textBlackButton"
+  );
+
 
 const panelBlackButton =
-  document.getElementById("panelBlackButton");
+  document.getElementById(
+    "panelBlackButton"
+  );
+
 
 const panelWhiteButton =
-  document.getElementById("panelWhiteButton");
+  document.getElementById(
+    "panelWhiteButton"
+  );
+
 
 const panelOpacityInput =
-  document.getElementById("panelOpacityInput");
+  document.getElementById(
+    "panelOpacityInput"
+  );
+
 
 const panelOpacityValue =
-  document.getElementById("panelOpacityValue");
+  document.getElementById(
+    "panelOpacityValue"
+  );
+
 
 const fontSelect =
-  document.getElementById("fontSelect");
+  document.getElementById(
+    "fontSelect"
+  );
+
 
 const characterNameInput =
-  document.getElementById("characterNameInput");
+  document.getElementById(
+    "characterNameInput"
+  );
+
 
 const worldInput =
-  document.getElementById("worldInput");
+  document.getElementById(
+    "worldInput"
+  );
+
 
 const previewCharacterName =
-  document.getElementById("previewCharacterName");
+  document.getElementById(
+    "previewCharacterName"
+  );
+
 
 const previewWorld =
-  document.getElementById("previewWorld");
+  document.getElementById(
+    "previewWorld"
+  );
+
 
 const lodestoneUrlInput =
-  document.getElementById("lodestoneUrlInput");
+  document.getElementById(
+    "lodestoneUrlInput"
+  );
+
 
 const lodestoneFetchButton =
-  document.getElementById("lodestoneFetchButton");
+  document.getElementById(
+    "lodestoneFetchButton"
+  );
+
 
 const lodestoneStatus =
-  document.getElementById("lodestoneStatus");
+  document.getElementById(
+    "lodestoneStatus"
+  );
+
 
 const jobIconList =
-  document.getElementById("jobIconList");
+  document.getElementById(
+    "jobIconList"
+  );
+
 
 const previewPlayStyle =
-  document.getElementById("previewPlayStyle");
+  document.getElementById(
+    "previewPlayStyle"
+  );
+
 
 const playStyleCheckboxes =
   document.querySelectorAll(
     ".play-style-checkbox"
   );
 
+
 const messageInput =
-  document.getElementById("messageInput");
+  document.getElementById(
+    "messageInput"
+  );
+
 
 const previewMessage =
-  document.getElementById("previewMessage");
+  document.getElementById(
+    "previewMessage"
+  );
+
 
 const messageCount =
-  document.getElementById("messageCount");
+  document.getElementById(
+    "messageCount"
+  );
+
 
 const exportButton =
-  document.getElementById("exportButton");
+  document.getElementById(
+    "exportButton"
+  );
+
 
 const languageJa =
-  document.getElementById("languageJa");
+  document.getElementById(
+    "languageJa"
+  );
+
 
 const languageEn =
-  document.getElementById("languageEn");
+  document.getElementById(
+    "languageEn"
+  );
 
 
-const answerInputs = [];
 
-const previewAnswers = [];
+/* ==========================================
+QUESTION ELEMENTS
+========================================== */
 
-const answerCounts = [];
+const answerInputs =
+  [];
+
+
+const previewAnswers =
+  [];
+
+
+const answerCounts =
+  [];
 
 
 for (
@@ -146,11 +268,13 @@ for (
     )
   );
 
+
   previewAnswers.push(
     document.getElementById(
       `previewAnswer${i}`
     )
   );
+
 
   answerCounts.push(
     document.getElementById(
@@ -559,7 +683,9 @@ const playStyleTranslations = {
 
 
 
-function setLanguage(language) {
+function setLanguage(
+  language
+) {
 
   currentLanguage =
     language;
@@ -607,24 +733,52 @@ function setLanguage(language) {
 
   updatePlayStyle();
 
+
+  requestAnimationFrame(
+    () => {
+
+      previewAnswers.forEach(
+        fitAnswerText
+      );
+
+
+      fitMessageText();
+
+    }
+  );
+
 }
+
 
 
 languageJa.addEventListener(
   "click",
-  () => setLanguage("ja")
+  () => {
+
+    setLanguage(
+      "ja"
+    );
+
+  }
 );
+
 
 
 languageEn.addEventListener(
   "click",
-  () => setLanguage("en")
+  () => {
+
+    setLanguage(
+      "en"
+    );
+
+  }
 );
 
 
 
 /* ==========================================
-SCREENSHOT
+SCREENSHOT FILE
 ========================================== */
 
 let currentImageUrl =
@@ -644,7 +798,9 @@ imageUpload.addEventListener(
     }
 
 
-    if (currentImageUrl) {
+    if (
+      currentImageUrl
+    ) {
 
       URL.revokeObjectURL(
         currentImageUrl
@@ -665,6 +821,11 @@ imageUpload.addEventListener(
         photoPlaceholder.style.display =
           "none";
 
+
+        requestAnimationFrame(
+          updateImageTransform
+        );
+
       };
 
 
@@ -677,84 +838,263 @@ imageUpload.addEventListener(
 
 
 /* ==========================================
-IMAGE POSITION
+SCREENSHOT POSITION / SCALE
+
+IMPORTANT:
+元画像の縦横比を維持する。
+object-fit / CSS scale は使用しない。
 ========================================== */
 
-function updateImageX() {
+function updateImageTransform() {
 
-  const value =
+  /*
+    画像未読み込み
+  */
+
+  if (
+    !snapshotImage.naturalWidth ||
+    !snapshotImage.naturalHeight
+  ) {
+
+    imageXValue.textContent =
+      `${imageXInput.value}%`;
+
+
+    imageYValue.textContent =
+      `${imageYInput.value}%`;
+
+
+    imageScaleValue.textContent =
+      `${imageScaleInput.value}%`;
+
+
+    return;
+
+  }
+
+
+  const areaWidth =
+    snapshot.clientWidth;
+
+
+  const areaHeight =
+    snapshot.clientHeight;
+
+
+  if (
+    !areaWidth ||
+    !areaHeight
+  ) {
+
+    return;
+
+  }
+
+
+  const naturalWidth =
+    snapshotImage.naturalWidth;
+
+
+  const naturalHeight =
+    snapshotImage.naturalHeight;
+
+
+
+  /*
+    ========================================
+    COVER SCALE
+
+    元画像の比率を維持した状態で、
+    正方形全体を覆う最小倍率。
+    ========================================
+  */
+
+  const coverScale =
+    Math.max(
+
+      areaWidth /
+      naturalWidth,
+
+      areaHeight /
+      naturalHeight
+
+    );
+
+
+
+  /*
+    ========================================
+    USER SCALE
+
+    100 = COVER状態
+    200 = COVER状態の2倍
+    ========================================
+  */
+
+  const userScale =
+    Number(
+      imageScaleInput.value
+    )
+    / 100;
+
+
+
+  const finalScale =
+    coverScale *
+    userScale;
+
+
+
+  /*
+    ========================================
+    DISPLAY SIZE
+
+    naturalWidth / naturalHeightの
+    両方へ同じ倍率を掛ける。
+
+    これによって縦横比は絶対に変わらない。
+    ========================================
+  */
+
+  const imageWidth =
+    naturalWidth *
+    finalScale;
+
+
+  const imageHeight =
+    naturalHeight *
+    finalScale;
+
+
+
+  /*
+    ========================================
+    OVERFLOW
+
+    正方形からはみ出している画像量。
+    ========================================
+  */
+
+  const overflowX =
+    Math.max(
+      0,
+      imageWidth -
+      areaWidth
+    );
+
+
+  const overflowY =
+    Math.max(
+      0,
+      imageHeight -
+      areaHeight
+    );
+
+
+
+  /*
+    ========================================
+    SLIDER POSITION
+    ========================================
+  */
+
+  const xRatio =
     Number(
       imageXInput.value
-    );
+    )
+    / 100;
 
 
-  snapshotImage.style.setProperty(
-    "--image-x",
-    `${value}%`
-  );
-
-
-  imageXValue.textContent =
-    `${value}%`;
-
-}
-
-
-function updateImageY() {
-
-  const value =
+  const yRatio =
     Number(
       imageYInput.value
-    );
+    )
+    / 100;
 
 
-  snapshotImage.style.setProperty(
-    "--image-y",
-    `${value}%`
-  );
+
+  /*
+    0% = 左 / 上
+
+    50% = 中央
+
+    100% = 右 / 下
+  */
+
+  const left =
+    -overflowX *
+    xRatio;
+
+
+  const top =
+    -overflowY *
+    yRatio;
+
+
+
+  /*
+    ========================================
+    APPLY
+    ========================================
+  */
+
+  snapshotImage.style.width =
+    `${imageWidth}px`;
+
+
+  snapshotImage.style.height =
+    `${imageHeight}px`;
+
+
+  snapshotImage.style.left =
+    `${left}px`;
+
+
+  snapshotImage.style.top =
+    `${top}px`;
+
+
+
+  /*
+    ========================================
+    UI VALUE
+    ========================================
+  */
+
+  imageXValue.textContent =
+    `${imageXInput.value}%`;
 
 
   imageYValue.textContent =
-    `${value}%`;
-
-}
-
-
-function updateImageScale() {
-
-  const value =
-    Number(
-      imageScaleInput.value
-    );
-
-
-  snapshotImage.style.setProperty(
-    "--image-scale",
-    value / 100
-  );
+    `${imageYInput.value}%`;
 
 
   imageScaleValue.textContent =
-    `${value}%`;
+    `${imageScaleInput.value}%`;
 
 }
 
 
+
+/* ==========================================
+IMAGE CONTROLS
+========================================== */
+
 imageXInput.addEventListener(
   "input",
-  updateImageX
+  updateImageTransform
 );
 
 
 imageYInput.addEventListener(
   "input",
-  updateImageY
+  updateImageTransform
 );
 
 
 imageScaleInput.addEventListener(
   "input",
-  updateImageScale
+  updateImageTransform
 );
 
 
@@ -792,6 +1132,7 @@ function updateCover() {
 }
 
 
+
 coverBlackButton.addEventListener(
   "click",
   () => {
@@ -814,6 +1155,7 @@ coverBlackButton.addEventListener(
 
   }
 );
+
 
 
 coverWhiteButton.addEventListener(
@@ -840,6 +1182,7 @@ coverWhiteButton.addEventListener(
 );
 
 
+
 coverOpacityInput.addEventListener(
   "input",
   updateCover
@@ -851,7 +1194,9 @@ coverOpacityInput.addEventListener(
 TEXT COLOR
 ========================================== */
 
-function setTextColor(color) {
+function setTextColor(
+  color
+) {
 
   snapshot.classList.remove(
     "text-white",
@@ -878,15 +1223,29 @@ function setTextColor(color) {
 }
 
 
+
 textWhiteButton.addEventListener(
   "click",
-  () => setTextColor("white")
+  () => {
+
+    setTextColor(
+      "white"
+    );
+
+  }
 );
+
 
 
 textBlackButton.addEventListener(
   "click",
-  () => setTextColor("black")
+  () => {
+
+    setTextColor(
+      "black"
+    );
+
+  }
 );
 
 
@@ -895,7 +1254,9 @@ textBlackButton.addEventListener(
 PANEL COLOR
 ========================================== */
 
-function setPanelColor(color) {
+function setPanelColor(
+  color
+) {
 
   const rgb =
     color === "black"
@@ -929,15 +1290,29 @@ function setPanelColor(color) {
 }
 
 
+
 panelBlackButton.addEventListener(
   "click",
-  () => setPanelColor("black")
+  () => {
+
+    setPanelColor(
+      "black"
+    );
+
+  }
 );
+
 
 
 panelWhiteButton.addEventListener(
   "click",
-  () => setPanelColor("white")
+  () => {
+
+    setPanelColor(
+      "white"
+    );
+
+  }
 );
 
 
@@ -964,6 +1339,7 @@ function updatePanelOpacity() {
     `${value}%`;
 
 }
+
 
 
 panelOpacityInput.addEventListener(
@@ -994,6 +1370,20 @@ fontSelect.addEventListener(
       `font-${fontSelect.value}`
     );
 
+
+    requestAnimationFrame(
+      () => {
+
+        previewAnswers.forEach(
+          fitAnswerText
+        );
+
+
+        fitMessageText();
+
+      }
+    );
+
   }
 );
 
@@ -1019,10 +1409,12 @@ function updateCharacter() {
 }
 
 
+
 characterNameInput.addEventListener(
   "input",
   updateCharacter
 );
+
 
 
 worldInput.addEventListener(
@@ -1033,7 +1425,7 @@ worldInput.addEventListener(
 
 
 /* ==========================================
-JOB ICONS
+JOB ICON MAP
 ========================================== */
 
 const JOB_ICON_MAP = {
@@ -1082,35 +1474,70 @@ const JOB_ICON_MAP = {
 
 
 
-/*
-  32ジョブを3行に配置
-*/
+/* ==========================================
+JOB LAYOUT
+3 ROWS
+========================================== */
 
 const JOB_GROUPS = [
 
   [
-    "PLD","WAR","DRK","GNB",
-    "WHM","SCH","AST","SGE",
-    "MNK","DRG","NIN"
+    "PLD",
+    "WAR",
+    "DRK",
+    "GNB",
+
+    "WHM",
+    "SCH",
+    "AST",
+    "SGE",
+
+    "MNK",
+    "DRG",
+    "NIN"
   ],
 
-  [
-    "SAM","RPR","VPR",
-    "BRD","MCH","DNC",
-    "BLM","SMN","RDM","PCT","BLU"
-  ],
 
   [
-    "CRP","BSM","ARM","GSM",
-    "LTW","WVR","ALC","CUL",
-    "MIN","BTN","FSH"
+    "SAM",
+    "RPR",
+    "VPR",
+
+    "BRD",
+    "MCH",
+    "DNC",
+
+    "BLM",
+    "SMN",
+    "RDM",
+    "PCT",
+    "BLU"
+  ],
+
+
+  [
+    "CRP",
+    "BSM",
+    "ARM",
+    "GSM",
+
+    "LTW",
+    "WVR",
+    "ALC",
+    "CUL",
+
+    "MIN",
+    "BTN",
+    "FSH"
   ]
 
 ];
 
 
+
 let currentJobs =
   {};
+
 
 
 function renderJobs(
@@ -1152,7 +1579,8 @@ function renderJobs(
 
 
           if (
-            abbreviation === "DNC"
+            abbreviation ===
+            "DNC"
           ) {
 
             item.classList.add(
@@ -1255,7 +1683,13 @@ function setLodestoneStatus(
 
 
 
-function formatWorld(world) {
+/* ==========================================
+WORLD FORMAT
+========================================== */
+
+function formatWorld(
+  world
+) {
 
   if (!world) {
     return "";
@@ -1264,7 +1698,9 @@ function formatWorld(world) {
 
   /*
     Mandragora [Meteor]
+
     ↓
+
     Mandragora / Meteor
   */
 
@@ -1277,11 +1713,17 @@ function formatWorld(world) {
 
 
 
+/* ==========================================
+APPLY LODESTONE
+========================================== */
+
 function applyLodestoneCharacter(
   data
 ) {
 
-  if (data.name) {
+  if (
+    data.name
+  ) {
 
     characterNameInput.value =
       data.name;
@@ -1289,7 +1731,9 @@ function applyLodestoneCharacter(
   }
 
 
-  if (data.world) {
+  if (
+    data.world
+  ) {
 
     worldInput.value =
       formatWorld(
@@ -1299,7 +1743,9 @@ function applyLodestoneCharacter(
   }
 
 
-  if (data.jobs) {
+  if (
+    data.jobs
+  ) {
 
     renderJobs(
       data.jobs
@@ -1314,22 +1760,34 @@ function applyLodestoneCharacter(
 
 
 
+/* ==========================================
+LODESTONE FETCH
+========================================== */
+
 lodestoneFetchButton.addEventListener(
   "click",
   async () => {
 
     const url =
-      lodestoneUrlInput.value.trim();
+      lodestoneUrlInput
+        .value
+        .trim();
 
 
     if (!url) {
 
       setLodestoneStatus(
+
         "error",
+
         currentLanguage === "ja"
-          ? "LodestoneのキャラクターURLを入力してください。"
-          : "Enter a Lodestone character URL."
+          ?
+          "LodestoneのキャラクターURLを入力してください。"
+          :
+          "Enter a Lodestone character URL."
+
       );
+
 
       return;
 
@@ -1341,9 +1799,13 @@ lodestoneFetchButton.addEventListener(
 
 
     setLodestoneStatus(
+
       "",
-      translations[currentLanguage]
-        .lodestoneLoading
+
+      translations[
+        currentLanguage
+      ].lodestoneLoading
+
     );
 
 
@@ -1351,15 +1813,19 @@ lodestoneFetchButton.addEventListener(
 
       const response =
         await fetch(
+
           WORKER_URL +
           "/?url=" +
           encodeURIComponent(
             url
           )
+
         );
 
 
-      if (!response.ok) {
+      if (
+        !response.ok
+      ) {
 
         throw new Error(
           `Worker HTTP ${response.status}`
@@ -1372,7 +1838,9 @@ lodestoneFetchButton.addEventListener(
         await response.json();
 
 
-      if (!data.success) {
+      if (
+        !data.success
+      ) {
 
         throw new Error(
           data.error
@@ -1389,14 +1857,20 @@ lodestoneFetchButton.addEventListener(
 
 
       setLodestoneStatus(
+
         "success",
-        translations[currentLanguage]
-          .lodestoneSuccess
+
+        translations[
+          currentLanguage
+        ].lodestoneSuccess
+
       );
 
     }
 
-    catch (error) {
+    catch (
+      error
+    ) {
 
       console.error(
         error
@@ -1404,9 +1878,13 @@ lodestoneFetchButton.addEventListener(
 
 
       setLodestoneStatus(
+
         "error",
-        translations[currentLanguage]
-          .lodestoneError
+
+        translations[
+          currentLanguage
+        ].lodestoneError
+
       );
 
     }
@@ -1459,8 +1937,10 @@ function updatePlayStyle() {
 
     tag.textContent =
       currentLanguage === "ja"
-        ? "未選択"
-        : "None";
+        ?
+        "未選択"
+        :
+        "None";
 
 
     previewPlayStyle.appendChild(
@@ -1491,8 +1971,11 @@ function updatePlayStyle() {
 
 
       tag.textContent =
-        playStyleTranslations[key]
-          [currentLanguage];
+        playStyleTranslations[
+          key
+        ][
+          currentLanguage
+        ];
 
 
       previewPlayStyle.appendChild(
@@ -1503,6 +1986,7 @@ function updatePlayStyle() {
   );
 
 }
+
 
 
 playStyleCheckboxes.forEach(
@@ -1519,16 +2003,12 @@ playStyleCheckboxes.forEach(
 
 
 /* ==========================================
-QUESTION AUTO FIT
+ANSWER AUTO FIT
 ========================================== */
 
 function fitAnswerText(
   element
 ) {
-
-  /*
-    CSSの基準サイズへ戻す
-  */
 
   element.style.fontSize =
     "";
@@ -1538,14 +2018,14 @@ function fitAnswerText(
     snapshot.clientWidth;
 
 
-  if (!snapshotWidth) {
+  if (
+    !snapshotWidth
+  ) {
+
     return;
+
   }
 
-
-  /*
-    1cqw相当
-  */
 
   const unit =
     snapshotWidth / 100;
@@ -1556,20 +2036,19 @@ function fitAnswerText(
 
 
   const minimum =
-    .78 * unit;
+    .72 * unit;
+
+
+  const maxHeight =
+    3.4 * unit;
 
 
   element.style.fontSize =
     `${size}px`;
 
 
-  /*
-    回答要素そのものの高さが
-    大きくなりすぎないよう縮小
-  */
-
-  const maxHeight =
-    3.2 * unit;
+  let safety =
+    0;
 
 
   while (
@@ -1578,14 +2057,21 @@ function fitAnswerText(
     &&
     size >
       minimum
+    &&
+    safety <
+      50
   ) {
 
     size -=
-      .05 * unit;
+      .04 *
+      unit;
 
 
     element.style.fontSize =
       `${size}px`;
+
+
+    safety++;
 
   }
 
@@ -1611,23 +2097,27 @@ answerInputs.forEach(
           input.value;
 
 
-        previewAnswers[index]
-          .textContent =
-            text.trim()
-            ||
-            "—";
+        previewAnswers[
+          index
+        ].textContent =
+          text.trim()
+          ||
+          "—";
 
 
-        answerCounts[index]
-          .textContent =
-            `${text.length} / 80`;
+        answerCounts[
+          index
+        ].textContent =
+          `${text.length} / 80`;
 
 
         requestAnimationFrame(
           () => {
 
             fitAnswerText(
-              previewAnswers[index]
+              previewAnswers[
+                index
+              ]
             );
 
           }
@@ -1657,8 +2147,12 @@ function fitMessageText() {
     );
 
 
-  if (!container) {
+  if (
+    !container
+  ) {
+
     return;
+
   }
 
 
@@ -1666,8 +2160,12 @@ function fitMessageText() {
     snapshot.clientWidth;
 
 
-  if (!snapshotWidth) {
+  if (
+    !snapshotWidth
+  ) {
+
     return;
+
   }
 
 
@@ -1680,17 +2178,12 @@ function fitMessageText() {
 
 
   const minimum =
-    .72 * unit;
+    .65 * unit;
 
 
   previewMessage.style.fontSize =
     `${size}px`;
 
-
-  /*
-    MESSAGEラベルと罫線を除いた
-    実際の使用可能領域を測る
-  */
 
   const label =
     container.querySelector(
@@ -1710,33 +2203,56 @@ function fitMessageText() {
 
   const labelHeight =
     label
-      ? label.offsetHeight
-      : 0;
+      ?
+      label.offsetHeight
+      :
+      0;
 
 
-  const ruleHeight =
+  let ruleHeight =
+    0;
+
+
+  if (
     rule
-      ? (
-          rule.offsetHeight +
-          parseFloat(
-            getComputedStyle(rule)
-              .marginTop
-          ) +
-          parseFloat(
-            getComputedStyle(rule)
-              .marginBottom
-          )
-        )
-      : 0;
+  ) {
+
+    const style =
+      getComputedStyle(
+        rule
+      );
+
+
+    ruleHeight =
+      rule.offsetHeight
+      +
+      parseFloat(
+        style.marginTop
+      )
+      +
+      parseFloat(
+        style.marginBottom
+      );
+
+  }
 
 
   const availableHeight =
     Math.max(
+
       0,
-      containerHeight -
-      labelHeight -
+
+      containerHeight
+      -
+      labelHeight
+      -
       ruleHeight
+
     );
+
+
+  let safety =
+    0;
 
 
   while (
@@ -1745,14 +2261,21 @@ function fitMessageText() {
     &&
     size >
       minimum
+    &&
+    safety <
+      60
   ) {
 
     size -=
-      .05 * unit;
+      .04 *
+      unit;
 
 
     previewMessage.style.fontSize =
       `${size}px`;
+
+
+    safety++;
 
   }
 
@@ -1787,6 +2310,7 @@ function updateMessage() {
 }
 
 
+
 messageInput.addEventListener(
   "input",
   updateMessage
@@ -1815,8 +2339,7 @@ async function waitForSnapshotImages(
       image => {
 
         if (
-          image.complete &&
-          image.naturalWidth > 0
+          image.complete
         ) {
 
           return Promise.resolve();
@@ -1828,7 +2351,11 @@ async function waitForSnapshotImages(
           resolve => {
 
             const finish =
-              () => resolve();
+              () => {
+
+                resolve();
+
+              };
 
 
             image.addEventListener(
@@ -1872,9 +2399,12 @@ async function exportSnapshot() {
 
     alert(
       currentLanguage === "ja"
-        ? "画像生成ライブラリを読み込めませんでした。"
-        : "The image export library could not be loaded."
+        ?
+        "画像生成ライブラリを読み込めませんでした。"
+        :
+        "The image export library could not be loaded."
     );
+
 
     return;
 
@@ -1891,11 +2421,17 @@ async function exportSnapshot() {
 
   exportButton.textContent =
     currentLanguage === "ja"
-      ? "書き出し中..."
-      : "EXPORTING...";
+      ?
+      "書き出し中..."
+      :
+      "EXPORTING...";
 
 
   try {
+
+    /*
+      FONT
+    */
 
     if (
       document.fonts &&
@@ -1907,11 +2443,22 @@ async function exportSnapshot() {
     }
 
 
+    /*
+      IMAGES
+    */
+
     await waitForSnapshotImages();
 
 
     /*
-      長文フィットを確定
+      SS位置を最終確定
+    */
+
+    updateImageTransform();
+
+
+    /*
+      TEXT FIT
     */
 
     previewAnswers.forEach(
@@ -1922,31 +2469,34 @@ async function exportSnapshot() {
     fitMessageText();
 
 
+    /*
+      2 frames待機
+    */
+
     await new Promise(
-      resolve =>
+      resolve => {
+
         requestAnimationFrame(
-          () =>
+          () => {
+
             requestAnimationFrame(
               resolve
-            )
-        )
+            );
+
+          }
+        );
+
+      }
     );
 
+
+    /*
+      SNAPSHOT SIZE
+    */
 
     const rect =
       snapshot.getBoundingClientRect();
 
-
-    /*
-      snapshotは1:1固定。
-
-      ここではwidthを基準に
-      1080pxへ拡大する。
-
-      width/heightをhtml2canvasへ
-      強制指定しないことで
-      プレビューの縦横比を維持。
-    */
 
     const previewSize =
       rect.width;
@@ -1964,9 +2514,25 @@ async function exportSnapshot() {
     }
 
 
-    const exportScale =
-      1080 / previewSize;
+    /*
+      プレビューの1pxを何倍すれば
+      1080pxになるか。
+    */
 
+    const exportScale =
+      1080 /
+      previewSize;
+
+
+
+    /*
+      CAPTURE
+
+      width / height を強制指定しない。
+
+      現在表示されている正方形を
+      そのまま倍率だけ上げる。
+    */
 
     const capturedCanvas =
       await html2canvas(
@@ -1975,7 +2541,8 @@ async function exportSnapshot() {
 
           backgroundColor:null,
 
-          scale:exportScale,
+          scale:
+            exportScale,
 
           useCORS:true,
 
@@ -1993,17 +2560,26 @@ async function exportSnapshot() {
       );
 
 
+
     /*
-      数px程度の誤差が発生した場合も
-      縦横比を潰さず正方形へ。
+      FINAL CANVAS
+
+      html2canvasの丸め誤差で
+      1079 / 1081px等になった場合のみ
+      中央から正方形で切り出す。
+
+      縦横別々に伸縮しない。
     */
 
     let finalCanvas;
 
 
     if (
-      capturedCanvas.width === 1080 &&
-      capturedCanvas.height === 1080
+      capturedCanvas.width ===
+        1080
+      &&
+      capturedCanvas.height ===
+        1080
     ) {
 
       finalCanvas =
@@ -2033,16 +2609,31 @@ async function exportSnapshot() {
         );
 
 
+      if (
+        !context
+      ) {
+
+        throw new Error(
+          "Canvas context unavailable."
+        );
+
+      }
+
+
       const sourceSize =
         Math.min(
+
           capturedCanvas.width,
+
           capturedCanvas.height
+
         );
 
 
       const sourceX =
         (
-          capturedCanvas.width -
+          capturedCanvas.width
+          -
           sourceSize
         )
         / 2;
@@ -2050,7 +2641,8 @@ async function exportSnapshot() {
 
       const sourceY =
         (
-          capturedCanvas.height -
+          capturedCanvas.height
+          -
           sourceSize
         )
         / 2;
@@ -2077,20 +2669,30 @@ async function exportSnapshot() {
     }
 
 
+
+    /*
+      PNG
+    */
+
     const blob =
       await new Promise(
         resolve => {
 
           finalCanvas.toBlob(
+
             resolve,
+
             "image/png"
+
           );
 
         }
       );
 
 
-    if (!blob) {
+    if (
+      !blob
+    ) {
 
       throw new Error(
         "PNG blob creation failed."
@@ -2143,7 +2745,9 @@ async function exportSnapshot() {
 
   }
 
-  catch (error) {
+  catch (
+    error
+  ) {
 
     console.error(
       "Snapshot export error:",
@@ -2153,8 +2757,10 @@ async function exportSnapshot() {
 
     alert(
       currentLanguage === "ja"
-        ? "画像の書き出しに失敗しました。"
-        : "Failed to export the image."
+        ?
+        "画像の書き出しに失敗しました。"
+        :
+        "Failed to export the image."
     );
 
   }
@@ -2171,6 +2777,7 @@ async function exportSnapshot() {
   }
 
 }
+
 
 
 exportButton.addEventListener(
@@ -2200,6 +2807,14 @@ window.addEventListener(
       setTimeout(
         () => {
 
+          /*
+            プレビューサイズが変わったら
+            SSの表示サイズも再計算。
+          */
+
+          updateImageTransform();
+
+
           previewAnswers.forEach(
             fitAnswerText
           );
@@ -2217,7 +2832,7 @@ window.addEventListener(
 
 
 /* ==========================================
-INITIAL JOB DATA
+DUMMY JOB DATA
 ========================================== */
 
 const dummyJobs = {
@@ -2272,31 +2887,51 @@ INITIALIZE
 
 function initialize() {
 
-  updateImageX();
+  /*
+    SSスライダー表示値。
 
-  updateImageY();
+    画像未読み込みでも値は表示する。
+  */
 
-  updateImageScale();
+  updateImageTransform();
+
 
   updateCover();
 
+
   updatePanelOpacity();
 
+
+  setPanelColor(
+    "black"
+  );
+
+
+  setTextColor(
+    "white"
+  );
+
+
   updateCharacter();
+
 
   renderJobs(
     dummyJobs
   );
 
+
   updatePlayStyle();
 
+
   updateMessage();
+
 
   setLanguage(
     "ja"
   );
 
 }
+
 
 
 initialize();
