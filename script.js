@@ -1,3 +1,7 @@
+/* ==========================================
+   CONFIG
+========================================== */
+
 const WORKER_URL =
   "https://ffxiv-character-snapshot-maker.cyan-ciel.workers.dev";
 
@@ -10,6 +14,10 @@ const SITE_TITLE =
 const X_HASHTAG =
   "FFXIVCHARACTERSNAPSHOTMAKER";
 
+
+/* ==========================================
+   ELEMENTS
+========================================== */
 
 const snapshot =
   document.getElementById("snapshot");
@@ -141,6 +149,10 @@ const panelColorButtons =
   );
 
 
+/* ==========================================
+   STATE
+========================================== */
+
 let currentLanguage = "ja";
 
 let currentJobLevels = {};
@@ -151,6 +163,10 @@ let imageNaturalWidth = 0;
 
 let imageNaturalHeight = 0;
 
+
+/* ==========================================
+   JOB DATA
+========================================== */
 
 const JOB_ICON_MAP = {
 
@@ -219,6 +235,10 @@ const JOB_GROUPS = [
 
 ];
 
+
+/* ==========================================
+   PLAY STYLE TRANSLATIONS
+========================================== */
 
 const playStyleTranslations = {
 
@@ -305,6 +325,10 @@ const playStyleTranslations = {
 };
 
 
+/* ==========================================
+   QUESTIONS
+========================================== */
+
 const questionTranslations = {
 
   ja: [
@@ -325,6 +349,10 @@ const questionTranslations = {
 
 };
 
+
+/* ==========================================
+   UI TRANSLATIONS
+========================================== */
 
 const translations = {
 
@@ -538,6 +566,10 @@ const translations = {
 };
 
 
+/* ==========================================
+   IMAGE
+========================================== */
+
 function handleImageUpload(event) {
 
   const file =
@@ -548,7 +580,6 @@ function handleImageUpload(event) {
   }
 
   if (currentImageObjectUrl) {
-
     URL.revokeObjectURL(
       currentImageObjectUrl
     );
@@ -620,10 +651,7 @@ function updateImageGeometry() {
   let width;
   let height;
 
-  if (
-    imageRatio >
-    containerRatio
-  ) {
+  if (imageRatio > containerRatio) {
 
     height =
       containerHeight;
@@ -655,19 +683,13 @@ function updateImageGeometry() {
 function updateImageTransform() {
 
   const x =
-    Number(
-      imageXInput.value
-    );
+    Number(imageXInput.value);
 
   const y =
-    Number(
-      imageYInput.value
-    );
+    Number(imageYInput.value);
 
   const scale =
-    Number(
-      imageScaleInput.value
-    ) / 100;
+    Number(imageScaleInput.value) / 100;
 
   const offsetX =
     (x - 50) * 0.6;
@@ -701,12 +723,14 @@ function updateImageTransform() {
 }
 
 
+/* ==========================================
+   COVER / PANEL
+========================================== */
+
 function updateCoverOpacity() {
 
   const value =
-    Number(
-      coverOpacityInput.value
-    );
+    Number(coverOpacityInput.value);
 
   snapshot.style.setProperty(
     "--cover-alpha",
@@ -721,9 +745,7 @@ function updateCoverOpacity() {
 function updatePanelOpacity() {
 
   const value =
-    Number(
-      panelOpacityInput.value
-    );
+    Number(panelOpacityInput.value);
 
   snapshot.style.setProperty(
     "--panel-alpha",
@@ -740,16 +762,14 @@ function activateButton(
   target
 ) {
 
-  buttons.forEach(
-    button => {
+  buttons.forEach(button => {
 
-      button.classList.toggle(
-        "active",
-        button === target
-      );
+    button.classList.toggle(
+      "active",
+      button === target
+    );
 
-    }
-  );
+  });
 }
 
 
@@ -814,6 +834,10 @@ function setPanelColor(button) {
 }
 
 
+/* ==========================================
+   FONT
+========================================== */
+
 function updateFont() {
 
   snapshot.classList.remove(
@@ -826,20 +850,15 @@ function updateFont() {
 
   const classes = {
 
-    gothic:
-      "font-gothic",
+    gothic: "font-gothic",
 
-    rounded:
-      "font-rounded",
+    rounded: "font-rounded",
 
-    mincho:
-      "font-mincho",
+    mincho: "font-mincho",
 
-    modern:
-      "font-modern",
+    modern: "font-modern",
 
-    condensed:
-      "font-condensed"
+    condensed: "font-condensed"
 
   };
 
@@ -850,18 +869,18 @@ function updateFont() {
 }
 
 
+/* ==========================================
+   CHARACTER
+========================================== */
+
 function updateCharacter() {
 
   previewCharacterName.textContent =
-    characterNameInput
-      .value
-      .trim() ||
+    characterNameInput.value.trim() ||
     "HIKARINO SENSHI";
 
   previewWorld.textContent =
-    worldInput
-      .value
-      .trim() ||
+    worldInput.value.trim() ||
     "Ramuh / Meteor";
 }
 
@@ -869,14 +888,11 @@ function updateCharacter() {
 function formatWorld(value) {
 
   const match =
-    String(
-      value || ""
-    ).match(
+    String(value || "").match(
       /^(.+?)\s*\[([^\]]+)\]\s*$/
     );
 
   if (!match) {
-
     return value || "";
   }
 
@@ -888,23 +904,22 @@ function formatWorld(value) {
 }
 
 
+/* ==========================================
+   LODESTONE
+========================================== */
+
 function setLodestoneStatus(
   type,
   text
 ) {
 
-  lodestoneStatus
-    .classList
-    .remove(
-      "success",
-      "error"
-    );
+  lodestoneStatus.classList.remove(
+    "success",
+    "error"
+  );
 
   if (type) {
-
-    lodestoneStatus
-      .classList
-      .add(type);
+    lodestoneStatus.classList.add(type);
   }
 
   lodestoneStatus.textContent =
@@ -915,9 +930,7 @@ function setLodestoneStatus(
 async function fetchLodestone() {
 
   const url =
-    lodestoneUrlInput
-      .value
-      .trim();
+    lodestoneUrlInput.value.trim();
 
   if (!url) {
 
@@ -957,16 +970,13 @@ async function fetchLodestone() {
       !response.ok ||
       !data.success
     ) {
-
       throw new Error(
         data.error ||
         `HTTP ${response.status}`
       );
     }
 
-    applyLodestoneCharacter(
-      data
-    );
+    applyLodestoneCharacter(data);
 
     setLodestoneStatus(
       "success",
@@ -997,17 +1007,13 @@ async function fetchLodestone() {
 function applyLodestoneCharacter(data) {
 
   if (data.name) {
-
     characterNameInput.value =
       data.name;
   }
 
   if (data.world) {
-
     worldInput.value =
-      formatWorld(
-        data.world
-      );
+      formatWorld(data.world);
   }
 
   currentJobLevels =
@@ -1022,100 +1028,85 @@ function applyLodestoneCharacter(data) {
 }
 
 
+/* ==========================================
+   JOBS
+========================================== */
+
 function renderJobs() {
 
-  jobIconArea.innerHTML =
-    "";
+  jobIconArea.innerHTML = "";
 
-  JOB_GROUPS.forEach(
-    group => {
+  JOB_GROUPS.forEach(group => {
 
-      const row =
-        document.createElement(
-          "div"
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "job-icon-row";
+
+    group.forEach(job => {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "job-item";
+
+      if (job === "DNC") {
+        item.classList.add(
+          "job-dnc"
         );
+      }
 
-      row.className =
-        "job-icon-row";
+      const image =
+        document.createElement("img");
 
-      group.forEach(
-        job => {
+      image.src =
+        `assets/jobs/${JOB_ICON_MAP[job]}`;
 
-          const item =
-            document.createElement(
-              "div"
-            );
+      image.alt =
+        job;
 
-          item.className =
-            "job-item";
+      image.draggable =
+        false;
 
-          if (job === "DNC") {
+      const level =
+        document.createElement("div");
 
-            item.classList.add(
-              "job-dnc"
-            );
-          }
+      level.className =
+        "job-level";
 
-          const image =
-            document.createElement(
-              "img"
-            );
+      const jobLevel =
+        currentJobLevels[job];
 
-          image.src =
-            `assets/jobs/${JOB_ICON_MAP[job]}`;
+      level.textContent =
+        jobLevel !== undefined &&
+        jobLevel !== null &&
+        jobLevel !== ""
+          ? String(jobLevel)
+          : "—";
 
-          image.alt =
-            job;
+      item.appendChild(image);
 
-          image.draggable =
-            false;
+      item.appendChild(level);
 
-          const level =
-            document.createElement(
-              "div"
-            );
+      row.appendChild(item);
 
-          level.className =
-            "job-level";
+    });
 
-          const jobLevel =
-            currentJobLevels[job];
+    jobIconArea.appendChild(row);
 
-          level.textContent =
-            jobLevel !== undefined &&
-            jobLevel !== null &&
-            jobLevel !== ""
-              ? String(jobLevel)
-              : "—";
-
-          item.appendChild(
-            image
-          );
-
-          item.appendChild(
-            level
-          );
-
-          row.appendChild(
-            item
-          );
-
-        }
-      );
-
-      jobIconArea.appendChild(
-        row
-      );
-
-    }
-  );
+  });
 }
 
 
+/* ==========================================
+   PLAY STYLE
+========================================== */
+
 function updatePlayStyle() {
 
-  previewPlayStyle.innerHTML =
-    "";
+  previewPlayStyle.innerHTML = "";
 
   const selected =
     [...playStyleCheckboxes]
@@ -1124,14 +1115,10 @@ function updatePlayStyle() {
           checkbox.checked
       );
 
-  if (
-    selected.length === 0
-  ) {
+  if (selected.length === 0) {
 
     const tag =
-      document.createElement(
-        "span"
-      );
+      document.createElement("span");
 
     tag.className =
       "play-style-tag";
@@ -1141,40 +1128,36 @@ function updatePlayStyle() {
         currentLanguage
       ].none;
 
-    previewPlayStyle.appendChild(
-      tag
-    );
+    previewPlayStyle.appendChild(tag);
 
     return;
   }
 
-  selected.forEach(
-    checkbox => {
+  selected.forEach(checkbox => {
 
-      const key =
-        checkbox.dataset.style;
+    const key =
+      checkbox.dataset.style;
 
-      const tag =
-        document.createElement(
-          "span"
-        );
+    const tag =
+      document.createElement("span");
 
-      tag.className =
-        "play-style-tag";
+    tag.className =
+      "play-style-tag";
 
-      tag.textContent =
-        playStyleTranslations[
-          key
-        ][currentLanguage];
+    tag.textContent =
+      playStyleTranslations[
+        key
+      ][currentLanguage];
 
-      previewPlayStyle.appendChild(
-        tag
-      );
+    previewPlayStyle.appendChild(tag);
 
-    }
-  );
+  });
 }
 
+
+/* ==========================================
+   QUESTIONS / MESSAGE
+========================================== */
 
 function updateQuestions() {
 
@@ -1187,9 +1170,7 @@ function updateQuestions() {
         input.value.trim() ||
         "—";
 
-      updateCounter(
-        input
-      );
+      updateCounter(input);
 
     }
   );
@@ -1199,14 +1180,10 @@ function updateQuestions() {
 function updateMessage() {
 
   previewMessage.textContent =
-    messageInput
-      .value
-      .trim() ||
+    messageInput.value.trim() ||
     "—";
 
-  updateCounter(
-    messageInput
-  );
+  updateCounter(messageInput);
 }
 
 
@@ -1226,6 +1203,10 @@ function updateCounter(input) {
 }
 
 
+/* ==========================================
+   LANGUAGE
+========================================== */
+
 function setLanguage(language) {
 
   currentLanguage =
@@ -1236,111 +1217,103 @@ function setLanguage(language) {
   document.documentElement.lang =
     currentLanguage;
 
-  document
-    .querySelectorAll(
-      "[data-lang]"
-    )
-    .forEach(
-      button => {
 
-        button.classList.toggle(
-          "active",
-          button.dataset.lang ===
+  document
+    .querySelectorAll("[data-lang]")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.lang ===
           currentLanguage
-        );
+      );
 
-      }
-    );
+    });
+
 
   document
-    .querySelectorAll(
-      "[data-i18n]"
-    )
-    .forEach(
-      element => {
+    .querySelectorAll("[data-i18n]")
+    .forEach(element => {
 
-        const key =
-          element.dataset.i18n;
+      const key =
+        element.dataset.i18n;
 
-        const text =
-          translations[
-            currentLanguage
-          ][key];
+      const text =
+        translations[
+          currentLanguage
+        ][key];
 
-        if (
-          text !== undefined
-        ) {
-
-          element.textContent =
-            text;
-        }
-
+      if (text !== undefined) {
+        element.textContent = text;
       }
-    );
+
+    });
+
 
   document
     .querySelectorAll(
       "[data-play-label]"
     )
-    .forEach(
-      element => {
+    .forEach(element => {
 
-        const key =
-          element.dataset.playLabel;
+      const key =
+        element.dataset.playLabel;
 
-        element.textContent =
-          playStyleTranslations[
-            key
-          ][currentLanguage];
+      element.textContent =
+        playStyleTranslations[
+          key
+        ][currentLanguage];
 
-      }
-    );
+    });
+
 
   document
     .querySelectorAll(
       "[data-question-title]"
     )
-    .forEach(
-      element => {
+    .forEach(element => {
 
-        const index =
-          Number(
-            element.dataset.questionTitle
-          ) - 1;
+      const index =
+        Number(
+          element.dataset.questionTitle
+        ) - 1;
 
-        element.textContent =
-          questionTranslations[
-            currentLanguage
-          ][index];
+      element.textContent =
+        questionTranslations[
+          currentLanguage
+        ][index];
 
-      }
-    );
+    });
+
 
   document
     .querySelectorAll(
       "[data-form-question]"
     )
-    .forEach(
-      element => {
+    .forEach(element => {
 
-        const number =
-          Number(
-            element.dataset.formQuestion
-          );
+      const number =
+        Number(
+          element.dataset.formQuestion
+        );
 
-        element.textContent =
-          `${number}. ${
-            questionTranslations[
-              currentLanguage
-            ][number - 1]
-          }`;
+      element.textContent =
+        `${number}. ${
+          questionTranslations[
+            currentLanguage
+          ][number - 1]
+        }`;
 
-      }
-    );
+    });
+
 
   updatePlayStyle();
 }
 
+
+/* ==========================================
+   X
+========================================== */
 
 function openXPost() {
 
@@ -1364,7 +1337,7 @@ function openXPost() {
 
   window.open(
     "https://twitter.com/intent/tweet?" +
-    params.toString(),
+      params.toString(),
     "_blank",
     "noopener,noreferrer"
   );
@@ -1393,69 +1366,63 @@ function openXSearch() {
 
   window.open(
     "https://x.com/search?" +
-    params.toString(),
+      params.toString(),
     "_blank",
     "noopener,noreferrer"
   );
 }
 
 
+/* ==========================================
+   EXPORT HELPERS
+========================================== */
+
 function waitForImages(root) {
 
   const images =
-    [
-      ...root.querySelectorAll(
-        "img"
-      )
-    ];
+    [...root.querySelectorAll("img")];
 
   return Promise.all(
 
-    images.map(
-      image => {
+    images.map(image => {
 
-        if (
-          image.complete &&
-          image.naturalWidth > 0
-        ) {
+      if (
+        image.complete &&
+        image.naturalWidth > 0
+      ) {
+        return Promise.resolve();
+      }
 
-          return Promise.resolve();
-        }
+      return new Promise(resolve => {
 
-        return new Promise(
-          resolve => {
+        const done = () => {
 
-            const done =
-              () => {
+          image.removeEventListener(
+            "load",
+            done
+          );
 
-                image.removeEventListener(
-                  "load",
-                  done
-                );
+          image.removeEventListener(
+            "error",
+            done
+          );
 
-                image.removeEventListener(
-                  "error",
-                  done
-                );
+          resolve();
+        };
 
-                resolve();
-              };
-
-            image.addEventListener(
-              "load",
-              done
-            );
-
-            image.addEventListener(
-              "error",
-              done
-            );
-
-          }
+        image.addEventListener(
+          "load",
+          done
         );
 
-      }
-    )
+        image.addEventListener(
+          "error",
+          done
+        );
+
+      });
+
+    })
 
   );
 }
@@ -1486,9 +1453,7 @@ function prepareExportImage(clone) {
   let width;
   let height;
 
-  if (
-    imageRatio > 1
-  ) {
+  if (imageRatio > 1) {
 
     height =
       exportSize;
@@ -1515,10 +1480,13 @@ function prepareExportImage(clone) {
 }
 
 
+/* ==========================================
+   EXPORT
+========================================== */
+
 async function exportSnapshot() {
 
-  exportButton.disabled =
-    true;
+  exportButton.disabled = true;
 
   const originalText =
     exportButton.textContent;
@@ -1526,8 +1494,7 @@ async function exportSnapshot() {
   exportButton.textContent =
     "...";
 
-  let stage =
-    null;
+  let stage = null;
 
   try {
 
@@ -1535,34 +1502,26 @@ async function exportSnapshot() {
       document.fonts &&
       document.fonts.ready
     ) {
-
       await document.fonts.ready;
     }
 
+
     stage =
-      document.createElement(
-        "div"
-      );
+      document.createElement("div");
 
     stage.className =
       "export-stage";
 
+
     const clone =
-      snapshot.cloneNode(
-        true
-      );
+      snapshot.cloneNode(true);
 
-    clone.removeAttribute(
-      "id"
-    );
+    clone.removeAttribute("id");
 
-    stage.appendChild(
-      clone
-    );
+    stage.appendChild(clone);
 
-    document.body.appendChild(
-      stage
-    );
+    document.body.appendChild(stage);
+
 
     clone.style.width =
       "1080px";
@@ -1570,13 +1529,29 @@ async function exportSnapshot() {
     clone.style.height =
       "1080px";
 
-    prepareExportImage(
-      clone
+    clone.style.aspectRatio =
+      "auto";
+
+
+    prepareExportImage(clone);
+
+    await waitForImages(clone);
+
+
+    if (
+      document.fonts &&
+      document.fonts.ready
+    ) {
+      await document.fonts.ready;
+    }
+
+
+    await new Promise(resolve =>
+      requestAnimationFrame(() =>
+        requestAnimationFrame(resolve)
+      )
     );
 
-    await waitForImages(
-      clone
-    );
 
     const canvas =
       await html2canvas(
@@ -1585,42 +1560,46 @@ async function exportSnapshot() {
           width: 1080,
           height: 1080,
           scale: 1,
+
           useCORS: true,
+
           allowTaint: false,
+
           backgroundColor: null,
+
           logging: false,
+
           scrollX: 0,
           scrollY: 0,
+
           windowWidth: 1080,
           windowHeight: 1080
         }
       );
 
+
     const blob =
-      await new Promise(
-        resolve =>
-          canvas.toBlob(
-            resolve,
-            "image/png"
-          )
+      await new Promise(resolve =>
+        canvas.toBlob(
+          resolve,
+          "image/png"
+        )
       );
 
-    if (!blob) {
 
+    if (!blob) {
       throw new Error(
         "PNG creation failed."
       );
     }
 
+
     const objectUrl =
-      URL.createObjectURL(
-        blob
-      );
+      URL.createObjectURL(blob);
+
 
     const link =
-      document.createElement(
-        "a"
-      );
+      document.createElement("a");
 
     link.href =
       objectUrl;
@@ -1628,13 +1607,13 @@ async function exportSnapshot() {
     link.download =
       "ffxiv-character-snapshot.png";
 
-    document.body.appendChild(
-      link
-    );
+
+    document.body.appendChild(link);
 
     link.click();
 
     link.remove();
+
 
     setTimeout(
       () =>
@@ -1643,6 +1622,7 @@ async function exportSnapshot() {
         ),
       1000
     );
+
 
   } catch (error) {
 
@@ -1657,7 +1637,6 @@ async function exportSnapshot() {
   } finally {
 
     if (stage) {
-
       stage.remove();
     }
 
@@ -1684,6 +1663,7 @@ snapshotImage.addEventListener(
   handleImageLoad
 );
 
+
 imageXInput.addEventListener(
   "input",
   updateImageTransform
@@ -1699,6 +1679,7 @@ imageScaleInput.addEventListener(
   updateImageTransform
 );
 
+
 coverOpacityInput.addEventListener(
   "input",
   updateCoverOpacity
@@ -1709,37 +1690,45 @@ panelOpacityInput.addEventListener(
   updatePanelOpacity
 );
 
-coverColorButtons.forEach(
-  button =>
-    button.addEventListener(
-      "click",
-      () =>
-        setCoverColor(button)
-    )
-);
 
-textColorButtons.forEach(
-  button =>
-    button.addEventListener(
-      "click",
-      () =>
-        setTextColor(button)
-    )
-);
+coverColorButtons.forEach(button => {
 
-panelColorButtons.forEach(
-  button =>
-    button.addEventListener(
-      "click",
-      () =>
-        setPanelColor(button)
-    )
-);
+  button.addEventListener(
+    "click",
+    () =>
+      setCoverColor(button)
+  );
+
+});
+
+
+textColorButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () =>
+      setTextColor(button)
+  );
+
+});
+
+
+panelColorButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () =>
+      setPanelColor(button)
+  );
+
+});
+
 
 fontSelect.addEventListener(
   "change",
   updateFont
 );
+
 
 characterNameInput.addEventListener(
   "input",
@@ -1751,66 +1740,79 @@ worldInput.addEventListener(
   updateCharacter
 );
 
+
 lodestoneFetchButton.addEventListener(
   "click",
   fetchLodestone
 );
 
+
 playStyleCheckboxes.forEach(
-  checkbox =>
+  checkbox => {
+
     checkbox.addEventListener(
       "change",
       updatePlayStyle
-    )
+    );
+
+  }
 );
 
-questionInputs.forEach(
-  input =>
-    input.addEventListener(
-      "input",
-      updateQuestions
-    )
-);
+
+questionInputs.forEach(input => {
+
+  input.addEventListener(
+    "input",
+    updateQuestions
+  );
+
+});
+
 
 messageInput.addEventListener(
   "input",
   updateMessage
 );
 
+
 languageToggle
-  .querySelectorAll(
-    "[data-lang]"
-  )
-  .forEach(
-    button =>
-      button.addEventListener(
-        "click",
-        () =>
-          setLanguage(
-            button.dataset.lang
-          )
-      )
-  );
+  .querySelectorAll("[data-lang]")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () =>
+        setLanguage(
+          button.dataset.lang
+        )
+    );
+
+  });
+
 
 exportButton.addEventListener(
   "click",
   exportSnapshot
 );
 
+
 xPostButton.addEventListener(
   "click",
   openXPost
 );
+
 
 xSearchButton.addEventListener(
   "click",
   openXSearch
 );
 
+
 heroXSearchButton.addEventListener(
   "click",
   openXSearch
 );
+
 
 window.addEventListener(
   "resize",
@@ -1853,6 +1855,7 @@ function initialize() {
     document.fonts.load(
       '900 32px "M PLUS Rounded 1c"'
     );
+
   }
 
 }

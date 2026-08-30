@@ -17,26 +17,15 @@
     content="FFXIVのスクリーンショットにキャラクター情報、ジョブ、プレイスタイル、5つの質問への回答を添えて、オリジナルのスナップショットを作成できるWebツールです。"
   >
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap"
     rel="stylesheet"
   >
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -414,38 +403,23 @@
               class="select-input"
             >
 
-              <option
-                value="gothic"
-                data-i18n="fontGothic"
-              >
+              <option value="gothic" data-i18n="fontGothic">
                 ゴシック
               </option>
 
-              <option
-                value="rounded"
-                data-i18n="fontRounded"
-              >
+              <option value="rounded" data-i18n="fontRounded">
                 丸文字
               </option>
 
-              <option
-                value="mincho"
-                data-i18n="fontMincho"
-              >
+              <option value="mincho" data-i18n="fontMincho">
                 明朝
               </option>
 
-              <option
-                value="modern"
-                data-i18n="fontModern"
-              >
+              <option value="modern" data-i18n="fontModern">
                 モダン
               </option>
 
-              <option
-                value="condensed"
-                data-i18n="fontCondensed"
-              >
+              <option value="condensed" data-i18n="fontCondensed">
                 コンデンス
               </option>
 
@@ -529,308 +503,299 @@
 
       <section class="preview-area">
 
-        <div class="preview-frame">
-
-          <h2 class="preview-title">
-            PREVIEW
-          </h2>
+        <h2 class="preview-title">
+          PREVIEW
+        </h2>
 
 
-          <div
-            id="snapshot"
-            class="snapshot text-white font-gothic"
-          >
+        <div
+          id="snapshot"
+          class="snapshot text-white font-gothic"
+        >
 
-            <div class="photo-area">
+          <div class="photo-area">
 
-              <img
-                id="snapshotImage"
-                class="snapshot-image"
-                alt=""
-              >
+            <img
+              id="snapshotImage"
+              class="snapshot-image"
+              alt=""
+            >
 
-              <div
-                id="photoPlaceholder"
-                class="photo-placeholder"
-              >
-                SCREENSHOT
-              </div>
-
-              <div class="cover-film"></div>
-
+            <div
+              id="photoPlaceholder"
+              class="photo-placeholder"
+            >
+              SCREENSHOT
             </div>
 
-
-            <section class="character-panel">
-
-              <div class="character-header">
-
-                <div
-                  id="previewCharacterName"
-                  class="preview-character-name"
-                >
-                  HIKARINO SENSHI
-                </div>
-
-                <div
-                  id="previewWorld"
-                  class="preview-world"
-                >
-                  Ramuh / Meteor
-                </div>
-
-              </div>
-
-
-              <div class="character-data-layout">
-
-                <div class="job-column">
-
-                  <div class="data-heading">
-                    JOB
-                  </div>
-
-                  <div
-                    id="jobIconArea"
-                    class="job-icon-area"
-                  ></div>
-
-                </div>
-
-
-                <div class="play-style-column">
-
-                  <div class="data-heading">
-                    PLAY STYLE
-                  </div>
-
-                  <div
-                    id="previewPlayStyle"
-                    class="preview-play-style"
-                  ></div>
-
-                </div>
-
-              </div>
-
-            </section>
-
-
-            <section class="bottom-panel">
-
-              <div class="questions-heading">
-                QUESTIONS
-              </div>
-
-
-              <div class="questions-grid">
-
-                <div class="question-item" data-question="1">
-
-                  <div class="question-number">
-                    1
-                  </div>
-
-                  <div class="question-content">
-
-                    <div
-                      class="question-title"
-                      data-question-title="1"
-                    >
-                      あなたのキャラクターを一言で表すと？
-                    </div>
-
-                    <div
-                      id="previewAnswer1"
-                      class="question-answer"
-                    >
-                      —
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="question-item" data-question="2">
-
-                  <div class="question-number">
-                    2
-                  </div>
-
-                  <div class="question-content">
-
-                    <div
-                      class="question-title"
-                      data-question-title="2"
-                    >
-                      いちばん好きなエオルゼアでの過ごし方は？
-                    </div>
-
-                    <div
-                      id="previewAnswer2"
-                      class="question-answer"
-                    >
-                      —
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="question-item" data-question="3">
-
-                  <div class="question-number">
-                    3
-                  </div>
-
-                  <div class="question-content">
-
-                    <div
-                      class="question-title"
-                      data-question-title="3"
-                    >
-                      冒険で大切にしていることは？
-                    </div>
-
-                    <div
-                      id="previewAnswer3"
-                      class="question-answer"
-                    >
-                      —
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="question-item" data-question="4">
-
-                  <div class="question-number">
-                    4
-                  </div>
-
-                  <div class="question-content">
-
-                    <div
-                      class="question-title"
-                      data-question-title="4"
-                    >
-                      いちばん思い出深い出来事は？
-                    </div>
-
-                    <div
-                      id="previewAnswer4"
-                      class="question-answer"
-                    >
-                      —
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="question-item" data-question="5">
-
-                  <div class="question-number">
-                    5
-                  </div>
-
-                  <div class="question-content">
-
-                    <div
-                      class="question-title"
-                      data-question-title="5"
-                    >
-                      これから叶えたい目標は？
-                    </div>
-
-                    <div
-                      id="previewAnswer5"
-                      class="question-answer"
-                    >
-                      —
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <div class="message-block">
-
-                <div class="message-heading">
-                  MESSAGE
-                </div>
-
-                <div
-                  id="previewMessage"
-                  class="preview-message"
-                >
-                  —
-                </div>
-
-              </div>
-
-            </section>
-
-
-            <div class="snapshot-copyright">
-              (C) SQUARE ENIX
-            </div>
-
-            <div class="snapshot-brand">
-              EORZEA PROFILE STUDIO<br>
-              FFXIV CHARACTER SNAPSHOT MAKER
-            </div>
+            <div class="cover-film"></div>
 
           </div>
 
 
-          <div class="export-area">
+          <!-- CHARACTER PANEL -->
+
+          <section class="character-panel">
+
+            <div class="character-header">
+
+              <div
+                id="previewCharacterName"
+                class="preview-character-name"
+              >
+                HIKARINO SENSHI
+              </div>
+
+              <div
+                id="previewWorld"
+                class="preview-world"
+              >
+                Ramuh / Meteor
+              </div>
+
+            </div>
+
+
+            <div class="character-data-layout">
+
+              <div class="job-column">
+
+                <div class="data-heading">
+                  JOB
+                </div>
+
+                <div
+                  id="jobIconArea"
+                  class="job-icon-area"
+                ></div>
+
+              </div>
+
+
+              <div class="play-style-column">
+
+                <div class="data-heading">
+                  PLAY STYLE
+                </div>
+
+                <div
+                  id="previewPlayStyle"
+                  class="preview-play-style"
+                ></div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- QUESTIONS / MESSAGE -->
+
+          <section class="bottom-panel">
+
+            <div class="questions-heading">
+              QUESTIONS
+            </div>
+
+
+            <div class="questions-grid">
+
+              <div class="question-item" data-question="1">
+
+                <div class="question-number">1</div>
+
+                <div class="question-content">
+
+                  <div
+                    class="question-title"
+                    data-question-title="1"
+                  >
+                    あなたのキャラクターを一言で表すと？
+                  </div>
+
+                  <div
+                    id="previewAnswer1"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="question-item" data-question="2">
+
+                <div class="question-number">2</div>
+
+                <div class="question-content">
+
+                  <div
+                    class="question-title"
+                    data-question-title="2"
+                  >
+                    いちばん好きなエオルゼアでの過ごし方は？
+                  </div>
+
+                  <div
+                    id="previewAnswer2"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="question-item" data-question="3">
+
+                <div class="question-number">3</div>
+
+                <div class="question-content">
+
+                  <div
+                    class="question-title"
+                    data-question-title="3"
+                  >
+                    冒険で大切にしていることは？
+                  </div>
+
+                  <div
+                    id="previewAnswer3"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="question-item" data-question="4">
+
+                <div class="question-number">4</div>
+
+                <div class="question-content">
+
+                  <div
+                    class="question-title"
+                    data-question-title="4"
+                  >
+                    いちばん思い出深い出来事は？
+                  </div>
+
+                  <div
+                    id="previewAnswer4"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="question-item" data-question="5">
+
+                <div class="question-number">5</div>
+
+                <div class="question-content">
+
+                  <div
+                    class="question-title"
+                    data-question-title="5"
+                  >
+                    これから叶えたい目標は？
+                  </div>
+
+                  <div
+                    id="previewAnswer5"
+                    class="question-answer"
+                  >
+                    —
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="message-block">
+
+              <div class="message-heading">
+                MESSAGE
+              </div>
+
+              <div
+                id="previewMessage"
+                class="preview-message"
+              >
+                —
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <div class="snapshot-copyright">
+            (C) SQUARE ENIX
+          </div>
+
+          <div class="snapshot-brand">
+            EORZEA PROFILE STUDIO<br>
+            FFXIV CHARACTER SNAPSHOT MAKER
+          </div>
+
+        </div>
+
+
+        <!-- EXPORT -->
+
+        <div class="export-area">
+
+          <button
+            id="exportButton"
+            type="button"
+            class="export-button"
+            data-i18n="export"
+          >
+            SSを書き出す
+          </button>
+
+
+          <div class="x-share-area">
 
             <button
-              id="exportButton"
+              id="xPostButton"
               type="button"
-              class="export-button"
-              data-i18n="export"
+              class="x-share-button x-post-button"
+              data-i18n="xPost"
             >
-              SSを書き出す
+              Xに投稿する
             </button>
 
+            <button
+              id="xSearchButton"
+              type="button"
+              class="x-share-button x-search-button"
+              data-i18n="xSearch"
+            >
+              みんなの投稿を見る
+            </button>
 
-            <div class="x-share-area">
+          </div>
 
-              <button
-                id="xPostButton"
-                type="button"
-                class="x-share-button x-post-button"
-                data-i18n="xPost"
-              >
-                Xに投稿する
-              </button>
-
-              <button
-                id="xSearchButton"
-                type="button"
-                class="x-share-button x-search-button"
-                data-i18n="xSearch"
-              >
-                みんなの投稿を見る
-              </button>
-
-            </div>
-
-
-            <div class="hashtag-display">
-              #FFXIVCHARACTERSNAPSHOTMAKER
-            </div>
-
+          <div class="hashtag-display">
+            #FFXIVCHARACTERSNAPSHOTMAKER
           </div>
 
         </div>
@@ -839,11 +804,13 @@
 
 
       <!-- ====================================
-           MAIN CONTROLS
+           LEFT LOWER CONTROLS
       ===================================== -->
 
       <div class="main-controls">
 
+
+        <!-- CHARACTER -->
 
         <section class="control-section">
 
@@ -947,6 +914,8 @@
         </section>
 
 
+        <!-- PLAY STYLE -->
+
         <section class="control-section">
 
           <div class="section-heading">
@@ -1049,6 +1018,8 @@
         </section>
 
 
+        <!-- QUESTIONS -->
+
         <section class="control-section">
 
           <div class="section-heading">
@@ -1066,10 +1037,7 @@
 
           <div class="question-form-item">
 
-            <div
-              class="question-form-title"
-              data-form-question="1"
-            >
+            <div class="question-form-title" data-form-question="1">
               1. あなたのキャラクターを一言で表すと？
             </div>
 
@@ -1079,10 +1047,7 @@
               maxlength="80"
             ></textarea>
 
-            <div
-              class="character-counter"
-              data-counter-for="question1Input"
-            >
+            <div class="character-counter" data-counter-for="question1Input">
               0 / 80
             </div>
 
@@ -1091,10 +1056,7 @@
 
           <div class="question-form-item">
 
-            <div
-              class="question-form-title"
-              data-form-question="2"
-            >
+            <div class="question-form-title" data-form-question="2">
               2. いちばん好きなエオルゼアでの過ごし方は？
             </div>
 
@@ -1104,10 +1066,7 @@
               maxlength="80"
             ></textarea>
 
-            <div
-              class="character-counter"
-              data-counter-for="question2Input"
-            >
+            <div class="character-counter" data-counter-for="question2Input">
               0 / 80
             </div>
 
@@ -1116,10 +1075,7 @@
 
           <div class="question-form-item">
 
-            <div
-              class="question-form-title"
-              data-form-question="3"
-            >
+            <div class="question-form-title" data-form-question="3">
               3. 冒険で大切にしていることは？
             </div>
 
@@ -1129,10 +1085,7 @@
               maxlength="80"
             ></textarea>
 
-            <div
-              class="character-counter"
-              data-counter-for="question3Input"
-            >
+            <div class="character-counter" data-counter-for="question3Input">
               0 / 80
             </div>
 
@@ -1141,10 +1094,7 @@
 
           <div class="question-form-item">
 
-            <div
-              class="question-form-title"
-              data-form-question="4"
-            >
+            <div class="question-form-title" data-form-question="4">
               4. いちばん思い出深い出来事は？
             </div>
 
@@ -1154,10 +1104,7 @@
               maxlength="80"
             ></textarea>
 
-            <div
-              class="character-counter"
-              data-counter-for="question4Input"
-            >
+            <div class="character-counter" data-counter-for="question4Input">
               0 / 80
             </div>
 
@@ -1166,10 +1113,7 @@
 
           <div class="question-form-item">
 
-            <div
-              class="question-form-title"
-              data-form-question="5"
-            >
+            <div class="question-form-title" data-form-question="5">
               5. これから叶えたい目標は？
             </div>
 
@@ -1179,10 +1123,7 @@
               maxlength="80"
             ></textarea>
 
-            <div
-              class="character-counter"
-              data-counter-for="question5Input"
-            >
+            <div class="character-counter" data-counter-for="question5Input">
               0 / 80
             </div>
 
@@ -1190,6 +1131,8 @@
 
         </section>
 
+
+        <!-- MESSAGE -->
 
         <section class="control-section">
 
@@ -1205,7 +1148,6 @@
 
           </div>
 
-
           <label
             class="control-label"
             for="messageInput"
@@ -1220,10 +1162,7 @@
             maxlength="160"
           ></textarea>
 
-          <div
-            class="character-counter"
-            data-counter-for="messageInput"
-          >
+          <div class="character-counter" data-counter-for="messageInput">
             0 / 160
           </div>
 
