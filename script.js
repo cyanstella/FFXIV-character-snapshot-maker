@@ -24,7 +24,9 @@ const languageEnButton =
   document.getElementById("languageEnButton");
 
 const languageButtons =
-  document.querySelectorAll(".language-button");
+  document.querySelectorAll(
+    ".language-button"
+  );
 
 
 /* IMAGE */
@@ -77,6 +79,11 @@ const panelOpacityInput =
 const panelOpacityValue =
   document.getElementById("panelOpacityValue");
 
+const panelColorButtons =
+  document.querySelectorAll(
+    "[data-panel-color]"
+  );
+
 
 /* FONT */
 
@@ -122,7 +129,7 @@ const playStyleCheckboxes =
   );
 
 
-/* BUTTONS */
+/* COLOR BUTTONS */
 
 const coverButtons =
   document.querySelectorAll(
@@ -194,7 +201,7 @@ const translations = {
       "ゴシック",
 
     fontRounded:
-      "丸ゴシック",
+      "丸文字",
 
     fontSerif:
       "明朝",
@@ -204,6 +211,9 @@ const translations = {
 
     fontCondensed:
       "コンデンス",
+
+    panelColor:
+      "情報パネル色",
 
     panelOpacity:
       "情報パネル透明度",
@@ -330,7 +340,7 @@ const translations = {
       "Sans Serif",
 
     fontRounded:
-      "Rounded Gothic",
+      "Rounded",
 
     fontSerif:
       "Serif",
@@ -340,6 +350,9 @@ const translations = {
 
     fontCondensed:
       "Condensed",
+
+    panelColor:
+      "Information Panel Color",
 
     panelOpacity:
       "Information Panel Opacity",
@@ -664,25 +677,101 @@ imageUpload.addEventListener(
 
 
 /* ==========================================
-   IMAGE POSITION
+   IMAGE POSITION / SCALE
 ========================================== */
 
-function updateImageX() {
+function updateImageTransform() {
 
-  const value =
+  const x =
     Number(
       imageXInput.value
     );
 
 
+  const y =
+    Number(
+      imageYInput.value
+    );
+
+
+  const scalePercent =
+    Number(
+      imageScaleInput.value
+    );
+
+
+  const scale =
+    scalePercent / 100;
+
+
+  /*
+    50 = CENTER
+
+    0 / 100で、
+    拡大によって生まれた領域を
+    左右・上下へ移動する。
+  */
+
+  const overflow =
+    scale - 1;
+
+
+  const shiftX =
+    (
+      (x - 50) / 50
+    )
+    *
+    (
+      overflow * 50
+    );
+
+
+  const shiftY =
+    (
+      (y - 50) / 50
+    )
+    *
+    (
+      overflow * 50
+    );
+
+
   snapshotImage.style.setProperty(
-    "--image-x",
-    `${value}%`
+    "--image-scale",
+    scale
+  );
+
+
+  snapshotImage.style.setProperty(
+    "--image-shift-x",
+    `${shiftX}%`
+  );
+
+
+  snapshotImage.style.setProperty(
+    "--image-shift-y",
+    `${shiftY}%`
   );
 
 
   imageXValue.textContent =
-    `${value}%`;
+    `${x}%`;
+
+
+  imageYValue.textContent =
+    `${y}%`;
+
+
+  imageScaleValue.textContent =
+    `${scalePercent}%`;
+
+}
+
+
+
+function updateImageX() {
+
+  updateImageTransform();
 
 }
 
@@ -690,20 +779,7 @@ function updateImageX() {
 
 function updateImageY() {
 
-  const value =
-    Number(
-      imageYInput.value
-    );
-
-
-  snapshotImage.style.setProperty(
-    "--image-y",
-    `${value}%`
-  );
-
-
-  imageYValue.textContent =
-    `${value}%`;
+  updateImageTransform();
 
 }
 
@@ -711,20 +787,7 @@ function updateImageY() {
 
 function updateImageScale() {
 
-  const value =
-    Number(
-      imageScaleInput.value
-    );
-
-
-  snapshotImage.style.setProperty(
-    "--image-scale",
-    value / 100
-  );
-
-
-  imageScaleValue.textContent =
-    `${value}%`;
+  updateImageTransform();
 
 }
 
@@ -734,10 +797,12 @@ imageXInput.addEventListener(
   updateImageX
 );
 
+
 imageYInput.addEventListener(
   "input",
   updateImageY
 );
+
 
 imageScaleInput.addEventListener(
   "input",
@@ -747,7 +812,7 @@ imageScaleInput.addEventListener(
 
 
 /* ==========================================
-   COVER
+   COVER COLOR
 ========================================== */
 
 coverButtons.forEach(
@@ -793,6 +858,10 @@ coverButtons.forEach(
 );
 
 
+
+/* ==========================================
+   COVER OPACITY
+========================================== */
 
 function updateCoverOpacity() {
 
@@ -870,6 +939,54 @@ textColorButtons.forEach(
 
 
 /* ==========================================
+   PANEL COLOR
+========================================== */
+
+panelColorButtons.forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        panelColorButtons.forEach(
+          item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        snapshot.classList.remove(
+          "panel-black",
+          "panel-white"
+        );
+
+
+        snapshot.classList.add(
+          button.dataset.panelColor ===
+          "white"
+            ? "panel-white"
+            : "panel-black"
+        );
+
+      }
+    );
+
+  }
+);
+
+
+
+/* ==========================================
    PANEL OPACITY
 ========================================== */
 
@@ -933,11 +1050,15 @@ fontSelect.addEventListener(
 function updateCharacter() {
 
   const characterName =
-    characterNameInput.value.trim();
+    characterNameInput
+      .value
+      .trim();
 
 
   const world =
-    worldInput.value.trim();
+    worldInput
+      .value
+      .trim();
 
 
   previewCharacterName.textContent =
@@ -1019,7 +1140,7 @@ const JOB_ICON_MAP = {
 
 /* ==========================================
    JOB GROUPS
-   3 ROW LAYOUT
+   3 ROWS
 ========================================== */
 
 const JOB_GROUPS = [
@@ -1184,11 +1305,14 @@ function renderJobs(
 
 
           const level =
-            jobs[abbreviation];
+            jobs[
+              abbreviation
+            ];
 
 
           levelElement.textContent =
-            level !== undefined &&
+            level !== undefined
+            &&
             level !== null
               ? level
               : "—";
@@ -1835,6 +1959,55 @@ function updateAllCounters() {
 
 
 /* ==========================================
+   WAIT FOR IMAGES
+========================================== */
+
+async function waitForSnapshotImages() {
+
+  const images =
+    [
+      ...snapshot.querySelectorAll(
+        "img"
+      )
+    ];
+
+
+  await Promise.all(
+
+    images.map(
+      image => {
+
+        if (
+          image.complete
+        ) {
+
+          return Promise.resolve();
+
+        }
+
+
+        return new Promise(
+          resolve => {
+
+            image.onload =
+              resolve;
+
+            image.onerror =
+              resolve;
+
+          }
+        );
+
+      }
+    )
+
+  );
+
+}
+
+
+
+/* ==========================================
    EXPORT
 ========================================== */
 
@@ -1872,11 +2045,11 @@ async function exportSnapshot() {
       : "EXPORTING...";
 
 
-  let exportStage =
-    null;
-
-
   try {
+
+    /* ======================================
+       FONT
+    ====================================== */
 
     if (
       document.fonts &&
@@ -1888,136 +2061,132 @@ async function exportSnapshot() {
     }
 
 
-    exportStage =
-      document.createElement(
-        "div"
+    /* ======================================
+       IMAGES
+    ====================================== */
+
+    await waitForSnapshotImages();
+
+
+    /* ======================================
+       PREVIEW SIZE
+    ====================================== */
+
+    const rect =
+      snapshot.getBoundingClientRect();
+
+
+    if (
+      rect.width <= 0
+      ||
+      rect.height <= 0
+    ) {
+
+      throw new Error(
+        "Snapshot size is invalid."
       );
 
-
-    exportStage.style.position =
-      "fixed";
-
-    exportStage.style.left =
-      "-20000px";
-
-    exportStage.style.top =
-      "0";
-
-    exportStage.style.width =
-      "1080px";
-
-    exportStage.style.height =
-      "1080px";
-
-    exportStage.style.pointerEvents =
-      "none";
+    }
 
 
-    const clone =
-      snapshot.cloneNode(
-        true
-      );
+    /*
+      現在見えているプレビューを
+      そのまま1080pxへ拡大する。
+    */
+
+    const exportScale =
+      1080 / rect.width;
 
 
-    clone.removeAttribute(
-      "id"
-    );
-
-
-    clone.style.width =
-      "1080px";
-
-    clone.style.height =
-      "1080px";
-
-    clone.style.maxWidth =
-      "none";
-
-    clone.style.margin =
-      "0";
-
-    clone.style.aspectRatio =
-      "auto";
-
-
-    exportStage.appendChild(
-      clone
-    );
-
-
-    document.body.appendChild(
-      exportStage
-    );
-
-
-    const images =
-      [
-        ...clone.querySelectorAll(
-          "img"
-        )
-      ];
-
-
-    await Promise.all(
-
-      images.map(
-        img => {
-
-          if (
-            img.complete
-          ) {
-
-            return Promise.resolve();
-
-          }
-
-
-          return new Promise(
-            resolve => {
-
-              img.onload =
-                resolve;
-
-              img.onerror =
-                resolve;
-
-            }
-          );
-
-        }
-      )
-
-    );
-
+    /* ======================================
+       CAPTURE
+    ====================================== */
 
     const canvas =
       await html2canvas(
-        clone,
+        snapshot,
         {
 
           backgroundColor:null,
 
-          scale:1,
-
-          width:1080,
-
-          height:1080,
+          scale:
+            exportScale,
 
           useCORS:true,
 
           allowTaint:false,
 
-          logging:false
+          logging:false,
+
+          width:
+            rect.width,
+
+          height:
+            rect.height,
+
+          scrollX:0,
+
+          scrollY:
+            -window.scrollY
 
         }
       );
 
 
+    /* ======================================
+       FORCE 1080 × 1080
+    ====================================== */
+
+    let finalCanvas =
+      canvas;
+
+
+    if (
+      canvas.width !== 1080
+      ||
+      canvas.height !== 1080
+    ) {
+
+      finalCanvas =
+        document.createElement(
+          "canvas"
+        );
+
+
+      finalCanvas.width =
+        1080;
+
+
+      finalCanvas.height =
+        1080;
+
+
+      const context =
+        finalCanvas.getContext(
+          "2d"
+        );
+
+
+      context.drawImage(
+        canvas,
+        0,
+        0,
+        1080,
+        1080
+      );
+
+    }
+
+
+    /* ======================================
+       PNG
+    ====================================== */
+
     const blob =
       await new Promise(
         resolve => {
 
-          canvas.toBlob(
+          finalCanvas.toBlob(
             resolve,
             "image/png"
           );
@@ -2035,7 +2204,7 @@ async function exportSnapshot() {
     }
 
 
-    const url =
+    const objectUrl =
       URL.createObjectURL(
         blob
       );
@@ -2048,7 +2217,7 @@ async function exportSnapshot() {
 
 
     link.href =
-      url;
+      objectUrl;
 
 
     link.download =
@@ -2070,7 +2239,7 @@ async function exportSnapshot() {
       () => {
 
         URL.revokeObjectURL(
-          url
+          objectUrl
         );
 
       },
@@ -2082,6 +2251,7 @@ async function exportSnapshot() {
   catch (error) {
 
     console.error(
+      "Snapshot export error:",
       error
     );
 
@@ -2097,15 +2267,6 @@ async function exportSnapshot() {
 
   finally {
 
-    if (
-      exportStage
-    ) {
-
-      exportStage.remove();
-
-    }
-
-
     exportButton.disabled =
       false;
 
@@ -2116,6 +2277,7 @@ async function exportSnapshot() {
   }
 
 }
+
 
 
 exportButton.addEventListener(
@@ -2131,11 +2293,7 @@ exportButton.addEventListener(
 
 function initialize() {
 
-  updateImageX();
-
-  updateImageY();
-
-  updateImageScale();
+  updateImageTransform();
 
   updateCoverOpacity();
 

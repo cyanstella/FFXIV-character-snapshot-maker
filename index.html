@@ -2,6 +2,7 @@
 <html lang="ja">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -18,7 +19,33 @@
     content="FFXIVのスクリーンショットにキャラクター情報、ジョブ、プレイスタイル、質問への回答を添えて一枚のスナップショットを作成できます。"
   >
 
-  <link rel="stylesheet" href="style.css">
+
+  <!-- ======================================
+       GOOGLE FONT
+  ======================================= -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
 
 
@@ -36,8 +63,15 @@
     class="brand-logo brand-link"
     aria-label="EORZEA PROFILE STUDIO"
   >
-    <span>EORZEA PROFILE</span>
-    <span class="studio-box">STUDIO</span>
+
+    <span>
+      EORZEA PROFILE
+    </span>
+
+    <span class="studio-box">
+      STUDIO
+    </span>
+
   </a>
 
 
@@ -150,6 +184,8 @@
         </div>
 
 
+        <!-- IMAGE -->
+
         <div class="setting-block">
 
           <label
@@ -176,6 +212,8 @@
 
         </div>
 
+
+        <!-- X -->
 
         <div class="setting-block">
 
@@ -205,6 +243,8 @@
         </div>
 
 
+        <!-- Y -->
+
         <div class="setting-block">
 
           <div class="range-heading">
@@ -233,6 +273,8 @@
         </div>
 
 
+        <!-- SCALE -->
+
         <div class="setting-block">
 
           <div class="range-heading">
@@ -260,6 +302,8 @@
 
         </div>
 
+
+        <!-- COVER COLOR -->
 
         <div class="setting-block">
 
@@ -294,6 +338,8 @@
         </div>
 
 
+        <!-- COVER OPACITY -->
+
         <div class="setting-block">
 
           <div class="range-heading">
@@ -321,6 +367,8 @@
 
         </div>
 
+
+        <!-- TEXT COLOR -->
 
         <div class="setting-block">
 
@@ -355,6 +403,8 @@
         </div>
 
 
+        <!-- FONT -->
+
         <div class="setting-block">
 
           <label
@@ -368,23 +418,38 @@
 
           <select id="fontSelect">
 
-            <option value="sans" data-i18n="fontSans">
+            <option
+              value="sans"
+              data-i18n="fontSans"
+            >
               ゴシック
             </option>
 
-            <option value="rounded" data-i18n="fontRounded">
-              丸ゴシック
+            <option
+              value="rounded"
+              data-i18n="fontRounded"
+            >
+              丸文字
             </option>
 
-            <option value="serif" data-i18n="fontSerif">
+            <option
+              value="serif"
+              data-i18n="fontSerif"
+            >
               明朝
             </option>
 
-            <option value="modern" data-i18n="fontModern">
+            <option
+              value="modern"
+              data-i18n="fontModern"
+            >
               モダン
             </option>
 
-            <option value="condensed" data-i18n="fontCondensed">
+            <option
+              value="condensed"
+              data-i18n="fontCondensed"
+            >
               コンデンス
             </option>
 
@@ -392,6 +457,43 @@
 
         </div>
 
+
+        <!-- PANEL COLOR -->
+
+        <div class="setting-block">
+
+          <label
+            class="setting-label"
+            data-i18n="panelColor"
+          >
+            情報パネル色
+          </label>
+
+
+          <div class="button-choice">
+
+            <button
+              type="button"
+              class="choice-button active"
+              data-panel-color="black"
+            >
+              BLACK
+            </button>
+
+            <button
+              type="button"
+              class="choice-button"
+              data-panel-color="white"
+            >
+              WHITE
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- PANEL OPACITY -->
 
         <div class="setting-block">
 
@@ -439,11 +541,11 @@
 
       <div
         id="snapshot"
-        class="snapshot text-white font-sans"
+        class="snapshot text-white panel-black font-sans"
       >
 
 
-        <!-- SCREENSHOT -->
+        <!-- PHOTO -->
 
         <div
           id="photoArea"
@@ -494,7 +596,7 @@
 
 
 
-        <!-- JOBS -->
+        <!-- JOB -->
 
         <section class="snapshot-info-panel job-panel">
 
@@ -540,7 +642,7 @@
           <div class="question-grid">
 
 
-            <!-- Q1 -->
+            <!-- 1 -->
 
             <div class="snapshot-question question-1">
 
@@ -569,8 +671,7 @@
             </div>
 
 
-
-            <!-- Q2 -->
+            <!-- 2 -->
 
             <div class="snapshot-question question-2">
 
@@ -599,8 +700,7 @@
             </div>
 
 
-
-            <!-- Q3 -->
+            <!-- 3 -->
 
             <div class="snapshot-question question-3">
 
@@ -629,8 +729,7 @@
             </div>
 
 
-
-            <!-- Q4 -->
+            <!-- 4 -->
 
             <div class="snapshot-question question-4">
 
@@ -659,8 +758,7 @@
             </div>
 
 
-
-            <!-- Q5 -->
+            <!-- 5 -->
 
             <div class="snapshot-question question-5">
 
@@ -687,7 +785,6 @@
               </div>
 
             </div>
-
 
           </div>
 
@@ -716,12 +813,14 @@
 
 
 
-        <!-- META -->
+        <!-- COPYRIGHT -->
 
         <div class="snapshot-copyright">
           (C) SQUARE ENIX
         </div>
 
+
+        <!-- BRAND -->
 
         <div class="snapshot-brand">
 
@@ -734,7 +833,6 @@
           </span>
 
         </div>
-
 
       </div>
 
@@ -760,7 +858,7 @@
 
 
     <!-- ======================================
-         MAIN SETTINGS
+         MAIN CONTROLS
     ======================================= -->
 
     <div class="main-controls">
@@ -782,6 +880,8 @@
 
         </div>
 
+
+        <!-- LODESTONE -->
 
         <div class="setting-block lodestone-block">
 
@@ -831,6 +931,8 @@
         </div>
 
 
+        <!-- CHARACTER NAME -->
+
         <div class="setting-block">
 
           <label
@@ -850,6 +952,8 @@
 
         </div>
 
+
+        <!-- WORLD -->
 
         <div class="setting-block">
 
@@ -903,83 +1007,179 @@
         <div class="checkbox-grid">
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="relaxed">
-            <span data-i18n="styleRelaxed">のんびり</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="relaxed"
+            >
+            <span data-i18n="styleRelaxed">
+              のんびり
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="ss">
-            <span data-i18n="styleSS">SS撮影</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="ss"
+            >
+            <span data-i18n="styleSS">
+              SS撮影
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="story">
-            <span data-i18n="styleStory">ストーリー</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="story"
+            >
+            <span data-i18n="styleStory">
+              ストーリー
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="battle">
-            <span data-i18n="styleBattle">バトル</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="battle"
+            >
+            <span data-i18n="styleBattle">
+              バトル
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="highend">
-            <span data-i18n="styleHighend">高難度</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="highend"
+            >
+            <span data-i18n="styleHighend">
+              高難度
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="pvp">
-            <span>PvP</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="pvp"
+            >
+            <span>
+              PvP
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="gatherer">
-            <span data-i18n="styleGatherer">ギャザラー</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="gatherer"
+            >
+            <span data-i18n="styleGatherer">
+              ギャザラー
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="crafter">
-            <span data-i18n="styleCrafter">クラフター</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="crafter"
+            >
+            <span data-i18n="styleCrafter">
+              クラフター
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="housing">
-            <span data-i18n="styleHousing">ハウジング</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="housing"
+            >
+            <span data-i18n="styleHousing">
+              ハウジング
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="glamour">
-            <span data-i18n="styleGlamour">ミラプリ</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="glamour"
+            >
+            <span data-i18n="styleGlamour">
+              ミラプリ
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="goldsaucer">
-            <span data-i18n="styleGoldSaucer">ゴールドソーサー</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="goldsaucer"
+            >
+            <span data-i18n="styleGoldSaucer">
+              ゴールドソーサー
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="fishing">
-            <span data-i18n="styleFishing">釣り</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="fishing"
+            >
+            <span data-i18n="styleFishing">
+              釣り
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="map">
-            <span data-i18n="styleMap">地図</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="map"
+            >
+            <span data-i18n="styleMap">
+              地図
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="hunt">
-            <span data-i18n="styleHunt">モブハント</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="hunt"
+            >
+            <span data-i18n="styleHunt">
+              モブハント
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="roleplay">
-            <span data-i18n="styleRoleplay">ロールプレイ</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="roleplay"
+            >
+            <span data-i18n="styleRoleplay">
+              ロールプレイ
+            </span>
           </label>
 
           <label>
-            <input type="checkbox" class="play-style-checkbox" data-style="friends">
-            <span data-i18n="styleFriends">フレンド交流</span>
+            <input
+              type="checkbox"
+              class="play-style-checkbox"
+              data-style="friends"
+            >
+            <span data-i18n="styleFriends">
+              フレンド交流
+            </span>
           </label>
 
         </div>
@@ -1190,6 +1390,7 @@
       ABOUT
     </div>
 
+
     <p data-i18n="aboutText">
       本サイトは個人が制作・運営する非公式ツールであり、
       株式会社スクウェア・エニックスとは関係ありません。
@@ -1241,6 +1442,10 @@
 </footer>
 
 
+
+<!-- ==========================================
+     SCRIPTS
+========================================== -->
 
 <script
   src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"

@@ -30,8 +30,10 @@ FFXIV CHARACTER SNAPSHOT MAKER
 - 白 / 黒のカバーフィルム
 - カバーフィルム濃度調整
 - 白 / 黒の文字色切り替え
-- フォント切り替え
+- 情報パネルの白 / 黒切り替え
 - 情報パネル透明度調整
+- フォント切り替え
+- 丸文字フォント
 - LodestoneキャラクターURLからの情報取得
 - キャラクター名取得
 - World / Data Center取得
@@ -44,41 +46,91 @@ FFXIV CHARACTER SNAPSHOT MAKER
 - 1080 × 1080 px PNG画像出力
 
 
+## スクリーンショット調整
+
+画像はカード全面に表示されます。
+
+拡大率を上げることで、横位置・縦位置スライダーを使用して画像の表示位置を調整できます。
+
+### 横位置
+
+- 0% : 左側
+- 50% : 中央
+- 100% : 右側
+
+### 縦位置
+
+- 0% : 上側
+- 50% : 中央
+- 100% : 下側
+
+
+## 文字設定
+
+以下のフォントを選択できます。
+
+- ゴシック
+- 丸文字
+- 明朝
+- モダン
+- コンデンス
+
+丸文字には Google Fonts の M PLUS Rounded 1c を使用しています。
+
+
+## 色設定
+
+### カバーフィルム
+
+- BLACK
+- WHITE
+
+### 文字色
+
+- WHITE
+- BLACK
+
+### 情報パネル色
+
+- BLACK
+- WHITE
+
+文字色と情報パネル色は独立して変更できます。
+
+
 ## スナップショット構成
 
 生成される画像は1080 × 1080 pxの正方形です。
 
-上部に、
+上部：
 
 - キャラクター名
 - World / Data Center
 - ジョブ
 - プレイスタイル
 
-を表示します。
+中央：
 
-中央部分はスクリーンショットを大きく見せるためのスペースとして使用します。
+- キャラクタースクリーンショット
 
-下部には、
+下部：
 
 - QUESTIONS
 - 5つの質問と回答
 - MESSAGE
-
-を表示します。
 
 
 ## QUESTIONS レイアウト
 
 質問は2カラムで配置します。
 
-左側：
+### 左側
 
 1. あなたのキャラクターを一言で表すと？
 2. いちばん好きなエオルゼアでの過ごし方は？
 3. 冒険で大切にしていることは？
 
-右側：
+### 右側
 
 4. いちばん思い出深い出来事は？
 5. これから叶えたい目標は？
@@ -123,6 +175,7 @@ LodestoneのキャラクターページURLを入力すると、Cloudflare Worker
 - CSS
 - JavaScript
 - html2canvas
+- Google Fonts
 
 
 ## バックエンド
@@ -131,11 +184,26 @@ Lodestoneデータ取得用の中継としてCloudflare Workerを使用してい
 
 構成：
 
-Browser / GitHub Pages  
-↓  
-Cloudflare Worker  
-↓  
+```text
+Browser / GitHub Pages
+        ↓
+Cloudflare Worker
+        ↓
 FINAL FANTASY XIV Lodestone
+```
+
+
+## PNG画像出力
+
+プレビューと生成画像の見た目を一致させるため、画面上に表示されているスナップショットそのものをhtml2canvasでキャプチャします。
+
+画面上のプレビューサイズに応じてスケールを計算し、最終的に1080 × 1080 pxのPNG画像として出力します。
+
+書き出し専用の別レイアウトは生成せず、
+
+**プレビュー = 完成画像**
+
+となることを基本仕様としています。
 
 
 ## ファイル構成
@@ -149,8 +217,6 @@ FFXIV-character-snapshot-maker/
 ├─ README.md
 │
 └─ assets/
-   ├─ images/
-   │
    └─ jobs/
       ├─ Paladin.png
       ├─ Warrior.png
@@ -185,3 +251,29 @@ FFXIV-character-snapshot-maker/
       ├─ Miner.png
       ├─ Botanist.png
       └─ Fisher.png
+```
+
+
+## 対応言語
+
+- 日本語
+- English
+
+
+## 制作者
+
+IDEA BY cyan_stella
+
+
+## Disclaimer
+
+本サイトは個人が制作・運営する非公式ツールであり、株式会社スクウェア・エニックスとは関係ありません。
+
+本サイトの利用によって生じた損害・不利益について、制作者は責任を負いかねます。
+
+また、スクリーンショットや入力内容については、各利用者の責任のもとでご利用ください。
+
+
+## Copyright
+
+(C) SQUARE ENIX
