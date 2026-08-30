@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
 
@@ -129,7 +130,7 @@
 
 
     <!-- ======================================
-         01 SCREENSHOT
+         SCREENSHOT SETTINGS
     ======================================= -->
 
     <div class="top-controls">
@@ -364,6 +365,7 @@
             フォント
           </label>
 
+
           <select id="fontSelect">
 
             <option value="sans" data-i18n="fontSans">
@@ -441,9 +443,7 @@
       >
 
 
-        <!-- ==================================
-             SCREENSHOT
-        =================================== -->
+        <!-- SCREENSHOT -->
 
         <div
           id="photoArea"
@@ -472,9 +472,7 @@
 
 
 
-        <!-- ==================================
-             CHARACTER NAME
-        =================================== -->
+        <!-- CHARACTER -->
 
         <section class="character-header">
 
@@ -496,9 +494,7 @@
 
 
 
-        <!-- ==================================
-             JOBS
-        =================================== -->
+        <!-- JOBS -->
 
         <section class="snapshot-info-panel job-panel">
 
@@ -515,9 +511,7 @@
 
 
 
-        <!-- ==================================
-             PLAY STYLE
-        =================================== -->
+        <!-- PLAY STYLE -->
 
         <section class="snapshot-info-panel play-style-panel">
 
@@ -534,9 +528,7 @@
 
 
 
-        <!-- ==================================
-             QUESTIONS
-        =================================== -->
+        <!-- QUESTIONS -->
 
         <section class="question-area">
 
@@ -547,99 +539,155 @@
 
           <div class="question-grid">
 
-            <div class="snapshot-question">
 
-              <div
-                class="snapshot-question-label"
-                data-i18n="question1"
-              >
-                あなたのキャラクターを一言で表すと？
+            <!-- Q1 -->
+
+            <div class="snapshot-question question-1">
+
+              <div class="question-number">
+                1
               </div>
 
-              <div
-                id="previewAnswer1"
-                class="snapshot-answer"
-              >
-                —
-              </div>
+              <div class="question-content">
 
-            </div>
+                <div
+                  class="snapshot-question-label"
+                  data-i18n="question1"
+                >
+                  あなたのキャラクターを一言で表すと？
+                </div>
 
+                <div
+                  id="previewAnswer1"
+                  class="snapshot-answer"
+                >
+                  —
+                </div>
 
-            <div class="snapshot-question">
-
-              <div
-                class="snapshot-question-label"
-                data-i18n="question2"
-              >
-                いちばん好きなエオルゼアでの過ごし方は？
-              </div>
-
-              <div
-                id="previewAnswer2"
-                class="snapshot-answer"
-              >
-                —
               </div>
 
             </div>
 
 
-            <div class="snapshot-question">
 
-              <div
-                class="snapshot-question-label"
-                data-i18n="question3"
-              >
-                冒険で大切にしていることは？
+            <!-- Q2 -->
+
+            <div class="snapshot-question question-2">
+
+              <div class="question-number">
+                2
               </div>
 
-              <div
-                id="previewAnswer3"
-                class="snapshot-answer"
-              >
-                —
-              </div>
+              <div class="question-content">
 
-            </div>
+                <div
+                  class="snapshot-question-label"
+                  data-i18n="question2"
+                >
+                  いちばん好きなエオルゼアでの過ごし方は？
+                </div>
 
+                <div
+                  id="previewAnswer2"
+                  class="snapshot-answer"
+                >
+                  —
+                </div>
 
-            <div class="snapshot-question">
-
-              <div
-                class="snapshot-question-label"
-                data-i18n="question4"
-              >
-                いちばん思い出深い出来事は？
-              </div>
-
-              <div
-                id="previewAnswer4"
-                class="snapshot-answer"
-              >
-                —
               </div>
 
             </div>
 
 
-            <div class="snapshot-question">
 
-              <div
-                class="snapshot-question-label"
-                data-i18n="question5"
-              >
-                これから叶えたい目標は？
+            <!-- Q3 -->
+
+            <div class="snapshot-question question-3">
+
+              <div class="question-number">
+                3
               </div>
 
-              <div
-                id="previewAnswer5"
-                class="snapshot-answer"
-              >
-                —
+              <div class="question-content">
+
+                <div
+                  class="snapshot-question-label"
+                  data-i18n="question3"
+                >
+                  冒険で大切にしていることは？
+                </div>
+
+                <div
+                  id="previewAnswer3"
+                  class="snapshot-answer"
+                >
+                  —
+                </div>
+
               </div>
 
             </div>
+
+
+
+            <!-- Q4 -->
+
+            <div class="snapshot-question question-4">
+
+              <div class="question-number">
+                4
+              </div>
+
+              <div class="question-content">
+
+                <div
+                  class="snapshot-question-label"
+                  data-i18n="question4"
+                >
+                  いちばん思い出深い出来事は？
+                </div>
+
+                <div
+                  id="previewAnswer4"
+                  class="snapshot-answer"
+                >
+                  —
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- Q5 -->
+
+            <div class="snapshot-question question-5">
+
+              <div class="question-number">
+                5
+              </div>
+
+              <div class="question-content">
+
+                <div
+                  class="snapshot-question-label"
+                  data-i18n="question5"
+                >
+                  これから叶えたい目標は？
+                </div>
+
+                <div
+                  id="previewAnswer5"
+                  class="snapshot-answer"
+                >
+                  —
+                </div>
+
+              </div>
+
+            </div>
+
 
           </div>
 
@@ -647,15 +695,15 @@
 
 
 
-        <!-- ==================================
-             MESSAGE
-        =================================== -->
+        <!-- MESSAGE -->
 
         <section class="message-area">
 
           <div class="message-label">
             MESSAGE
           </div>
+
+          <div class="message-rule"></div>
 
           <div
             id="previewMessage"
@@ -668,9 +716,7 @@
 
 
 
-        <!-- ==================================
-             META
-        =================================== -->
+        <!-- META -->
 
         <div class="snapshot-copyright">
           (C) SQUARE ENIX
@@ -688,6 +734,7 @@
           </span>
 
         </div>
+
 
       </div>
 
@@ -713,15 +760,13 @@
 
 
     <!-- ======================================
-         MAIN CONTROLS
+         MAIN SETTINGS
     ======================================= -->
 
     <div class="main-controls">
 
 
-      <!-- ====================================
-           02 CHARACTER
-      ===================================== -->
+      <!-- CHARACTER -->
 
       <section class="setting-section">
 
@@ -829,16 +874,16 @@
           class="setting-note"
           data-i18n="lodestoneNote"
         >
-          Lodestoneから取得したキャラクター名・Worldは、取得後も手動で変更できます。ジョブレベルはLodestoneデータを使用します。
+          Lodestoneから取得したキャラクター名・Worldは、
+          取得後も手動で変更できます。
+          ジョブレベルはLodestoneデータを使用します。
         </p>
 
       </section>
 
 
 
-      <!-- ====================================
-           03 PLAY STYLE
-      ===================================== -->
+      <!-- PLAY STYLE -->
 
       <section class="setting-section">
 
@@ -943,9 +988,7 @@
 
 
 
-      <!-- ====================================
-           04 QUESTIONS
-      ===================================== -->
+      <!-- QUESTIONS -->
 
       <section class="setting-section">
 
@@ -1085,9 +1128,7 @@
 
 
 
-      <!-- ====================================
-           05 MESSAGE
-      ===================================== -->
+      <!-- MESSAGE -->
 
       <section class="setting-section">
 
@@ -1198,6 +1239,7 @@
   </div>
 
 </footer>
+
 
 
 <script
