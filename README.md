@@ -2,76 +2,80 @@
 
 FFXIV CHARACTER SNAPSHOT MAKER は、
 FINAL FANTASY XIV のスクリーンショットに
-キャラクター情報、ジョブ、プレイスタイル、
-5つの質問への回答、メッセージを組み合わせて、
-正方形のプロフィールスナップショットを作成するWebツールです。
+キャラクター情報・ジョブ・プレイスタイル・質問への回答などを組み合わせて、
+正方形のスナップショット画像を作成するWebツールです。
 
 EORZEA PROFILE STUDIO シリーズの第3弾として制作しています。
 
 
 ## EORZEA PROFILE STUDIO
 
-01. FFXIV CHARACTER PROFILE CARD
-02. FFXIV CHARACTER PORTRAIT MAKER
-03. FFXIV CHARACTER SNAPSHOT MAKER
+FFXIV向けのプロフィール・キャラクター表現用Webツールシリーズです。
+
+### 01
+FFXIV CHARACTER PROFILE CARD
+
+https://cyanstella.github.io/FFXIV-profilecard/
+
+### 02
+FFXIV CHARACTER PORTRAIT MAKER
+
+https://eorzea-profile-studio.pages.dev/
+
+### 03
+FFXIV CHARACTER SNAPSHOT MAKER
+
+https://cyanstella.github.io/FFXIV-character-snapshot-maker/
+
+### EORZEA PROFILE STUDIO
+
+https://cyanstella.github.io/EORZEA_PROFILE_STUDIO/
 
 
-## Features
-
-- スクリーンショット画像の読み込み
-- スクリーンショットの横位置調整
-- スクリーンショットの縦位置調整
-- スクリーンショットの拡大
-- カバーフィルム色変更
-- カバーフィルム濃度変更
-- 文字色変更
-- フォント変更
-- 情報パネル色変更
-- 情報パネル透明度変更
-- Lodestoneキャラクターデータ取得
-- キャラクター名表示
-- World / Data Center表示
-- ジョブアイコン表示
-- ジョブレベル表示
-- プレイスタイル複数選択
-- 5つの質問
-- フリーメッセージ
-- 日本語 / 英語切り替え
-- 1080 × 1080 PNG画像書き出し
-- PC / スマートフォン対応
-
-
-## Lodestone Data
-
-Cloudflare Workerを経由して
-Lodestoneのキャラクターページから以下を取得します。
-
-- Character Name
-- World / Data Center
-- Job Levels
-
-取得後もキャラクター名とWorld / Data Centerは
-手動で編集できます。
-
-
-## Output
-
-出力画像サイズ:
-
-1080 × 1080 px
-
-形式:
-
-PNG
-
-
-## Files
+## ファイル構成
 
 ```text
 FFXIV-character-snapshot-maker/
+│
 ├─ index.html
 ├─ style.css
 ├─ script.js
 ├─ README.md
+│
 └─ assets/
+   ├─ images/
+   │
    └─ jobs/
+      ├─ Paladin.png
+      ├─ Warrior.png
+      ├─ DarkKnight.png
+      ├─ Gunbreaker.png
+      ├─ WhiteMage.png
+      ├─ Scholar.png
+      ├─ Astrologian.png
+      ├─ Sage.png
+      ├─ Monk.png
+      ├─ Dragoon.png
+      ├─ Ninja.png
+      ├─ Samurai.png
+      ├─ Reaper.png
+      ├─ Viper.png
+      ├─ Bard.png
+      ├─ Machinist.png
+      ├─ Dancer.png
+      ├─ BlackMage.png
+      ├─ Summoner.png
+      ├─ RedMage.png
+      ├─ Pictomancer.png
+      ├─ BlueMage.png
+      ├─ Carpenter.png
+      ├─ Blacksmith.png
+      ├─ Armorer.png
+      ├─ Goldsmith.png
+      ├─ Leatherworker.png
+      ├─ Weaver.png
+      ├─ Alchemist.png
+      ├─ Culinarian.png
+      ├─ Miner.png
+      ├─ Botanist.png
+      └─ Fisher.png

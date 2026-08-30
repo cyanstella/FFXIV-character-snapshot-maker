@@ -2,7 +2,9 @@
    RESET
 ========================================== */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -12,14 +14,18 @@ html {
 
 body {
   margin: 0;
+
   background: #f4f2ec;
   color: #111;
+
   font-family:
     Arial,
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
     Meiryo,
     sans-serif;
+
+  overflow-x: hidden;
 }
 
 button,
@@ -43,50 +49,52 @@ a {
 
 
 /* ==========================================
-   SITE
-========================================== */
-
-.site {
-  min-height: 100vh;
-}
-
-
-/* ==========================================
    HEADER
 ========================================== */
 
 .site-header {
   width: 100%;
+
   padding: 20px 24px;
+
   border-bottom: 1px solid #111;
+
   background: #f4f2ec;
 }
 
 .header-inner {
   width: min(1400px, 100%);
+
   margin: 0 auto;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 20px;
 }
 
 .brand-logo {
   display: inline-flex;
+
   align-items: center;
+
   gap: 7px;
 
   color: #111;
+
   text-decoration: none;
 
   font-size: 15px;
   font-weight: 900;
+
   letter-spacing: 0.08em;
 }
 
 .studio-box {
   display: inline-block;
+
   padding: 4px 6px;
 
   background: #111;
@@ -95,14 +103,15 @@ a {
 
 .language-toggle {
   display: flex;
-  gap: 0;
 }
 
 .language-button {
   min-width: 54px;
+
   padding: 8px 12px;
 
   border: 1px solid #111;
+
   background: transparent;
   color: #111;
 
@@ -125,9 +134,14 @@ a {
 ========================================== */
 
 .main-content {
-  width: min(1400px, calc(100% - 34px));
+  width: min(
+    1400px,
+    calc(100% - 48px)
+  );
+
   margin: 0 auto;
-  padding: 42px 0 70px;
+
+  padding: 46px 0 72px;
 }
 
 
@@ -136,23 +150,31 @@ a {
 ========================================== */
 
 .hero {
-  margin-bottom: 44px;
+  margin-bottom: 54px;
 }
 
 .hero-kicker {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 
   font-size: 12px;
   font-weight: 900;
+
   letter-spacing: 0.18em;
 }
 
 .hero-title {
   margin: 0;
 
-  font-size: clamp(34px, 5vw, 72px);
+  font-size: clamp(
+    42px,
+    5.2vw,
+    74px
+  );
+
   font-weight: 900;
+
   line-height: 1.02;
+
   letter-spacing: -0.045em;
 }
 
@@ -162,7 +184,9 @@ a {
 
 .hero-line-accent {
   position: relative;
+
   display: inline-block;
+
   white-space: nowrap;
 }
 
@@ -170,28 +194,33 @@ a {
   content: "";
 
   position: absolute;
+
   left: 0;
   right: 0;
-  bottom: -8px;
+
+  bottom: -9px;
 
   height: 8px;
 
   background: #c7ff00;
+
   z-index: -1;
 }
 
 .hero-description {
-  max-width: 760px;
-  margin: 28px 0 0;
+  max-width: 790px;
+
+  margin: 30px 0 0;
 
   font-size: 14px;
   font-weight: 700;
+
   line-height: 1.9;
 }
 
 
 /* ==========================================
-   CREATOR LAYOUT
+   CREATOR
 ========================================== */
 
 .creator-layout {
@@ -222,9 +251,11 @@ a {
   grid-area: preview;
 
   position: sticky;
+
   top: 20px;
 
   align-self: start;
+
   min-width: 0;
 }
 
@@ -234,16 +265,20 @@ a {
 ========================================== */
 
 .control-section {
-  margin-bottom: 24px;
+  margin: 0 0 24px;
+
   padding: 22px;
 
   border: 1px solid #111;
+
   background: #f4f2ec;
 }
 
 .section-heading {
   display: flex;
+
   align-items: baseline;
+
   gap: 14px;
 
   margin: 0 0 24px;
@@ -253,6 +288,7 @@ a {
   color: #ff3b30;
 
   font-size: 13px;
+
   letter-spacing: 0.08em;
 }
 
@@ -261,11 +297,12 @@ a {
 
   font-size: 18px;
   font-weight: 900;
+
   letter-spacing: 0.08em;
 }
 
 .control-group {
-  margin-bottom: 22px;
+  margin: 0 0 22px;
 }
 
 .control-group:last-child {
@@ -275,46 +312,45 @@ a {
 .control-label {
   display: block;
 
-  margin-bottom: 9px;
+  margin: 0 0 9px;
 
   font-size: 12px;
   font-weight: 900;
+
   line-height: 1.5;
-}
-
-.control-help {
-  margin: 7px 0 0;
-
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1.6;
 }
 
 
 /* ==========================================
-   INPUTS
+   INPUT
 ========================================== */
 
 .text-input,
 .textarea-input,
 .select-input {
+  display: block;
+
   width: 100%;
 
   border: 1px solid #aaa;
+
   border-radius: 0;
 
   background: #fff;
+
   color: #111;
 }
 
 .text-input,
 .select-input {
   min-height: 44px;
+
   padding: 10px 12px;
 }
 
 .textarea-input {
   min-height: 90px;
+
   padding: 11px 12px;
 
   resize: vertical;
@@ -322,22 +358,24 @@ a {
   line-height: 1.6;
 }
 
+.message-input {
+  min-height: 120px;
+}
+
 .text-input:focus,
 .textarea-input:focus,
 .select-input:focus {
   outline: 2px solid #111;
+
   outline-offset: -2px;
 }
 
-
-/* ==========================================
-   FILE INPUT
-========================================== */
-
 .file-input {
+  display: block;
+
   width: 100%;
 
-  font-size: 12px;
+  font-size: 11px;
 }
 
 
@@ -345,18 +383,24 @@ a {
    RANGE
 ========================================== */
 
-.range-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  align-items: center;
+.range-label-row {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: baseline;
+
+  gap: 12px;
+
+  margin-bottom: 7px;
 }
 
-.range-input {
-  width: 100%;
+.range-label {
+  margin: 0;
 }
 
 .range-value {
+  flex: 0 0 auto;
+
   min-width: 42px;
 
   text-align: right;
@@ -365,14 +409,24 @@ a {
   font-weight: 900;
 }
 
+.range-input {
+  display: block;
+
+  width: 100%;
+
+  margin: 0;
+}
+
 
 /* ==========================================
-   TWO BUTTON CONTROL
+   OPTION BUTTONS
 ========================================== */
 
 .option-buttons {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 7px;
 }
 
@@ -382,6 +436,7 @@ a {
   border: 1px solid #111;
 
   background: transparent;
+
   color: #111;
 
   font-size: 11px;
@@ -390,6 +445,7 @@ a {
 
 .option-button.active {
   background: #111;
+
   color: #fff;
 }
 
@@ -399,23 +455,31 @@ a {
 ========================================== */
 
 .lodestone-button {
+  display: block;
+
   width: 100%;
+
   min-height: 44px;
 
-  margin-top: 10px;
+  margin: 10px 0 0;
 
   border: 0;
 
   background: #111;
+
   color: #fff;
 
   font-size: 11px;
   font-weight: 900;
-  letter-spacing: 0.02em;
+}
+
+.lodestone-button:hover {
+  background: #333;
 }
 
 .lodestone-button:disabled {
   cursor: wait;
+
   opacity: 0.55;
 }
 
@@ -426,20 +490,19 @@ a {
 
   font-size: 10px;
   font-weight: 800;
+
   line-height: 1.5;
 }
 
-.lodestone-status.success {
-  color: #111;
-}
-
 .lodestone-status.error {
-  color: #d21d12;
+  color: #d22;
 }
 
 .control-divider {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
 
   margin: 28px 0;
@@ -457,25 +520,32 @@ a {
 }
 
 .control-divider span {
-  font-size: 9px;
+  flex: 0 0 auto;
+
   color: #777;
-  white-space: nowrap;
+
+  font-size: 9px;
 }
 
 
 /* ==========================================
-   CHECKBOXES
+   CHECKBOX
 ========================================== */
 
 .checkbox-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px 8px;
 }
 
 .checkbox-label {
   display: flex;
+
   align-items: center;
+
   gap: 7px;
 
   min-width: 0;
@@ -484,17 +554,13 @@ a {
   font-weight: 800;
 }
 
-.checkbox-label input {
-  flex: 0 0 auto;
-}
-
 
 /* ==========================================
    QUESTION FORM
 ========================================== */
 
 .question-form-item {
-  margin-bottom: 22px;
+  margin: 0 0 22px;
 }
 
 .question-form-item:last-child {
@@ -502,15 +568,16 @@ a {
 }
 
 .question-form-title {
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 
   font-size: 11px;
   font-weight: 900;
+
   line-height: 1.55;
 }
 
 .character-counter {
-  margin-top: 5px;
+  margin: 5px 0 0;
 
   text-align: right;
 
@@ -522,7 +589,7 @@ a {
 
 
 /* ==========================================
-   PREVIEW AREA
+   PREVIEW
 ========================================== */
 
 .preview-title,
@@ -532,13 +599,17 @@ a {
     100%,
     calc(100vh - 150px)
   );
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .preview-title {
-  margin: 0 0 10px;
+  margin-bottom: 10px;
 
   font-size: 11px;
   font-weight: 900;
+
   letter-spacing: 0.2em;
 }
 
@@ -546,9 +617,8 @@ a {
 /* ==========================================
    SNAPSHOT
 
-   重要:
-   container-type:inline-size により
-   内部のcqwを常にSnapshot幅基準にする。
+   container-typeを指定することで
+   内部のcqwを必ずSnapshot幅基準にする。
 ========================================== */
 
 .snapshot {
@@ -560,17 +630,25 @@ a {
   --cover-rgb: 0, 0, 0;
   --cover-alpha: 0;
 
+  --image-offset-x: 0cqw;
+  --image-offset-y: 0cqw;
+  --image-scale: 1;
+
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 1 / 1;
 
   overflow: hidden;
 
-  background: #bbb;
-  color: var(--snapshot-text-color);
+  background: #b8b8b8;
+
+  color:
+    var(--snapshot-text-color);
 
   container-type: inline-size;
+
   isolation: isolate;
 }
 
@@ -627,45 +705,40 @@ a {
 
 
 /* ==========================================
-   PHOTO AREA
+   PHOTO
 
-   Snapshot全体と同じ正方形領域。
+   ★今回の重要部分
 
-   overflow:hidden によって
-   はみ出したSSだけを切り取る。
+   SSそのものを1080×1080へ
+   変形しない。
+
+   JSで元画像の縦横比を調べ、
+
+   縦長:
+   width:100%;
+   height:auto;
+
+   横長:
+   width:auto;
+   height:100%;
+
+   にする。
+
+   余った部分だけoverflow:hiddenで
+   トリミングする。
 ========================================== */
 
 .photo-area {
   position: absolute;
+
   inset: 0;
 
   z-index: 0;
 
-  width: 100%;
-  height: 100%;
-
   overflow: hidden;
 
-  background: #aaa;
+  background: #b8b8b8;
 }
-
-
-/* ==========================================
-   SNAPSHOT IMAGE
-
-   widthとheightを同時に100%にしない。
-
-   JSが元画像のnaturalWidth /
-   naturalHeightから、
-
-   横長 → height:100%
-   縦長 → width:100%
-
-   を基準にサイズを設定する。
-
-   これにより画像を正方形へ
-   押し潰すことがなくなる。
-========================================== */
 
 .snapshot-image {
   position: absolute;
@@ -673,76 +746,58 @@ a {
   top: 50%;
   left: 50%;
 
-  width:
-    var(
-      --image-base-width,
-      100%
-    );
+  /*
+    JSからpx値を設定する。
 
-  height:
-    var(
-      --image-base-height,
-      auto
-    );
+    widthとheightを同時に
+    100%にすることは禁止。
+  */
+  width: auto;
+  height: auto;
 
   max-width: none;
   max-height: none;
 
-  object-fit: fill;
-
   transform:
     translate(-50%, -50%)
     translate(
-      var(
-        --image-offset-x,
-        0cqw
-      ),
-      var(
-        --image-offset-y,
-        0cqw
-      )
+      var(--image-offset-x),
+      var(--image-offset-y)
     )
     scale(
-      var(
-        --image-scale,
-        1
-      )
+      var(--image-scale)
     );
 
-  transform-origin: center center;
+  transform-origin: center;
 
   user-select: none;
+
   pointer-events: none;
 }
 
-
-/* ==========================================
-   PHOTO PLACEHOLDER
-========================================== */
-
 .photo-placeholder {
   position: absolute;
+
   inset: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  background: #bbb;
+  background: #b8b8b8;
+
   color: #777;
 
   font-size: 4cqw;
   font-weight: 900;
+
   letter-spacing: 0.15em;
 }
 
-
-/* ==========================================
-   COVER FILM
-========================================== */
-
 .cover-film {
   position: absolute;
+
   inset: 0;
 
   z-index: 1;
@@ -772,8 +827,7 @@ a {
 
   padding:
     2.1%
-    2.3%
-    2.1%;
+    2.3%;
 
   background:
     rgba(
@@ -785,17 +839,16 @@ a {
     var(--snapshot-text-color);
 
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+
+  -webkit-backdrop-filter:
+    blur(6px);
 }
-
-
-/* ==========================================
-   CHARACTER HEADER
-========================================== */
 
 .character-header {
   display: flex;
+
   align-items: baseline;
+
   gap: 2cqw;
 
   margin-bottom: 1.4cqw;
@@ -806,10 +859,10 @@ a {
 
   font-size: 3.15cqw;
   font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.015em;
 
-  overflow-wrap: anywhere;
+  line-height: 1;
+
+  letter-spacing: 0.015em;
 }
 
 .preview-world {
@@ -817,7 +870,6 @@ a {
 
   font-size: 0.85cqw;
   font-weight: 900;
-  line-height: 1.2;
 }
 
 
@@ -833,8 +885,6 @@ a {
     minmax(0, 0.95fr);
 
   gap: 2.4cqw;
-
-  align-items: stretch;
 }
 
 .data-heading {
@@ -842,6 +892,7 @@ a {
 
   font-size: 0.78cqw;
   font-weight: 900;
+
   letter-spacing: 0.14em;
 }
 
@@ -856,6 +907,7 @@ a {
 
 .job-icon-area {
   display: flex;
+
   flex-direction: column;
 
   gap: 0.65cqw;
@@ -863,23 +915,23 @@ a {
 
 .job-icon-row {
   display: flex;
+
   flex-wrap: nowrap;
+
   align-items: flex-start;
 
   gap: 0.62cqw;
 }
 
 .job-item {
-  width: 3.3cqw;
-
   flex: 0 0 auto;
+
+  width: 3.3cqw;
 
   text-align: center;
 }
 
 .job-item img {
-  display: block;
-
   width: 2.75cqw;
   height: 2.75cqw;
 
@@ -893,8 +945,8 @@ a {
 
   font-size: 1.02cqw;
   font-weight: 900;
+
   line-height: 1;
-  letter-spacing: -0.03em;
 }
 
 .job-dnc img {
@@ -919,7 +971,9 @@ a {
 
 .preview-play-style {
   display: flex;
+
   flex-wrap: wrap;
+
   align-content: flex-start;
 
   gap: 0.55cqw;
@@ -927,6 +981,7 @@ a {
 
 .play-style-tag {
   display: inline-flex;
+
   align-items: center;
 
   min-height: 2.2cqw;
@@ -940,11 +995,9 @@ a {
     solid
     currentColor;
 
-  color:
-    var(--snapshot-text-color);
-
   font-size: 1.05cqw;
   font-weight: 900;
+
   line-height: 1.15;
 
   white-space: nowrap;
@@ -962,6 +1015,7 @@ a {
 
   left: 4.5%;
   right: 4.5%;
+
   bottom: 5.2%;
 
   padding:
@@ -979,13 +1033,10 @@ a {
     var(--snapshot-text-color);
 
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+
+  -webkit-backdrop-filter:
+    blur(6px);
 }
-
-
-/* ==========================================
-   QUESTIONS
-========================================== */
 
 .questions-heading,
 .message-heading {
@@ -993,6 +1044,7 @@ a {
 
   font-size: 1.05cqw;
   font-weight: 900;
+
   letter-spacing: 0.08em;
 }
 
@@ -1009,6 +1061,7 @@ a {
     "q3 .";
 
   column-gap: 5cqw;
+
   row-gap: 0.85cqw;
 }
 
@@ -1046,6 +1099,7 @@ a {
 
 .question-number {
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -1070,6 +1124,7 @@ a {
 
   font-size: 0.9cqw;
   font-weight: 800;
+
   line-height: 1.3;
 }
 
@@ -1078,9 +1133,11 @@ a {
 
   font-size: 1.18cqw;
   font-weight: 900;
+
   line-height: 1.25;
 
   overflow-wrap: anywhere;
+
   word-break: break-word;
 }
 
@@ -1091,6 +1148,7 @@ a {
 
 .message-block {
   margin-top: 1.15cqw;
+
   padding-top: 0.85cqw;
 
   border-top:
@@ -1101,21 +1159,20 @@ a {
 
 .preview-message {
   min-height: 1.4em;
-  max-height: 5.4cqw;
-
-  overflow: hidden;
 
   font-size: 1.22cqw;
   font-weight: 800;
+
   line-height: 1.28;
 
   overflow-wrap: anywhere;
+
   word-break: break-word;
 }
 
 
 /* ==========================================
-   COPYRIGHT
+   SNAPSHOT FOOTER
 ========================================== */
 
 .snapshot-copyright {
@@ -1124,9 +1181,11 @@ a {
   z-index: 4;
 
   left: 4.8%;
+
   bottom: 1.6%;
 
   font-size: 0.55cqw;
+
   font-weight: 800;
 }
 
@@ -1136,18 +1195,21 @@ a {
   z-index: 4;
 
   right: 4.8%;
+
   bottom: 1.6%;
 
   text-align: right;
 
   font-size: 0.55cqw;
+
   font-weight: 900;
+
   line-height: 1.25;
 }
 
 
 /* ==========================================
-   EXPORT BUTTON
+   EXPORT
 ========================================== */
 
 .export-area {
@@ -1156,15 +1218,18 @@ a {
 
 .export-button {
   width: 100%;
+
   min-height: 52px;
 
   border: 1px solid #111;
 
   background: #111;
+
   color: #fff;
 
   font-size: 12px;
   font-weight: 900;
+
   letter-spacing: 0.08em;
 }
 
@@ -1174,6 +1239,7 @@ a {
 
 .export-button:disabled {
   cursor: wait;
+
   opacity: 0.55;
 }
 
@@ -1181,17 +1247,18 @@ a {
 /* ==========================================
    EXPORT STAGE
 
-   画面外で必ず1080×1080の
-   Snapshotを作ってからhtml2canvasへ渡す。
+   必ず1080×1080で描画。
 ========================================== */
 
 .export-stage {
   position: fixed;
 
   left: -100000px;
+
   top: 0;
 
   width: 1080px;
+
   height: 1080px;
 
   overflow: hidden;
@@ -1201,28 +1268,20 @@ a {
 
 .export-stage .snapshot {
   width: 1080px !important;
+
   height: 1080px !important;
 
   min-width: 1080px !important;
+
   min-height: 1080px !important;
 
   max-width: 1080px !important;
+
   max-height: 1080px !important;
 
   aspect-ratio: auto !important;
 
-  /*
-    ここが重要。
-
-    export cloneでも
-    1cqw = 10.8pxになる。
-  */
   container-type: inline-size;
-}
-
-.export-stage .photo-area {
-  width: 1080px !important;
-  height: 1080px !important;
 }
 
 
@@ -1231,9 +1290,13 @@ a {
 ========================================== */
 
 .about-section {
-  width: min(1400px, calc(100% - 34px));
+  width: min(
+    1400px,
+    calc(100% - 48px)
+  );
 
   margin: 0 auto;
+
   padding: 42px 0;
 
   border-top: 1px solid #111;
@@ -1244,6 +1307,7 @@ a {
 
   font-size: 18px;
   font-weight: 900;
+
   letter-spacing: 0.08em;
 }
 
@@ -1254,6 +1318,7 @@ a {
 
   font-size: 11px;
   font-weight: 700;
+
   line-height: 1.9;
 }
 
@@ -1269,29 +1334,44 @@ a {
 }
 
 .footer-inner {
-  width: min(1400px, 100%);
+  width: min(
+    1400px,
+    100%
+  );
+
   margin: 0 auto;
 
   display: flex;
+
   justify-content: space-between;
+
   gap: 20px;
 
   font-size: 10px;
+
   font-weight: 800;
 }
 
 .footer-links {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 18px;
 }
 
 
 /* ==========================================
-   RESPONSIVE
+   TABLET
 ========================================== */
 
 @media (max-width: 950px) {
+
+  .main-content {
+    width:
+      calc(100% - 30px);
+  }
+
   .creator-layout {
     grid-template-columns: 1fr;
 
@@ -1312,33 +1392,48 @@ a {
   .export-area {
     width: 100%;
   }
+
+  .about-section {
+    width:
+      calc(100% - 30px);
+  }
+
 }
 
 
+/* ==========================================
+   MOBILE
+========================================== */
+
 @media (max-width: 640px) {
+
   .site-header {
-    padding:
-      15px
-      17px;
+    padding: 15px;
+  }
+
+  .header-inner {
+    align-items: flex-start;
+
+    flex-direction: column;
   }
 
   .main-content {
     width:
-      calc(
-        100% - 24px
-      );
+      calc(100% - 24px);
 
-    padding-top: 28px;
+    padding:
+      30px 0
+      55px;
   }
 
   .hero {
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
 
   .hero-title {
     font-size:
       clamp(
-        30px,
+        34px,
         11vw,
         50px
       );
@@ -1362,14 +1457,13 @@ a {
       1fr;
   }
 
+  .about-section {
+    width:
+      calc(100% - 24px);
+  }
+
   .footer-inner {
     flex-direction: column;
   }
 
-  .about-section {
-    width:
-      calc(
-        100% - 24px
-      );
-  }
 }
