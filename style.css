@@ -297,16 +297,49 @@ img {
   min-width: 0;
 }
 
+
+/* ==========================================
+   PREVIEW AREA
+
+   PCでは以下をすべて画面縦幅に収める
+
+   ・PREVIEWタイトル
+   ・正方形スナップショット
+   ・SSを書き出す
+   ・Xに投稿する
+   ・みんなの投稿を見る
+   ・各余白
+========================================== */
+
 .preview-area {
   grid-area: preview;
 
   position: sticky;
-
   top: 10px;
 
   align-self: start;
 
   min-width: 0;
+
+  /*
+    画面縦幅のうち、
+    SS以外に必要な領域を確保する。
+
+    約150px =
+      上端
+      PREVIEW
+      各余白
+      書き出しボタン
+      Xボタン
+      下端安全領域
+  */
+  --preview-ui-height: 150px;
+
+  --preview-size:
+    min(
+      100%,
+      calc(100dvh - var(--preview-ui-height))
+    );
 }
 
 
@@ -642,10 +675,7 @@ input[type="range"] {
 ========================================== */
 
 .preview-title {
-  width: min(
-    100%,
-    calc(100vh - 300px)
-  );
+  width: var(--preview-size);
 
   margin: 0 auto 8px;
 
@@ -656,110 +686,25 @@ input[type="range"] {
   font-size: 11px;
   font-weight: 900;
 
+  line-height: 16px;
+
   letter-spacing: .2em;
 }
 
-.snapshot,
-.export-area {
-  width: min(
-    100%,
-    calc(100vh - 300px)
-  );
+.snapshot {
+  width: var(--preview-size);
 
   margin-left: auto;
   margin-right: auto;
 }
 
+.export-area {
+  width: var(--preview-size);
 
-/* ==========================================
-   DYNAMIC VIEWPORT HEIGHT SUPPORT
-========================================== */
-
-@supports (height: 100dvh) {
-
-  .preview-title,
-  .snapshot,
-  .export-area {
-    width: min(
-      100%,
-      calc(100dvh - 300px)
-    );
-  }
-
-}
-
-
-/* ==========================================
-   SMALL HEIGHT DESKTOP
-========================================== */
-
-@media
-  (min-width: 901px)
-  and (max-height: 820px) {
-
-  .preview-title,
-  .snapshot,
-  .export-area {
-    width: min(
-      100%,
-      calc(100vh - 285px)
-    );
-  }
-
-  @supports (height: 100dvh) {
-
-    .preview-title,
-    .snapshot,
-    .export-area {
-      width: min(
-        100%,
-        calc(100dvh - 285px)
-      );
-    }
-
-  }
-
-}
-
-
-/* ==========================================
-   VERY SMALL HEIGHT DESKTOP
-========================================== */
-
-@media
-  (min-width: 901px)
-  and (max-height: 720px) {
-
-  .preview-title,
-  .snapshot,
-  .export-area {
-    width: min(
-      100%,
-      calc(100vh - 275px)
-    );
-  }
-
-  @supports (height: 100dvh) {
-
-    .preview-title,
-    .snapshot,
-    .export-area {
-      width: min(
-        100%,
-        calc(100dvh - 275px)
-      );
-    }
-
-  }
-
-  .export-button {
-    min-height: 42px;
-  }
-
-  .x-share-button {
-    min-height: 38px;
-  }
-
+  margin:
+    8px
+    auto
+    0;
 }
 
 
@@ -1247,14 +1192,13 @@ input[type="range"] {
    EXPORT / X
 ========================================== */
 
-.export-area {
-  margin-top: 8px;
-}
-
 .export-button {
   width: 100%;
 
-  min-height: 46px;
+  height: 42px;
+  min-height: 42px;
+
+  padding: 0 12px;
 
   border: 1px solid #111;
 
@@ -1290,14 +1234,14 @@ input[type="range"] {
 }
 
 .x-share-button {
-  min-height: 40px;
+  height: 38px;
+  min-height: 38px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
-  padding: 7px 10px;
+  padding: 0 10px;
 
   border: 1px solid #111;
 
@@ -1461,6 +1405,8 @@ input[type="range"] {
     order: 2;
 
     position: static;
+
+    --preview-size: 100%;
   }
 
 
@@ -1537,6 +1483,20 @@ input[type="range"] {
   .x-share-area {
     grid-template-columns:
       1fr;
+  }
+
+
+  /*
+    スマホではXボタンが2段になるため
+    固定heightを解除
+  */
+  .x-share-button {
+    min-height: 42px;
+    height: auto;
+
+    padding:
+      9px
+      10px;
   }
 
 
