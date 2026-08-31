@@ -264,8 +264,8 @@ const playStyleTranslations = {
   },
 
   battle: {
-    ja: "バトル",
-    en: "Battle"
+    ja: "モブハント",
+    en: "Hunts"
   },
 
   highend: {
@@ -299,8 +299,8 @@ const playStyleTranslations = {
   },
 
   goldsaucer: {
-    ja: "ゴールドソーサー",
-    en: "Gold Saucer"
+    ja: "ドマ麻雀",
+    en: "Doman Mahjong"
   },
 
   fishing: {
@@ -314,8 +314,8 @@ const playStyleTranslations = {
   },
 
   hunt: {
-    ja: "モブハント",
-    en: "Hunts"
+    ja: "アチーブ収集",
+    en: "Achievements"
   },
 
   roleplay: {
