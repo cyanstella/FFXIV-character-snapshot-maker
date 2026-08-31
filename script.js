@@ -153,15 +153,20 @@ const panelColorButtons =
    STATE
 ========================================== */
 
-let currentLanguage = "ja";
+let currentLanguage =
+  "ja";
 
-let currentJobLevels = {};
+let currentJobLevels =
+  {};
 
-let currentImageObjectUrl = null;
+let currentImageObjectUrl =
+  null;
 
-let imageNaturalWidth = 0;
+let imageNaturalWidth =
+  0;
 
-let imageNaturalHeight = 0;
+let imageNaturalHeight =
+  0;
 
 
 /* ==========================================
@@ -210,6 +215,7 @@ const JOB_ICON_MAP = {
   MIN: "Miner.png",
   BTN: "Botanist.png",
   FSH: "Fisher.png"
+
 };
 
 
@@ -237,7 +243,7 @@ const JOB_GROUPS = [
 
 
 /* ==========================================
-   PLAY STYLE TRANSLATIONS
+   PLAY STYLE
 ========================================== */
 
 const playStyleTranslations = {
@@ -351,7 +357,7 @@ const questionTranslations = {
 
 
 /* ==========================================
-   UI TRANSLATIONS
+   TRANSLATIONS
 ========================================== */
 
 const translations = {
@@ -455,7 +461,7 @@ const translations = {
       "画像の書き出しに失敗しました。",
 
     disclaimer:
-      "本サイトは個人が制作・運営する非公式ツールであり、株式会社スクウェア・エニックスとは関係ありません。本サイトの利用によって生じた損害・不利益について、制作者は責任を負いかねます。また、スクリーンショットや入力内容については、各利用者の責任のもとでご利用ください。"
+      "本サイトは個人が制作・運営する非公式ツールであり、株式会社スクウェア・エニックスとは関係ありません。本サイトの利用によって生じた損害・不利益について、制作者は責任を負いかねます。また、スクリーンショットや入力内容については、各利用者の責任のもとでご利用ください。ご利用の端末・ブラウザ・通信環境等によっては、本サイトが正常に動作しない場合があります。"
 
   },
 
@@ -559,7 +565,7 @@ const translations = {
       "Failed to export the image.",
 
     disclaimer:
-      "This is an unofficial fan-made web tool and is not affiliated with or endorsed by SQUARE ENIX CO., LTD. The creator assumes no responsibility for any loss or damage arising from the use of this site. Users are responsible for the screenshots and information they choose to use or enter."
+      "This is an unofficial fan-made web tool and is not affiliated with or endorsed by SQUARE ENIX CO., LTD. The creator assumes no responsibility for any loss or damage arising from the use of this site. Users are responsible for the screenshots and information they choose to use or enter. Depending on your device, browser, network, or other environment, some features of this site may not function properly."
 
   }
 
@@ -595,6 +601,7 @@ function handleImageUpload(event) {
 
   snapshotImage.src =
     currentImageObjectUrl;
+
 }
 
 
@@ -620,6 +627,7 @@ function handleImageLoad() {
 
 
   updateImageGeometry();
+
 }
 
 
@@ -667,7 +675,10 @@ function updateImageGeometry() {
   let height;
 
 
-  if (imageRatio > containerRatio) {
+  if (
+    imageRatio >
+    containerRatio
+  ) {
 
     height =
       containerHeight;
@@ -697,22 +708,28 @@ function updateImageGeometry() {
 
 
   updateImageTransform();
+
 }
 
 
 function updateImageTransform() {
 
   const x =
-    Number(imageXInput.value);
+    Number(
+      imageXInput.value
+    );
 
 
   const y =
-    Number(imageYInput.value);
+    Number(
+      imageYInput.value
+    );
 
 
   const scale =
-    Number(imageScaleInput.value) /
-    100;
+    Number(
+      imageScaleInput.value
+    ) / 100;
 
 
   const offsetX =
@@ -751,6 +768,7 @@ function updateImageTransform() {
 
   imageScaleValue.textContent =
     `${Math.round(scale * 100)}%`;
+
 }
 
 
@@ -774,6 +792,7 @@ function updateCoverOpacity() {
 
   coverOpacityValue.textContent =
     `${value}%`;
+
 }
 
 
@@ -793,6 +812,7 @@ function updatePanelOpacity() {
 
   panelOpacityValue.textContent =
     `${value}%`;
+
 }
 
 
@@ -801,14 +821,17 @@ function activateButton(
   target
 ) {
 
-  buttons.forEach(button => {
+  buttons.forEach(
+    button => {
 
-    button.classList.toggle(
-      "active",
-      button === target
-    );
+      button.classList.toggle(
+        "active",
+        button === target
+      );
 
-  });
+    }
+  );
+
 }
 
 
@@ -830,6 +853,7 @@ function setCoverColor(button) {
     coverColorButtons,
     button
   );
+
 }
 
 
@@ -856,6 +880,7 @@ function setTextColor(button) {
     textColorButtons,
     button
   );
+
 }
 
 
@@ -877,6 +902,7 @@ function setPanelColor(button) {
     panelColorButtons,
     button
   );
+
 }
 
 
@@ -919,6 +945,7 @@ function updateFont() {
     classes[fontSelect.value] ||
     "font-gothic"
   );
+
 }
 
 
@@ -936,6 +963,7 @@ function updateCharacter() {
   previewWorld.textContent =
     worldInput.value.trim() ||
     "Ramuh / Meteor";
+
 }
 
 
@@ -957,6 +985,7 @@ function formatWorld(value) {
     " / " +
     match[2].trim()
   );
+
 }
 
 
@@ -986,6 +1015,7 @@ function setLodestoneStatus(
 
   lodestoneStatus.textContent =
     text;
+
 }
 
 
@@ -1005,6 +1035,7 @@ async function fetchLodestone() {
     );
 
     return;
+
   }
 
 
@@ -1047,7 +1078,9 @@ async function fetchLodestone() {
     }
 
 
-    applyLodestoneCharacter(data);
+    applyLodestoneCharacter(
+      data
+    );
 
 
     setLodestoneStatus(
@@ -1080,10 +1113,13 @@ async function fetchLodestone() {
       false;
 
   }
+
 }
 
 
-function applyLodestoneCharacter(data) {
+function applyLodestoneCharacter(
+  data
+) {
 
   if (data.name) {
 
@@ -1096,7 +1132,9 @@ function applyLodestoneCharacter(data) {
   if (data.world) {
 
     worldInput.value =
-      formatWorld(data.world);
+      formatWorld(
+        data.world
+      );
 
   }
 
@@ -1112,6 +1150,7 @@ function applyLodestoneCharacter(data) {
 
 
   renderJobs();
+
 }
 
 
@@ -1121,104 +1160,112 @@ function applyLodestoneCharacter(data) {
 
 function renderJobs() {
 
-  jobIconArea.innerHTML = "";
+  jobIconArea.innerHTML =
+    "";
 
 
-  JOB_GROUPS.forEach(group => {
+  JOB_GROUPS.forEach(
+    group => {
 
-    const row =
-      document.createElement(
-        "div"
-      );
-
-
-    row.className =
-      "job-icon-row";
-
-
-    group.forEach(job => {
-
-      const item =
+      const row =
         document.createElement(
           "div"
         );
 
 
-      item.className =
-        "job-item";
+      row.className =
+        "job-icon-row";
 
 
-      if (job === "DNC") {
+      group.forEach(
+        job => {
 
-        item.classList.add(
-          "job-dnc"
-        );
-
-      }
-
-
-      const image =
-        document.createElement(
-          "img"
-        );
+          const item =
+            document.createElement(
+              "div"
+            );
 
 
-      image.src =
-        `assets/jobs/${JOB_ICON_MAP[job]}`;
+          item.className =
+            "job-item";
 
 
-      image.alt =
-        job;
+          if (
+            job === "DNC"
+          ) {
+
+            item.classList.add(
+              "job-dnc"
+            );
+
+          }
 
 
-      image.draggable =
-        false;
+          const image =
+            document.createElement(
+              "img"
+            );
 
 
-      const level =
-        document.createElement(
-          "div"
-        );
+          image.src =
+            `assets/jobs/${JOB_ICON_MAP[job]}`;
 
 
-      level.className =
-        "job-level";
+          image.alt =
+            job;
 
 
-      const jobLevel =
-        currentJobLevels[job];
+          image.draggable =
+            false;
 
 
-      level.textContent =
-        jobLevel !== undefined &&
-        jobLevel !== null &&
-        jobLevel !== ""
-          ? String(jobLevel)
-          : "—";
+          const level =
+            document.createElement(
+              "div"
+            );
 
 
-      item.appendChild(
-        image
+          level.className =
+            "job-level";
+
+
+          const jobLevel =
+            currentJobLevels[job];
+
+
+          level.textContent =
+            jobLevel !== undefined &&
+            jobLevel !== null &&
+            jobLevel !== ""
+              ? String(jobLevel)
+              : "—";
+
+
+          item.appendChild(
+            image
+          );
+
+
+          item.appendChild(
+            level
+          );
+
+
+          row.appendChild(
+            item
+          );
+
+        }
       );
 
 
-      item.appendChild(
-        level
+      jobIconArea.appendChild(
+        row
       );
 
+    }
+  );
 
-      row.appendChild(
-        item
-      );
-
-    });
-
-
-    jobIconArea.appendChild(
-      row
-    );
-
-  });
 }
 
 
@@ -1266,6 +1313,7 @@ function updatePlayStyle() {
 
 
     return;
+
   }
 
 
@@ -1298,6 +1346,7 @@ function updatePlayStyle() {
 
     }
   );
+
 }
 
 
@@ -1323,6 +1372,7 @@ function updateQuestions() {
 
     }
   );
+
 }
 
 
@@ -1336,6 +1386,7 @@ function updateMessage() {
   updateCounter(
     messageInput
   );
+
 }
 
 
@@ -1354,6 +1405,7 @@ function updateCounter(input) {
 
   counter.textContent =
     `${input.value.length} / ${input.maxLength}`;
+
 }
 
 
@@ -1377,106 +1429,117 @@ function setLanguage(language) {
     .querySelectorAll(
       "[data-lang]"
     )
-    .forEach(button => {
+    .forEach(
+      button => {
 
-      button.classList.toggle(
-        "active",
-        button.dataset.lang ===
-          currentLanguage
-      );
+        button.classList.toggle(
+          "active",
+          button.dataset.lang ===
+            currentLanguage
+        );
 
-    });
+      }
+    );
 
 
   document
     .querySelectorAll(
       "[data-i18n]"
     )
-    .forEach(element => {
+    .forEach(
+      element => {
 
-      const key =
-        element.dataset.i18n;
-
-
-      const text =
-        translations[
-          currentLanguage
-        ][key];
+        const key =
+          element.dataset.i18n;
 
 
-      if (
-        text !== undefined
-      ) {
+        const text =
+          translations[
+            currentLanguage
+          ][key];
 
-        element.textContent =
-          text;
+
+        if (
+          text !== undefined
+        ) {
+
+          element.textContent =
+            text;
+
+        }
 
       }
-
-    });
+    );
 
 
   document
     .querySelectorAll(
       "[data-play-label]"
     )
-    .forEach(element => {
+    .forEach(
+      element => {
 
-      const key =
-        element.dataset.playLabel;
+        const key =
+          element.dataset.playLabel;
 
 
-      element.textContent =
-        playStyleTranslations[
-          key
-        ][currentLanguage];
+        element.textContent =
+          playStyleTranslations[
+            key
+          ][currentLanguage];
 
-    });
+      }
+    );
 
 
   document
     .querySelectorAll(
       "[data-question-title]"
     )
-    .forEach(element => {
+    .forEach(
+      element => {
 
-      const index =
-        Number(
-          element.dataset.questionTitle
-        ) - 1;
+        const index =
+          Number(
+            element.dataset.questionTitle
+          ) - 1;
 
 
-      element.textContent =
-        questionTranslations[
-          currentLanguage
-        ][index];
+        element.textContent =
+          questionTranslations[
+            currentLanguage
+          ][index];
 
-    });
+      }
+    );
 
 
   document
     .querySelectorAll(
       "[data-form-question]"
     )
-    .forEach(element => {
+    .forEach(
+      element => {
 
-      const number =
-        Number(
-          element.dataset.formQuestion
-        );
+        const number =
+          Number(
+            element.dataset.formQuestion
+          );
 
 
-      element.textContent =
-        `${number}. ${
-          questionTranslations[
-            currentLanguage
-          ][number - 1]
-        }`;
+        element.textContent =
+          `${number}. ${
+            questionTranslations[
+              currentLanguage
+            ][number - 1]
+          }`;
 
-    });
+      }
+    );
 
 
   updatePlayStyle();
+
 }
 
 
@@ -1533,11 +1596,12 @@ function setupXLinks() {
       searchUrl;
 
   }
+
 }
 
 
 /* ==========================================
-   TIMEOUT HELPER
+   TIMEOUT
 ========================================== */
 
 function delay(ms) {
@@ -1549,6 +1613,7 @@ function delay(ms) {
         ms
       )
   );
+
 }
 
 
@@ -1561,9 +1626,12 @@ function promiseWithTimeout(
 
     promise,
 
-    delay(timeout)
+    delay(
+      timeout
+    )
 
   ]);
+
 }
 
 
@@ -1576,83 +1644,83 @@ function waitForSingleImage(
   timeout = 3000
 ) {
 
-  /*
-    すでにブラウザ側で処理済みなら
-    待たずに終了する。
-
-    naturalWidth === 0 でも
-    completeなら永久待機しない。
-  */
-
-  if (image.complete) {
+  if (
+    image.complete
+  ) {
 
     return Promise.resolve();
 
   }
 
 
-  return new Promise(resolve => {
+  return new Promise(
+    resolve => {
 
-    let finished =
-      false;
-
-
-    const finish = () => {
-
-      if (finished) {
-        return;
-      }
+      let finished =
+        false;
 
 
-      finished =
-        true;
+      const finish =
+        () => {
+
+          if (finished) {
+            return;
+          }
 
 
-      clearTimeout(
-        timer
-      );
+          finished =
+            true;
 
 
-      image.removeEventListener(
+          clearTimeout(
+            timer
+          );
+
+
+          image.removeEventListener(
+            "load",
+            finish
+          );
+
+
+          image.removeEventListener(
+            "error",
+            finish
+          );
+
+
+          resolve();
+
+        };
+
+
+      const timer =
+        setTimeout(
+          finish,
+          timeout
+        );
+
+
+      image.addEventListener(
         "load",
         finish
       );
 
 
-      image.removeEventListener(
+      image.addEventListener(
         "error",
         finish
       );
 
+    }
+  );
 
-      resolve();
-
-    };
-
-
-    const timer =
-      setTimeout(
-        finish,
-        timeout
-      );
-
-
-    image.addEventListener(
-      "load",
-      finish
-    );
-
-
-    image.addEventListener(
-      "error",
-      finish
-    );
-
-  });
 }
 
 
-async function waitForImages(root) {
+async function waitForImages(
+  root
+) {
 
   const images =
     [...root.querySelectorAll("img")];
@@ -1673,13 +1741,10 @@ async function waitForImages(root) {
     );
 
 
-  /*
-    個別3秒に加え、
-    全体も最大5秒で終了させる。
-  */
-
   await promiseWithTimeout(
-    Promise.all(waits),
+    Promise.all(
+      waits
+    ),
     5000
   );
 
@@ -1687,6 +1752,7 @@ async function waitForImages(root) {
   console.log(
     "[Snapshot Export] image wait finished"
   );
+
 }
 
 
@@ -1715,6 +1781,7 @@ function prepareExportImage(
     );
 
     return;
+
   }
 
 
@@ -1777,6 +1844,7 @@ function prepareExportImage(
     width,
     height
   );
+
 }
 
 
@@ -1809,6 +1877,7 @@ async function exportSnapshot() {
 
 
     return;
+
   }
 
 
@@ -1827,6 +1896,7 @@ async function exportSnapshot() {
 
 
     return;
+
   }
 
 
@@ -1868,11 +1938,6 @@ async function exportSnapshot() {
         "div"
       );
 
-
-    /*
-      画面外に飛ばさない。
-      display:noneにも設定しない。
-    */
 
     stage.style.position =
       "fixed";
@@ -1920,11 +1985,6 @@ async function exportSnapshot() {
       "id"
     );
 
-
-    /*
-      ブラウザ上のPREVIEWサイズには
-      一切依存させない。
-    */
 
     clone.style.width =
       "1080px";
@@ -1987,32 +2047,27 @@ async function exportSnapshot() {
     );
 
 
-    /*
-      レイアウト確定を待つ
-    */
-
-    await new Promise(resolve => {
-
-      requestAnimationFrame(() => {
+    await new Promise(
+      resolve => {
 
         requestAnimationFrame(
-          resolve
+          () => {
+
+            requestAnimationFrame(
+              resolve
+            );
+
+          }
         );
 
-      });
-
-    });
+      }
+    );
 
 
     console.log(
       "[Snapshot Export] starting html2canvas"
     );
 
-
-    /*
-      html2canvas自体にも
-      20秒のタイムアウトを設定。
-    */
 
     const canvas =
       await Promise.race([
@@ -2056,6 +2111,7 @@ async function exportSnapshot() {
 
           }
         ),
+
 
         new Promise(
           (_, reject) => {
@@ -2228,11 +2284,6 @@ async function exportSnapshot() {
       false;
 
 
-    /*
-      「...」には変更しない。
-      常に通常のボタン名を表示する。
-    */
-
     exportButton.textContent =
       translations[
         currentLanguage
@@ -2244,6 +2295,7 @@ async function exportSnapshot() {
     );
 
   }
+
 }
 
 
@@ -2396,17 +2448,19 @@ languageToggle
   .querySelectorAll(
     "[data-lang]"
   )
-  .forEach(button => {
+  .forEach(
+    button => {
 
-    button.addEventListener(
-      "click",
-      () =>
-        setLanguage(
-          button.dataset.lang
-        )
-    );
+      button.addEventListener(
+        "click",
+        () =>
+          setLanguage(
+            button.dataset.lang
+          )
+      );
 
-  });
+    }
+  );
 
 
 exportButton.addEventListener(
@@ -2461,10 +2515,6 @@ function initialize() {
 
   setupXLinks();
 
-
-  /*
-    丸文字フォントを先読み
-  */
 
   if (
     document.fonts &&
