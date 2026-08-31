@@ -1337,18 +1337,6 @@ function setLanguage(language) {
 
 function setupXLinks() {
 
-  /*
-    X投稿
-
-    自動入力：
-
-    FFXIV CHARACTER SNAPSHOT MAKER
-
-    サイトURL
-
-    #FFXIVCHARACTERSNAPSHOTMAKER
-  */
-
   const postText =
     `${SITE_TITLE}\n\n` +
     `${SITE_URL}\n\n` +
@@ -1359,14 +1347,6 @@ function setupXLinks() {
     encodeURIComponent(postText);
 
 
-  /*
-    Xタグ検索
-
-    #FFXIVCHARACTERSNAPSHOTMAKER
-
-    最新投稿を表示
-  */
-
   const searchQuery =
     `#${X_HASHTAG}`;
 
@@ -1375,12 +1355,6 @@ function setupXLinks() {
     encodeURIComponent(searchQuery) +
     "&src=typed_query&f=live";
 
-
-  /*
-    リンクへ直接設定
-
-    window.open() は使用しない
-  */
 
   if (xPostButton) {
 
@@ -1404,7 +1378,6 @@ function setupXLinks() {
       searchUrl;
 
   }
-
 }
 
 
@@ -1420,6 +1393,10 @@ function waitForImages(root) {
   return Promise.all(
 
     images.map(image => {
+
+      if (!image.src) {
+        return Promise.resolve();
+      }
 
       if (
         image.complete &&
@@ -1481,6 +1458,7 @@ function prepareExportImage(clone) {
     return;
   }
 
+
   const exportSize =
     1080;
 
@@ -1488,10 +1466,17 @@ function prepareExportImage(clone) {
     imageNaturalWidth /
     imageNaturalHeight;
 
+
   let width;
   let height;
 
-  if (imageRatio > 1) {
+
+  /*
+    1080 × 1080を覆うサイズを計算。
+    元画像の縦横比は維持する。
+  */
+
+  if (imageRatio >= 1) {
 
     height =
       exportSize;
@@ -1511,11 +1496,18 @@ function prepareExportImage(clone) {
 
   }
 
+
   cloneImage.style.width =
     `${width}px`;
 
   cloneImage.style.height =
     `${height}px`;
+
+  cloneImage.style.maxWidth =
+    "none";
+
+  cloneImage.style.maxHeight =
+    "none";
 }
 
 
@@ -1525,18 +1517,45 @@ function prepareExportImage(clone) {
 
 async function exportSnapshot() {
 
+  /*
+    html2canvas自体が読み込まれているか確認
+  */
+
+  if (
+    typeof html2canvas !==
+    "function"
+  ) {
+
+    console.error(
+      "html2canvas is not loaded."
+    );
+
+    alert(
+      translations[
+        currentLanguage
+      ].exportError
+    );
+
+    return;
+  }
+
+
   exportButton.disabled =
     true;
 
-  const originalText =
-    exportButton.textContent;
 
   exportButton.textContent =
     "...";
 
+
   let stage = null;
 
+
   try {
+
+    /*
+      フォント読み込み完了を待つ
+    */
 
     if (
       document.fonts &&
@@ -1548,22 +1567,60 @@ async function exportSnapshot() {
     }
 
 
+    /*
+      書き出し専用ステージを作る。
+
+      display:none や
+      left:-100000px は使わない。
+    */
+
     stage =
       document.createElement("div");
 
-    stage.className =
-      "export-stage";
 
+    stage.style.position =
+      "fixed";
+
+    stage.style.left =
+      "0";
+
+    stage.style.top =
+      "0";
+
+    stage.style.width =
+      "1080px";
+
+    stage.style.height =
+      "1080px";
+
+    stage.style.opacity =
+      "0";
+
+    stage.style.pointerEvents =
+      "none";
+
+    stage.style.zIndex =
+      "-9999";
+
+    stage.style.overflow =
+      "hidden";
+
+
+    /*
+      現在のPREVIEWを複製
+    */
 
     const clone =
       snapshot.cloneNode(true);
 
+
     clone.removeAttribute("id");
 
-    stage.appendChild(clone);
 
-    document.body.appendChild(stage);
-
+    /*
+      書き出し時は
+      1080 × 1080に完全固定
+    */
 
     clone.style.width =
       "1080px";
@@ -1571,14 +1628,51 @@ async function exportSnapshot() {
     clone.style.height =
       "1080px";
 
+    clone.style.minWidth =
+      "1080px";
+
+    clone.style.maxWidth =
+      "1080px";
+
+    clone.style.minHeight =
+      "1080px";
+
+    clone.style.maxHeight =
+      "1080px";
+
     clone.style.aspectRatio =
       "auto";
 
+    clone.style.margin =
+      "0";
+
+    clone.style.position =
+      "relative";
+
+
+    stage.appendChild(clone);
+
+    document.body.appendChild(stage);
+
+
+    /*
+      SS画像も1080px基準へ変換
+    */
 
     prepareExportImage(clone);
 
+
+    /*
+      SSとジョブアイコンなど
+      画像の読み込み完了を待つ
+    */
+
     await waitForImages(clone);
 
+
+    /*
+      フォントをもう一度確認
+    */
 
     if (
       document.fonts &&
@@ -1590,16 +1684,24 @@ async function exportSnapshot() {
     }
 
 
-    await new Promise(resolve =>
+    /*
+      DOM/CSSの反映を2フレーム待つ
+    */
 
-      requestAnimationFrame(() =>
+    await new Promise(resolve => {
 
-        requestAnimationFrame(resolve)
+      requestAnimationFrame(() => {
 
-      )
+        requestAnimationFrame(resolve);
 
-    );
+      });
 
+    });
+
+
+    /*
+      1080 × 1080 PNG用Canvas生成
+    */
 
     const canvas =
       await html2canvas(
@@ -1632,25 +1734,57 @@ async function exportSnapshot() {
       );
 
 
-    const blob =
-      await new Promise(resolve =>
-
-        canvas.toBlob(
-          resolve,
-          "image/png"
-        )
-
-      );
-
-
-    if (!blob) {
+    if (
+      !canvas ||
+      canvas.width === 0 ||
+      canvas.height === 0
+    ) {
 
       throw new Error(
-        "PNG creation failed."
+        "Canvas creation failed."
       );
 
     }
 
+
+    /*
+      Canvas → PNG Blob
+    */
+
+    const blob =
+      await new Promise(
+        (resolve, reject) => {
+
+          canvas.toBlob(
+            result => {
+
+              if (result) {
+
+                resolve(result);
+
+              } else {
+
+                reject(
+                  new Error(
+                    "PNG creation failed."
+                  )
+                );
+
+              }
+
+            },
+
+            "image/png"
+
+          );
+
+        }
+      );
+
+
+    /*
+      PNGをダウンロード
+    */
 
     const objectUrl =
       URL.createObjectURL(blob);
@@ -1659,32 +1793,51 @@ async function exportSnapshot() {
     const link =
       document.createElement("a");
 
+
     link.href =
       objectUrl;
+
 
     link.download =
       "ffxiv-character-snapshot.png";
 
 
+    link.style.display =
+      "none";
+
+
     document.body.appendChild(link);
 
+
     link.click();
+
 
     link.remove();
 
 
+    /*
+      少し待ってBlob URLを解放
+    */
+
     setTimeout(
-      () =>
+      () => {
+
         URL.revokeObjectURL(
           objectUrl
-        ),
-      1000
+        );
+
+      },
+      3000
     );
 
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      "Snapshot export error:",
+      error
+    );
+
 
     alert(
       translations[
@@ -1692,7 +1845,12 @@ async function exportSnapshot() {
       ].exportError
     );
 
+
   } finally {
+
+    /*
+      書き出し専用ステージを削除
+    */
 
     if (stage) {
 
@@ -1700,11 +1858,20 @@ async function exportSnapshot() {
 
     }
 
+
     exportButton.disabled =
       false;
 
+
+    /*
+      現在の言語に合わせて
+      ボタン文字を戻す
+    */
+
     exportButton.textContent =
-      originalText;
+      translations[
+        currentLanguage
+      ].export;
 
   }
 }
@@ -1896,15 +2063,14 @@ function initialize() {
 
 
   /*
-    Xリンク設定
+    Xリンクを設定
   */
 
   setupXLinks();
 
 
   /*
-    丸文字フォントを
-    あらかじめ読み込む
+    丸文字フォントを先読み
   */
 
   if (
