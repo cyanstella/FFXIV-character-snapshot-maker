@@ -580,9 +580,11 @@ function handleImageUpload(event) {
   }
 
   if (currentImageObjectUrl) {
+
     URL.revokeObjectURL(
       currentImageObjectUrl
     );
+
   }
 
   currentImageObjectUrl =
@@ -668,6 +670,7 @@ function updateImageGeometry() {
     height =
       containerWidth /
       imageRatio;
+
   }
 
   snapshotImage.style.width =
@@ -850,15 +853,20 @@ function updateFont() {
 
   const classes = {
 
-    gothic: "font-gothic",
+    gothic:
+      "font-gothic",
 
-    rounded: "font-rounded",
+    rounded:
+      "font-rounded",
 
-    mincho: "font-mincho",
+    mincho:
+      "font-mincho",
 
-    modern: "font-modern",
+    modern:
+      "font-modern",
 
-    condensed: "font-condensed"
+    condensed:
+      "font-condensed"
 
   };
 
@@ -970,10 +978,12 @@ async function fetchLodestone() {
       !response.ok ||
       !data.success
     ) {
+
       throw new Error(
         data.error ||
         `HTTP ${response.status}`
       );
+
     }
 
     applyLodestoneCharacter(data);
@@ -1000,6 +1010,7 @@ async function fetchLodestone() {
 
     lodestoneFetchButton.disabled =
       false;
+
   }
 }
 
@@ -1007,13 +1018,17 @@ async function fetchLodestone() {
 function applyLodestoneCharacter(data) {
 
   if (data.name) {
+
     characterNameInput.value =
       data.name;
+
   }
 
   if (data.world) {
+
     worldInput.value =
       formatWorld(data.world);
+
   }
 
   currentJobLevels =
@@ -1053,9 +1068,11 @@ function renderJobs() {
         "job-item";
 
       if (job === "DNC") {
+
         item.classList.add(
           "job-dnc"
         );
+
       }
 
       const image =
@@ -1244,7 +1261,10 @@ function setLanguage(language) {
         ][key];
 
       if (text !== undefined) {
-        element.textContent = text;
+
+        element.textContent =
+          text;
+
       }
 
     });
@@ -1312,19 +1332,22 @@ function setLanguage(language) {
 
 
 /* ==========================================
-   X
+   X LINKS
 ========================================== */
 
-/*
-  X投稿画面
+function setupXLinks() {
 
-  自動入力：
-  ・サイトタイトル
-  ・サイトURL
-  ・#FFXIVCHARACTERSNAPSHOTMAKER
-*/
+  /*
+    X投稿
 
-function openXPost() {
+    自動入力：
+
+    FFXIV CHARACTER SNAPSHOT MAKER
+
+    サイトURL
+
+    #FFXIVCHARACTERSNAPSHOTMAKER
+  */
 
   const postText =
     `${SITE_TITLE}\n\n` +
@@ -1335,22 +1358,14 @@ function openXPost() {
     "https://x.com/intent/post?text=" +
     encodeURIComponent(postText);
 
-  window.open(
-    postUrl,
-    "_blank",
-    "noopener,noreferrer"
-  );
-}
 
+  /*
+    Xタグ検索
 
-/*
-  「みんなの投稿を見る」
+    #FFXIVCHARACTERSNAPSHOTMAKER
 
-  #FFXIVCHARACTERSNAPSHOTMAKER の
-  最新投稿検索を開く
-*/
-
-function openXSearch() {
+    最新投稿を表示
+  */
 
   const searchQuery =
     `#${X_HASHTAG}`;
@@ -1360,11 +1375,36 @@ function openXSearch() {
     encodeURIComponent(searchQuery) +
     "&src=typed_query&f=live";
 
-  window.open(
-    searchUrl,
-    "_blank",
-    "noopener,noreferrer"
-  );
+
+  /*
+    リンクへ直接設定
+
+    window.open() は使用しない
+  */
+
+  if (xPostButton) {
+
+    xPostButton.href =
+      postUrl;
+
+  }
+
+
+  if (xSearchButton) {
+
+    xSearchButton.href =
+      searchUrl;
+
+  }
+
+
+  if (heroXSearchButton) {
+
+    heroXSearchButton.href =
+      searchUrl;
+
+  }
+
 }
 
 
@@ -1385,7 +1425,9 @@ function waitForImages(root) {
         image.complete &&
         image.naturalWidth > 0
       ) {
+
         return Promise.resolve();
+
       }
 
       return new Promise(resolve => {
@@ -1403,6 +1445,7 @@ function waitForImages(root) {
           );
 
           resolve();
+
         };
 
         image.addEventListener(
@@ -1465,6 +1508,7 @@ function prepareExportImage(clone) {
     height =
       exportSize /
       imageRatio;
+
   }
 
   cloneImage.style.width =
@@ -1481,7 +1525,8 @@ function prepareExportImage(clone) {
 
 async function exportSnapshot() {
 
-  exportButton.disabled = true;
+  exportButton.disabled =
+    true;
 
   const originalText =
     exportButton.textContent;
@@ -1497,7 +1542,9 @@ async function exportSnapshot() {
       document.fonts &&
       document.fonts.ready
     ) {
+
       await document.fonts.ready;
+
     }
 
 
@@ -1537,14 +1584,20 @@ async function exportSnapshot() {
       document.fonts &&
       document.fonts.ready
     ) {
+
       await document.fonts.ready;
+
     }
 
 
     await new Promise(resolve =>
+
       requestAnimationFrame(() =>
+
         requestAnimationFrame(resolve)
+
       )
+
     );
 
 
@@ -1552,8 +1605,11 @@ async function exportSnapshot() {
       await html2canvas(
         clone,
         {
+
           width: 1080,
+
           height: 1080,
+
           scale: 1,
 
           useCORS: true,
@@ -1565,27 +1621,34 @@ async function exportSnapshot() {
           logging: false,
 
           scrollX: 0,
+
           scrollY: 0,
 
           windowWidth: 1080,
+
           windowHeight: 1080
+
         }
       );
 
 
     const blob =
       await new Promise(resolve =>
+
         canvas.toBlob(
           resolve,
           "image/png"
         )
+
       );
 
 
     if (!blob) {
+
       throw new Error(
         "PNG creation failed."
       );
+
     }
 
 
@@ -1632,7 +1695,9 @@ async function exportSnapshot() {
   } finally {
 
     if (stage) {
+
       stage.remove();
+
     }
 
     exportButton.disabled =
@@ -1640,6 +1705,7 @@ async function exportSnapshot() {
 
     exportButton.textContent =
       originalText;
+
   }
 }
 
@@ -1653,6 +1719,7 @@ imageUpload.addEventListener(
   handleImageUpload
 );
 
+
 snapshotImage.addEventListener(
   "load",
   handleImageLoad
@@ -1664,10 +1731,12 @@ imageXInput.addEventListener(
   updateImageTransform
 );
 
+
 imageYInput.addEventListener(
   "input",
   updateImageTransform
 );
+
 
 imageScaleInput.addEventListener(
   "input",
@@ -1679,6 +1748,7 @@ coverOpacityInput.addEventListener(
   "input",
   updateCoverOpacity
 );
+
 
 panelOpacityInput.addEventListener(
   "input",
@@ -1729,6 +1799,7 @@ characterNameInput.addEventListener(
   "input",
   updateCharacter
 );
+
 
 worldInput.addEventListener(
   "input",
@@ -1791,38 +1862,6 @@ exportButton.addEventListener(
 );
 
 
-/*
-  X投稿
-*/
-
-xPostButton.addEventListener(
-  "click",
-  openXPost
-);
-
-
-/*
-  PREVIEW下：
-  みんなの投稿を見る
-*/
-
-xSearchButton.addEventListener(
-  "click",
-  openXSearch
-);
-
-
-/*
-  HERO上部：
-  みんなの投稿を見る
-*/
-
-heroXSearchButton.addEventListener(
-  "click",
-  openXSearch
-);
-
-
 window.addEventListener(
   "resize",
   updateImageGeometry
@@ -1857,7 +1896,15 @@ function initialize() {
 
 
   /*
-    丸文字フォントを先に読み込んでおく
+    Xリンク設定
+  */
+
+  setupXLinks();
+
+
+  /*
+    丸文字フォントを
+    あらかじめ読み込む
   */
 
   if (

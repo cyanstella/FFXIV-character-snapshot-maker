@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -17,18 +19,33 @@
     content="FFXIVのスクリーンショットにキャラクター情報、ジョブ、プレイスタイル、5つの質問への回答を添えて、オリジナルのスナップショットを作成できるWebツールです。"
   >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Rounded Font -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
 
+
 <body>
+
 
   <!-- ========================================
        HEADER
@@ -43,8 +60,12 @@
         class="brand-logo"
       >
         <span>EORZEA PROFILE</span>
-        <span class="studio-box">STUDIO</span>
+
+        <span class="studio-box">
+          STUDIO
+        </span>
       </a>
+
 
       <div
         id="languageToggle"
@@ -74,6 +95,7 @@
   </header>
 
 
+
   <!-- ========================================
        HERO
   ========================================= -->
@@ -81,6 +103,7 @@
   <section class="hero">
 
     <div class="hero-inner">
+
 
       <div class="hero-kicker">
 
@@ -126,14 +149,16 @@
 
       <div class="hero-community">
 
-        <button
+        <a
           id="heroXSearchButton"
-          type="button"
           class="hero-community-button"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
           data-i18n="xSearch"
         >
           みんなの投稿を見る
-        </button>
+        </a>
 
         <div class="hero-community-tag">
           #FFXIVCHARACTERSNAPSHOTMAKER
@@ -141,9 +166,11 @@
 
       </div>
 
+
     </div>
 
   </section>
+
 
 
   <!-- ========================================
@@ -162,6 +189,7 @@
       <div class="top-controls">
 
         <section class="control-section">
+
 
           <div class="section-heading">
 
@@ -407,23 +435,38 @@
               class="select-input"
             >
 
-              <option value="gothic" data-i18n="fontGothic">
+              <option
+                value="gothic"
+                data-i18n="fontGothic"
+              >
                 ゴシック
               </option>
 
-              <option value="rounded" data-i18n="fontRounded">
+              <option
+                value="rounded"
+                data-i18n="fontRounded"
+              >
                 丸文字
               </option>
 
-              <option value="mincho" data-i18n="fontMincho">
+              <option
+                value="mincho"
+                data-i18n="fontMincho"
+              >
                 明朝
               </option>
 
-              <option value="modern" data-i18n="fontModern">
+              <option
+                value="modern"
+                data-i18n="fontModern"
+              >
                 モダン
               </option>
 
-              <option value="condensed" data-i18n="fontCondensed">
+              <option
+                value="condensed"
+                data-i18n="fontCondensed"
+              >
                 コンデンス
               </option>
 
@@ -496,9 +539,11 @@
 
           </div>
 
+
         </section>
 
       </div>
+
 
 
       <!-- ====================================
@@ -506,6 +551,7 @@
       ===================================== -->
 
       <section class="preview-area">
+
 
         <h2 class="preview-title">
           PREVIEW
@@ -516,6 +562,9 @@
           id="snapshot"
           class="snapshot text-white font-gothic"
         >
+
+
+          <!-- PHOTO -->
 
           <div class="photo-area">
 
@@ -537,7 +586,11 @@
           </div>
 
 
+
+          <!-- CHARACTER PANEL -->
+
           <section class="character-panel">
+
 
             <div class="character-header">
 
@@ -559,6 +612,7 @@
 
 
             <div class="character-data-layout">
+
 
               <div class="job-column">
 
@@ -587,12 +641,18 @@
 
               </div>
 
+
             </div>
+
 
           </section>
 
 
+
+          <!-- QUESTIONS / MESSAGE -->
+
           <section class="bottom-panel">
+
 
             <div class="questions-heading">
               QUESTIONS
@@ -601,9 +661,15 @@
 
             <div class="questions-grid">
 
-              <div class="question-item" data-question="1">
 
-                <div class="question-number">1</div>
+              <div
+                class="question-item"
+                data-question="1"
+              >
+
+                <div class="question-number">
+                  1
+                </div>
 
                 <div class="question-content">
 
@@ -626,9 +692,14 @@
               </div>
 
 
-              <div class="question-item" data-question="2">
+              <div
+                class="question-item"
+                data-question="2"
+              >
 
-                <div class="question-number">2</div>
+                <div class="question-number">
+                  2
+                </div>
 
                 <div class="question-content">
 
@@ -651,9 +722,14 @@
               </div>
 
 
-              <div class="question-item" data-question="3">
+              <div
+                class="question-item"
+                data-question="3"
+              >
 
-                <div class="question-number">3</div>
+                <div class="question-number">
+                  3
+                </div>
 
                 <div class="question-content">
 
@@ -676,9 +752,14 @@
               </div>
 
 
-              <div class="question-item" data-question="4">
+              <div
+                class="question-item"
+                data-question="4"
+              >
 
-                <div class="question-number">4</div>
+                <div class="question-number">
+                  4
+                </div>
 
                 <div class="question-content">
 
@@ -701,9 +782,14 @@
               </div>
 
 
-              <div class="question-item" data-question="5">
+              <div
+                class="question-item"
+                data-question="5"
+              >
 
-                <div class="question-number">5</div>
+                <div class="question-number">
+                  5
+                </div>
 
                 <div class="question-content">
 
@@ -725,6 +811,7 @@
 
               </div>
 
+
             </div>
 
 
@@ -743,22 +830,32 @@
 
             </div>
 
+
           </section>
+
 
 
           <div class="snapshot-copyright">
             (C) SQUARE ENIX
           </div>
 
+
           <div class="snapshot-brand">
             EORZEA PROFILE STUDIO<br>
             FFXIV CHARACTER SNAPSHOT MAKER
           </div>
 
+
         </div>
 
 
+
+        <!-- ====================================
+             EXPORT / X
+        ===================================== -->
+
         <div class="export-area">
+
 
           <button
             id="exportButton"
@@ -772,36 +869,52 @@
 
           <div class="x-share-area">
 
-            <button
+
+            <a
               id="xPostButton"
-              type="button"
               class="x-share-button x-post-button"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
               data-i18n="xPost"
             >
               Xに投稿する
-            </button>
+            </a>
 
-            <button
+
+            <a
               id="xSearchButton"
-              type="button"
               class="x-share-button x-search-button"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
               data-i18n="xSearch"
             >
               みんなの投稿を見る
-            </button>
+            </a>
+
 
           </div>
+
 
           <div class="hashtag-display">
             #FFXIVCHARACTERSNAPSHOTMAKER
           </div>
 
+
         </div>
+
 
       </section>
 
 
+
+      <!-- ====================================
+           MAIN CONTROLS
+      ===================================== -->
+
       <div class="main-controls">
+
 
 
         <!-- ====================================
@@ -809,6 +922,7 @@
         ===================================== -->
 
         <section class="control-section">
+
 
           <div class="section-heading">
 
@@ -907,7 +1021,9 @@
 
           </div>
 
+
         </section>
+
 
 
         <!-- ====================================
@@ -915,6 +1031,7 @@
         ===================================== -->
 
         <section class="control-section">
+
 
           <div class="section-heading">
 
@@ -1013,7 +1130,9 @@
 
           </div>
 
+
         </section>
+
 
 
         <!-- ====================================
@@ -1021,6 +1140,7 @@
         ===================================== -->
 
         <section class="control-section">
+
 
           <div class="section-heading">
 
@@ -1037,7 +1157,10 @@
 
           <div class="question-form-item">
 
-            <div class="question-form-title" data-form-question="1">
+            <div
+              class="question-form-title"
+              data-form-question="1"
+            >
               1. あなたのキャラクターを一言で表すと？
             </div>
 
@@ -1047,7 +1170,10 @@
               maxlength="80"
             ></textarea>
 
-            <div class="character-counter" data-counter-for="question1Input">
+            <div
+              class="character-counter"
+              data-counter-for="question1Input"
+            >
               0 / 80
             </div>
 
@@ -1056,7 +1182,10 @@
 
           <div class="question-form-item">
 
-            <div class="question-form-title" data-form-question="2">
+            <div
+              class="question-form-title"
+              data-form-question="2"
+            >
               2. いちばん好きなエオルゼアでの過ごし方は？
             </div>
 
@@ -1066,7 +1195,10 @@
               maxlength="80"
             ></textarea>
 
-            <div class="character-counter" data-counter-for="question2Input">
+            <div
+              class="character-counter"
+              data-counter-for="question2Input"
+            >
               0 / 80
             </div>
 
@@ -1075,7 +1207,10 @@
 
           <div class="question-form-item">
 
-            <div class="question-form-title" data-form-question="3">
+            <div
+              class="question-form-title"
+              data-form-question="3"
+            >
               3. 冒険で大切にしていることは？
             </div>
 
@@ -1085,7 +1220,10 @@
               maxlength="80"
             ></textarea>
 
-            <div class="character-counter" data-counter-for="question3Input">
+            <div
+              class="character-counter"
+              data-counter-for="question3Input"
+            >
               0 / 80
             </div>
 
@@ -1094,7 +1232,10 @@
 
           <div class="question-form-item">
 
-            <div class="question-form-title" data-form-question="4">
+            <div
+              class="question-form-title"
+              data-form-question="4"
+            >
               4. いちばん思い出深い出来事は？
             </div>
 
@@ -1104,7 +1245,10 @@
               maxlength="80"
             ></textarea>
 
-            <div class="character-counter" data-counter-for="question4Input">
+            <div
+              class="character-counter"
+              data-counter-for="question4Input"
+            >
               0 / 80
             </div>
 
@@ -1113,7 +1257,10 @@
 
           <div class="question-form-item">
 
-            <div class="question-form-title" data-form-question="5">
+            <div
+              class="question-form-title"
+              data-form-question="5"
+            >
               5. これから叶えたい目標は？
             </div>
 
@@ -1123,13 +1270,18 @@
               maxlength="80"
             ></textarea>
 
-            <div class="character-counter" data-counter-for="question5Input">
+            <div
+              class="character-counter"
+              data-counter-for="question5Input"
+            >
               0 / 80
             </div>
 
           </div>
 
+
         </section>
+
 
 
         <!-- ====================================
@@ -1137,6 +1289,7 @@
         ===================================== -->
 
         <section class="control-section">
+
 
           <div class="section-heading">
 
@@ -1150,6 +1303,7 @@
 
           </div>
 
+
           <label
             class="control-label"
             for="messageInput"
@@ -1158,23 +1312,32 @@
             キャラクターからのひとこと
           </label>
 
+
           <textarea
             id="messageInput"
             class="textarea-input message-input"
             maxlength="160"
           ></textarea>
 
-          <div class="character-counter" data-counter-for="messageInput">
+
+          <div
+            class="character-counter"
+            data-counter-for="messageInput"
+          >
             0 / 160
           </div>
 
+
         </section>
 
+
       </div>
+
 
     </div>
 
   </main>
+
 
 
   <!-- ========================================
@@ -1195,6 +1358,7 @@
     </p>
 
   </section>
+
 
 
   <!-- ========================================
@@ -1221,6 +1385,7 @@
 
       </div>
 
+
       <div>
         (C) SQUARE ENIX
       </div>
@@ -1230,11 +1395,16 @@
   </footer>
 
 
+
+  <!-- html2canvas -->
+
   <script
     src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
   ></script>
 
   <script src="script.js"></script>
 
+
 </body>
+
 </html>
