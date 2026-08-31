@@ -1315,58 +1315,53 @@ function setLanguage(language) {
    X
 ========================================== */
 
+/*
+  X投稿画面
+
+  自動入力：
+  ・サイトタイトル
+  ・サイトURL
+  ・#FFXIVCHARACTERSNAPSHOTMAKER
+*/
+
 function openXPost() {
 
-  const params =
-    new URLSearchParams();
+  const postText =
+    `${SITE_TITLE}\n\n` +
+    `${SITE_URL}\n\n` +
+    `#${X_HASHTAG}`;
 
-  params.set(
-    "text",
-    SITE_TITLE
-  );
-
-  params.set(
-    "url",
-    SITE_URL
-  );
-
-  params.set(
-    "hashtags",
-    X_HASHTAG
-  );
+  const postUrl =
+    "https://x.com/intent/post?text=" +
+    encodeURIComponent(postText);
 
   window.open(
-    "https://twitter.com/intent/tweet?" +
-      params.toString(),
+    postUrl,
     "_blank",
     "noopener,noreferrer"
   );
 }
 
 
+/*
+  「みんなの投稿を見る」
+
+  #FFXIVCHARACTERSNAPSHOTMAKER の
+  最新投稿検索を開く
+*/
+
 function openXSearch() {
 
-  const params =
-    new URLSearchParams();
+  const searchQuery =
+    `#${X_HASHTAG}`;
 
-  params.set(
-    "q",
-    `#${X_HASHTAG}`
-  );
-
-  params.set(
-    "src",
-    "typed_query"
-  );
-
-  params.set(
-    "f",
-    "live"
-  );
+  const searchUrl =
+    "https://x.com/search?q=" +
+    encodeURIComponent(searchQuery) +
+    "&src=typed_query&f=live";
 
   window.open(
-    "https://x.com/search?" +
-      params.toString(),
+    searchUrl,
     "_blank",
     "noopener,noreferrer"
   );
@@ -1796,17 +1791,31 @@ exportButton.addEventListener(
 );
 
 
+/*
+  X投稿
+*/
+
 xPostButton.addEventListener(
   "click",
   openXPost
 );
 
 
+/*
+  PREVIEW下：
+  みんなの投稿を見る
+*/
+
 xSearchButton.addEventListener(
   "click",
   openXSearch
 );
 
+
+/*
+  HERO上部：
+  みんなの投稿を見る
+*/
 
 heroXSearchButton.addEventListener(
   "click",
@@ -1846,6 +1855,10 @@ function initialize() {
 
   setLanguage("ja");
 
+
+  /*
+    丸文字フォントを先に読み込んでおく
+  */
 
   if (
     document.fonts &&
