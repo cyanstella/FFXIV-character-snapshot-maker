@@ -434,7 +434,7 @@ const translations = {
       "World / Data Center",
 
     messageDescription:
-      "キャラクターからのひとこと",
+      "ひとこと",
 
     export:
       "SSを書き出す",
