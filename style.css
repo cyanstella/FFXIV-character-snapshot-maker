@@ -50,8 +50,6 @@ a {
 
 /* ==========================================
    MASTER CONTENT WIDTH
-
-   HERO / CREATOR / ABOUT を完全に同じ基準にする
 ========================================== */
 
 .hero-inner,
@@ -157,14 +155,6 @@ a {
   padding-bottom: 58px;
 }
 
-/*
-  重要：
-  hero-innerには個別のwidth / margin / padding-leftを
-  一切指定しない。
-
-  MASTER CONTENT WIDTH と同じ左端をそのまま使用。
-*/
-
 .hero-kicker {
   display: flex;
 
@@ -190,6 +180,42 @@ a {
 
   background: #ff655c;
 }
+
+
+/* ==========================================
+   HERO TITLE / VERSION
+========================================== */
+
+.hero-kicker-title {
+  display: inline-block;
+
+  white-space: nowrap;
+}
+
+.hero-version {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  margin-left: 2px;
+
+  padding: 3px 6px;
+
+  border: 1px solid #111;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.06em;
+
+  white-space: nowrap;
+}
+
 
 .hero-title {
   max-width: 1100px;
@@ -302,11 +328,6 @@ a {
 .creator-main {
   padding-bottom: 72px;
 }
-
-/*
-  creator-main 自体の左端が
-  hero-inner と完全に同じ。
-*/
 
 .creator-layout {
   width: 100%;
@@ -1356,6 +1377,7 @@ a {
   .creator-main,
   .about-section {
     width: calc(100% - 30px);
+
     max-width: none;
   }
 
@@ -1425,11 +1447,19 @@ a {
     margin-bottom: 22px;
 
     font-size: 9px;
+
+    flex-wrap: wrap;
   }
 
   .hero-kicker-mark {
     width: 30px;
     height: 13px;
+  }
+
+  .hero-version {
+    padding: 3px 5px;
+
+    font-size: 7px;
   }
 
   .hero-title {
