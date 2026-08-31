@@ -579,6 +579,7 @@ function handleImageUpload(event) {
     return;
   }
 
+
   if (currentImageObjectUrl) {
 
     URL.revokeObjectURL(
@@ -587,8 +588,10 @@ function handleImageUpload(event) {
 
   }
 
+
   currentImageObjectUrl =
     URL.createObjectURL(file);
+
 
   snapshotImage.src =
     currentImageObjectUrl;
@@ -603,6 +606,7 @@ function handleImageLoad() {
   imageNaturalHeight =
     snapshotImage.naturalHeight;
 
+
   if (
     !imageNaturalWidth ||
     !imageNaturalHeight
@@ -610,8 +614,10 @@ function handleImageLoad() {
     return;
   }
 
+
   photoPlaceholder.style.display =
     "none";
+
 
   updateImageGeometry();
 }
@@ -626,14 +632,18 @@ function updateImageGeometry() {
     return;
   }
 
+
   const rect =
     snapshot.getBoundingClientRect();
+
 
   const containerWidth =
     rect.width;
 
+
   const containerHeight =
     rect.height;
+
 
   if (
     containerWidth <= 0 ||
@@ -642,16 +652,20 @@ function updateImageGeometry() {
     return;
   }
 
+
   const imageRatio =
     imageNaturalWidth /
     imageNaturalHeight;
+
 
   const containerRatio =
     containerWidth /
     containerHeight;
 
+
   let width;
   let height;
+
 
   if (imageRatio > containerRatio) {
 
@@ -673,11 +687,14 @@ function updateImageGeometry() {
 
   }
 
+
   snapshotImage.style.width =
     `${width}px`;
 
+
   snapshotImage.style.height =
     `${height}px`;
+
 
   updateImageTransform();
 }
@@ -688,38 +705,49 @@ function updateImageTransform() {
   const x =
     Number(imageXInput.value);
 
+
   const y =
     Number(imageYInput.value);
 
+
   const scale =
-    Number(imageScaleInput.value) / 100;
+    Number(imageScaleInput.value) /
+    100;
+
 
   const offsetX =
     (x - 50) * 0.6;
 
+
   const offsetY =
     (y - 50) * 0.6;
+
 
   snapshot.style.setProperty(
     "--image-offset-x",
     `${offsetX}cqw`
   );
 
+
   snapshot.style.setProperty(
     "--image-offset-y",
     `${offsetY}cqw`
   );
+
 
   snapshot.style.setProperty(
     "--image-scale",
     scale
   );
 
+
   imageXValue.textContent =
     `${x}%`;
 
+
   imageYValue.textContent =
     `${y}%`;
+
 
   imageScaleValue.textContent =
     `${Math.round(scale * 100)}%`;
@@ -733,12 +761,16 @@ function updateImageTransform() {
 function updateCoverOpacity() {
 
   const value =
-    Number(coverOpacityInput.value);
+    Number(
+      coverOpacityInput.value
+    );
+
 
   snapshot.style.setProperty(
     "--cover-alpha",
     value / 100
   );
+
 
   coverOpacityValue.textContent =
     `${value}%`;
@@ -748,12 +780,16 @@ function updateCoverOpacity() {
 function updatePanelOpacity() {
 
   const value =
-    Number(panelOpacityInput.value);
+    Number(
+      panelOpacityInput.value
+    );
+
 
   snapshot.style.setProperty(
     "--panel-alpha",
     value / 100
   );
+
 
   panelOpacityValue.textContent =
     `${value}%`;
@@ -781,12 +817,14 @@ function setCoverColor(button) {
   const color =
     button.dataset.coverColor;
 
+
   snapshot.style.setProperty(
     "--cover-rgb",
     color === "white"
       ? "255,255,255"
       : "0,0,0"
   );
+
 
   activateButton(
     coverColorButtons,
@@ -800,16 +838,19 @@ function setTextColor(button) {
   const color =
     button.dataset.textColor;
 
+
   snapshot.classList.remove(
     "text-white",
     "text-black"
   );
+
 
   snapshot.classList.add(
     color === "black"
       ? "text-black"
       : "text-white"
   );
+
 
   activateButton(
     textColorButtons,
@@ -823,12 +864,14 @@ function setPanelColor(button) {
   const color =
     button.dataset.panelColor;
 
+
   snapshot.style.setProperty(
     "--panel-rgb",
     color === "white"
       ? "255,255,255"
       : "0,0,0"
   );
+
 
   activateButton(
     panelColorButtons,
@@ -851,6 +894,7 @@ function updateFont() {
     "font-condensed"
   );
 
+
   const classes = {
 
     gothic:
@@ -870,6 +914,7 @@ function updateFont() {
 
   };
 
+
   snapshot.classList.add(
     classes[fontSelect.value] ||
     "font-gothic"
@@ -887,6 +932,7 @@ function updateCharacter() {
     characterNameInput.value.trim() ||
     "HIKARINO SENSHI";
 
+
   previewWorld.textContent =
     worldInput.value.trim() ||
     "Ramuh / Meteor";
@@ -900,9 +946,11 @@ function formatWorld(value) {
       /^(.+?)\s*\[([^\]]+)\]\s*$/
     );
 
+
   if (!match) {
     return value || "";
   }
+
 
   return (
     match[1].trim() +
@@ -926,9 +974,15 @@ function setLodestoneStatus(
     "error"
   );
 
+
   if (type) {
-    lodestoneStatus.classList.add(type);
+
+    lodestoneStatus.classList.add(
+      type
+    );
+
   }
+
 
   lodestoneStatus.textContent =
     text;
@@ -939,6 +993,7 @@ async function fetchLodestone() {
 
   const url =
     lodestoneUrlInput.value.trim();
+
 
   if (!url) {
 
@@ -952,6 +1007,7 @@ async function fetchLodestone() {
     return;
   }
 
+
   setLodestoneStatus(
     "",
     translations[
@@ -959,8 +1015,10 @@ async function fetchLodestone() {
     ].lodestoneLoading
   );
 
+
   lodestoneFetchButton.disabled =
     true;
+
 
   try {
 
@@ -971,8 +1029,10 @@ async function fetchLodestone() {
         encodeURIComponent(url)
       );
 
+
     const data =
       await response.json();
+
 
     if (
       !response.ok ||
@@ -986,7 +1046,9 @@ async function fetchLodestone() {
 
     }
 
+
     applyLodestoneCharacter(data);
+
 
     setLodestoneStatus(
       "success",
@@ -995,9 +1057,14 @@ async function fetchLodestone() {
       ].lodestoneSuccess
     );
 
+
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      "Lodestone error:",
+      error
+    );
+
 
     setLodestoneStatus(
       "error",
@@ -1005,6 +1072,7 @@ async function fetchLodestone() {
         currentLanguage
       ].lodestoneError
     );
+
 
   } finally {
 
@@ -1024,6 +1092,7 @@ function applyLodestoneCharacter(data) {
 
   }
 
+
   if (data.world) {
 
     worldInput.value =
@@ -1031,13 +1100,16 @@ function applyLodestoneCharacter(data) {
 
   }
 
+
   currentJobLevels =
     data.jobs &&
     typeof data.jobs === "object"
       ? data.jobs
       : {};
 
+
   updateCharacter();
+
 
   renderJobs();
 }
@@ -1051,21 +1123,30 @@ function renderJobs() {
 
   jobIconArea.innerHTML = "";
 
+
   JOB_GROUPS.forEach(group => {
 
     const row =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     row.className =
       "job-icon-row";
 
+
     group.forEach(job => {
 
       const item =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       item.className =
         "job-item";
+
 
       if (job === "DNC") {
 
@@ -1075,26 +1156,38 @@ function renderJobs() {
 
       }
 
+
       const image =
-        document.createElement("img");
+        document.createElement(
+          "img"
+        );
+
 
       image.src =
         `assets/jobs/${JOB_ICON_MAP[job]}`;
 
+
       image.alt =
         job;
+
 
       image.draggable =
         false;
 
+
       const level =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       level.className =
         "job-level";
 
+
       const jobLevel =
         currentJobLevels[job];
+
 
       level.textContent =
         jobLevel !== undefined &&
@@ -1103,15 +1196,27 @@ function renderJobs() {
           ? String(jobLevel)
           : "—";
 
-      item.appendChild(image);
 
-      item.appendChild(level);
+      item.appendChild(
+        image
+      );
 
-      row.appendChild(item);
+
+      item.appendChild(
+        level
+      );
+
+
+      row.appendChild(
+        item
+      );
 
     });
 
-    jobIconArea.appendChild(row);
+
+    jobIconArea.appendChild(
+      row
+    );
 
   });
 }
@@ -1123,7 +1228,9 @@ function renderJobs() {
 
 function updatePlayStyle() {
 
-  previewPlayStyle.innerHTML = "";
+  previewPlayStyle.innerHTML =
+    "";
+
 
   const selected =
     [...playStyleCheckboxes]
@@ -1132,43 +1239,65 @@ function updatePlayStyle() {
           checkbox.checked
       );
 
-  if (selected.length === 0) {
+
+  if (
+    selected.length === 0
+  ) {
 
     const tag =
-      document.createElement("span");
+      document.createElement(
+        "span"
+      );
+
 
     tag.className =
       "play-style-tag";
+
 
     tag.textContent =
       translations[
         currentLanguage
       ].none;
 
-    previewPlayStyle.appendChild(tag);
+
+    previewPlayStyle.appendChild(
+      tag
+    );
+
 
     return;
   }
 
-  selected.forEach(checkbox => {
 
-    const key =
-      checkbox.dataset.style;
+  selected.forEach(
+    checkbox => {
 
-    const tag =
-      document.createElement("span");
+      const key =
+        checkbox.dataset.style;
 
-    tag.className =
-      "play-style-tag";
 
-    tag.textContent =
-      playStyleTranslations[
-        key
-      ][currentLanguage];
+      const tag =
+        document.createElement(
+          "span"
+        );
 
-    previewPlayStyle.appendChild(tag);
 
-  });
+      tag.className =
+        "play-style-tag";
+
+
+      tag.textContent =
+        playStyleTranslations[
+          key
+        ][currentLanguage];
+
+
+      previewPlayStyle.appendChild(
+        tag
+      );
+
+    }
+  );
 }
 
 
@@ -1187,7 +1316,10 @@ function updateQuestions() {
         input.value.trim() ||
         "—";
 
-      updateCounter(input);
+
+      updateCounter(
+        input
+      );
 
     }
   );
@@ -1200,7 +1332,10 @@ function updateMessage() {
     messageInput.value.trim() ||
     "—";
 
-  updateCounter(messageInput);
+
+  updateCounter(
+    messageInput
+  );
 }
 
 
@@ -1211,9 +1346,11 @@ function updateCounter(input) {
       `[data-counter-for="${input.id}"]`
     );
 
+
   if (!counter) {
     return;
   }
+
 
   counter.textContent =
     `${input.value.length} / ${input.maxLength}`;
@@ -1231,12 +1368,15 @@ function setLanguage(language) {
       ? "en"
       : "ja";
 
+
   document.documentElement.lang =
     currentLanguage;
 
 
   document
-    .querySelectorAll("[data-lang]")
+    .querySelectorAll(
+      "[data-lang]"
+    )
     .forEach(button => {
 
       button.classList.toggle(
@@ -1249,18 +1389,24 @@ function setLanguage(language) {
 
 
   document
-    .querySelectorAll("[data-i18n]")
+    .querySelectorAll(
+      "[data-i18n]"
+    )
     .forEach(element => {
 
       const key =
         element.dataset.i18n;
+
 
       const text =
         translations[
           currentLanguage
         ][key];
 
-      if (text !== undefined) {
+
+      if (
+        text !== undefined
+      ) {
 
         element.textContent =
           text;
@@ -1278,6 +1424,7 @@ function setLanguage(language) {
 
       const key =
         element.dataset.playLabel;
+
 
       element.textContent =
         playStyleTranslations[
@@ -1298,6 +1445,7 @@ function setLanguage(language) {
           element.dataset.questionTitle
         ) - 1;
 
+
       element.textContent =
         questionTranslations[
           currentLanguage
@@ -1316,6 +1464,7 @@ function setLanguage(language) {
         Number(
           element.dataset.formQuestion
         );
+
 
       element.textContent =
         `${number}. ${
@@ -1342,17 +1491,23 @@ function setupXLinks() {
     `${SITE_URL}\n\n` +
     `#${X_HASHTAG}`;
 
+
   const postUrl =
     "https://x.com/intent/post?text=" +
-    encodeURIComponent(postText);
+    encodeURIComponent(
+      postText
+    );
 
 
   const searchQuery =
     `#${X_HASHTAG}`;
 
+
   const searchUrl =
     "https://x.com/search?q=" +
-    encodeURIComponent(searchQuery) +
+    encodeURIComponent(
+      searchQuery
+    ) +
     "&src=typed_query&f=live";
 
 
@@ -1382,85 +1537,190 @@ function setupXLinks() {
 
 
 /* ==========================================
-   EXPORT HELPERS
+   TIMEOUT HELPER
 ========================================== */
 
-function waitForImages(root) {
+function delay(ms) {
 
-  const images =
-    [...root.querySelectorAll("img")];
-
-  return Promise.all(
-
-    images.map(image => {
-
-      if (!image.src) {
-        return Promise.resolve();
-      }
-
-      if (
-        image.complete &&
-        image.naturalWidth > 0
-      ) {
-
-        return Promise.resolve();
-
-      }
-
-      return new Promise(resolve => {
-
-        const done = () => {
-
-          image.removeEventListener(
-            "load",
-            done
-          );
-
-          image.removeEventListener(
-            "error",
-            done
-          );
-
-          resolve();
-
-        };
-
-        image.addEventListener(
-          "load",
-          done
-        );
-
-        image.addEventListener(
-          "error",
-          done
-        );
-
-      });
-
-    })
-
+  return new Promise(
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
   );
 }
 
 
-function prepareExportImage(clone) {
+function promiseWithTimeout(
+  promise,
+  timeout
+) {
+
+  return Promise.race([
+
+    promise,
+
+    delay(timeout)
+
+  ]);
+}
+
+
+/* ==========================================
+   IMAGE WAIT
+========================================== */
+
+function waitForSingleImage(
+  image,
+  timeout = 3000
+) {
+
+  /*
+    すでにブラウザ側で処理済みなら
+    待たずに終了する。
+
+    naturalWidth === 0 でも
+    completeなら永久待機しない。
+  */
+
+  if (image.complete) {
+
+    return Promise.resolve();
+
+  }
+
+
+  return new Promise(resolve => {
+
+    let finished =
+      false;
+
+
+    const finish = () => {
+
+      if (finished) {
+        return;
+      }
+
+
+      finished =
+        true;
+
+
+      clearTimeout(
+        timer
+      );
+
+
+      image.removeEventListener(
+        "load",
+        finish
+      );
+
+
+      image.removeEventListener(
+        "error",
+        finish
+      );
+
+
+      resolve();
+
+    };
+
+
+    const timer =
+      setTimeout(
+        finish,
+        timeout
+      );
+
+
+    image.addEventListener(
+      "load",
+      finish
+    );
+
+
+    image.addEventListener(
+      "error",
+      finish
+    );
+
+  });
+}
+
+
+async function waitForImages(root) {
+
+  const images =
+    [...root.querySelectorAll("img")];
+
+
+  console.log(
+    `[Snapshot Export] waiting for ${images.length} images`
+  );
+
+
+  const waits =
+    images.map(
+      image =>
+        waitForSingleImage(
+          image,
+          3000
+        )
+    );
+
+
+  /*
+    個別3秒に加え、
+    全体も最大5秒で終了させる。
+  */
+
+  await promiseWithTimeout(
+    Promise.all(waits),
+    5000
+  );
+
+
+  console.log(
+    "[Snapshot Export] image wait finished"
+  );
+}
+
+
+/* ==========================================
+   EXPORT IMAGE
+========================================== */
+
+function prepareExportImage(
+  clone
+) {
 
   const cloneImage =
     clone.querySelector(
       ".snapshot-image"
     );
 
+
   if (
     !cloneImage ||
     !imageNaturalWidth ||
     !imageNaturalHeight
   ) {
+
+    console.log(
+      "[Snapshot Export] no screenshot image"
+    );
+
     return;
   }
 
 
   const exportSize =
     1080;
+
 
   const imageRatio =
     imageNaturalWidth /
@@ -1471,15 +1731,13 @@ function prepareExportImage(clone) {
   let height;
 
 
-  /*
-    1080 × 1080を覆うサイズを計算。
-    元画像の縦横比は維持する。
-  */
-
-  if (imageRatio >= 1) {
+  if (
+    imageRatio >= 1
+  ) {
 
     height =
       exportSize;
+
 
     width =
       exportSize *
@@ -1489,6 +1747,7 @@ function prepareExportImage(clone) {
 
     width =
       exportSize;
+
 
     height =
       exportSize /
@@ -1500,14 +1759,24 @@ function prepareExportImage(clone) {
   cloneImage.style.width =
     `${width}px`;
 
+
   cloneImage.style.height =
     `${height}px`;
+
 
   cloneImage.style.maxWidth =
     "none";
 
+
   cloneImage.style.maxHeight =
     "none";
+
+
+  console.log(
+    "[Snapshot Export] screenshot size:",
+    width,
+    height
+  );
 }
 
 
@@ -1517,9 +1786,10 @@ function prepareExportImage(clone) {
 
 async function exportSnapshot() {
 
-  /*
-    html2canvas自体が読み込まれているか確認
-  */
+  console.log(
+    "[Snapshot Export] START"
+  );
+
 
   if (
     typeof html2canvas !==
@@ -1527,14 +1797,34 @@ async function exportSnapshot() {
   ) {
 
     console.error(
-      "html2canvas is not loaded."
+      "[Snapshot Export] html2canvas is not loaded"
     );
+
 
     alert(
       translations[
         currentLanguage
       ].exportError
     );
+
+
+    return;
+  }
+
+
+  if (!snapshot) {
+
+    console.error(
+      "[Snapshot Export] #snapshot not found"
+    );
+
+
+    alert(
+      translations[
+        currentLanguage
+      ].exportError
+    );
+
 
     return;
   }
@@ -1544,212 +1834,275 @@ async function exportSnapshot() {
     true;
 
 
-  exportButton.textContent =
-    "...";
-
-
-  let stage = null;
+  let stage =
+    null;
 
 
   try {
 
-    /*
-      フォント読み込み完了を待つ
-    */
+    console.log(
+      "[Snapshot Export] waiting for fonts"
+    );
+
 
     if (
       document.fonts &&
       document.fonts.ready
     ) {
 
-      await document.fonts.ready;
+      await promiseWithTimeout(
+        document.fonts.ready,
+        3000
+      );
 
     }
 
 
-    /*
-      書き出し専用ステージを作る。
+    console.log(
+      "[Snapshot Export] creating export stage"
+    );
 
-      display:none や
-      left:-100000px は使わない。
-    */
 
     stage =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
+
+    /*
+      画面外に飛ばさない。
+      display:noneにも設定しない。
+    */
 
     stage.style.position =
       "fixed";
 
+
     stage.style.left =
       "0";
+
 
     stage.style.top =
       "0";
 
+
     stage.style.width =
       "1080px";
+
 
     stage.style.height =
       "1080px";
 
+
     stage.style.opacity =
       "0";
+
 
     stage.style.pointerEvents =
       "none";
 
-    stage.style.zIndex =
-      "-9999";
 
     stage.style.overflow =
       "hidden";
 
 
-    /*
-      現在のPREVIEWを複製
-    */
+    stage.style.zIndex =
+      "-1";
+
 
     const clone =
-      snapshot.cloneNode(true);
+      snapshot.cloneNode(
+        true
+      );
 
 
-    clone.removeAttribute("id");
+    clone.removeAttribute(
+      "id"
+    );
 
 
     /*
-      書き出し時は
-      1080 × 1080に完全固定
+      ブラウザ上のPREVIEWサイズには
+      一切依存させない。
     */
 
     clone.style.width =
       "1080px";
 
+
     clone.style.height =
       "1080px";
+
 
     clone.style.minWidth =
       "1080px";
 
+
     clone.style.maxWidth =
       "1080px";
+
 
     clone.style.minHeight =
       "1080px";
 
+
     clone.style.maxHeight =
       "1080px";
+
 
     clone.style.aspectRatio =
       "auto";
 
+
     clone.style.margin =
       "0";
+
 
     clone.style.position =
       "relative";
 
 
-    stage.appendChild(clone);
-
-    document.body.appendChild(stage);
-
-
-    /*
-      SS画像も1080px基準へ変換
-    */
-
-    prepareExportImage(clone);
+    stage.appendChild(
+      clone
+    );
 
 
-    /*
-      SSとジョブアイコンなど
-      画像の読み込み完了を待つ
-    */
-
-    await waitForImages(clone);
+    document.body.appendChild(
+      stage
+    );
 
 
-    /*
-      フォントをもう一度確認
-    */
+    console.log(
+      "[Snapshot Export] clone attached"
+    );
 
-    if (
-      document.fonts &&
-      document.fonts.ready
-    ) {
 
-      await document.fonts.ready;
+    prepareExportImage(
+      clone
+    );
 
-    }
+
+    await waitForImages(
+      clone
+    );
 
 
     /*
-      DOM/CSSの反映を2フレーム待つ
+      レイアウト確定を待つ
     */
 
     await new Promise(resolve => {
 
       requestAnimationFrame(() => {
 
-        requestAnimationFrame(resolve);
+        requestAnimationFrame(
+          resolve
+        );
 
       });
 
     });
 
 
+    console.log(
+      "[Snapshot Export] starting html2canvas"
+    );
+
+
     /*
-      1080 × 1080 PNG用Canvas生成
+      html2canvas自体にも
+      20秒のタイムアウトを設定。
     */
 
     const canvas =
-      await html2canvas(
-        clone,
-        {
+      await Promise.race([
 
-          width: 1080,
+        html2canvas(
+          clone,
+          {
 
-          height: 1080,
+            width:
+              1080,
 
-          scale: 1,
+            height:
+              1080,
 
-          useCORS: true,
+            scale:
+              1,
 
-          allowTaint: false,
+            useCORS:
+              true,
 
-          backgroundColor: null,
+            allowTaint:
+              false,
 
-          logging: false,
+            backgroundColor:
+              null,
 
-          scrollX: 0,
+            logging:
+              false,
 
-          scrollY: 0,
+            scrollX:
+              0,
 
-          windowWidth: 1080,
+            scrollY:
+              0,
 
-          windowHeight: 1080
+            windowWidth:
+              1080,
 
-        }
-      );
+            windowHeight:
+              1080
+
+          }
+        ),
+
+        new Promise(
+          (_, reject) => {
+
+            setTimeout(
+              () => {
+
+                reject(
+                  new Error(
+                    "html2canvas timeout"
+                  )
+                );
+
+              },
+              20000
+            );
+
+          }
+        )
+
+      ]);
+
+
+    console.log(
+      "[Snapshot Export] html2canvas finished"
+    );
 
 
     if (
       !canvas ||
-      canvas.width === 0 ||
-      canvas.height === 0
+      !canvas.width ||
+      !canvas.height
     ) {
 
       throw new Error(
-        "Canvas creation failed."
+        "Canvas creation failed"
       );
 
     }
 
 
-    /*
-      Canvas → PNG Blob
-    */
+    console.log(
+      "[Snapshot Export] canvas:",
+      canvas.width,
+      canvas.height
+    );
+
 
     const blob =
       await new Promise(
@@ -1760,13 +2113,15 @@ async function exportSnapshot() {
 
               if (result) {
 
-                resolve(result);
+                resolve(
+                  result
+                );
 
               } else {
 
                 reject(
                   new Error(
-                    "PNG creation failed."
+                    "PNG Blob creation failed"
                   )
                 );
 
@@ -1782,16 +2137,22 @@ async function exportSnapshot() {
       );
 
 
-    /*
-      PNGをダウンロード
-    */
+    console.log(
+      "[Snapshot Export] PNG Blob created",
+      blob.size
+    );
+
 
     const objectUrl =
-      URL.createObjectURL(blob);
+      URL.createObjectURL(
+        blob
+      );
 
 
     const link =
-      document.createElement("a");
+      document.createElement(
+        "a"
+      );
 
 
     link.href =
@@ -1806,7 +2167,14 @@ async function exportSnapshot() {
       "none";
 
 
-    document.body.appendChild(link);
+    document.body.appendChild(
+      link
+    );
+
+
+    console.log(
+      "[Snapshot Export] starting download"
+    );
 
 
     link.click();
@@ -1814,10 +2182,6 @@ async function exportSnapshot() {
 
     link.remove();
 
-
-    /*
-      少し待ってBlob URLを解放
-    */
 
     setTimeout(
       () => {
@@ -1831,10 +2195,15 @@ async function exportSnapshot() {
     );
 
 
+    console.log(
+      "[Snapshot Export] COMPLETE"
+    );
+
+
   } catch (error) {
 
     console.error(
-      "Snapshot export error:",
+      "[Snapshot Export] ERROR:",
       error
     );
 
@@ -1848,10 +2217,6 @@ async function exportSnapshot() {
 
   } finally {
 
-    /*
-      書き出し専用ステージを削除
-    */
-
     if (stage) {
 
       stage.remove();
@@ -1864,14 +2229,19 @@ async function exportSnapshot() {
 
 
     /*
-      現在の言語に合わせて
-      ボタン文字を戻す
+      「...」には変更しない。
+      常に通常のボタン名を表示する。
     */
 
     exportButton.textContent =
       translations[
         currentLanguage
       ].export;
+
+
+    console.log(
+      "[Snapshot Export] END"
+    );
 
   }
 }
@@ -1923,37 +2293,49 @@ panelOpacityInput.addEventListener(
 );
 
 
-coverColorButtons.forEach(button => {
+coverColorButtons.forEach(
+  button => {
 
-  button.addEventListener(
-    "click",
-    () =>
-      setCoverColor(button)
-  );
+    button.addEventListener(
+      "click",
+      () =>
+        setCoverColor(
+          button
+        )
+    );
 
-});
-
-
-textColorButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () =>
-      setTextColor(button)
-  );
-
-});
+  }
+);
 
 
-panelColorButtons.forEach(button => {
+textColorButtons.forEach(
+  button => {
 
-  button.addEventListener(
-    "click",
-    () =>
-      setPanelColor(button)
-  );
+    button.addEventListener(
+      "click",
+      () =>
+        setTextColor(
+          button
+        )
+    );
 
-});
+  }
+);
+
+
+panelColorButtons.forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () =>
+        setPanelColor(
+          button
+        )
+    );
+
+  }
+);
 
 
 fontSelect.addEventListener(
@@ -1992,14 +2374,16 @@ playStyleCheckboxes.forEach(
 );
 
 
-questionInputs.forEach(input => {
+questionInputs.forEach(
+  input => {
 
-  input.addEventListener(
-    "input",
-    updateQuestions
-  );
+    input.addEventListener(
+      "input",
+      updateQuestions
+    );
 
-});
+  }
+);
 
 
 messageInput.addEventListener(
@@ -2009,7 +2393,9 @@ messageInput.addEventListener(
 
 
 languageToggle
-  .querySelectorAll("[data-lang]")
+  .querySelectorAll(
+    "[data-lang]"
+  )
   .forEach(button => {
 
     button.addEventListener(
@@ -2043,28 +2429,35 @@ function initialize() {
 
   updateCharacter();
 
+
   renderJobs();
+
 
   updatePlayStyle();
 
+
   updateQuestions();
+
 
   updateMessage();
 
+
   updateFont();
+
 
   updateImageTransform();
 
+
   updateCoverOpacity();
+
 
   updatePanelOpacity();
 
-  setLanguage("ja");
 
+  setLanguage(
+    "ja"
+  );
 
-  /*
-    Xリンクを設定
-  */
 
   setupXLinks();
 
@@ -2083,6 +2476,11 @@ function initialize() {
     );
 
   }
+
+
+  console.log(
+    "[Snapshot Maker] script.js loaded"
+  );
 
 }
 
