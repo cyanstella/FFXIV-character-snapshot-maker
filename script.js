@@ -14,6 +14,9 @@ const SITE_TITLE =
 const X_HASHTAG =
   "FFXIVCHARACTERSNAPSHOTMAKER";
 
+const X_SHARED_HASHTAG =
+  "FF14キャラクターカード";
+
 
 /* ==========================================
    ELEMENTS
@@ -1552,7 +1555,8 @@ function setupXLinks() {
   const postText =
     `${SITE_TITLE}\n\n` +
     `${SITE_URL}\n\n` +
-    `#${X_HASHTAG}`;
+    `#${X_HASHTAG}\n` +
+    `#${X_SHARED_HASHTAG}`;
 
 
   const postUrl =
